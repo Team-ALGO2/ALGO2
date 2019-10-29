@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <unistd.h>
+#include <math.h>
 
 // colors
 #define RED   "\x1B[31m"
@@ -14,9 +15,9 @@
 #define RESET "\x1B[0m"
 
 // basic defines
-#define SIZE  10
-#define WIDE  5
-#define ROTATIONTIMES 1
+#define SIZE  12
+#define WIDE  6
+#define ROTATIONTIMES rand() % 30 + 3
 
 // define booleans
 #define false 0
@@ -41,18 +42,18 @@ int main(void)
     // is stop
     int isStop = false;
 
-    
+
     // init rand
     srand((unsigned) time(&t));
 
-    
+
     // create array of rands
-    for (int x = 0; x < WIDE; x++){ 
+    for (int x = 0; x < WIDE; x++){
         for (int i = 0; i < SIZE; i++){
             slotMap[x][i] = rand() % 10;
         }
     }
-    
+
 
     // Set Default Rolled Values
     // Idk how to set values to "NULL", so im just gonna use 1t as it sould never be above 10 lmao
@@ -73,8 +74,8 @@ int main(void)
 
     // number of times to rotate
     for (int k = 0; k < ROTATIONTIMES; k ++)
-    {   
-        
+    {
+
         // wait/clear
         sleep(1);
         system("clear");
@@ -84,7 +85,7 @@ int main(void)
         for (int i = 0; i < SIZE; i++)
         {
 
-            
+
             if (i == SIZE/2)  // if i is in middle print in RED
             {
                 for (int e = 0; e < WIDE*2-1; e++){printf("=");}
@@ -144,7 +145,6 @@ int main(void)
         printf("\n");
         sleep(1);
         system("clear");
-
         printf(GRN "%d %d %d" RESET, one, two, three);
         printf("\n");
         sleep(1);
@@ -153,10 +153,20 @@ int main(void)
     */
 
    //TEMPORARY PRINT AND THE ONE ABOVE IS BROKNE
-   printf("\n\n\n");
-   for(int p = 0; p < WIDE; p++){
-       printf("%d ", rolledValues[p]);
-   }
+
+   double end = 0;
+
+    printf("\n\n\n");
+    for(int p = 0; p < WIDE; p++)
+    {
+        printf("%d ", rolledValues[p]);
+
+        end = end + (rolledValues[p] * pow(10, SIZE + 1 - p));
+    }
+
+    end = end / 100000000;
+
+   printf("\n %f \n", end);
 
 
     return 0;
