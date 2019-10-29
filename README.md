@@ -2,7 +2,7 @@
 ### NOTE: I'll make this public once we're done
 
 ## slots.c
-Starts a randomized slots with ten numbers and three wheels and can output the final result
+Starts a randomized slots with a customizable number of wheels and numbers and can output the final result as a number
 
 ## calc.c
 Very basic calculator with basic operations
@@ -19,3 +19,4 @@ Very basic calculator with basic operations
 ## Slots:
      -Make more satisfying
      -Add more colors and symbols (i.e.: $, % ,# ,@ , <, &, yellow 7, red 5)
+     -Add win/lose condition
