@@ -13,13 +13,16 @@
 #define WHT   "\x1B[37m"
 #define RESET "\x1B[0m"
 
+// basic defines
+#define SIZE  10
+
 
 int main(void)
 {
     // create list
-    int first[10];
-    int second[10];
-    int third[10];
+    int first[SIZE];
+    int second[SIZE];
+    int third[SIZE];
     time_t t;
 
     int one, two, three;
@@ -28,7 +31,7 @@ int main(void)
     srand((unsigned) time(&t));
 
     // create array of rands
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < SIZE; i++)
     {
         first[i] = rand() % 10;
         second[i] = rand() % 10;
@@ -39,22 +42,24 @@ int main(void)
     system("clear");
 
     // create a random starting point for iteration
-    int j = rand() % 10;
+    int j = rand() % SIZE;
 
     // number of times to rotate
     for (int k = 0; k < 10; k ++)
-    {
+    {   
+        
         // wait/clear
         sleep(1);
         system("clear");
+        printf("%d\n\n", j);
 
 
         // print full array starting at index j
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < SIZE; i++)
         {
 
 
-            if (i == 5)  // if i is in middle print in RED
+            if (i == SIZE/2)  // if i is in middle print in RED
             {
                 printf(CYN "%d ", first[j]);
                 printf("%d ", second[j]);
@@ -64,7 +69,7 @@ int main(void)
                 two = second[j];
                 three = third[j];
             }
-            else if (i == 4 || i == 6) // if i is directly beside index 5, print them
+            else if (i == SIZE/2 - 1 || i == SIZE/2 + 1) // if i is directly beside index 5, print them
             {
                 printf("%d ", first[j]);
                 printf("%d ", second[j]);
@@ -80,13 +85,13 @@ int main(void)
 
             // j goes up for iteration
             j++;
-            j = j % 10;
+            j = j % SIZE;
         }
 
 
         // starting point += 1
-        j++;
-        j = j % 10;
+        j--;
+        if(j < 0){j=SIZE-1;}
     }
 
     system("clear");
