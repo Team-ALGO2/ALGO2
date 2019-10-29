@@ -15,27 +15,54 @@
 
 // basic defines
 #define SIZE  10
+#define WIDE  5
+#define ROTATIONTIMES 1
+
+// define booleans
+#define false 0
+#define true 1
 
 
 int main(void)
 {
-    // create list
-    int first[SIZE];
-    int second[SIZE];
-    int third[SIZE];
+    // create number list
+    int slotMap[WIDE][SIZE];
+
+    // create time var
     time_t t;
 
-    int one, two, three;
+    // rolled values
+    int rolledValues[WIDE];
 
+    // roll delay
+    //TODO: FINISH
+    int rollDelay[WIDE];
+
+    // is stop
+    int isStop = false;
+
+    
     // init rand
     srand((unsigned) time(&t));
 
+    
     // create array of rands
-    for (int i = 0; i < SIZE; i++)
-    {
-        first[i] = rand() % 10;
-        second[i] = rand() % 10;
-        third[i] = rand() % 10;
+    for (int x = 0; x < WIDE; x++){ 
+        for (int i = 0; i < SIZE; i++){
+            slotMap[x][i] = rand() % 10;
+        }
+    }
+    
+
+    // Set Default Rolled Values
+    // Idk how to set values to "NULL", so im just gonna use 1t as it sould never be above 10 lmao
+    for (int n = 0; n < WIDE; n++){
+        rolledValues[n] = 15;
+    }
+
+    // Set Random Roll Delay
+    for (int r = 0; r < WIDE; r++){
+        rollDelay[r] = (rand() % 3) + 1;
     }
 
     // clear screen
@@ -45,41 +72,53 @@ int main(void)
     int j = rand() % SIZE;
 
     // number of times to rotate
-    for (int k = 0; k < 10; k ++)
+    for (int k = 0; k < ROTATIONTIMES; k ++)
     {   
         
         // wait/clear
         sleep(1);
         system("clear");
-        printf("%d\n\n", j);
 
 
         // print full array starting at index j
         for (int i = 0; i < SIZE; i++)
         {
 
-
+            
             if (i == SIZE/2)  // if i is in middle print in RED
             {
-                printf(CYN "%d ", first[j]);
-                printf("%d ", second[j]);
-                printf("%d\n" RESET, third[j]);
+                for (int e = 0; e < WIDE*2-1; e++){printf("=");}
+                printf("\n" CYN);
+                for (int v = 0; v < WIDE; v++){
+                    printf("%d ", slotMap[v][j]);
+                    rolledValues[v] = slotMap[v][j];
+                }
+                printf("\n" RESET);
+                for (int e = 0; e < WIDE*2-1; e++){printf("=");}
+                printf("\n");
 
-                one = first[j];
-                two = second[j];
-                three = third[j];
+                //one = first[j];
+                //two = second[j];
+                //three = third[j];
             }
             else if (i == SIZE/2 - 1 || i == SIZE/2 + 1) // if i is directly beside index 5, print them
             {
-                printf("%d ", first[j]);
-                printf("%d ", second[j]);
-                printf("%d\n", third[j]);
+
+                //printf("%d ", first[j]);
+                //printf("%d ", second[j]);
+                //printf("%d\n", third[j]);
+                for (int v = 0; v < WIDE; v++){
+                    printf("%d ", slotMap[v][j]);
+                }
+                printf("\n");
             }
-            else                        // hide the other numbers
+            else // hide the other numbers
             {
-                printf(WHT "%d ", first[j]);
-                printf("%d ", second[j]);
-                printf("%d\n" RESET, third[j]);
+                printf(WHT);
+                for (int v = 0; v < WIDE; v++){
+                    printf("%d ", slotMap[v][j]);
+                }
+                printf("\n" RESET);
             }
 
 
@@ -94,21 +133,30 @@ int main(void)
         if(j < 0){j=SIZE-1;}
     }
 
-    system("clear");
+    //system("clear");
 
     // end
-    for (int l = 0; l < 10; l++)
+
+    /*
+    for (int l= 0; l < 10; l++)
     {
         printf(RED "%d %d %d" RESET, one, two, three);
+        printf("\n");
         sleep(1);
-
         system("clear");
 
         printf(GRN "%d %d %d" RESET, one, two, three);
+        printf("\n");
         sleep(1);
-
         system("clear");
     }
+    */
+
+   //TEMPORARY PRINT AND THE ONE ABOVE IS BROKNE
+   printf("\n\n\n");
+   for(int p = 0; p < WIDE; p++){
+       printf("%d ", rolledValues[p]);
+   }
 
 
     return 0;
