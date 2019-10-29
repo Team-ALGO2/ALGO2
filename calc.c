@@ -1,22 +1,25 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int add(int a, int b);
-int substract(int a, int b);
-int multiply(int a, int b);
-int divide(int a, int b);
+int add(int, int);
+int substract(int, int);
+int multiply(int, int);
+int divide(int, int);
+int mod(int, int);
+
 
 
 int main(void)
 {
+
     int a = 0;
     int b = 0;
-    char op = '+';
+    char op;
 
-
-
-
+    //need to rewrite this to enable multiple number calculatrions
+    // i think that we could use stacks to load all the numbers and do fifo to unpack all the numbers
     // get numbers
+    //should also make a stack for the opperators aswell as the partenthases for BEDMAS
     printf("Choose a number: ");
     scanf("%d", &a);
 
@@ -30,27 +33,22 @@ int main(void)
     printf("%d %c %d = ", a, op, b);
 
 
-    // Do operations
-    if (op == '+')
-    {
+    switch( op )
+{
+	case '+':
         printf("%d", add(a, b));
-    }
-    else if (op == '-')
-    {
+	case '-':
         printf("%d", substract(a, b));
-    }
-    else if (op == '*')
-    {
+	case '*':
         printf("%d", multiply(a, b));
-    }
-    else if (op == '/')
-    {
+    case '/':
         printf("%d", divide(a, b));
-    }
-
-    printf("\n");
+    case '%':
+        printf("%d", mod(a, b));
 
 }
+}
+
 
 int add(a, b)
 {
@@ -70,4 +68,9 @@ int multiply(a, b)
 int divide(a, b)
 {
     return a/b;
+}
+
+int mod(a, b)
+{
+    return a%b;
 }
