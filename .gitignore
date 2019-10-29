@@ -1,0 +1,4 @@
+#Gitignore file. Tells GIt What To Ignore In Therm Of Files. Feel Free To Add Items That YOu Dont Want On The Main Repo But You Want Locally
+
+#run File - its my (edward) compiler output
+run
