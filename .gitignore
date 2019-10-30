@@ -2,3 +2,7 @@
 
 #run File - its my (edward) compiler output
 run
+
+#ignores the exectuable files we make for testing
+.out
+.exe
