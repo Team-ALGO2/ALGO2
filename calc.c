@@ -1,73 +1,75 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
-int add(int a, int b);
-int substract(int a, int b);
-int multiply(int a, int b);
-int divide(int a, int b);
+double add(double a, double b);
+double subtract(double a, double b);
+double multiply(double a, double b);
+double divide(double a, double b);
 
 
 int main(void)
 {
-    int a = 0;
-    int b = 0;
-    char op = '+';
+    double a = 0;
+    double b = 0;
+    char op;
 
 
 
+    printf("Choose an operator: ");
+    scanf("%c", &op);
 
     // get numbers
     printf("Choose a number: ");
-    scanf("%d", &a);
+    scanf("%lf", &a);
 
-    printf("Choose an operator: ");
-    scanf("%1s", &op);
+
 
     printf("Choose a number: ");
-    scanf("%d", &b);
+    scanf("%lf", &b);
 
 
-    printf("%d %c %d = ", a, op, b);
+    printf("%f %c %f = ", a,op, b);
 
-
-    // Do operations
-    if (op == '+')
+     switch(op)
     {
-        printf("%d", add(a, b));
+        case '+':
+            printf("%.1lf + %.1lf = %.1lf",a, b, add(a,b));
+            break;
+        case '-':
+            printf("%.1lf - %.1lf = %.1lf",a, b, subtract(a,b));
+            break;
+        case '*':
+            printf("%.1lf * %.1lf = %.1lf",a, b, multiply(a,b));
+            break;
+        case '/':
+            printf("%.1lf / %.1lf = %.1lf",a, b, divide(a,b));
+            break;
+        // operator doesn't match any case constant (+, -, *, /)
+        default:
+            printf("Error! Operator is not correct");
     }
-    else if (op == '-')
-    {
-        printf("%d", substract(a, b));
-    }
-    else if (op == '*')
-    {
-        printf("%d", multiply(a, b));
-    }
-    else if (op == '/')
-    {
-        printf("%d", divide(a, b));
-    }
-
-    printf("\n");
-
+    
+    return 0;
 }
+    
 
-int add(a, b)
+double add(double a, double b)
 {
     return a+b;
 }
 
-int substract(a, b)
+double subtract(double a, double b)
 {
     return a-b;
 }
 
-int multiply(a, b)
+double multiply(double a, double b)
 {
     return a*b;
 }
 
-int divide(a, b)
+double divide(double a, double b)
 {
     return a/b;
 }
