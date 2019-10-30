@@ -18,5 +18,4 @@ Very basic calculator with basic operations
 
 ## Slots:
      -Make more satisfying
-     -Add more colors and symbols (i.e.: $, % ,# ,@ , <, &, yellow 7, red 5)
      -Add win/lose condition
