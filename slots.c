@@ -5,9 +5,9 @@
 #include <math.h>
 
 // colors
-#define RED   "\x1B[31m"
-#define GRN   "\x1B[32m"
-#define YEL   "\x1B[33m"
+#define RED   "\x1B[31m" 
+#define GRN   "\x1B[32m" 
+#define YEL   "\x1B[33m" 
 #define BLU   "\x1B[34m"
 #define MAG   "\x1B[35m"
 #define CYN   "\x1B[36m"
@@ -26,6 +26,12 @@
 
 int main(void)
 {
+    // Slot Characters And Colors
+    char *slotCharacters[10] = {"$", "X", "#", "O", "?", "=", ">", "7", ".", "9"};
+    char *slotColours[10] = {"\x001b[43m\x001b[30m", "\x1B[31m", "\x1B[34m", "\x1B[36m\x1B[35m", "\x001b[46m", "\x001b[47m\x001b[37;1m", "\x1B[35m", "\x1B[32m", "\x1B[33m", "\x1B[37m"};
+
+    sleep(5);
+
     // create number list
     int slotMap[WIDE][SIZE];
 
@@ -37,7 +43,7 @@ int main(void)
 
     // roll delay
     //TODO: FINISH
-    int rollDelay[WIDE];
+    int rollIteration[WIDE];
 
     // is stop
     int isStop = false;
@@ -63,7 +69,7 @@ int main(void)
 
     // Set Random Roll Delay
     for (int r = 0; r < WIDE; r++){
-        rollDelay[r] = (rand() % 3) + 1;
+        rollIteration[r] = (rand() % 2) + 1;
     }
 
     // clear screen
@@ -91,7 +97,8 @@ int main(void)
                 for (int e = 0; e < WIDE*2-1; e++){printf("=");}
                 printf("\n" CYN);
                 for (int v = 0; v < WIDE; v++){
-                    printf("%d ", slotMap[v][j]);
+                    //printf("%d ", slotMap[v][j]);
+                    printf("%s%s%s ", slotColours[slotMap[v][j]], slotCharacters[slotMap[v][j]], "\x001b[0m");
                     rolledValues[v] = slotMap[v][j];
                 }
                 printf("\n" RESET);
@@ -102,6 +109,7 @@ int main(void)
                 //two = second[j];
                 //three = third[j];
             }
+            /*
             else if (i == SIZE/2 - 1 || i == SIZE/2 + 1) // if i is directly beside index 5, print them
             {
 
@@ -113,13 +121,13 @@ int main(void)
                 }
                 printf("\n");
             }
+            */
             else // hide the other numbers
             {
-                printf(WHT);
                 for (int v = 0; v < WIDE; v++){
-                    printf("%d ", slotMap[v][j]);
+                    printf("%s%s%s ", slotColours[slotMap[v][j]], slotCharacters[slotMap[v][j]], "\x001b[0m");
                 }
-                printf("\n" RESET);
+                printf("\n");
             }
 
 
@@ -130,7 +138,7 @@ int main(void)
 
 
         // starting point += 1
-        j--;
+        j = j;
         if(j < 0){j=SIZE-1;}
     }
 
