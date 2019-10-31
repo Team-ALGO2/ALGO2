@@ -3,6 +3,7 @@
 #include <time.h>
 #include <unistd.h>
 #include <math.h>
+#include <time.h>
 
 // colors
 #define RED   "\x1B[31m"
@@ -17,15 +18,28 @@
 // basic defines
 #define SIZE  12
 #define WIDE  6
-#define ROTATIONTIMES (rand() % 30) + 3
 
 // define booleans
 #define false 0
 #define true 1
 
+// some sleep thing i edited lol
+int msleep(long msec)
+{
+    struct timespec ts;
+    int res;
+    ts.tv_sec = msec / 1000;
+    ts.tv_nsec = (msec % 1000) * 1000000;
+    res = nanosleep(&ts, &ts);
+    return res;
+}
 
 int main(void)
 {
+    //Define CONSTANT rotation times
+    // Not using #define becasue it gets a new number every thime i referece it
+    int rotationtimes = (rand() % 30) + 3;
+    
     // Slot Characters And Colors
     char *slotCharacters[10] = {"$", "X", "#", "O", "?", "=", ">", "7", ".", "9"};
     char *slotColours[10] = {"\x001b[43m\x001b[30m", "\x1B[31m", "\x1B[34m", "\x1B[36m\x1B[35m", "\x001b[46m", "\x001b[47m\x001b[37;1m", "\x1B[35m", "\x1B[32m", "\x1B[33m", "\x1B[37m"};
@@ -79,13 +93,16 @@ int main(void)
     int j = rand() % SIZE;
 
     // number of times to rotate
-    for (int k = 0; k < ROTATIONTIMES; k ++)
+    for (int k = 0; k < rotationtimes; k ++)
     {
 
         // wait/clear
-        sleep(1);
+        float rotateSpeed = (long)(((float)k/(float)rotationtimes)* 1000);
+        msleep(rotateSpeed);
         system("clear");
-        printf("%d\n\n\n", j);
+        printf("~~DEBUG~~ \nNumber Index: %d\nTimes Updated:%d\nTotal Updates:%d\nRotation Speed:%lf\n\n\n", j, k, rotationtimes, rotateSpeed);
+        
+        //printf("%d", rotationtimes);
 
 
         // print full array starting at index j
