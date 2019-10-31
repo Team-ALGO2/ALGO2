@@ -5,9 +5,9 @@
 #include <math.h>
 
 // colors
-#define RED   "\x1B[31m" 
-#define GRN   "\x1B[32m" 
-#define YEL   "\x1B[33m" 
+#define RED   "\x1B[31m"
+#define GRN   "\x1B[32m"
+#define YEL   "\x1B[33m"
 #define BLU   "\x1B[34m"
 #define MAG   "\x1B[35m"
 #define CYN   "\x1B[36m"
@@ -17,7 +17,7 @@
 // basic defines
 #define SIZE  12
 #define WIDE  6
-#define ROTATIONTIMES rand() % 30 + 3
+#define ROTATIONTIMES (rand() % 30) + 3
 
 // define booleans
 #define false 0
@@ -85,6 +85,7 @@ int main(void)
         // wait/clear
         sleep(1);
         system("clear");
+        printf("%d\n\n\n", j);
 
 
         // print full array starting at index j
@@ -138,7 +139,7 @@ int main(void)
 
 
         // starting point += 1
-        j = j;
+        j--;
         if(j < 0){j=SIZE-1;}
     }
 
