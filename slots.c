@@ -18,6 +18,7 @@
 // basic defines
 #define SIZE  12
 #define WIDE  6
+#define DEBUG 1
 
 // define booleans
 #define false 0
@@ -96,19 +97,18 @@ int main(void)
     for (int k = 0; k < rotationtimes; k ++)
     {
 
-        // wait/clear
+        // Calculate Rotation Speed
         float rotateSpeed = (long)(((float)k/(float)rotationtimes)* 1000);
+        // wait/clear
         msleep(rotateSpeed);
         system("clear");
-        printf("~~DEBUG~~ \nNumber Index: %d\nTimes Updated:%d\nTotal Updates:%d\nRotation Speed:%lf\n\n\n", j, k, rotationtimes, rotateSpeed);
-        
-        //printf("%d", rotationtimes);
-
+        if(DEBUG){
+            printf("~~DEBUG~~ \nNumber Index: %d\nTimes Updated:%d\nTotal Updates:%d\nRotation Speed:%lf\n\n\n", j, k, rotationtimes, rotateSpeed);
+        }
 
         // print full array starting at index j
         for (int i = 0; i < SIZE; i++)
         {
-
 
             if (i == SIZE/2)  // if i is in middle print in RED
             {
@@ -140,6 +140,9 @@ int main(void)
                 printf("\n");
             }
             */
+
+           //IDK WHAT THIS DOES ^^^
+
             else // hide the other numbers
             {
                 for (int v = 0; v < WIDE; v++){
@@ -155,7 +158,7 @@ int main(void)
         }
 
 
-        // starting point += 1
+        // starting point -= 1
         j--;
         if(j < 0){j=SIZE-1;}
     }
