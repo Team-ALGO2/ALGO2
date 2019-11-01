@@ -10,12 +10,12 @@ Very basic calculator with basic operations
 ### TODO:
 
 ## Calculator:
-    -Implement a more expandable base for calculations.
-    -Parse the calculation to implement BEDMAS
-    -Do research to figure out what and astronomical calculator is
-    -Implement astronomical calculator
-    -Compile everything under one program and create Easter eggs to enable the extra games.    
+- Implement a more expandable base for calculations.
+- Parse the calculation to implement BEDMAS
+- Do research to figure out what and astronomical calculator is
+- Implement astronomical calculator
+- Compile everything under one program and create Easter eggs to enable the extra games.    
 
 ## Slots:
-     -Make more satisfying
-     -Add win/lose condition
+- Make more satisfying
+- Add win/lose condition
