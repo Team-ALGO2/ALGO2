@@ -10,9 +10,9 @@ int main()
     double a = 0;
     double b = 0;
     char op[3];
-    int on = 1;
+    int on = true;
 
-    //printf("Choose a number: ");
+    printf("Choose a number: ");
     //printf("0");
     
     system("clear");
@@ -24,8 +24,9 @@ int main()
   do{
       
         
-        
+        printf("Choose an operator: ");
         scanf("%s",op);
+        printf("Choose another number: ");
         scanf("%lf", &b);
         
         if(strcmp(op, "+") == 0){
@@ -57,7 +58,7 @@ int main()
         
   
     system("clear");
-    }while(on == 1);
+    }while(on == true);
     return 0;
 }
     
