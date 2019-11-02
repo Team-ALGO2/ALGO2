@@ -1,5 +1,12 @@
 #include "utils.h"
 
+// For Global Defines, Use Utils. For Local, Use Here.
+
+// basic defines
+#define SIZE  12
+#define WIDE  6
+#define DEBUG 1
+
 // some sleep thing i edited lol
 int msleep(long msec)
 {

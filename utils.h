@@ -19,11 +19,6 @@
 #define WHT   "\x1B[37m"
 #define RESET "\x1B[0m"
 
-// basic defines
-#define SIZE  12
-#define WIDE  6
-#define DEBUG 1
-
 // define booleans
 #define false 0
 #define true 1
@@ -31,8 +26,5 @@
 // min max functions
 #define MAX(x, y) (((x) > (y)) ? (x) : (y))
 #define MIN(x, y) (((x) < (y)) ? (x) : (y))
-
-// wonky PI definitions
-#define PI 3.141592653589
 
 #endif // _DEFGUARD

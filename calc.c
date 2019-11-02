@@ -1,5 +1,10 @@
 #include "utils.h"
 
+// For Global Defines, Use Utils. For Local, Use Here.
+
+// wonky PI definitions
+#define PI 3.141592653589
+
 double add(double a, double b);
 double subtract(double a, double b);
 double multiply(double a, double b);
