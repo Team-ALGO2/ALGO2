@@ -93,6 +93,7 @@ int main(void)
 
             if (i == SIZE/2)  // if i is in middle print in RED
             {
+                //Prints out lines
                 for (int e = 0; e < WIDE*2-1; e++){printf("=");}
                 printf("\n" CYN);
                 for (int v = 0; v < WIDE; v++){
@@ -101,6 +102,7 @@ int main(void)
                     rolledValues[v] = slotMap[v][j];
                 }
                 printf("\n" RESET);
+                //Prints out lines
                 for (int e = 0; e < WIDE*2-1; e++){printf("=");}
                 printf("\n");
 
