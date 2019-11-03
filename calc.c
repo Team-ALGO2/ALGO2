@@ -9,7 +9,7 @@ double add(double a, double b);
 double subtract(double a, double b);
 double multiply(double a, double b);
 double divide(double a, double b);
-double mod(double a, double b);
+long mod(long a, long b);
 
 int main()
 {
@@ -35,34 +35,51 @@ int main()
         printf("Choose another number: ");
         scanf("%lf", &b);
         
+        double result;
         if(strcmp(op, "+") == 0){
-            printf("%.9lf",add(a,b));
-            a = (add(a,b));
+            result = add(a,b);
+            printf("%.9lf", result);
+            a = result;
         }
         else if(strcmp(op, "-") == 0){
-            printf("%.9lf", subtract(a,b));
-            a = subtract(a,b);
+            result = subtract(a,b);
+            printf("%.9lf", result);
+            a = result;
         }
         else if(strcmp(op, "*") == 0){
-            printf("%.9lf", multiply(a,b));
-            a = multiply(a,b);
+            result = multiply(a,b);
+            printf("%.9lf", result);
+            a = result;
         }
         else if(strcmp(op, "/") == 0){
-            printf("%.9lf", divide(a,b));
-            a= divide(a,b);
+            result = divide(a,b);
+            printf("%.9lf", result);
+            a= result;
         }
         else if(strcmp(op, "sin") == 0){
-            printf("%.9lf", sin(b*PI/180));
-            a= sin(b*PI/180);
+            result = sin(b*PI/180);
+            printf("%.9lf", result);
+            a= result;
         }
         else if(strcmp(op, "cos") == 0){
-            printf("%.9lf", cos(b*PI/180));
-            a= sin(b*PI/180);
+            result = sin(b*PI/180);
+            printf("%.9lf", result);
+            a= result;
+        }
+        else if(strcmp(op, "%") == 0){
+            if((float)(int)a != a || (float)(int)b != b){
+                printf(YEL "WARNING! MOD CANNOT SUPPORT DECIMALS. CONVERTING TO INTEGER.\n" RESET);
+                a = (int)a;
+                b = (int)b;
+            }
+            result = mod(a,b);
+            printf("%.9lf", result);
+            a= result;
         }
 
         
   
-    system("clear");
+    //system("clear");
     }while(on == true);
     return 0;
 }
@@ -88,7 +105,7 @@ double divide(double a, double b)
     return a/b;
 }
 
-double mod(double a, double b)
+long mod(long a, long b)
 {
     return a%b;
 }
