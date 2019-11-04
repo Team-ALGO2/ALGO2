@@ -1,4 +1,4 @@
-# Very Good C Calculator
+# Very Good C Calculator + Slot Machine
 ### NOTE: I'll make this public once we're done
 
 ## slots.c
