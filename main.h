@@ -1,6 +1,7 @@
-#ifndef _DEFGUARD
-#define _DEFGUARD
+#ifndef _MAINGUARD
+#define _MAINGUARD
 
+// Import Important Libraries
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -9,7 +10,7 @@
 #include <time.h>
 #include <string.h>
 
-// colors
+// Set Colours
 #define RED   "\x1B[31m"
 #define GRN   "\x1B[32m"
 #define YEL   "\x1B[33m"
@@ -19,12 +20,16 @@
 #define WHT   "\x1B[37m"
 #define RESET "\x1B[0m"
 
-// define booleans
+// Define Booleans
 #define false 0
 #define true 1
+#define False 0
+#define True 1
+#define FALSE 0
+#define TRUE 1
 
-// min max functions
+// Min/Max Dunctions
 #define MAX(x, y) (((x) > (y)) ? (x) : (y))
 #define MIN(x, y) (((x) < (y)) ? (x) : (y))
 
-#endif // _DEFGUARD
+#endif // _MAINGUARD

@@ -1,17 +1,7 @@
 // TODO REWRITE
 
-#include "utils.h"
-
-// For Global Defines, Use Utils. For Local, Use Here.
-
-// wonky PI definitions (d at the end makes it a double instead of flaot)
-#define PI 3.141592653589d
-
-double add(double a, double b);
-double subtract(double a, double b);
-double multiply(double a, double b);
-double divide(double a, double b);
-long mod(long a, long b);
+#include "main.h"
+#include "utils/math.c"
 
 int main()
 {
@@ -85,29 +75,5 @@ int main()
     }while(on == true);
     return 0;
 }
-    
 
-double add(double a, double b)
-{
-    return a+b;
-}
-
-double subtract(double a, double b)
-{
-    return a-b;
-}
-
-double multiply(double a, double b)
-{
-    return a*b;
-}
-
-double divide(double a, double b)
-{
-    return a/b;
-}
-
-long mod(long a, long b)
-{
-    return a%b;
-}
+// Functions are now defined in math.c
