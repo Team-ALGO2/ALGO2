@@ -32,7 +32,7 @@ int main(void)
     
     // Slot Characters And Colors
     char *slotCharacters[10] = {"$", "X", "#", "O", "?", "=", ">", "7", ".", "9"};
-    char *slotColours[10] = {"\x001b[43m\x001b[30m", "\x1B[31m", "\x1B[34m", "\x1B[36m\x1B[35m", "\x001b[46m", "\x001b[47m\x001b[37;1m", "\x1B[35m", "\x1B[32m", "\x1B[33m", "\x1B[37m"};
+    char *slotColours[10] = {"\x001b[43m\x001b[30m", "\x1B[31m", "\x1B[34m", "\x1B[36m\x1B[35m", "\x001b[46m\x001b[30m", "\x001b[47m\x001b[37;1m\x001b[30m", "\x1B[35m", "\x1B[32m", "\x1B[33m", "\x1B[37m"};
 
     // create number list
     int slotMap[WIDTH][HEIGHT];
