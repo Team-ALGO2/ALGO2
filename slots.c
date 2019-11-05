@@ -122,7 +122,7 @@ int main(void)
             }
 
 
-            // j goes up for iteration
+            // j goes up for iteration 
             j++;
             j = j % SIZE;
         }
