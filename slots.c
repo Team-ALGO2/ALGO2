@@ -3,10 +3,11 @@
 // For Global Defines, Use Utils. For Local, Use Here.
 
 // basic defines
-#define SIZE  12
-#define WIDE  6
-#define CSPN  15 // Constant Spin (Minimum Spin Amount)
-#define DEBUG 1
+#define HEIGHT  12
+#define WIDTH   6
+#define CNTSPIM 12 // Constant Spin (Minimum Spin Amount)
+#define SPINDWN true // Spin Down (If False Spimn Up)
+#define DEBUG   true
 
 // some sleep thing i edited lol
 int msleep(long msec)
@@ -27,24 +28,24 @@ int main(void)
     
     //Define CONSTANT rotation times
     // Not using #define becasue it gets a new number every thime i referece it
-    int rotationtimes = (rand() % 20) + CSPN;
+    int rotationtimes = (rand() % 25) + CNTSPIM;
     
     // Slot Characters And Colors
     char *slotCharacters[10] = {"$", "X", "#", "O", "?", "=", ">", "7", ".", "9"};
     char *slotColours[10] = {"\x001b[43m\x001b[30m", "\x1B[31m", "\x1B[34m", "\x1B[36m\x1B[35m", "\x001b[46m", "\x001b[47m\x001b[37;1m", "\x1B[35m", "\x1B[32m", "\x1B[33m", "\x1B[37m"};
 
     // create number list
-    int slotMap[WIDE][SIZE];
+    int slotMap[WIDTH][HEIGHT];
 
     // create time var
     time_t t;
 
     // rolled values
-    int rolledValues[WIDE];
+    int rolledValues[WIDTH];
 
     // roll delay
     //TODO: FINISH
-    int rollIteration[WIDE];
+    int rollIteration[WIDTH];
 
     // is stop
     int isStop = false;
@@ -55,8 +56,8 @@ int main(void)
 
 
     // create array of rands
-    for (int x = 0; x < WIDE; x++){
-        for (int i = 0; i < SIZE; i++){
+    for (int x = 0; x < WIDTH; x++){
+        for (int i = 0; i < HEIGHT; i++){
             slotMap[x][i] = rand() % 10;
         }
     }
@@ -64,12 +65,12 @@ int main(void)
 
     // Set Default Rolled Values
     // Idk how to set values to "NULL", so im just gonna use 1t as it sould never be above 10 lmao
-    for (int n = 0; n < WIDE; n++){
+    for (int n = 0; n < WIDTH; n++){
         rolledValues[n] = 15;
     }
 
     // Set Random Roll Delay
-    for (int r = 0; r < WIDE; r++){
+    for (int r = 0; r < WIDTH; r++){
         rollIteration[r] = (rand() % 2) + 1;
     }
 
@@ -77,38 +78,39 @@ int main(void)
     system("clear");
 
     // create a random starting point for iteration
-    int j = rand() % SIZE;
+    int j = rand() % HEIGHT;
 
     // number of times to rotate
-    for (int k = 0; k < rotationtimes; k ++)
+    for (int k = 0; k <= rotationtimes; k ++)
     {
 
         // Calculate Rotation Speed
-        float rotateSpeed = (long)(((float)(MAX(CSPN - rotationtimes + k, 1))/(float)CSPN)* 900)+100;
+        // Dont worry about how it works
+        float rotateSpeed = (long)(((float)(MAX(CNTSPIM - rotationtimes + k, 1))/(float)CNTSPIM)* 900)+100;
         // wait/clear
         msleep(rotateSpeed);
         system("clear");
         if(DEBUG){
-            printf("~~DEBUG~~ \nNumber Index: %d\nTimes Updated:%d\nTotal Updates:%d\nConstant Spin Time:%d\nRotation Speed:%lf\n\n\n", j, k, rotationtimes, CSPN, rotateSpeed);
+            printf("~~DEBUG~~ \nNumber Index: %d\nTimes Updated:%d\nTotal Updates:%d\nConstant Spin Time:%d\nRotation Speed:%lf\n\n\n", j, k, rotationtimes, CNTSPIM, rotateSpeed);
         }
 
         // print full array starting at index j
-        for (int i = 0; i < SIZE; i++)
+        for (int i = 0; i < HEIGHT; i++)
         {
 
-            if (i == SIZE/2)  // if i is in middle print in RED
+            if (i == HEIGHT/2)  // if i is in middle print in RED
             {
                 //Prints out lines
-                for (int e = 0; e < WIDE*2-1; e++){printf("=");}
+                for (int e = 0; e < WIDTH*2-1; e++){printf("=");}
                 printf("\n" CYN);
-                for (int v = 0; v < WIDE; v++){
+                for (int v = 0; v < WIDTH; v++){
                     //printf("%d ", slotMap[v][j]);
                     printf("%s%s%s ", slotColours[slotMap[v][j]], slotCharacters[slotMap[v][j]], "\x001b[0m");
                     rolledValues[v] = slotMap[v][j];
                 }
                 printf("\n" RESET);
                 //Prints out lines
-                for (int e = 0; e < WIDE*2-1; e++){printf("=");}
+                for (int e = 0; e < WIDTH*2-1; e++){printf("=");}
                 printf("\n");
 
             }
@@ -116,7 +118,7 @@ int main(void)
 
             else // hide the other numbers
             {
-                for (int v = 0; v < WIDE; v++){
+                for (int v = 0; v < WIDTH; v++){
                     printf("%s%s%s ", slotColours[slotMap[v][j]], slotCharacters[slotMap[v][j]], "\x001b[0m");
                 }
                 printf("\n");
@@ -125,32 +127,43 @@ int main(void)
 
             // j goes up for iteration 
             j++;
-            j = j % SIZE;
+            j = j % HEIGHT;
         }
 
 
-        // starting point -= 1
-        j--;
-        if(j < 0){j=SIZE-1;}
+        // starting point -= or += 1
+        if(SPINDWN){
+            j--;
+            if(j < 0){j=HEIGHT-1;}
+        }
+        else{
+            j++;
+            j = j % HEIGHT;
+        }
     }
 
 
-   //TEMPORARY PRINT AND THE ONE ABOVE IS BROKNE
+    //TEMPORARY PRINT AND THE ONE ABOVE IS BROKNE
+    /*
+    double end = 0;
 
-   double end = 0;
+        printf("\n\n\n");
+        for(int p = 0; p < WIDTH; p++)
+        {
+            printf("%d ", rolledValues[p]);
+
+            end = end + (rolledValues[p] * pow(10, HEIGHT + 1 - p));
+        }
+
+        end = end / 100000000;
+
+    printf("\n %f \n", end);
+    */
 
     printf("\n\n\n");
-    for(int p = 0; p < WIDE; p++)
-    {
-        printf("%d ", rolledValues[p]);
-
-        end = end + (rolledValues[p] * pow(10, SIZE + 1 - p));
+    for (int i = 0; i < WIDTH; i++){
+        printf("%s", slotCharacters[rolledValues[i]]);
     }
-
-    end = end / 100000000;
-
-   printf("\n %f \n", end);
-
-
+    printf("\n");
     return 0;
 }
