@@ -20,6 +20,10 @@ int msleep(long msec)
 
 int main(void)
 {
+    // seed the rand
+    srand(time(NULL));
+    
+    
     //Define CONSTANT rotation times
     // Not using #define becasue it gets a new number every thime i referece it
     int rotationtimes = (rand() % 30) + 3;
@@ -106,25 +110,8 @@ int main(void)
                 for (int e = 0; e < WIDE*2-1; e++){printf("=");}
                 printf("\n");
 
-                //one = first[j];
-                //two = second[j];
-                //three = third[j];
             }
-            /*
-            else if (i == SIZE/2 - 1 || i == SIZE/2 + 1) // if i is directly beside index 5, print them
-            {
 
-                //printf("%d ", first[j]);
-                //printf("%d ", second[j]);
-                //printf("%d\n", third[j]);
-                for (int v = 0; v < WIDE; v++){
-                    printf("%d ", slotMap[v][j]);
-                }
-                printf("\n");
-            }
-            */
-
-           //IDK WHAT THIS DOES ^^^
 
             else // hide the other numbers
             {
@@ -135,7 +122,7 @@ int main(void)
             }
 
 
-            // j goes up for iteration
+            // j goes up for iteration 
             j++;
             j = j % SIZE;
         }
@@ -146,23 +133,6 @@ int main(void)
         if(j < 0){j=SIZE-1;}
     }
 
-    //system("clear");
-
-    // end
-
-    /*
-    for (int l= 0; l < 10; l++)
-    {
-        printf(RED "%d %d %d" RESET, one, two, three);
-        printf("\n");
-        sleep(1);
-        system("clear");
-        printf(GRN "%d %d %d" RESET, one, two, three);
-        printf("\n");
-        sleep(1);
-        system("clear");
-    }
-    */
 
    //TEMPORARY PRINT AND THE ONE ABOVE IS BROKNE
 

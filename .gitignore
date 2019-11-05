@@ -1,5 +1,16 @@
 #Gitignore file. Tells GIt What To Ignore In Therm Of Files. Feel Free To Add Items That You Dont Want On The Main Repo But You Want Locally
 
+# Ignore all
+*
+
+# Unignore all with extensions
+!*.*
+
+# Unignore all dirs
+!*/
+
+### Above combination will ignore all files without extension ###
+
 #run File - its my (edward) compiler output
 run
 
