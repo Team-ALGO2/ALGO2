@@ -5,6 +5,7 @@
 // basic defines
 #define SIZE  12
 #define WIDE  6
+#define CSPN  15 // Constant Spin (Minimum Spin Amount)
 #define DEBUG 1
 
 // some sleep thing i edited lol
@@ -26,7 +27,7 @@ int main(void)
     
     //Define CONSTANT rotation times
     // Not using #define becasue it gets a new number every thime i referece it
-    int rotationtimes = (rand() % 30) + 3;
+    int rotationtimes = (rand() % 20) + CSPN;
     
     // Slot Characters And Colors
     char *slotCharacters[10] = {"$", "X", "#", "O", "?", "=", ">", "7", ".", "9"};
@@ -83,12 +84,12 @@ int main(void)
     {
 
         // Calculate Rotation Speed
-        float rotateSpeed = (long)(((float)k/(float)rotationtimes)* 1000);
+        float rotateSpeed = (long)(((float)(MAX(CSPN - rotationtimes + k, 1))/(float)CSPN)* 900)+100;
         // wait/clear
         msleep(rotateSpeed);
         system("clear");
         if(DEBUG){
-            printf("~~DEBUG~~ \nNumber Index: %d\nTimes Updated:%d\nTotal Updates:%d\nRotation Speed:%lf\n\n\n", j, k, rotationtimes, rotateSpeed);
+            printf("~~DEBUG~~ \nNumber Index: %d\nTimes Updated:%d\nTotal Updates:%d\nConstant Spin Time:%d\nRotation Speed:%lf\n\n\n", j, k, rotationtimes, CSPN, rotateSpeed);
         }
 
         // print full array starting at index j
