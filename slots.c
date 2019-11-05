@@ -20,6 +20,10 @@ int msleep(long msec)
 
 int main(void)
 {
+    // seed the rand
+    srand(time(NULL));
+    
+    
     //Define CONSTANT rotation times
     // Not using #define becasue it gets a new number every thime i referece it
     int rotationtimes = (rand() % 30) + 3;
