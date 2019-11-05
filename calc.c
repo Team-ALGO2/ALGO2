@@ -54,7 +54,7 @@ int main()
             a= result;
         }
         else if(strcmp(op, "cos") == 0){
-            result = sin(b*PI/180);
+            result = cos(b*PI/180);
             printf("%.9lf", result);
             a= result;
         }
