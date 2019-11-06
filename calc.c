@@ -3,49 +3,52 @@
 #include "main.h"
 #include "utils/math.c"
 
+/*#define PI 3.141592653589
+double add(double a, double b);
+double subtract(double a, double b);
+double multiply(double a, double b);
+double divide(double a, double b);
+long mod(long a, long b);*/
+
 int main()
 {
     double a = 0;
-    double b = 0;
-    char op[3];
-    int on = true;
-
-    printf("Choose a number: ");
-    //printf("0");
+    double b = 0; 
     
-    system("clear");
+    char op[30];
+    int on = true;
+    //system("clear");
+    //printf("Choose a number: ");
     scanf("%lf", &a);
     
-
-
-    //printf("%f %c %f = ", a,op, b);
   do{
       
         
-        printf("Choose an operator: ");
-        scanf("%1s",op);
-        printf("Choose another number: ");
+       // printf("Choose an operator: ");
+        scanf("%s", op);
+        
+       // printf("Choose another number: ");
         scanf("%lf", &b);
         
-        double result;
+       double result=1;
         if(strcmp(op, "+") == 0){
             result = add(a,b);
-            printf("%.9lf", result);
+            printf("%.9lf\n", result);
             a = result;
         }
         else if(strcmp(op, "-") == 0){
             result = subtract(a,b);
-            printf("%.9lf", result);
+            printf("%.9lf\n", result);
             a = result;
         }
         else if(strcmp(op, "*") == 0){
             result = multiply(a,b);
-            printf("%.9lf", result);
+            printf("%.9lf\n", result);
             a = result;
         }
         else if(strcmp(op, "/") == 0){
             result = divide(a,b);
-            printf("%.9lf", result);
+            printf("%.9lf\n", result);
             a= result;
         }
         else if(strcmp(op, "sin") == 0){
@@ -54,10 +57,29 @@ int main()
             a= result;
         }
         else if(strcmp(op, "cos") == 0){
+          
             result = cos(b*PI/180);
-            printf("%.9lf", result);
+            printf("%.9lf\n", result);
             a= result;
         }
+        else if(strcmp(op, "^") == 0){
+          for(int i = 1; i <= b; i ++){
+            result = a*result;
+            
+        }
+        printf("%.9lf\n", result);
+            a= result;
+        }
+        else if(strcmp(op, "sqrt") == 0){
+          
+            result = sqrt(b);
+            printf("%.9lf\n", result);
+            a= result;
+        }
+        
+        
+
+
         else if(strcmp(op, "%") == 0){
             if((float)(int)a != a || (float)(int)b != b){
                 printf(YEL "WARNING! MOD CANNOT SUPPORT DECIMALS. CONVERTING TO INTEGER.\n" RESET);
@@ -69,11 +91,12 @@ int main()
             a= result;
         }
 
-        
+        else if(strcmp(op, "off") == 0){
+          
+            on = false;
+        }
   
     //system("clear");
     }while(on == true);
     return 0;
 }
-
-// Functions are now defined in math.c
