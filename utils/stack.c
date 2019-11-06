@@ -13,9 +13,9 @@
  * returns false if stack is full
  * returns the value inserted if succesful
  * 
- *  pop() will decrese the counter by 1
- *  returns true if sucessful and false if not
- *  pop does NOT return the top value
+ * pop() will decrese the counter by 1
+ * returns true if sucessful and false if not
+ * pop does NOT return the top value
  * 
  * 
  * 
@@ -32,7 +32,7 @@ int counter = -1;
 
 int isEmpty()
 {
-    if (counter == -1 && counter == 0)
+    if (counter <= 0)
     {
         return true;
     } 
@@ -103,16 +103,17 @@ void printer()
     printf("\n");
     for (int i = 0; i < MAX_LENGTH; i++)
     {
-        printf("%i \n", A[i]);
+        printf("%i ", A[i]);
     }
+    printf("\n");
 }
 
 
 
-
+//Commenting this out because if imported as library, main can niot be defined twice!
+/*
 int main(void)
-{
-    /*
+{ 
     int testInt = 5;
     printer();
     push(testInt);
@@ -123,6 +124,6 @@ int main(void)
     pop();
     printf("top: %i ", top());
     printer();
-    */
 
 }
+*/
