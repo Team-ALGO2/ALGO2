@@ -25,5 +25,16 @@ long mod(long a, long b)
 {
     return a%b;
 }
+double sqrt(double a, double b)
+{
+    sqrt = a / 2;
+    temp = 0;
+    while(sqrt != temp){
+        temp = sqrt;
 
+
+        sqrt = ( number/temp + temp) / 2;
+    }
+    printf("%f", sqrt);
+}
 //int main(){}
