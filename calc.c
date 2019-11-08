@@ -3,12 +3,12 @@
 #include "main.h"
 #include "utils/math.c"
 
-/*#define PI 3.141592653589
-double add(double a, double b);
-double subtract(double a, double b);
-double multiply(double a, double b);
-double divide(double a, double b);
-long mod(long a, long b);*/
+
+//double add(double a, double b);
+//double subtract(double a, double b);
+//double multiply(double a, double b);
+//double divide(double a, double b);
+//long mod(long a, long b);
 
 int main()
 {
@@ -63,20 +63,25 @@ int main()
             a= result;
         }
         else if(strcmp(op, "^") == 0){
-          for(int i = 1; i <= b; i ++){
-            result = a*result;
+          result = powr(a,b);
+          printf("%.9lf\n", result);
+            a= result;
             
         }
-        printf("%.9lf\n", result);
-            a= result;
-        }
+        
         else if(strcmp(op, "sqrt") == 0){
           
-            result = sqrt(b);
+            result = squarert(b);
             printf("%.9lf\n", result);
             a= result;
         }
         
+        else if(strcmp(op, "cos") == 0){
+          
+            result = cos(b*PI/180);
+            printf("%.9lf\n", result);
+            a= result;
+        }
         
 
 
