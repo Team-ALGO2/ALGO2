@@ -1,5 +1,6 @@
+
 // wonky PI definitions (d at the end makes it a double instead of flaot)
-#define PI 3.141592653589d
+#define PI 3.141592653589
 
 double add(double a, double b)
 {
@@ -25,16 +26,16 @@ long mod(long a, long b)
 {
     return a%b;
 }
-double sqrt(double a, double b)
+double squarert( double b)
 {
-    sqrt = a / 2;
+    float temp, sqrt;
+    sqrt = b / 2;
     temp = 0;
     while(sqrt != temp){
         temp = sqrt;
 
 
-        sqrt = ( number/temp + temp) / 2;
+        sqrt = ( b/temp + temp) / 2;
     }
-    printf("%f", sqrt);
+   return b;
 }
-//int main(){}
