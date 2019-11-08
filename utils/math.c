@@ -26,8 +26,18 @@ long mod(long a, long b)
 {
     return a%b;
 }
-double squarert( double b)
-{
+double powr(double a, double b){
+  double result = 1;
+  for(int i = 1; i <= b; i ++)
+  {
+   result = a*result;
+  }
+
+
+  return result;
+
+}
+double squarert( double b){
     float temp, sqrt;
     sqrt = b / 2;
     temp = 0;
