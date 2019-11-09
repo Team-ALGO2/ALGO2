@@ -2,12 +2,14 @@
 ### NOTE: I'll make this public once we're done
 
 ## slots.c
-Starts a randomized slots with a customizable number of wheels and numbers and can output the final result as a number
+Starts a randomized slots with a customizable number of wheels and numbers and can output the final result as an array of characters. The characters are of various background color and font color
 
 ## calc.c
 Very basic calculator with basic operations
 
 ### TODO:
+
+## Check the [project tab](https://github.com/RadioactiveHydra/c-calculator/projects/1) for up-to-date info
 
 ## Calculator:
 - Implement a more expandable base for calculations.
