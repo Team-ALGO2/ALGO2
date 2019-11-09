@@ -18,7 +18,23 @@
  * pop does NOT return the top value
  * 
  * 
+ * == UPDATE WITH THE USE OF STRUCTURES ==
+ * NOTE: STACK IS NOW A POINTER!!! 
  * 
+ * How To Create A Stack ->
+ * | stack stackName = {-1, {0}};      |
+ * *Dont change the values unless you know what your doing
+ * 
+ * How To Use Functions ->
+ * | function(&stackName, arguments)   |
+ * *Must Add `& Infront Of Stack Name`
+ * 
+ * Examples ->
+ * | stack test = {-1, {0}};           |
+ * | push(&test, 5)                    |
+ * | top(&test)                        |
+ * | pop(&test)                        |
+ * | printer(&test)                    |
  * 
 */
 #include "../main.h"
@@ -29,10 +45,28 @@
 int A[MAX_LENGTH] = {0};
 int counter = -1;
 
+typedef struct{
+    int counter;
+    int A[MAX_LENGTH];
+} stack;
 
-int isEmpty()
+/*
+stack* createStack() {
+    stack s = {-1, {0}};
+    return &s;
+};
+*/
+
+stack* createStack2() {
+    stack *s = (stack *)malloc(sizeof(stack));
+    memset(s, 0, sizeof(stack));
+    s->counter = -1;
+    return s;
+};
+
+int isEmpty(stack *s)
 {
-    if (counter <= 0)
+    if (s->counter <= 0)
     {
         return true;
     } 
@@ -43,9 +77,9 @@ int isEmpty()
     
 }
 
-int isFull()
+int isFull(stack *s)
 {
-    if (counter >= MAX_LENGTH)
+    if (s->counter >= MAX_LENGTH)
     {
         return true;
     } 
@@ -56,11 +90,11 @@ int isFull()
     
 }
 
-int top()
+int top(stack *s)
 {
-    if (!isEmpty())
+    if (!isEmpty(s))
     {
-        return A[counter];
+        return s->A[counter];
     }
     else
     {
@@ -69,13 +103,13 @@ int top()
     
 }
 
-int push(int x)
+int push(stack *s, int x)
 {
-    if (!isFull())
+    if (!isFull(s))
     {
         counter++;
-        A[counter] = x;
-        return A[counter];
+        s->A[counter] = x;
+        return s->A[counter];
     }
     else
     {
@@ -84,11 +118,11 @@ int push(int x)
     
 }
 
-int pop()
+int pop(stack *s)
 {
-    if (!isEmpty())
+    if (!isEmpty(s))
     {
-        counter--;
+        s->counter--;
         return true;
     }
     else
@@ -98,12 +132,12 @@ int pop()
     
 }
 
-void printer()
+void printer(stack *s)
 {
     printf("\n");
     for (int i = 0; i < MAX_LENGTH; i++)
     {
-        printf("%i ", A[i]);
+        printf("%i ", s->A[i]);
     }
     printf("\n");
 }
@@ -111,19 +145,21 @@ void printer()
 
 
 //Commenting this out because if imported as library, main can niot be defined twice!
+
 /*
 int main(void)
 { 
+    stack test = {-1, {0}};
+    
     int testInt = 5;
-    printer();
-    push(testInt);
-    push(testInt + 100);
-    push(testInt - 7);
-    printf("top: %i", top());
-    printer();
-    pop();
-    printf("top: %i ", top());
-    printer();
-
+    printer(&test);
+    push(&test, testInt);
+    push(&test, testInt + 100);
+    push(&test, testInt - 7);
+    printf("top: %i", top(&test));
+    printer(&test);
+    pop(&test);
+    printf("top: %i ", top(&test));
+    printer(&test);
 }
 */
