@@ -50,20 +50,6 @@ typedef struct{
     int A[MAX_LENGTH];
 } stack;
 
-/*
-stack* createStack() {
-    stack s = {-1, {0}};
-    return &s;
-};
-*/
-
-stack* createStack2() {
-    stack *s = (stack *)malloc(sizeof(stack));
-    memset(s, 0, sizeof(stack));
-    s->counter = -1;
-    return s;
-};
-
 int isEmpty(stack *s)
 {
     if (s->counter <= 0)
