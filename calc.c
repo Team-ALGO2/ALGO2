@@ -21,7 +21,8 @@ int main()
     printf("Choose a number: ");
     scanf("%lf", &a);
     
-  do{
+  do
+  {
       
         
         printf("Choose an operator: ");
@@ -36,72 +37,79 @@ int main()
             printf("%.9lf\n", result);
             a = result;
         }
+
         else if(strcmp(op, "-") == 0){
             result = subtract(a,b);
             printf("%.9lf\n", result);
             a = result;
         }
+
         else if(strcmp(op, "*") == 0){
             result = multiply(a,b);
             printf("%.9lf\n", result);
             a = result;
         }
+
         else if(strcmp(op, "/") == 0){
             result = divide(a,b);
             printf("%.9lf\n", result);
-            a= result;
+            a = result;
         }
+
         else if(strcmp(op, "sin") == 0){
             result = sine(b);
             printf("%.9lf\n", result);
-            a= result;
+            a = result;
         }
+
         else if(strcmp(op, "cos") == 0){
           
             result = cosine(b);
             printf("%.9lf\n", result);
-            a= result;
+            a = result;
         }
+
         else if(strcmp(op, "tan") == 0){
           
             result = tangent(b);
             printf("%.9lf\n", result);
-            a= result;
+            a = result;
         }
+
         else if(strcmp(op, "sinh") == 0){
             result = sineh(b);
             printf("%.9lf\n", result);
-            a= result;
+            a = result;
         }
+         
         else if(strcmp(op, "cosh") == 0){
           
             result = cosineh(b);
             printf("%.9lf\n", result);
-            a= result;
+            a = result;
         }
+
         else if(strcmp(op, "^") == 0){
           result = powr(a,b);
           printf("%.9lf\n", result);
-            a= result;
-            
+            a = result;
         }
         
         else if(strcmp(op, "sqrt") == 0){
-          
             result = squarert(b);
             printf("%.9lf\n", result);
-            a= result;
+            a = result;
         }
         
         else if(strcmp(op, "cos") == 0){
-          
             result = cosine(b*PI/180);
             printf("%.9lf\n", result);
             a= result;
         }
 
         else if(strcmp(op, "%") == 0){
-            if((float)(long)a != a || (float)(long)b != b){
+            if((float)(long)a != a || (float)(long)b != b)
+            {
                 printf(YEL "WARNING! MOD CANNOT SUPPORT DECIMALS. CONVERTING TO INTEGER.\n" RESET);
                 a = (long)a;
                 b = (long)b;
@@ -112,7 +120,8 @@ int main()
         }
 
         else if(strcmp(op, "!") == 0){
-            if((float)(long long)b != b){
+            if((float)(long long)b != b)
+            {
                 printf(YEL "WARNING! FACTORIAL CANNOT SUPPORT DECIMALS. CONVERTING TO INTEGER.\n" RESET);
                 b = (long long)b;
             }
@@ -121,12 +130,13 @@ int main()
             a = (float)result; // turn Back To Float Lol
         }
 
-        else if(strcmp(op, "off") == 0 || strcmp(op, "exit") == 0 || strcmp(op, "quit") == 0 || strcmp(op, "q") == 0){
-          
+        else if(strcmp(op, "off") == 0 || strcmp(op, "exit") == 0 || strcmp(op, "quit") == 0 || strcmp(op, "q") == 0)
+        {
             on = false;
         }
 
-        else{
+        else
+        {
             printf("Unknown Command\n");
         }
 

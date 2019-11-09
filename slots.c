@@ -56,8 +56,10 @@ int main(void)
 
 
     // create array of rands
-    for (int x = 0; x < WIDTH; x++){
-        for (int i = 0; i < HEIGHT; i++){
+    for (int x = 0; x < WIDTH; x++)
+    {
+        for (int i = 0; i < HEIGHT; i++)
+        {
             slotMap[x][i] = rand() % 10;
         }
     }
@@ -65,12 +67,14 @@ int main(void)
 
     // Set Default Rolled Values
     // Idk how to set values to "NULL", so im just gonna use 1t as it sould never be above 10 lmao
-    for (int n = 0; n < WIDTH; n++){
+    for (int n = 0; n < WIDTH; n++)
+    {
         rolledValues[n] = 15;
     }
 
     // Set Random Roll Delay
-    for (int r = 0; r < WIDTH; r++){
+    for (int r = 0; r < WIDTH; r++)
+    {
         rollIteration[r] = (rand() % 2) + 1;
     }
 
@@ -90,7 +94,8 @@ int main(void)
         // wait/clear
         msleep(rotateSpeed);
         system("clear");
-        if(DEBUG){
+        if(DEBUG)
+        {
             printf("~~DEBUG~~ \nNumber Index: %d\nTimes Updated:%d\nTotal Updates:%d\nConstant Spin Time:%d\nRotation Speed:%lf\n\n\n", j, k, rotationtimes, CNTSPIM, rotateSpeed);
         }
 
@@ -103,7 +108,8 @@ int main(void)
                 //Prints out lines
                 for (int e = 0; e < WIDTH*2-1; e++){printf("=");}
                 printf("\n" CYN);
-                for (int v = 0; v < WIDTH; v++){
+                for (int v = 0; v < WIDTH; v++)
+                {
                     //printf("%d ", slotMap[v][j]);
                     printf("%s%s%s ", slotColours[slotMap[v][j]], slotCharacters[slotMap[v][j]], "\x001b[0m");
                     rolledValues[v] = slotMap[v][j];
@@ -118,7 +124,8 @@ int main(void)
 
             else // hide the other numbers
             {
-                for (int v = 0; v < WIDTH; v++){
+                for (int v = 0; v < WIDTH; v++)
+                {
                     printf("%s%s%s ", slotColours[slotMap[v][j]], slotCharacters[slotMap[v][j]], "\x001b[0m");
                 }
                 printf("\n");
@@ -132,11 +139,13 @@ int main(void)
 
 
         // starting point -= or += 1
-        if(SPINDWN){
+        if(SPINDWN)
+        {
             j--;
             if(j < 0){j=HEIGHT-1;}
         }
-        else{
+        else
+        {
             j++;
             j = j % HEIGHT;
         }
@@ -161,7 +170,8 @@ int main(void)
     */
 
     printf("\n\n\n");
-    for (int i = 0; i < WIDTH; i++){
+    for (int i = 0; i < WIDTH; i++)
+    {
         printf("%s", slotCharacters[rolledValues[i]]);
     }
     printf("\n");
