@@ -36,6 +36,9 @@
  * | pop(&test)                        |
  * | printer(&test)                    |
  * 
+ * WARNING: We havent actually been taught (Pointers and Structs) yet, but oh well
+ * ¯\_(ツ)_/¯
+ * 
 */
 #include "../main.h"
 
