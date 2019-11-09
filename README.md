@@ -9,7 +9,7 @@ Very basic calculator with basic operations
 
 ### TODO:
 
-## Check the project tab for up-to-date info
+## Check the [project tab](https://github.com/RadioactiveHydra/c-calculator/projects/1) for up-to-date info
 
 ## Calculator:
 - Implement a more expandable base for calculations.
