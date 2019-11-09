@@ -42,11 +42,7 @@
 */
 #include "../main.h"
 
-#define MAX_LENGTH 10
-
-// global vars
-int A[MAX_LENGTH] = {0};
-int counter = -1;
+#define MAX_LENGTH 128
 
 typedef struct{
     int counter;
@@ -83,7 +79,7 @@ int top(stack *s)
 {
     if (!isEmpty(s))
     {
-        return s->A[counter];
+        return s->A[s->counter];
     }
     else
     {
@@ -96,9 +92,9 @@ int push(stack *s, int x)
 {
     if (!isFull(s))
     {
-        counter++;
-        s->A[counter] = x;
-        return s->A[counter];
+        s->counter++;
+        s->A[s->counter] = x;
+        return s->A[s->counter];
     }
     else
     {
