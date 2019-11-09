@@ -18,16 +18,16 @@ int main()
     char op[30];
     int on = true;
     //system("clear");
-    //printf("Choose a number: ");
+    printf("Choose a number: ");
     scanf("%lf", &a);
     
   do{
       
         
-       // printf("Choose an operator: ");
+        printf("Choose an operator: ");
         scanf("%s", op);
         
-       // printf("Choose another number: ");
+        printf("Choose another number: ");
         scanf("%lf", &b);
         
        double result=1;
