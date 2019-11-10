@@ -132,7 +132,8 @@ int main()
         }
 
         else if(strcmp(op, "|") == 0){
-            baseConvert(a ,b);
+            result = baseConvert(a ,b);
+            printf("%.9f\n", result);
         }
         
         else if(strcmp(op, "off") == 0 || strcmp(op, "exit") == 0 || strcmp(op, "quit") == 0 || strcmp(op, "q") == 0)

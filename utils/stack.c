@@ -51,7 +51,7 @@ typedef struct{
 
 int isEmpty(stack *s)
 {
-    if (s->counter <= 0)
+    if (s->counter < 0)
     {
         return true;
     } 
