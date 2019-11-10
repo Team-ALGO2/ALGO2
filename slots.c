@@ -44,7 +44,6 @@ int main(void)
     int rolledValues[WIDTH];
 
     // roll delay
-    //TODO: FINISH
     int rollIteration[WIDTH];
 
     // is stop
@@ -152,28 +151,69 @@ int main(void)
     }
 
 
-    //TEMPORARY PRINT AND THE ONE ABOVE IS BROKNE
-    /*
-    double end = 0;
+    /* END OF SPIN */ 
 
-        printf("\n\n\n");
-        for(int p = 0; p < WIDTH; p++)
-        {
-            printf("%d ", rolledValues[p]);
+    j++;
 
-            end = end + (rolledValues[p] * pow(10, HEIGHT + 1 - p));
-        }
-
-        end = end / 100000000;
-
-    printf("\n %f \n", end);
-    */
-
-    printf("\n\n\n");
-    for (int i = 0; i < WIDTH; i++)
+    for (int k = 0; k < 100; k++)
     {
-        printf("%s", slotCharacters[rolledValues[i]]);
+        msleep(100);
+        system("clear");
+        // print full array starting at index j
+        for (int i = 0; i < HEIGHT; i++)
+        {
+
+            if (i == HEIGHT/2)  // if i is in middle print in RED
+            {
+                //Prints out lines
+                
+                if (k % 2 == 0)
+                {
+                    for (int e = 0; e < WIDTH*2-1; e++){printf(RED"="RESET);}
+                }
+                else
+                {
+                    for (int e = 0; e < WIDTH*2-1; e++){printf("=");}
+                }
+                printf("\n" CYN);
+                for (int v = 0; v < WIDTH; v++)
+                {
+                    //printf("%d ", slotMap[v][j]);
+                    printf("%s%s%s ", slotColours[slotMap[v][j]], slotCharacters[slotMap[v][j]], "\x001b[0m");
+                    rolledValues[v] = slotMap[v][j];
+                }
+                printf("\n" RESET);
+                //Prints out lines ( ================ )
+                if (k % 2 == 0)
+                {
+                    for (int e = 0; e < WIDTH*2-1; e++){printf(RED"="RESET);}
+                }
+                else
+                {
+                    for (int e = 0; e < WIDTH*2-1; e++){printf("=");}
+                }
+                printf("\n");
+
+            }
+
+
+            else // hide the other numbers
+            {
+                for (int v = 0; v < WIDTH; v++)
+                {
+                    printf("%s%s%s ", slotColours[slotMap[v][j]], slotCharacters[slotMap[v][j]], "\x001b[0m");
+                }
+                printf("\n");
+            }
+
+
+            // j goes up for iteration 
+            j++;
+            j = j % HEIGHT;
+        }
     }
+
+
     printf("\n");
     return 0;
 }
