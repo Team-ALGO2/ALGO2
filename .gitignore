@@ -15,6 +15,5 @@
 run
 
 #ignores the exectuable files we make for testing
-.out
-.exe
+*.out
 *.exe
