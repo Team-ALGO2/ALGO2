@@ -2,6 +2,7 @@
 
 #include "main.h"
 #include "utils/math.c"
+#include "utils/convert.c"
 
 
 //double add(double a, double b);
@@ -130,6 +131,10 @@ int main()
             a = (float)result; // turn Back To Float Lol
         }
 
+        else if(strcmp(op, "|") == 0){
+            baseConvert(a ,b);
+        }
+        
         else if(strcmp(op, "off") == 0 || strcmp(op, "exit") == 0 || strcmp(op, "quit") == 0 || strcmp(op, "q") == 0)
         {
             on = false;
