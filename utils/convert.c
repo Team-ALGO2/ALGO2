@@ -1,5 +1,4 @@
-#include <stdio.h>
-#include "stack.c"
+#include "../main.h"
 
 int baseConvert(int start, int base)
 {

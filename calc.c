@@ -1,9 +1,6 @@
 // TODO REWRITE
 
 #include "main.h"
-#include "utils/math.c"
-#include "utils/convert.c"
-
 
 //double add(double a, double b);
 //double subtract(double a, double b);
