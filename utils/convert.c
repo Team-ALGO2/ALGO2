@@ -22,7 +22,7 @@ int baseConvert(int start, int base)
         i = (i - mod)/base;
         x++;
     }
-    if(base < 10){
+    if(base <= 10){
         return(returnNum);
     }
     else{
