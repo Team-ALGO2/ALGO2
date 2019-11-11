@@ -12,7 +12,7 @@
 
 /* IMPORTANT: Compile with the flag: -lncurses $ cc graphics.c -o graphics -lncurses */
 
-#include <curses.h>
+#include <curses.h>  // I put curses here so nothing breaks in main.h if you don't have the library
 #include <stdlib.h>
 #include <string.h>
 
