@@ -22,7 +22,7 @@
 
 
 
-WARNING: For Further Commits To Graphics, USe THe "NewGraphics" Branch
+WARNING: For Further Commits To Graphics, Use The "NewGraphics" Branch
 
 
 
