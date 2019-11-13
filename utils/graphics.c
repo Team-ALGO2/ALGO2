@@ -35,4 +35,6 @@ int main(void)
     endwin();
 
     exit(0);
+
+    //Test
 }
