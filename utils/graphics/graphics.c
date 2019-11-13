@@ -29,11 +29,12 @@ int main(void)
 
     /* initialize curses */
 
-    initscr();
-    cbreak();
-    noecho();
+    initscr();          // Create Screen
+    cbreak();           // Allow Control Characters
+    noecho();           // Turns Off Tech Echoing
+    keypad(stdscr, 1);  // Enables Arrow ANd Function Keys
 
-    clear();
+    clear();            // Clears Screen
 
     int ch;
     char snum[5];

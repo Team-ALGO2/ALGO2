@@ -3,8 +3,8 @@
 // For Global Defines, Use Utils. For Local, Use Here.
 
 // basic defines
-#define HEIGHT  12
-#define WIDTH   6
+#define HEIGHT  16
+#define WIDTH   5
 #define CNTSPIM 12 // Constant Spin (Minimum Spin Amount)
 #define SPINDWN true // Spin Down (If False Spimn Up)
 #define DEBUG   true
