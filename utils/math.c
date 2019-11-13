@@ -131,3 +131,19 @@ double cosineh(double a){
     }
     return total;
 }
+
+
+/*
+
+=== COMBINATRONICS MATH ===
+
+*/
+
+long aChooseB(long n, long k){
+    return (factorial(n))/(factorial(k)*factorial(n-k));
+}
+
+long aPermB(long n, long r){
+    return (factorial(n))/factorial(n-r);
+}
+

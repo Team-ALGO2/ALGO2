@@ -137,6 +137,30 @@ int main()
         {
             on = false;
         }
+        
+        else if(strcmp(op, "C") == 0){
+            if((float)(long)a != a || (float)(long)b != b)
+            {
+                printf(YEL "WARNING! CHOOSE CANNOT SUPPORT DECIMALS. CONVERTING TO INTEGER.\n" RESET);
+                a = (long)a;
+                b = (long)b;
+            }
+            result = aChooseB(a,b);
+            printf("%.9f\n", result);
+            a = (float)result; // turn Back To Float Lol
+        }
+        
+        else if(strcmp(op, "P") == 0){
+            if((float)(long)a != a || (float)(long)b != b)
+            {
+                printf(YEL "WARNING! PERMUTATION CANNOT SUPPORT DECIMALS. CONVERTING TO INTEGER.\n" RESET);
+                a = (long)a;
+                b = (long)b;
+            }
+            result = aPermB(a,b);
+            printf("%.9f\n", result);
+            a = (float)result; // turn Back To Float Lol
+        }
 
         else
         {
