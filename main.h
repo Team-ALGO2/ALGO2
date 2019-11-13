@@ -35,8 +35,11 @@
 #include "utils/math.c"
 #include "utils/stack.c"
 #include "utils/convert.c"
+#include "utils/queue.c"
+#include "utils/tree.c"
 
 // Import Graphics
-// TODO
+// TODO - Add when done
+// #include "utils/graphics.c"
 
 #endif // _MAINGUARD
