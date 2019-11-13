@@ -8,7 +8,7 @@
 Starts a randomized slots with a customizable number of wheels and numbers and can output the final result as an array of characters. The characters are of various background color and font color
 
 ## calc.c
-Very basic calculator with basic operations
+Very basic calculator with operations
 
 ### TODO:
 
