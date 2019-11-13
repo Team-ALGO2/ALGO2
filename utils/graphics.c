@@ -16,6 +16,20 @@
 #include <stdlib.h>
 #include <string.h>
 
+/*
+
+
+
+
+
+WARNING: For Further Commits To Graphics, USe THe "NewGraphics" Branch
+
+
+
+
+
+*/
+
 int main(void)
 {
 
