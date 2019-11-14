@@ -1,19 +1,20 @@
 #include "../main.h"
 
 int main(void)
-{ 
-    printf("GENERATE STACKS");
+{   
+    printf("%d", FALSE);
+    printf("GENERATE STACKS\n");
     stack test = {-1, {0}};
     stack test2 = {-1, {0}};
     int testInt = 5;
 
-    printf("Adding Values For test");
+    printf("Adding Values For test\n");
     stack_printer(&test);
     stack_push(&test, testInt);
     stack_push(&test, testInt + 100);
     stack_push(&test, testInt - 7);
 
-    printf("Adding Values For test2");
+    printf("Adding Values For test2\n");
     stack_push(&test2, -1);
     stack_push(&test2, -2);
     stack_push(&test2, -3);

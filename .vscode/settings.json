@@ -1,7 +1,8 @@
 {
     "files.associations": {
         "main.h": "c",
-        "math.c": "cpp"
+        "unistd.h": "c",
+        "string.h": "c"
     },
     "C_Cpp.dimInactiveRegions": false
 }

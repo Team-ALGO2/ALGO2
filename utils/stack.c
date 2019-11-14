@@ -40,8 +40,8 @@
  * ¯\_(ツ)_/¯
  * 
 */
-#include "../main.h"
 
+#include "../main.h"
 #define STRUCT_MAX_LENGTH 128
 
 typedef struct{
