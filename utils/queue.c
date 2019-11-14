@@ -29,11 +29,11 @@ int queue_isEmpty(queue *q)
 {
     if (q->front == -1 && q->rear == -1)
     {
-        return(1);
+        return true;
     }
     else
     {
-        return(0);
+        return false;
     }
     
 }
@@ -44,11 +44,11 @@ int queue_isFull(queue *q)
     //looks if the stack is at its maximum capacity
     if (q->rear == QUEUE_MAX_LENGTH - 1)
     {
-        return(1);
+        return true;
     }
     else
     {
-        return(0);
+        return false;
     }
     
 }
@@ -59,20 +59,20 @@ int queue_enqueue(queue *q, int input)
     if(queue_isFull(q))
     {
         printf("Error: Queue is full, canot insert %d.", input);
-        return(1);
+        return false;
     }
     else if (queue_isEmpty(q))
     {
         q->front = 0;
         q->rear = 0;
         q->A[q->rear] = input;
-        return(0);
+        return true;
     }
     else
     {
         q->rear++;
         q->A[q->rear] = input;
-        return(0);
+        return true;
     }
     
     
@@ -84,18 +84,18 @@ int queue_dequeue(queue *q)
     if (queue_isEmpty(q))
     {
         printf("Error: Queue is empty, canot dequeue.");
-        return(1);
+        return false;
     }
     else if (q->front == q->rear)
     {
         q->front = -1;
         q->rear = -1;
-        return(2);
+        return true;
     }
     else
     {
         q->front++;
-        return(0);
+        return true;
     }
 }
 
