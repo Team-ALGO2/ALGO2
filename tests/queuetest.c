@@ -13,6 +13,15 @@ int main(void)
     queue_enqueue(&test, 2);
     queue_enqueue(&test, 3);
 
+    printf("Adding Values For test2\n");
+    queue_enqueue(&test2, 99);
+    queue_enqueue(&test2, 99);
+    queue_enqueue(&test2, 99);
+    queue_enqueue(&test2, 99);
+    queue_enqueue(&test2, 99);
+    queue_enqueue(&test2, 5);
+
+    printf("Test test\n");
     queue_printer(&test);
     printf("top: %i", queue_getFront(&test));
     queue_dequeue(&test);
@@ -21,4 +30,11 @@ int main(void)
     printf("top: %i", queue_getFront(&test));
     queue_dequeue(&test);
     queue_printer(&test);
+
+    printf("Test test2\n");
+    queue_printer(&test2);
+    printf("top: %i", queue_getRear(&test2));
+    queue_dequeue(&test2);
+    printf("top: %i", queue_getRear(&test2));
+    queue_dequeue(&test2);
 }
