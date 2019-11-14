@@ -30,7 +30,7 @@
  * *Must Add `& Infront Of Stack Name`
  * 
  * Examples ->
- * | stack test = {-1, {0}};           |
+ * | stack test = {-1, {0}};                 | 
  * | stack_push(&test, 5)                    |
  * | stack_top(&test)                        |
  * | stack_pop(&test)                        |

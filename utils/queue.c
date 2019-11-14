@@ -1,3 +1,57 @@
+// Queue is zero indexed
+
+/*
+ * Queue only accepts numbers
+ * Queue is initialized to -1 to help debugging
+ * 
+ * queue_getFront() returs the "top" (Last In Last Out)
+ * it will NOT pop it
+ * it will return false if queue is empty
+ * 
+ * queue_getRear() return the last value of queue. This value should stay the same until the queu is empty
+ * it will NOT pop it
+ * it will return false if queue is empty
+ * 
+ * queue_enqueue() inserts an int into the queue, in the end
+ * returns false if queue is full
+ * returns the value inserted if succesful
+ * 
+ * queue_dequeue() will increase the frint value by one
+ * returns true if sucessful and false if not
+ * pop does NOT return the top value
+ * 
+ * 
+ * == UPDATE WITH THE USE OF STRUCTURES ==
+ * NOTE: STACK IS NOW A POINTER!!! 
+ * 
+ * 
+ * How To Create A Queue ->
+ * | queue queueName = {-1, -1, {0}};  |
+ * *Dont change the values unless you know what your doing
+ * *Note the 2 -1 values
+ * 
+ * How To Use Functions ->
+ * | function(&queueName, arguments)   |
+ * *Must Add `& Infront Of Stack Name`
+ * 
+ * Examples ->
+ * | queue test = {-1, {0}};                 |
+ * | queue_enqueue(&test, 5)                 |
+ * | queue_getFront(&test)                   |
+ * | queue_dequeue(&test)                    |
+ * | queue_printer(&test)                    |
+ * 
+ * WARNING: We havent actually been taught (Pointers and Structs) yet, but oh well
+ * ¯\_(ツ)_/¯
+ * 
+*/
+
+//
+//
+//TODO: CIRCULAR ARRAY!!
+//
+//
+
 //This is going to be a int queue and Tommcn will show me how to make a instance one
 
 //includes main utils
@@ -123,7 +177,8 @@ int queue_getRear(queue *q)
     return(q->A[q->rear]);
 }
 
-void queue_printer(queue *q)
+//prints out queue array WARN: THIS DOES NOT TAKE IN COUNT FRONT AND REAR. IT ONLY PRINTS OUT RAW ARRAY
+void queue_raw_printer(queue *q)
 {
     printf("\n");
     for (int i = 0; i < QUEUE_MAX_LENGTH; i++)
@@ -132,4 +187,49 @@ void queue_printer(queue *q)
     }
     printf("\n");
 }
+
+void queue_printer(queue *q)
+{
+    printf("Not Implemented");
+    //Todo implement after we implement Circular Array
+}
+
+
+/*
+ * 
+ * DATASTRUCTURE OF QUEUE (For Refrence)
+ * F - Front | R - Rear
+ * 
+ * -----------------
+ * 00000000 (Rest Cut Off To Save Space)
+ * ^
+ * |
+ * FR
+ * -----------------
+ * 
+ * queue_enqueue(&queue, 4)            |
+ * queue_enqueue(&queue, 5)            |
+ * queue_enqueue(&queue, 6)            |
+ * queue_enqueue(&queue, 7)            |
+ * queue_enqueue(&queue, 8)            |
+ * queue_enqueue(&queue, 9)            |
+ * 
+ * -----------------
+ * 45678900
+ * ^    ^
+ * |    |
+ * F    R
+ * -----------------
+ * 
+ * queue_dequeue(&queue)               |
+ * queue_dequeue(&queue)               |
+ * 
+ * -----------------
+ * 45678900
+ *   ^  ^
+ *   |  |
+ *   F  R
+ * -----------------
+ * 
+*/
 
