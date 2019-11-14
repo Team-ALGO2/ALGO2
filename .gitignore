@@ -17,3 +17,6 @@ run
 #ignores the exectuable files we make for testing
 *.out
 *.exe
+
+#ignores vscode configs
+.vscode

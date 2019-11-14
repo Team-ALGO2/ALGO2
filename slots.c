@@ -5,7 +5,7 @@
 // basic defines
 #define HEIGHT  16
 #define WIDTH   5
-#define CNTSPIM 12 // Constant Spin (Minimum Spin Amount)
+#define CNTSPIM 15 // Constant Spin (Minimum Spin Amount)
 #define SPINDWN true // Spin Down (If False Spimn Up)
 #define DEBUG   true
 
@@ -89,7 +89,7 @@ int main(void)
 
         // Calculate Rotation Speed
         // Dont worry about how it works
-        float rotateSpeed = (long)(((float)(MAX(CNTSPIM - rotationtimes + k, 1))/(float)CNTSPIM)* 900)+100;
+        float rotateSpeed = (long)(((float)(MAX(CNTSPIM - rotationtimes + k, 1))/(float)CNTSPIM)* 995)+5;
         // wait/clear
         msleep(rotateSpeed);
         system("clear");
