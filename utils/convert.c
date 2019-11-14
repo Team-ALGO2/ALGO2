@@ -15,7 +15,7 @@ int baseConvert(int start, int base)
     while (i != 0)
     {
         mod= i%base;
-        push(&result, mod);
+        stack_push(&result, mod);
         returnNum = returnNum + powr(10, valueIndex) * mod;
         valueIndex++;
         i = (i - mod)/base;
@@ -24,7 +24,8 @@ int baseConvert(int start, int base)
     if(base <= 10){
         return(returnNum);
     }
-    else{
+    else
+    {
         //IDK do whatever you want to do here with the stack
         // Idk if we want string, or what
         printf("Error: Not Implemented\n");
