@@ -41,8 +41,16 @@
  * 
 */
 
+//includes main utils
 #include "../main.h"
+
+//defines the max length of the stack
 #define STRUCT_MAX_LENGTH 128
+
+// Define Error Codes
+#define PRINT_ERROR   true
+#define STACK_EMPTY   0
+#define STACK_FULL    0
 
 typedef struct{
     int counter;
@@ -83,7 +91,8 @@ int stack_top(stack *s)
     }
     else
     {
-        return false;
+        if(PRINT_ERROR){printf("Error: Queue is empty, canot get the top value.\n Note: The value returned my be junk.");}
+        return STACK_EMPTY;
     }
     
 }
@@ -98,7 +107,8 @@ int stack_push(stack *s, int x)
     }
     else
     {
-        return false;
+        if(PRINT_ERROR){printf("Error: Queue is empty, canot push.");}
+        return STACK_FULL;
     }
     
 }
@@ -112,7 +122,8 @@ int stack_pop(stack *s)
     }
     else
     {
-        return false;
+        if(PRINT_ERROR){printf("Error: Queue is empty, canot pop.");}
+        return STACK_EMPTY;
     }
     
 }
