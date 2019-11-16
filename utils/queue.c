@@ -22,13 +22,13 @@
  * 
  * 
  * == UPDATE WITH THE USE OF STRUCTURES ==
- * NOTE: STACK IS NOW A POINTER!!! 
+ * NOTE: QUEUE IS NOW A POINTER!!! 
  * 
  * 
  * How To Create A Queue ->
  * | queue queueName = {-1, -1, {0}};  |
- * *Dont change the values unless you know what your doing
- * *Note the 2 -1 values
+ *  Dont change the values unless you know what your doing
+ *  Note the 2 -1 values
  * 
  * How To Use Functions ->
  * | function(&queueName, arguments)   |
@@ -65,16 +65,6 @@
 #define QUEUE_EMPTY   0
 #define QUEUE_FULL    0
 
-//defines all the prototypes
-/*
-int Enqueue(int input);
-int Dequeue(void);
-int IsEmpty(void);
-int IsFull(void);
-int GetFront(void);
-int GetRear(void);
-*/
-// Idk why you created the protoypes here. Its only useful if you define functions before main func
 
 //Create structure containing the queue and the traking variables
 typedef struct{
@@ -129,7 +119,7 @@ int queue_enqueue(queue *q, int input)
     }
     else
     {
-        q->rear++;
+        q->rear++ % QUEUE_MAX_LENGTH;
         q->A[q->rear] = input;
         return true;
     }
@@ -153,7 +143,7 @@ int queue_dequeue(queue *q)
     }
     else
     {
-        q->front++;
+        q->front++ % QUEUE_MAX_LENGTH;
         return true;
     }
 }

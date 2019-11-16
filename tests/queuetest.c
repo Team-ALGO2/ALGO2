@@ -2,7 +2,7 @@
 
 int main(void)
 { 
-    printf("GENERATE STACKS\n");
+    printf("GENERATE QUEUE\n");
     queue test = {-1, -1, {0}};
     queue test2 = {-1, -1, {0}};
 
@@ -23,11 +23,11 @@ int main(void)
 
     printf("Test test\n");
     queue_raw_printer(&test);
-    printf("top: %i", queue_getFront(&test));
+    printf("top: %i ", queue_getFront(&test));
     queue_dequeue(&test);
-    printf("top: %i", queue_getFront(&test));
+    printf("top: %i ", queue_getFront(&test));
     queue_dequeue(&test);
-    printf("top: %i", queue_getFront(&test));
+    printf("top: %i ", queue_getFront(&test));
     queue_dequeue(&test);
     queue_raw_printer(&test);
 
