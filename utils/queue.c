@@ -46,14 +46,6 @@
  * 
 */
 
-//
-//
-//TODO: CIRCULAR ARRAY!!
-//
-//
-
-//This is going to be a int queue and Tommcn will show me how to make a instance one
-
 //includes main utils
 #include "../main.h"
 
@@ -91,7 +83,7 @@ int queue_isEmpty(queue *q)
 int queue_isFull(queue *q)
 {
     //looks if the stack is at its maximum capacity
-    if (q->rear == QUEUE_MAX_LENGTH - 1)
+    if ((q->rear + 1) % QUEUE_MAX_LENGTH == q->front)
     {
         return true;
     }
@@ -119,7 +111,7 @@ int queue_enqueue(queue *q, int input)
     }
     else
     {
-        q->rear++ % QUEUE_MAX_LENGTH;
+        q->rear = (q->rear + 1) % QUEUE_MAX_LENGTH;
         q->A[q->rear] = input;
         return true;
     }
@@ -143,7 +135,7 @@ int queue_dequeue(queue *q)
     }
     else
     {
-        q->front++ % QUEUE_MAX_LENGTH;
+        q->front = (q->front + 1) % QUEUE_MAX_LENGTH;
         return true;
     }
 }
@@ -181,15 +173,21 @@ void queue_raw_printer(queue *q)
     printf("\n");
     for (int i = 0; i < QUEUE_MAX_LENGTH; i++)
     {
+        if(i == q->front){printf("[");}
         printf("%i ", q->A[i]);
+        if(i == q->rear){printf("]");}
     }
     printf("\n");
 }
 
 void queue_printer(queue *q)
 {
-    printf("Not Implemented");
-    //Todo implement after we implement Circular Array
+    printf("\n");
+    for (int i = 0; i < QUEUE_MAX_LENGTH; i++)
+    {
+        printf("%i ", q->A[(i + q->front) % QUEUE_MAX_LENGTH]);
+    }
+    printf("\n");
 }
 
 
@@ -204,6 +202,7 @@ void queue_printer(queue *q)
  * |
  * FR
  * -----------------
+ * Current Values: []
  * 
  * queue_enqueue(&queue, 4)            |
  * queue_enqueue(&queue, 5)            |
@@ -211,25 +210,57 @@ void queue_printer(queue *q)
  * queue_enqueue(&queue, 7)            |
  * queue_enqueue(&queue, 8)            |
  * queue_enqueue(&queue, 9)            |
- * 
  * -----------------
  * 45678900
  * ^    ^
  * |    |
  * F    R
  * -----------------
+ * Current Values: [4, 5, 6, 7, 8, 9]
  * 
  * queue_dequeue(&queue)               |
  * queue_dequeue(&queue)               |
- * 
+ * queue_dequeue(&queue)               |
  * -----------------
  * 45678900
- *   ^  ^
- *   |  |
- *   F  R
+ *    ^ ^
+ *    | |
+ *    F R
  * -----------------
+ * Current Values: [7, 8, 9]
  * 
  * Front Just Moves Up!
+ * 
+ * NEW: Circular array!
+ * 
+ * Front Can Loop To Back When Full, Not Surpassing Rear!!
+ * 
+ * queue_enqueue(&queue, 1)            |
+ * queue_enqueue(&queue, 1)            |
+ * queue_enqueue(&queue, 1)            |
+ * queue_enqueue(&queue, 1)            |
+ * -----------------
+ * 11678911
+ *  ^ ^ 
+ *  | | 
+ *  R F 
+ * -----------------
+ * Current Values: [7, 8, 9, 1, 1, 1, 1]
+ * 
+ * Tail Or Front Can Loop Back As well!
+ * 
+ * queue_dequeue(&queue)               |
+ * queue_dequeue(&queue)               |
+ * queue_dequeue(&queue)               |
+ * queue_dequeue(&queue)               |
+ * queue_dequeue(&queue)               |
+ * -----------------
+ * 11678911
+ * ^^  
+ * || 
+ * FR
+ * -----------------
+ * Current Values: [1, 1]
  * 
 */
 
