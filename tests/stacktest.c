@@ -2,19 +2,34 @@
 
 int main(void)
 {   
-    printf("%d", FALSE);
     printf("GENERATE STACKS\n");
     stack test = {-1, {0}};
     stack test2 = {-1, {0}};
-    int testInt = 5;
+    stack test3 = {-1, {0}};
 
-    printf("Adding Values For test\n");
+    printf("\n\nAdding Values For test\n");
     stack_printer(&test);
-    stack_push(&test, testInt);
-    stack_push(&test, testInt + 100);
-    stack_push(&test, testInt - 7);
+    stack_push(&test, 1);
+    stack_push(&test, 2);
+    stack_push(&test, 3);
+    stack_printer(&test);
 
-    printf("Adding Values For test2\n");
+    printf("Popping Values For test\n");
+    printf("top: %i\n", stack_top(&test));
+    stack_pop(&test);
+    stack_printer(&test);
+    printf("top: %i\n", stack_top(&test));
+    stack_pop(&test);
+    stack_printer(&test);
+    printf("top: %i\n", stack_top(&test));
+    stack_pop(&test);
+    stack_printer(&test);
+
+    printf("Testing Underflows\n");
+    printf("top: %i\n", stack_top(&test));
+    stack_pop(&test);
+
+    printf("\n\nAdding Values For test2\n");
     stack_push(&test2, -1);
     stack_push(&test2, -2);
     stack_push(&test2, -3);
@@ -27,26 +42,17 @@ int main(void)
     stack_push(&test2, -10);
     stack_push(&test2, -11);
     stack_push(&test2, -12);
-
-    stack_printer(&test);
     stack_printer(&test2);
 
-    printf("top: %i", stack_top(&test));
-    stack_pop(&test);
-    printf("top: %i", stack_top(&test));
-    stack_pop(&test);
-    printf("top: %i", stack_top(&test));
-    stack_pop(&test);
-
-    printf("top: %i", stack_top(&test));
-    stack_pop(&test);
-    stack_pop(&test);
-    stack_pop(&test);
-    stack_pop(&test);
-    stack_pop(&test);
-    stack_pop(&test);
-    stack_pop(&test);
-    stack_pop(&test);
-    stack_pop(&test);
-    printf("top: %i", stack_top(&test));
+    printf("\n\nTesting Overflows\n");
+    for(int a = 0; a < STACK_MAX_LENGTH-1; a++){
+        stack_push(&test3, 1);
+    }
+    stack_printer(&test3);
+    printf("Adding One More SHOULD WORK\n");
+    stack_push(&test3, 1111);
+    stack_printer(&test3);
+    printf("Adding One More ==SHOULD NOT WORK==\n");
+    stack_push(&test3, 9999);
+    stack_printer(&test3);
 }

@@ -45,7 +45,7 @@
 #include "../main.h"
 
 //defines the max length of the stack
-#define STRUCT_MAX_LENGTH 128
+#define STACK_MAX_LENGTH 128
 
 // Define Error Codes
 #define PRINT_ERROR   true
@@ -54,7 +54,7 @@
 
 typedef struct{
     int counter;
-    int A[STRUCT_MAX_LENGTH];
+    int A[STACK_MAX_LENGTH];
 } stack;
 
 int stack_isEmpty(stack *s)
@@ -71,8 +71,8 @@ int stack_isEmpty(stack *s)
 }
 
 int stack_isFull(stack *s)
-{
-    if (s->counter >= STRUCT_MAX_LENGTH)
+{   
+    if (s->counter + 1 >= STACK_MAX_LENGTH)
     {
         return true;
     } 
@@ -107,7 +107,7 @@ int stack_push(stack *s, int x)
     }
     else
     {
-        if(PRINT_ERROR){printf("Error: Queue is empty, canot push.\n");}
+        if(PRINT_ERROR){printf("Error: Queue is full, canot push.\n");}
         return STACK_FULL;
     }
     
@@ -131,9 +131,11 @@ int stack_pop(stack *s)
 void stack_printer(stack *s)
 {
     printf("\n");
-    for (int i = 0; i < STRUCT_MAX_LENGTH; i++)
+    if(s->counter != -1){printf("[");}
+    for (int i = 0; i < STACK_MAX_LENGTH; i++)
     {
         printf("%i ", s->A[i]);
+        if(i == s->counter){printf("]");}
     }
     printf("\n");
 }
