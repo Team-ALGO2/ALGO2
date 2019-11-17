@@ -17,29 +17,28 @@ int main(int argc, char *argv[])
     //looks at that the mode the user wants to boot into and set mode to that
     else if (argc == 2)
     {
-        if (argv[1] == "DEC")
+        if (strcmp(argv[1], "DEC") == 0)
         {
             mode = 0;
         }
-        else if (argv[1] == "BIN")
+        else if (strcmp(argv[1], "BIN") == 0)
         {
             mode = 1;
         }
-        else if (argv[1] == "HEX")
+        else if (strcmp(argv[1], "HEX") == 0)
         {
             mode = 2;
         }
-        else if (argv[1] == "AST")
+        else if (strcmp(argv[1], "AST") == 0)
         {
             mode = 3;
         }
-        //the default case is that mode is decimal so 0
-        else
+    }
+    //the default case is that mode is decimal so 0
+    else
         {
             mode = 0;
         }
-        
-    }
     
     
     
