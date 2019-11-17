@@ -99,7 +99,7 @@ int queue_enqueue(queue *q, int input)
 {
     if(queue_isFull(q))
     {
-        if(PRINT_ERROR){printf("Error: Queue is full, canot insert %d.", input);}
+        if(PRINT_ERROR){printf("Error: Queue is full, canot insert %d.\n", input);}
         return QUEUE_FULL;
     }
     else if (queue_isEmpty(q))
@@ -124,7 +124,7 @@ int queue_dequeue(queue *q)
 {
     if (queue_isEmpty(q))
     {
-        if(PRINT_ERROR){printf("Error: Queue is empty, canot dequeue.");}
+        if(PRINT_ERROR){printf("Error: Queue is empty, canot dequeue.\n");}
         return QUEUE_EMPTY;
     }
     else if (q->front == q->rear)
@@ -146,7 +146,7 @@ int queue_getFront(queue *q)
     //checks if the stack is empty and warns in that case
     if (queue_isEmpty(q))
     {
-        if(PRINT_ERROR){printf("Error: Queue is empty, canot get the front value.\n Note: The value returned my be junk.");}
+        if(PRINT_ERROR){printf("Error: Queue is empty, canot get the front value.\n Note: The value returned my be junk.\n");}
         return QUEUE_EMPTY;
         
     }
@@ -160,7 +160,7 @@ int queue_getRear(queue *q)
     //checks if the stack is empty and warns in that case
     if (queue_isEmpty(q))
     {
-        if(PRINT_ERROR){printf("Error: Queue is empty, canot get the rear value.\n Note: The value returned my be junk.");}
+        if(PRINT_ERROR){printf("Error: Queue is empty, canot get the rear value.\n Note: The value returned my be junk.\n");}
         return QUEUE_EMPTY;
     }
     

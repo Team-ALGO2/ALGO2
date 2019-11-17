@@ -91,7 +91,7 @@ int stack_top(stack *s)
     }
     else
     {
-        if(PRINT_ERROR){printf("Error: Queue is empty, canot get the top value.\n Note: The value returned my be junk.");}
+        if(PRINT_ERROR){printf("Error: Queue is empty, canot get the top value.\n Note: The value returned my be junk.\n");}
         return STACK_EMPTY;
     }
     
@@ -107,7 +107,7 @@ int stack_push(stack *s, int x)
     }
     else
     {
-        if(PRINT_ERROR){printf("Error: Queue is empty, canot push.");}
+        if(PRINT_ERROR){printf("Error: Queue is empty, canot push.\n");}
         return STACK_FULL;
     }
     
@@ -122,7 +122,7 @@ int stack_pop(stack *s)
     }
     else
     {
-        if(PRINT_ERROR){printf("Error: Queue is empty, canot pop.");}
+        if(PRINT_ERROR){printf("Error: Queue is empty, canot pop.\n");}
         return STACK_EMPTY;
     }
     
