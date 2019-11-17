@@ -2,14 +2,47 @@
 
 #include "../main.h"
 
-//double add(double a, double b);
-//double subtract(double a, double b);
-//double multiply(double a, double b);
-//double divide(double a, double b);
-//long mod(long a, long b);
+//Int to track the mode of the calcualor. 0 is DEC, 1 is BIN, 2 is HEX, 3 is ASTRO
+int mode = 0;
 
-int main()
+int main(int argc, char *argv[])
 {
+    //checks that the correct number of comand line arguments were parsed
+    if (argc > 2)
+    {
+        fprintf(stderr, "Usage: ./calc MODE or leave empty for decimal\n");
+        return 1;
+    }
+    
+    //looks at that the mode the user wants to boot into and set mode to that
+    else if (argc == 2)
+    {
+        if (argv[1] == "DEC")
+        {
+            mode = 0;
+        }
+        else if (argv[1] == "BIN")
+        {
+            mode = 1;
+        }
+        else if (argv[1] == "HEX")
+        {
+            mode = 2;
+        }
+        else if (argv[1] == "AST")
+        {
+            mode = 3;
+        }
+        //the default case is that mode is decimal so 0
+        else
+        {
+            mode = 0;
+        }
+        
+    }
+    
+    
+    
     double a = 0;
     double b = 0; 
     
