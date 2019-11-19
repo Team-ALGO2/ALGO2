@@ -22,4 +22,14 @@ To find the exact documentation you are looking for you can either look at the f
     - "%" for modulo
     - "^" for power
   - For more advanced equasion use:
-    -  "sqrt" for square root
+    - "sqrt" for square root
+    - "sin" for sine calculations
+    - "cos" for cosine calculations
+    - "tan" for tangent calculations
+    - "sinh" for hyperbolic sine calculations
+    - "cosh" for hyperbolic cosine calculations
+    - "!" for factorial
+    - "|" to convert from one base to another (TODO)
+    - "C" to calculate choose notation
+    - "P" to calculate permutations
+    
