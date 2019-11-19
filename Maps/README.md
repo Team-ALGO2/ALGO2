@@ -1,5 +1,5 @@
 # Mapping Program
-"Advanced" Mapping Program For Computer Algorythms 2 Homework
+"Advanced" Mapping Program For Computer Algorithms 2 Homework
 
 ## Features:
 - Advanced Pathfinding Formulas
