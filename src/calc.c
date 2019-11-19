@@ -1,6 +1,6 @@
 // TODO REWRITE
 
-#include "../main.h"
+#include "main.h"
 
 //Int to track the mode of the calcualor. 0 is DEC, 1 is BIN, 2 is HEX, 3 is ASTRO
 int mode = 0;
