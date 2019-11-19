@@ -67,6 +67,13 @@ int main(int argc, char *argv[])
         scanf("%lf", &b);
         
        double result=1;
+
+       /*
+       *
+       * BASIC COMMANDS
+       * 
+       */
+
         if(strcmp(op, "+") == 0){
             result = add(a,b);
             printf("%.9lf\n", result);
@@ -87,6 +94,36 @@ int main(int argc, char *argv[])
 
         else if(strcmp(op, "/") == 0){
             result = divide(a,b);
+            printf("%.9lf\n", result);
+            a = result;
+        }
+
+        else if(strcmp(op, "^") == 0){
+          result = powr(a,b);
+          printf("%.9lf\n", result);
+            a = result;
+        }
+
+        else if(strcmp(op, "%") == 0){
+            if((float)(long)a != a || (float)(long)b != b)
+            {
+                printf(YEL "WARNING! MOD CANNOT SUPPORT DECIMALS. CONVERTING TO INTEGER.\n" RESET);
+                a = (long)a;
+                b = (long)b;
+            }
+            result = mod(a,b);
+            printf("%.9f\n", result);
+            a = (float)result; // turn Back To Float Lol
+        }
+
+        /*
+        *
+        * ADVANCED COMMANDS
+        * 
+        */
+        
+        else if(strcmp(op, "sqrt") == 0){
+            result = squarert(b);
             printf("%.9lf\n", result);
             a = result;
         }
@@ -124,36 +161,6 @@ int main(int argc, char *argv[])
             a = result;
         }
 
-        else if(strcmp(op, "^") == 0){
-          result = powr(a,b);
-          printf("%.9lf\n", result);
-            a = result;
-        }
-        
-        else if(strcmp(op, "sqrt") == 0){
-            result = squarert(b);
-            printf("%.9lf\n", result);
-            a = result;
-        }
-        
-        else if(strcmp(op, "cos") == 0){
-            result = cosine(b*PI/180);
-            printf("%.9lf\n", result);
-            a= result;
-        }
-
-        else if(strcmp(op, "%") == 0){
-            if((float)(long)a != a || (float)(long)b != b)
-            {
-                printf(YEL "WARNING! MOD CANNOT SUPPORT DECIMALS. CONVERTING TO INTEGER.\n" RESET);
-                a = (long)a;
-                b = (long)b;
-            }
-            result = mod(a,b);
-            printf("%.9f\n", result);
-            a = (float)result; // turn Back To Float Lol
-        }
-
         else if(strcmp(op, "!") == 0){
             if((float)(long long)b != b)
             {
@@ -168,11 +175,6 @@ int main(int argc, char *argv[])
         else if(strcmp(op, "|") == 0){
             result = baseConvert(a ,b);
             printf("%.9f\n", result);
-        }
-        
-        else if(strcmp(op, "off") == 0 || strcmp(op, "exit") == 0 || strcmp(op, "quit") == 0 || strcmp(op, "q") == 0)
-        {
-            on = false;
         }
         
         else if(strcmp(op, "C") == 0){
@@ -197,6 +199,11 @@ int main(int argc, char *argv[])
             result = aPermB(a,b);
             printf("%.9f\n", result);
             a = (float)result; // turn Back To Float Lol
+        }
+        
+        else if(strcmp(op, "off") == 0 || strcmp(op, "exit") == 0 || strcmp(op, "quit") == 0 || strcmp(op, "q") == 0)
+        {
+            on = false;
         }
 
         else
