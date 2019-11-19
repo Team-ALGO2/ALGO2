@@ -1,6 +1,4 @@
-#include "src/main.h"
-
-#define INFINITY 2147483647
+#include "main.h"
 
 
 typedef struct{
@@ -32,9 +30,7 @@ int main(void)
     vertice five = {C, D, 10};
 
     vertice ALL_vertice[] = {one, two, three, four, five};
-
     int all_length = 5;
-
 
     node s = A;
 
@@ -45,10 +41,13 @@ int main(void)
 
         // itearte over verices to find mathcing weitgh
 
+        /*
         for (j = 0; j < all_length; j++)
         {
             if (ALL_vertice[j]. == )
         }
+        this was unfinished so commenting it out
+        */
 
 
 

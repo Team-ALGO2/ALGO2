@@ -23,6 +23,9 @@
 #define MAX(x, y) (((x) > (y)) ? (x) : (y))
 #define MIN(x, y) (((x) < (y)) ? (x) : (y))
 
+// Numbers
+#define INFINITY 2147483647
+
 // Import Important Libraries
 #include <stdio.h>
 #include <stdlib.h>
