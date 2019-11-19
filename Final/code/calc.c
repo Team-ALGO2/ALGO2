@@ -33,11 +33,6 @@ int main(int argc, char *argv[])
         {
             mode = 3;
         }
-        else if (strcmp(argv[1], "HELP") == 0)
-        {
-            fprintf(stderr, "Usage: ./calc MODE. Modes are DEC(decimal) BIN(binary) HEX(hexadecimal) and AST(astronomical) leave empty for decimal\n");
-            return 1;
-        }
     }
     //the default case is that mode is decimal so 0
     else
