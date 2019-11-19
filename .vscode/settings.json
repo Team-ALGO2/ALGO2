@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "main.h": "c",
+        "unistd.h": "c",
+        "string.h": "c"
+    },
+    "C_Cpp.dimInactiveRegions": false,
+    "editor.autoClosingBrackets": "beforeWhitespace",
+    "editor.dragAndDrop": false
+}
