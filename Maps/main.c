@@ -36,18 +36,26 @@ int main(void)
 
     for (int i = 1; i < all_length; i++)
     {
-        node from = s;
-        node too = ALL_vertice[i].too;
 
-        // itearte over verices to find mathcing weitgh
-
-        /*
-        for (j = 0; j < all_length; j++)
+        // iterate over vertices 
+        for (int j = 0; j < all_length; j++)
         {
-            if (ALL_vertice[j]. == )
+            // find which ones leave from s
+            if (ALL_vertice[j].from.name == s.name)
+            {
+                // if the weigth is smaller than the current disctance
+                if (ALL_vertice[j].too.distance_to > ALL_vertice[j].weigth + s.distance_to)
+                {
+                    printf("\n%d\n", ALL_vertice[j].too.distance_to); //intial
+
+                    ALL_vertice[j].too.distance_to = ALL_vertice[j].weigth;
+
+                    printf("%d\n", ALL_vertice[j].too.distance_to); // after
+                }
+            }
         }
-        this was unfinished so commenting it out
-        */
+
+        printf("==================\n");
 
 
 
