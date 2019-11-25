@@ -8,7 +8,7 @@ typedef struct{
 
 typedef struct{
     node from;
-    node too;
+    node to;
     int weigth;
 } vertice;
 
