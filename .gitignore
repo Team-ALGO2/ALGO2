@@ -23,3 +23,6 @@ run
 
 #ignore personal python enviroment
 Python
+
+#Ignore Temporary Python Files
+__pycache__

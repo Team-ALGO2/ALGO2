@@ -1,15 +1,14 @@
 import networkx as nx
 import matplotlib.pyplot as plt
+import maplib
 
+test = maplib.Map(file = "../Maps/map1.map")
 
 G=nx.Graph()
-G.add_nodes_from(["a", "b","c"])
+G.add_nodes_from(list(test.nodes.keys()))
 
-G.add_edge("a", "b", weigth=10)
-G.add_edge("a", "c", weigth=10)
-G.add_edge("b", "c", weigth=10)
-G.add_edge("b", "d", weigth=10)
-G.add_edge("c", "d", weigth=10)
+for vert in list(test.vertices.values()):
+    G.add_edge(vert.fromNode, vert.toNode, weigth=vert.weight)
 
 graph_pos=nx.spring_layout(G)
 

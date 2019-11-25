@@ -45,8 +45,8 @@ class Map:
         vertice = Vertice(fromNode, toNode, weigth)
         self.vertices[str(name)] = vertice
 
-'''
-test = Map(file = "../Maps/map1.map")
-attrs = vars(test)
-print (', '.join("%s: %s" % item for item in attrs.items()))
-'''
+    def debugPrintInfo(self):
+        print(self.file)
+        print(self.nodes)
+        print(self.vertices)
+        print(self.description)
