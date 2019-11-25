@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 
 G=nx.Graph()
-G.add_nodes_from(["a", "b","c", "d"])
+G.add_nodes_from(["a", "b","c"])
 
 G.add_edge("a", "b", weigth=10)
 G.add_edge("a", "c", weigth=10)
