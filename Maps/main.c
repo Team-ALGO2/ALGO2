@@ -50,15 +50,15 @@ int main(void)
             if (cur.name == s.name)
             {
                 // if the weigth is smaller than the current disctance
-                if (ALL_vertice[j].too.distance_to > ALL_vertice[j].weigth + ALL_vertice[j].from.distance_to)
+                if (ALL_vertice[j].to.distance_to > ALL_vertice[j].weigth + ALL_vertice[j].from.distance_to)
                 {
 
-                    printf("From: %d -- To: %d: ", ALL_vertice[j].from.name, ALL_vertice[j].too.name);
+                    printf("From: %d -- To: %d: ", ALL_vertice[j].from.name, ALL_vertice[j].to.name);
                     printf("ALL_vertice[j].from.distance_to = %d, ALL_vertice[j].from = %d\n", ALL_vertice[j].from.distance_to, ALL_vertice[j].from.name);
-                    printf("%d --> ",ALL_vertice[j].too.distance_to);
+                    printf("%d --> ",ALL_vertice[j].to.distance_to);
                     
-                    ALL_vertice[j].too.distance_to = ALL_vertice[j].weigth + ALL_vertice[j].from.distance_to;
-                    printf("%d \n",ALL_vertice[j].too.distance_to);
+                    ALL_vertice[j].to.distance_to = ALL_vertice[j].weigth + ALL_vertice[j].from.distance_to;
+                    printf("%d \n",ALL_vertice[j].to.distance_to);
                     printf("==================\n");
 
                 }
