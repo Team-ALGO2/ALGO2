@@ -20,3 +20,6 @@ run
 
 #ignores vscode configs
 .vscode
+
+#ignore personal python enviroment
+Python
