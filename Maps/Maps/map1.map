@@ -1,0 +1,11 @@
+4
+5
+A 1 2
+B 2
+C 3
+D 4
+one A B 10
+two A C 10
+three B C 10
+four B D 10
+five B D 10

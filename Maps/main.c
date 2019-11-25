@@ -12,8 +12,6 @@ typedef struct{
     int weigth;
 } vertice;
 
-
-
 int main(void)
 {
 
