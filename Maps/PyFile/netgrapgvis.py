@@ -2,7 +2,7 @@ import networkx as nx
 import matplotlib.pyplot as plt
 import maplib
 
-test = maplib.Map(file = "../Maps/map1.map")
+test = maplib.Map(file = "../Maps/wasd.map")
 
 G=nx.Graph()
 G.add_nodes_from(list(test.nodes.keys()))
