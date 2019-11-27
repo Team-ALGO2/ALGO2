@@ -87,6 +87,7 @@ long long factorial(int b){ // lmao l o n g l o n g
 */
 
 double sine(double a){
+    a = dmod(a, PI); //Number Overflows If Too Big
     double total = a;
     for(int i = 0; i < TRIGACCURACY; i++){
         double powNum = i*2 + 3;
@@ -101,6 +102,7 @@ double sine(double a){
 }
 
 double cosine(double a){
+    a = dmod(a, PI); //Number Overflows If Too Big
     double total = 1;
     for(int i = 0; i < TRIGACCURACY; i++){
         double powNum = i*2 + 2;
@@ -119,6 +121,7 @@ double tangent(double a){
 }
 
 double sineh(double a){
+    a = dmod(a, PI); //Number Overflows If Too Big
     double total = a;
     for(int i = 0; i < TRIGACCURACY; i++){
         double powNum = i*2 + 3;
@@ -128,6 +131,7 @@ double sineh(double a){
 }
 
 double cosineh(double a){
+    a = dmod(a, PI); //Number Overflows If Too Big
     double total = 1;
     for(int i = 0; i < TRIGACCURACY; i++){
         double powNum = i*2 + 2;
