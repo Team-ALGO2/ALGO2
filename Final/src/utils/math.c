@@ -43,6 +43,10 @@ long mod(long a, long b)
 
 */
 
+double dmod(double x, double y) {
+    return x - (int)(x/y) * y;
+} //This is because normal mod "%" does not supoort doubles >:(
+
 double powr(double a, double b){
   double result = 1;
   for(int i = 1; i <= b; i ++)

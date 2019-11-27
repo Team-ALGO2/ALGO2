@@ -1,4 +1,4 @@
-// TODO REWRITE
+    // TODO REWRITE
 
 #include "main.h"
 
@@ -99,21 +99,15 @@ int main(int argc, char *argv[])
         }
 
         else if(strcmp(op, "^") == 0){
-          result = powr(a,b);
-          printf("%.9lf\n", result);
+            result = powr(a,b);
+            printf("%.9lf\n", result);
             a = result;
         }
 
         else if(strcmp(op, "%") == 0){
-            if((float)(long)a != a || (float)(long)b != b)
-            {
-                printf(YEL "WARNING! MOD CANNOT SUPPORT DECIMALS. CONVERTING TO INTEGER.\n" RESET);
-                a = (long)a;
-                b = (long)b;
-            }
-            result = mod(a,b);
-            printf("%.9f\n", result);
-            a = (float)result; // turn Back To Float Lol
+            result = dmod(a,b);
+            printf("%.9lf\n", result);
+            a = result;
         }
 
         /*
