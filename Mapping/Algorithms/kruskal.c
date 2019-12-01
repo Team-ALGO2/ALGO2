@@ -1,5 +1,5 @@
 
-#include<stdio.h>
+#include "main.h"
  
 #define max 30
  
