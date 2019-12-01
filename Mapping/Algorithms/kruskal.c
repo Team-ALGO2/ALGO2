@@ -22,7 +22,6 @@ void kruskal();
 int find(int bel[],int vertexnum);
 void un(int bel[],int c1,int c2);
 
-void print();
  
 void main(){
 	int i,j,total_cost;
