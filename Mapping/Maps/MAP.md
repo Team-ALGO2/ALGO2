@@ -15,7 +15,7 @@
 ```
 NV
 4
-5
+6
 A
 B
 C
@@ -23,10 +23,11 @@ D
 one A B 10
 two A C 10
 three B C 10
-four B D 10
-five C D 10
+four C B 10
+five B D 10
+six C D 10
 A D
-Simple Example Map
+Simple Example Node-Vertex Map
 ```
 
 ---
@@ -105,18 +106,18 @@ C
 D
 0 10 10 0
 0 0 10 10
-0 0 0 10
+0 10 0 10
 0 0 0 0
 0 1 1 0
 0 0 1 1
-0 0 0 1
+0 1 0 1
 0 0 0 0
 0 one two 0
-0 0 three four
-0 0 0 five
+0 0 three five
+0 four 0 six
 0 0 0 0
 A D
-Simple Example Map
+Simple Example Matrix Map
 ```
 
 ---
