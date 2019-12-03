@@ -1,0 +1,22 @@
+MATRIX
+4
+5
+1
+A
+B
+C
+D
+0 10 10 0
+0 0 10 10
+0 0 0 10
+0 0 0 0
+0 1 1 0
+0 0 1 1
+0 0 0 1
+0 0 0 0
+0 one two 0
+0 0 three four
+0 0 0 five
+0 0 0 0
+A D
+Simple Example Map
