@@ -123,34 +123,31 @@ int main(int argc, char *argv[])
         }
 
         else if(strcmp(op, "sin") == 0){
-            result = sine(b);
+            result = sine(b * PI / 180);
             printf("%.9lf\n", result);
             a = result;
         }
 
         else if(strcmp(op, "cos") == 0){
-          
-            result = cosine(b);
+            result = cosine(b * PI / 180);
             printf("%.9lf\n", result);
             a = result;
         }
 
         else if(strcmp(op, "tan") == 0){
-          
-            result = tangent(b);
+            result = tangent(b * PI / 180);
             printf("%.9lf\n", result);
             a = result;
         }
 
         else if(strcmp(op, "sinh") == 0){
-            result = sineh(b);
+            result = sineh(b * PI / 180);
             printf("%.9lf\n", result);
             a = result;
         }
          
         else if(strcmp(op, "cosh") == 0){
-          
-            result = cosineh(b);
+            result = cosineh(b * PI / 180);
             printf("%.9lf\n", result);
             a = result;
         }
