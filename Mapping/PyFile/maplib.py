@@ -5,7 +5,7 @@ class Node:
         self.nodeId = nodeId
         self.name = name
 
-class Vertice:
+class Vertex:
     def __init__(self, vertexId, name, fromNode, toNode, weight):
         self.vertexId = vertexId
         self.name = name
@@ -14,20 +14,20 @@ class Vertice:
         self.weight = weight
 
 class NVMap:
-    def __init__(self, file = None):
+    def __init__(self, file = None, importData = False):
         self.file = file
         self.nodes = {}
         self.vertices = {}
         self.startNode = None
         self.endNode = None
         self.description = None
-        if (file != None):
+        if (importData == True):
             self.resetInfo()
 
     def resetInfo(self): 
         with open(self.file) as fp:
             if fp.readline().replace("\n", "") != "NV":
-                print("Error Reading Map File. Incompatible Type!")
+                raise Exception("Error Reading Map File. Incompatible Type (Not NV)!")
             else:
                 nodeNum = int(fp.readline().replace("\n", ""))
                 vertexNum = int(fp.readline().replace("\n", ""))
@@ -38,7 +38,7 @@ class NVMap:
                 for vertexId in range(vertexNum):
                     line = fp.readline().replace("\n", "")
                     data = line.split(" ")
-                    self.setVertice(vertexId, data[0], data[1], data[2], data[3])
+                    self.setVertex(vertexId, data[0], data[1], data[2], data[3])
                 self.startNode, self.endNode = fp.readline().replace("\n", "").split(" ")
                 self.startNode = self.startNode if self.startNode != 0 else None
                 self.endNode = self.endNode if self.endNode != 0 else None
@@ -48,9 +48,28 @@ class NVMap:
         node = Node(nodeId, name)
         self.nodes[str(name)] = node
 
-    def setVertice(self, vertexId, name, fromNode, toNode, weigth):
-        vertex = Vertice(vertexId, name, fromNode, toNode, weigth)
+    def setVertex(self, vertexId, name, fromNode, toNode, weigth):
+        vertex = Vertex(vertexId, name, fromNode, toNode, weigth)
         self.vertices[str(name)] = vertex
+
+    def deleteNode(self, name):
+        del self.nodes[str(name)]
+
+    def deleteVertex(self, name):
+        del self.vertices[str(name)]
+
+    def saveInfo(self):
+        if(self.file != None):
+            with open(self.file, "w") as fp:
+                fp.write(f"NV\n{len(self.nodes)}\n{len(self.vertices)}\n")
+                for node in list(self.nodes.values()):
+                    fp.write(f"{node.name}\n")
+                for vertex in list(self.vertices.values()):
+                    fp.write(f"{vertex.name} {vertex.fromNode} {vertex.toNode} {vertex.weight}\n")
+                fp.write(f"{self.startNode} {self.endNode}\n")
+                fp.write(f"{self.description}")
+        else:
+           raise Exception("Map Save Failed! File Is Not Set!") 
 
     def debugPrintInfo(self):
         print(self.file)

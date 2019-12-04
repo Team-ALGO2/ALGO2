@@ -26,3 +26,6 @@ Python
 
 #Ignore Temporary Python Files
 __pycache__
+
+#Ignore Testing Map Files
+ignore.map

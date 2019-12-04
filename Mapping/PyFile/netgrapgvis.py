@@ -1,8 +1,9 @@
 import networkx as nx
 import matplotlib.pyplot as plt
 import maplib
+import sys
 
-test = maplib.NVMap(file = "../Maps/example_nv.map")
+test = maplib.NVMap(file = sys.argv[1], importData=True)
 
 test.debugPrintInfo()
 
