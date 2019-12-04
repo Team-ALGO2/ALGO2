@@ -84,7 +84,7 @@ int main(void)
     } else if (strncmp(items[i], "Slots", 20) == 0) {
         system("./slots");
         return 0;
-    } else if (strncmp(items[i], "Calc (BIN)", 20) == 0) {
+    } else if (strncmp(items[i], "Slots (INFINITE)", 20) == 0) {
         system("./slots INF");
         return 0;
     }

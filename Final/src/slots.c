@@ -20,7 +20,7 @@ int msleep(long msec)
     return res;
 }
 
-int main(void)
+int main(int argc, char *argv[])
 {
     // seed the rand
     srand(time(NULL));
@@ -28,7 +28,16 @@ int main(void)
     
     //Define CONSTANT rotation times
     // Not using #define becasue it gets a new number every thime i referece it
-    int rotationtimes = (rand() % 25) + CNTSPIM;
+
+    int rotationtimes;
+
+    if (argc > 1)
+    {
+        rotationtimes = 10000;
+    }  else {
+        rotationtimes = (rand() % 25) + CNTSPIM;
+    }
+    
     
     // Slot Characters And Colors
     char *slotCharacters[10] = {"$", "X", "#", "O", "?", "=", ">", "7", ".", "9"};
@@ -89,7 +98,16 @@ int main(void)
 
         // Calculate Rotation Speed
         // Dont worry about how it works
-        float rotateSpeed = (long)(((float)(MAX(CNTSPIM - rotationtimes + k, 1))/(float)CNTSPIM)* 995)+5;
+
+        float rotateSpeed;
+        
+        if (argc > 1)
+        {
+            rotateSpeed = 100;
+        } else {
+            rotateSpeed = (long)(((float)(MAX(CNTSPIM - rotationtimes + k, 1))/(float)CNTSPIM)* 995)+5;
+        }
+        
         // wait/clear
         msleep(rotateSpeed);
         system("clear");
