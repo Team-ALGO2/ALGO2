@@ -169,3 +169,36 @@ This is usually used with metadata and struct casting, but thats dangerous and a
 | 2            | Map Description               | String(Max 1024 Chars)     |
 
 > *If No Default First / Last Node, set 0.
+
+---
+## Recap
+---
+
+```
+--------------------------
+MATRIX                    |
+4                         | File Information / Headers
+5                         |
+1                         |
+--------------------------
+A                         |
+B                   Nodes |
+C                         |
+D_________________________|
+0 10 10 0                 |
+0 0 10 10          Weight |
+0 10 0 10                 |
+0_0_0_0___________________| Payload
+0 1 1 0                   |
+0 0 1 1      Connectivity |
+0 1 0 1                   |
+0_0_0_0___________________|
+0 one two 0               |
+0 0 three five     Vertex |
+0 four 0 six         Name |
+0 0 0 0                   |
+--------------------------
+A D                       | Extra Stored Data  
+Simple Example Matrix Map |
+--------------------------
+```
