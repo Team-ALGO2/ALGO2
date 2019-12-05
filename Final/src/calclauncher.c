@@ -27,9 +27,14 @@ int main(void)
     box( w, 0, 0 ); // sets default borders for the window
     keypad(stdscr, TRUE);
 
+
+
+
+
+
     while(1)
     {
-        ch = getch();        
+        ch = getch();        //Pause until character
         if (ch == K_UP)
         {
             i--;
@@ -43,23 +48,25 @@ int main(void)
         {
             if (j == i )
             {
-                wattron(w, A_STANDOUT);
+                wattron(w, A_STANDOUT);    // Put on highlite if selected
             } else {
-                wattroff(w, A_STANDOUT);
+                wattroff(w, A_STANDOUT);   // else take it off
             }
-            mvwprintw(w, j + 1, 2, "%s", items[j]);
+            mvwprintw(w, j + 1, 2, "%s", items[j]);   // print the items in order
         }
-        wrefresh(w);
+        wrefresh(w);    // refresh the window
 
-        if (ch == K_ENTER)
+        if (ch == K_ENTER)      // Stop
         {
-            break;
+            break;      
         }
+
+
 
     }
 
  
-    delwin(w);
+    delwin(w);          // delete the window
     endwin();
 
 
