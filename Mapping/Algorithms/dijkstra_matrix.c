@@ -26,12 +26,11 @@ int main(){
 	
 	printf("\nAdjacency matrix:\n");
 	
-	for(i=0;i<n;i++){
-		for(j=0;j<n;j++){
-			scanf("%d",&D[i][j]);
-		}
+	for(i=0; i<n * n; i++){
+		scanf("%d",&D[i][j]);
 	}	
-    //int cost;
+    
+	printf("Done inputing the matrix");
 
     printf("======================\n");
     for(i=0;i<n;i++){
