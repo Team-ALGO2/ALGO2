@@ -26,8 +26,10 @@ int main(){
 	
 	printf("\nAdjacency matrix:\n");
 	
-	for(i=0; i<n * n; i++){
+	for(i=0; i<n; i++){
+		for(j = 0; j<n;j++){
 		scanf("%d",&D[i][j]);
+		}
 	}	
     
 	printf("Done inputing the matrix");
