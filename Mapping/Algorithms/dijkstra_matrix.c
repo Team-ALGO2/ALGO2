@@ -18,7 +18,7 @@ int D[max][max],n;
 
 int main(){
 
-    int i,total_cost, n;
+    int i,j,total_cost, n;
 	
 	printf("\nEnter number of vertices:");
 	
