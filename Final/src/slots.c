@@ -26,15 +26,18 @@ int main(int argc, char *argv[])
     srand(time(NULL));
     
     
-    //Define CONSTANT rotation times
+    // Define CONSTANT rotation times
     // Not using #define becasue it gets a new number every thime i referece it
 
+    int infinate;
     int rotationtimes;
 
     if (argc > 1)
     {
-        rotationtimes = 10000;
+        infinate = true;
+        rotationtimes = 0;
     }  else {
+        infinate = false;
         rotationtimes = (rand() % 25) + CNTSPIM;
     }
     
@@ -93,7 +96,7 @@ int main(int argc, char *argv[])
     int j = rand() % HEIGHT;
 
     // number of times to rotate
-    for (int k = 0; k <= rotationtimes; k ++)
+    for (int k = 0; k <= rotationtimes || infinate == true; k ++)
     {
 
         // Calculate Rotation Speed

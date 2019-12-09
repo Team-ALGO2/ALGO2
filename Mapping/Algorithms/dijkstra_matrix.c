@@ -22,7 +22,6 @@ int shortestDist(int dist[max], int checked[max]){
 }
 
 int dijkstra(int map[max][max], int cMap[max][max], int start){
-	fflush(stdout);
 	int dist[max];
 	for(int i = 0; i < max; i++){dist[i] = INFINITY;}
 
