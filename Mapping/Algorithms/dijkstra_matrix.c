@@ -13,7 +13,6 @@ int shortestDist(int dist[max], int checked[max]){
 	int min = INFINITY;
 	int minIndex;
 	for(int i = 0; i < max; i++){
-		printf("%d", checked[i]);
 		if(dist[i] < min && checked[i] == False){
 			min = dist[i];
 			minIndex = i;
