@@ -12,11 +12,14 @@
 
 /* IMPORTANT: Compile with the flag: -lncurses $ cc graphics.c -o graphics -lncurses */
 
-#include <curses.h>  // I put curses here so nothing breaks in main.h if you don't have the library
+#include <ncurses.h>
+#include <panel.h>
+#include <menu.h>
+#include <form.h>
 #include <stdlib.h>
 #include <string.h>
 
-int main(void)
+int initScreen(void)
 {
 
     /* initialize curses */
