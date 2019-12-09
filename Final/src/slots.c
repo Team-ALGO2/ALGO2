@@ -233,5 +233,6 @@ int main(int argc, char *argv[])
 
 
     printf("\n");
+    system("./a"); // go back to menu
     return 0;
 }

@@ -7,6 +7,7 @@ int mode = 0;
 
 int main(int argc, char *argv[])
 {
+    system("clear");
     //checks that the correct number of comand line arguments were parsed
     if (argc > 2)
     {

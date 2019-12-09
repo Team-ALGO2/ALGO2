@@ -19,8 +19,8 @@ int main(void)
      
     WINDOW *w;
     int ch, i = 0, width = 7;
-    char items[6][20] = {"Calc (DEC)", "Calc (BIN)", "Calc (HEX)", "Calc (AST)", "Slots", "Slots (INFINITE)"};
-    int len = 6; 
+    char items[7][20] = {"Calc (DEC)", "Calc (BIN)", "Calc (HEX)", "Calc (AST)", "Slots", "Slots (INFINITE)", "EXIT"};
+    int len = 7; 
  
     initscr(); // initialize Ncurses
     w = newwin( HEIGTH, LENGTH, 0, 20 ); // create a new window
@@ -93,6 +93,9 @@ int main(void)
         return 0;
     } else if (strncmp(items[i], "Slots (INFINITE)", 20) == 0) {
         system("./slots INF");
+        return 0;
+    } else if (strncmp(items[i], "EXIT", 20) == 0) {
+        system("clear");
         return 0;
     }
 
