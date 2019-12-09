@@ -5,7 +5,7 @@
  * Linux: Type the following apt-get command to install ncurses header and lib
  * sudo apt-get install libncurses5-dev libncursesw5-dev
  * 
- * Mac: No idea, bit i think its preinstalled
+ * Mac: No idea, but i think its preinstalled
  * 
  * Windows: Currently Not SUpported. Maybe Port Later To PDCurses
  */
@@ -49,4 +49,6 @@ int main(void)
     endwin();
 
     exit(0);
+
+    //Test
 }
