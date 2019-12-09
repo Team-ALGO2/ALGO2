@@ -18,7 +18,7 @@ int D[max][max],n;
 
 int main(){
 
-    int i,total_cost, n;
+    int i,j,total_cost, n;
 	
 	printf("\nEnter number of vertices:");
 	
@@ -26,8 +26,10 @@ int main(){
 	
 	printf("\nAdjacency matrix:\n");
 	
-	for(i=0; i<n * n; i++){
+	for(i=0; i<n; i++){
+		for(j = 0; j<n;j++){
 		scanf("%d",&D[i][j]);
+		}
 	}	
     
 	printf("Done inputing the matrix");
