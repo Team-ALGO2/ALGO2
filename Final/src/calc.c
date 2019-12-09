@@ -5,48 +5,9 @@
 //Int to track the mode of the calcualor. 0 is DEC, 1 is BIN, 2 is HEX, 3 is ASTRO
 int mode = 0;
 
-int main(int argc, char *argv[])
+int runCalc(int mode)
 {
     system("clear");
-    //checks that the correct number of comand line arguments were parsed
-    if (argc > 2)
-    {
-        fprintf(stderr, "Usage: ./calc MODE or leave empty for decimal\n");
-        return 1;
-    }
-    
-    //looks at that the mode the user wants to boot into and set mode to that
-    else if (argc == 2)
-    {
-        if (strcmp(argv[1], "DEC") == 0)
-        {
-            mode = 0;
-        }
-        else if (strcmp(argv[1], "BIN") == 0)
-        {
-            mode = 1;
-        }
-        else if (strcmp(argv[1], "HEX") == 0)
-        {
-            mode = 2;
-        }
-        else if (strcmp(argv[1], "AST") == 0)
-        {
-            mode = 3;
-        }
-        else if (strcmp(argv[1], "HELP") == 0)
-        {
-            fprintf(stderr, "Usage: ./calc MODE. Modes are DEC(decimal) BIN(binary) HEX(hexadecimal) and AST(astronomical) leave empty for decimal\n");
-            return 1;
-        }
-    }
-    //the default case is that mode is decimal so 0
-    else
-        {
-            mode = 0;
-        }
-    
-    
     
     double a = 0;
     double b = 0; 
@@ -209,3 +170,47 @@ int main(int argc, char *argv[])
     }while(on == true);
     return 0;
 }
+
+// Because C Does Not Like Redefinitions of Main, This Checks If Its Being Run Directly Or Is It Being Run By A Function Call
+#ifndef _MANUALRUN
+int main(int argc, char *argv[]){
+    //checks that the correct number of comand line arguments were parsed
+    if (argc > 2)
+    {
+        fprintf(stderr, "Usage: ./calc MODE or leave empty for decimal\n");
+        return 1;
+    }
+    
+    //looks at that the mode the user wants to boot into and set mode to that
+    else if (argc == 2)
+    {
+        if (strcmp(argv[1], "DEC") == 0)
+        {
+            runCalc(0);
+        }
+        else if (strcmp(argv[1], "BIN") == 0)
+        {
+            runCalc(1);
+        }
+        else if (strcmp(argv[1], "HEX") == 0)
+        {
+            runCalc(2);
+        }
+        else if (strcmp(argv[1], "AST") == 0)
+        {
+            runCalc(3);
+        }
+        else if (strcmp(argv[1], "HELP") == 0)
+        {
+            fprintf(stderr, "Usage: ./calc MODE. Modes are DEC(decimal) BIN(binary) HEX(hexadecimal) and AST(astronomical) leave empty for decimal\n");
+            return 1;
+        }
+    }
+    //the default case is that mode is decimal so 0
+    else
+        {
+            runCalc(0);
+        }
+}
+
+#endif // _MANUALRUN

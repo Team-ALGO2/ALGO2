@@ -12,6 +12,13 @@
 #define K_RIGHT 261
 #define K_ENTER 10
 
+// Turn On The Manual Run Flag
+#define _MANUALRUN
+
+// Import All The Programs
+#include "calc.c"
+#include "slots.c"
+
 
 
 int main(void) 
@@ -70,29 +77,24 @@ int main(void)
     endwin();
 
 
-    // create exec files
-    system("cc calc.c -o calc");
-    system("cc slots.c -o slots");
-
-
     // Iterates over options
     if (strncmp(items[i], "Calc (DEC)", 20) == 0) {
-        system("./calc DEC");
+        runCalc(0);
         return 0;
     } else if (strncmp(items[i], "Calc (BIN)", 20) == 0) {
-        system("./calc BIN");
+        runCalc(1);
         return 0;
     } else if (strncmp(items[i], "Calc (HEX)", 20) == 0) {
-        system("./calc HEX");
+        runCalc(2);
         return 0;
     } else if (strncmp(items[i], "Calc (AST)", 20) == 0) {
-        system("./calc AST");
+        runCalc(3);
         return 0;
     } else if (strncmp(items[i], "Slots", 20) == 0) {
-        system("./slots");
+        runSlots(0);
         return 0;
     } else if (strncmp(items[i], "Slots (INFINITE)", 20) == 0) {
-        system("./slots INF");
+        runSlots(-1);
         return 0;
     } else if (strncmp(items[i], "EXIT", 20) == 0) {
         system("clear");
