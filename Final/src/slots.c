@@ -6,7 +6,7 @@
 #define HEIGHT  16
 #define WIDTH   5
 #define CNTSPIM 15 // Constant Spin (Minimum Spin Amount)
-#define SPINDWN true // Spin Down (If False Spimn Up)
+#define SPINDWN true // Spin Down (If False Spin Up)
 #define DEBUG   true
 
 // some sleep thing i edited lol
@@ -20,22 +20,32 @@ int msleep(long msec)
     return res;
 }
 
-int main(int argc, char *argv[])
+int runSlots(int rotationtimes)
+//Since C Does Not Support Default Argument Values >:(
+// rotationflag > 0  -->  Use rotationtimes amount
+// rotationflag = 0  -->  Use Random Rotations
+// rotationflag < 0  -->  Infinate Rotations 
 {
     // seed the rand
     srand(time(NULL));
     
     
-    //Define CONSTANT rotation times
+    // Define CONSTANT rotation times
     // Not using #define becasue it gets a new number every thime i referece it
 
-    int rotationtimes;
+    int infinate;
 
-    if (argc > 1)
+    if (rotationtimes < 0)
     {
-        rotationtimes = 10000;
-    }  else {
+        infinate = true;
+        rotationtimes = 0;
+    }else if (rotationtimes == 0)
+    {
+        infinate = false;
         rotationtimes = (rand() % 25) + CNTSPIM;
+    }else
+    {
+        infinate = false;
     }
     
     
@@ -93,7 +103,7 @@ int main(int argc, char *argv[])
     int j = rand() % HEIGHT;
 
     // number of times to rotate
-    for (int k = 0; k <= rotationtimes; k ++)
+    for (int k = 0; k <= rotationtimes || infinate == true; k ++)
     {
 
         // Calculate Rotation Speed
@@ -101,7 +111,7 @@ int main(int argc, char *argv[])
 
         float rotateSpeed;
         
-        if (argc > 1)
+        if (infinate)
         {
             rotateSpeed = 100;
         } else {
@@ -233,5 +243,29 @@ int main(int argc, char *argv[])
 
 
     printf("\n");
+    system("./a"); // go back to menu
     return 0;
 }
+
+
+// Because C Does Not Like Redefinitions of Main, This Checks If Its Being Run Directly Or Is It Being Run By A Function Call
+#ifndef _MANUALRUN
+int main(int argc, char *argv[]){
+    if (argc > 1)
+    {
+        if (strcmp(argv[1], "INFINITE") == 0)
+        {
+            runSlots(-1);
+        }
+        else
+        {
+            runSlots(atoi(argv[1]));
+        }
+    }
+    else
+    {
+        runSlots(0);
+    }
+}
+
+#endif // _MANUALRUN

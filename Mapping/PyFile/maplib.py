@@ -81,4 +81,74 @@ class NVMap:
         for node in list(self.nodes.values()):
             print(vars(node))
 
+class MatrixMap:
+    def __init__(self, file = None, importData = False):
+        self.file = file
+        self.nodes = []
+        self.vertices = 0
+        self.enableName = False
+        self.weightMap = []
+        self.connectMap = []
+        self.nameMap = None
+        self.startNode = None
+        self.endNode = None
+        self.description = None
+        if (importData == True):
+            self.resetInfo()
 
+    def resetInfo(self): 
+        with open(self.file) as fp:
+            if fp.readline().replace("\n", "") != "MATRIX":
+                raise Exception("Error Reading Map File. Incompatible Type (Not MATRIX)!")
+            else:
+                nodeNum = int(fp.readline().replace("\n", ""))
+                vertexNum = int(fp.readline().replace("\n", ""))
+                self.vertices = vertexNum
+                enableName = bool(int(fp.readline().replace("\n", "")))
+                self.enableName = enableName
+                for nodeId in range(nodeNum):
+                    line = fp.readline().replace("\n", "")
+                    self.nodes.append(line)
+                for nodeId in range(nodeNum):
+                    line = fp.readline().replace("\n", "")
+                    self.weightMap.append(line.split(" "))
+                for nodeId in range(nodeNum):
+                    line = fp.readline().replace("\n", "")
+                    self.connectMap.append(line.split(" "))
+                if(enableName):
+                    self.nameMap = []
+                    for nodeId in range(nodeNum):
+                        line = fp.readline().replace("\n", "")
+                        self.nameMap.append(line.split(" "))
+                self.startNode, self.endNode = fp.readline().replace("\n", "").split(" ")
+                self.startNode = self.startNode if self.startNode != 0 else None
+                self.endNode = self.endNode if self.endNode != 0 else None
+                self.description = fp.readline().replace("\n", "")
+
+    def saveInfo(self):
+        if(self.file != None):
+            with open(self.file, "w") as fp:
+                fp.write(f"MATRIX\n{len(self.nodes)}\n{self.vertices}\n{int(self.enableName)}\n")
+                for nodeId in range(len(self.nodes)):
+                    fp.write(f"{self.nodes[nodeId]}\n")
+                for nodeId in range(len(self.nodes)):
+                    fp.write(f"{' '.join(self.weightMap[nodeId])}\n")
+                for nodeId in range(len(self.nodes)):
+                    fp.write(f"{' '.join(self.connectMap[nodeId])}\n")
+                if(self.enableName):
+                    for nodeId in range(len(self.nodes)):
+                        fp.write(f"{' '.join(self.nameMap[nodeId])}\n")
+                fp.write(f"{self.startNode} {self.endNode}\n")
+                fp.write(f"{self.description}")
+        else:
+           raise Exception("Map Save Failed! File Is Not Set!") 
+
+    def debugPrintInfo(self):
+        print(self.file)
+        print(self.nodes)
+        print(self.weightMap)
+        print(self.connectMap)
+        print(self.nameMap)
+        print(self.startNode)
+        print(self.endNode)
+        print(self.description)
