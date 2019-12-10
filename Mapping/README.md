@@ -10,4 +10,4 @@
   - Kruskal’s algorithm (TODO)
   - Prim’s algorithm (TODO)
 
-## For Instructions On Using The Map, Check Out [MAP.md](Maps/MAP.md) (In the Maps folder.)
+## For Instructions On Using The Map, Check Out [Mags guide](Maps/README.md) (In the Maps folder.)
