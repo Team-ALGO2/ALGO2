@@ -12,4 +12,4 @@
   
 - Ford-Faherson (TODO)
 
-## For Instructions On Using The Map, Check Out [Mags guide](Maps/README.md) (In the Maps folder.)
+## For Instructions On Using The Map, Check Out [Maps guide](Maps/README.md) (In the Maps folder.)
