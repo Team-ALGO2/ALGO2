@@ -70,7 +70,7 @@ This is usually used with metadata and struct casting, but thats dangerous and a
 --------------------------
 NV                        |
 4                         | File Information / Headers
-5                         |
+6                         |
 --------------------------
 A                         |
 B                         | 
@@ -81,6 +81,7 @@ two A C 10                |
 three B C 10              | 
 four B D 10               |
 five B D 10               |
+six C D 10                |
 --------------------------
 A D                       | Extra Stored Data  
 Simple Example Map        |  
@@ -98,7 +99,7 @@ Simple Example Map        |
 ```
 MATRIX
 4
-5
+6
 1
 A
 B
@@ -178,7 +179,7 @@ This is usually used with metadata and struct casting, but thats dangerous and a
 --------------------------
 MATRIX                    |
 4                         | File Information / Headers
-5                         |
+6                         |
 1                         |
 --------------------------
 A                         |
