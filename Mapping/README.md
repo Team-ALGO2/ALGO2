@@ -9,3 +9,5 @@
 - Advanced Minimum Spanning Tree Formulas
   - Kruskal’s algorithm (TODO)
   - Prim’s algorithm (TODO)
+
+## For Instructions On Using The Map, Check Out [MAP.md](Maps/MAP.md) (In the Maps folder.)
