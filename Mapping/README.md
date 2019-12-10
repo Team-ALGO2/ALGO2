@@ -3,11 +3,13 @@
 
 ## Features:
 - Advanced Pathfinding Formulas
-  - Dijkstra’s algorithm (Default) (TODO)
-  - Bellman-Ford’s algorithm (TODO)
+  - Dijkstra’s algorithm (Default) (Doing)
+  - Bellman-Ford’s algorithm (Doing)
   - Floyd-Warshall’s algorithm (TODO)
 - Advanced Minimum Spanning Tree Formulas
-  - Kruskal’s algorithm (TODO)
-  - Prim’s algorithm (TODO)
+  - Kruskal’s algorithm (Doing)
+  - Prim’s algorithm (Doing)
+  
+- Ford-Faherson (TODO)
 
 ## For Instructions On Using The Map, Check Out [Mags guide](Maps/README.md) (In the Maps folder.)
