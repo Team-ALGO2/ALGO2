@@ -88,7 +88,7 @@ class MatrixMap:
         self.vertices = 0
         self.enableName = False
         self.weightMap = []
-        self.connectMap = []
+        self.connectivityMap = []
         self.nameMap = None
         self.startNode = None
         self.endNode = None
@@ -98,7 +98,7 @@ class MatrixMap:
 
     def generateEmptyMaps(self, size):
         self.weightMap = [[0 for i in range(size)] for j in range(size)]
-        self.connectMap = [[0 for i in range(size)] for j in range(size)]
+        self.connectivityMap = [[0 for i in range(size)] for j in range(size)]
         if(self.enableName):
            self.nameMap = [["0" for i in range(size)] for j in range(size)]
 
@@ -120,7 +120,7 @@ class MatrixMap:
                     self.weightMap.append([int(x) for x in line.split(" ")])
                 for nodeId in range(nodeNum):
                     line = fp.readline().replace("\n", "")
-                    self.connectMap.append([int(x) for x in line.split(" ")])
+                    self.connectivityMap.append([int(x) for x in line.split(" ")])
                 if(enableName):
                     self.nameMap = []
                     for nodeId in range(nodeNum):
@@ -140,7 +140,7 @@ class MatrixMap:
                 for nodeId in range(len(self.nodes)):
                     fp.write(f"{' '.join([str(x) for x in self.weightMap[nodeId]])}\n")
                 for nodeId in range(len(self.nodes)):
-                    fp.write(f"{' '.join([str(x) for x in self.connectMap[nodeId]])}\n")
+                    fp.write(f"{' '.join([str(x) for x in self.connectivityMap[nodeId]])}\n")
                 if(self.enableName):
                     for nodeId in range(len(self.nodes)):
                         fp.write(f"{' '.join(self.nameMap[nodeId])}\n")
@@ -153,7 +153,7 @@ class MatrixMap:
         print(self.file)
         print(self.nodes)
         print(self.weightMap)
-        print(self.connectMap)
+        print(self.connectivityMap)
         print(self.nameMap)
         print(self.startNode)
         print(self.endNode)
@@ -166,15 +166,15 @@ def convertMatrixToNodeVertex(matrix, file=None):
     NV.description = matrix.description
 
     vertexId = 0
-    for nodeFrom in range(len(matrix.nodes)):
-        NV.setNode(nodeFrom, matrix.nodes[nodeFrom])
-        for nodeTo in range(len(matrix.nodes)):
-            if(matrix.connectMap[nodeFrom][nodeTo] == 1):
+    for fromNode in range(len(matrix.nodes)):
+        NV.setNode(fromNode, matrix.nodes[fromNode])
+        for toNode in range(len(matrix.nodes)):
+            if(matrix.connectivityMap[fromNode][toNode] == 1):
                 if(matrix.enableName):
-                    vertexName = matrix.nameMap[nodeFrom][nodeTo]
+                    vertexName = matrix.nameMap[fromNode][toNode]
                 else:
                     vertexName = "NoName"
-                NV.setVertex(vertexId, vertexName, matrix.nodes[nodeFrom], matrix.nodes[nodeTo], matrix.weightMap[nodeFrom][nodeTo])
+                NV.setVertex(vertexId, vertexName, matrix.nodes[fromNode], matrix.nodes[toNode], matrix.weightMap[fromNode][toNode])
 
     return NV
 
@@ -193,7 +193,7 @@ def convertNodeVertexToMatrix(NV, file=None, enableName = True):
         fromNode = matrix.nodes.index(vertex.fromNode)
         toNode = matrix.nodes.index(vertex.toNode)
         matrix.weightMap[fromNode][toNode] = vertex.weight
-        matrix.connectMap[fromNode][toNode] = 1
+        matrix.connectivityMap[fromNode][toNode] = 1
         if(enableName):
             matrix.nameMap[fromNode][toNode] = vertex.name
 
