@@ -1,5 +1,6 @@
-import maplib
 import sys
+sys.path.append('../PyFile')
+import maplib
 
 test = maplib.MatrixMap(file = sys.argv[1], importData=True)
 
