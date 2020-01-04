@@ -1,5 +1,7 @@
 # Mapping Algorithms
 
+> NOTE: Mark Non-Working Algorithms With `x-` 
+
 ## Bellman-Ford
 Does the same thing as Dikjtra, but it can handle negative weigths. It can detect nagative cycles.  
 
