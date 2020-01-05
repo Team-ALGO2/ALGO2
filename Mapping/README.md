@@ -3,12 +3,13 @@
 
 ## Features:
 - Advanced Pathfinding Formulas
-  - Dijkstra’s algorithm (Default) (Doing)
-  - Bellman-Ford’s algorithm (Doing)
+  - Dijkstra’s algorithm (Default) (Working-ish)
+  - Bellman-Ford’s algorithm (Doing/Not Working)
   - Floyd-Warshall’s algorithm (TODO)
+
 - Advanced Minimum Spanning Tree Formulas
-  - Kruskal’s algorithm (Doing)
-  - Prim’s algorithm (Doing)
+  - Kruskal’s algorithm (Doing/Not Working)
+  - Prim’s algorithm (Doing/Not Working)
   
 - Ford-Faherson (TODO)
 
