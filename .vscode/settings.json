@@ -3,7 +3,8 @@
         "main.h": "c",
         "unistd.h": "c",
         "string.h": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "limits": "c"
     },
     "C_Cpp.dimInactiveRegions": false,
     "editor.autoClosingBrackets": "beforeWhitespace",
