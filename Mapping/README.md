@@ -4,7 +4,7 @@
 ## Features:
 - Advanced Pathfinding Formulas
   - Dijkstra’s algorithm (Default) (Working-ish)
-  - Bellman-Ford’s algorithm (Doing/Not Working)
+  - Bellman-Ford’s algorithm (Working-ish)
   - Floyd-Warshall’s algorithm (TODO)
 
 - Advanced Minimum Spanning Tree Formulas
