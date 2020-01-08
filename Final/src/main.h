@@ -42,6 +42,21 @@
 #include "utils/queue.c"
 #include "utils/tree.c"
 
+/* Clear command
+ * Windows: cls
+ * Everything else: clear
+ */ 
+
+#ifdef _WIN32
+    #define CLEAR "cls"
+#else
+    #define CLEAR "clear"
+#endif
+
+
+
+
+
 // Import Graphics
 // TODO - Add when done
 // #include "utils/graphics.c"
