@@ -5,9 +5,12 @@
 // basic defines
 #define HEIGHT  16
 #define WIDTH   5
-#define CNTSPIM 15 // Constant Spin (Minimum Spin Amount)
+#define CNTSPIM 4 // Constant Spin (Minimum Spin Amount)
 #define SPINDWN true // Spin Down (If False Spin Up)
-#define DEBUG   true
+#define DEBUG   false
+
+int analyseResults(char *values[WIDTH]);
+
 
 // some sleep thing i edited lol
 int msleep(long msec)
@@ -20,11 +23,11 @@ int msleep(long msec)
     return res;
 }
 
-int runSlots(int rotationtimes)
 //Since C Does Not Support Default Argument Values >:(
 // rotationflag > 0  -->  Use rotationtimes amount
 // rotationflag = 0  -->  Use Random Rotations
 // rotationflag < 0  -->  Infinate Rotations 
+int runSlots(int rotationtimes)
 {
     // seed the rand
     srand(time(NULL));
@@ -123,7 +126,7 @@ int runSlots(int rotationtimes)
         system("clear");
         if(DEBUG)
         {
-            printf("~~DEBUG~~ \nNumber Index: %d\nTimes Updated:%d\nTotal Updates:%d\nConstant Spin Time:%d\nRotation Speed:%lf\n\n\n", j, k, rotationtimes, CNTSPIM, rotateSpeed);
+            printf("~~DEBUG~~ \nNumber Index: %d\nTimes Updated:%d\nTotal Updates:%d\nMinimum Spin Time:%d\nRotation Speed:%lf\n\n\n", j, k, rotationtimes, CNTSPIM, rotateSpeed);
         }
 
         // print full array starting at index j
@@ -183,7 +186,7 @@ int runSlots(int rotationtimes)
 
     j++;
 
-    for (int k = 0; k < 100; k++)
+    for (int k = 0; k < 10; k++)
     {
         msleep(100);
         system("clear");
@@ -241,12 +244,44 @@ int runSlots(int rotationtimes)
         }
     }
 
-
-    printf("\n");
-    system("./a"); // go back to menu
+    printf("\n\n");
+    char *rolledChars[WIDTH];
+    for (int q = 0; q < WIDTH; q++)
+    {
+        //printf("%s", slotCharacters[rolledValues[q]]);
+        rolledChars[q] = slotCharacters[rolledValues[q]];
+    }
+    int total = analyseResults(rolledChars);
+    printf("You won %d points\n", total);
+    msleep(100*1000);
     return 0;
 }
 
+int analyseResults(char *values[WIDTH])
+{
+    int total = 0;
+    for (int i = 0; i < WIDTH; i++)
+    {
+        char *search = values[i];
+        int adding = 1;
+        for (int j = i+1; j < WIDTH; j++)
+        {
+            if (strcmp(search, values[j]) == 0)
+            {
+                adding++;
+            }
+        }
+        if (adding > 1)
+        {
+            for (int k = 1; k < adding + 1; k++)
+            {
+                total = total + (k*15);
+            }
+        }
+    }
+    printf("\n");
+    return total;
+}
 
 // Because C Does Not Like Redefinitions of Main, This Checks If Its Being Run Directly Or Is It Being Run By A Function Call
 #ifndef _MANUALRUN

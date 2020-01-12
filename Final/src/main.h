@@ -34,6 +34,8 @@
 #include <unistd.h>
 #include <time.h>
 #include <string.h>
+#include <ctype.h>
+#include <errno.h>
 
 // Import Utils
 #include "utils/math.c"
