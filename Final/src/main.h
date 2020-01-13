@@ -43,6 +43,7 @@
 #include "utils/convert.c"
 #include "utils/queue.c"
 #include "utils/tree.c"
+#include "utils/helpers.c"
 
 /* Clear command
  * Windows: cls
