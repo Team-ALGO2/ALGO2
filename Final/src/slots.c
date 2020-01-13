@@ -1,4 +1,5 @@
 #include "main.h"
+//#include "utils/csvhelper.c"
 
 // For Global Defines, Use Utils. For Local, Use Here.
 
@@ -11,6 +12,8 @@
 
 int analyseResults(char *values[WIDTH]);
 
+int total_spins = 0;
+int avg_spin;
 
 // some sleep thing i edited lol
 int msleep(long msec)
@@ -50,8 +53,26 @@ int runSlots(int rotationtimes)
     {
         infinate = false;
     }
-    
-    
+/*
+    if (!infinate)  // User must be signed in to play
+    {
+        char *user = getenv("SLOTS_USER");
+        
+        // Load user table into memory
+        CSV *csv;
+        csv = csv_create(0, 0);
+	    csv_open(csv, "users.csv");
+
+        if (user == NULL) // user not signed in
+        {
+            printf("User not signed in\n");
+            msleep(1 * 1000);
+        } else {
+            printf("User signed in as %s\n", user);
+            msleep(1 * 1000); 
+        }
+    }
+*/
     // Slot Characters And Colors
     char *slotCharacters[10] = {"$", "X", "#", "O", "?", "=", ">", "7", ".", "9"};
     char *slotColours[10] = {"\x001b[43m\x001b[30m", "\x1B[31m", "\x1B[34m", "\x1B[36m\x1B[35m", "\x001b[46m\x001b[30m", "\x001b[47m\x001b[37;1m\x001b[30m", "\x1B[35m", "\x1B[32m", "\x1B[33m", "\x1B[37m"};
@@ -253,7 +274,8 @@ int runSlots(int rotationtimes)
     }
     int total = analyseResults(rolledChars);
     printf("You won %d points\n", total);
-    msleep(100*1000);
+    msleep(5*1000);
+    runSlots(0);
     return 0;
 }
 
@@ -279,7 +301,11 @@ int analyseResults(char *values[WIDTH])
             }
         }
     }
-    printf("\n");
+    int all_sum = total_spins*avg_spin;
+    total_spins++;
+    all_sum = all_sum + total;
+    avg_spin = all_sum/total_spins;
+    printf("Average spin win after %d rolls: %d\n",total_spins, avg_spin);
     return total;
 }
 
