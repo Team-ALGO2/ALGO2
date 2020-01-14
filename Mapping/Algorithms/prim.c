@@ -1,14 +1,49 @@
 #include "main.h"
 
-#define MAX_SIZE 9
+#define MAX_SIZE 5
 
 int prim(int map[MAX_SIZE][MAX_SIZE], int cMap[MAX_SIZE][MAX_SIZE], int start){
-    int checked[MAX_SIZE] = {false};
-    checked[start] = true;
+	int cost = 0;
+	int lowestFrom = -1, lowestTo = -1, currentCost = INFINITY;
+    int visited[MAX_SIZE] = {false};
+    visited[start] = true;
+
+	for(int temp = 0; temp < MAX_SIZE-1; temp++){
+		lowestFrom = -1;
+		lowestTo = -1;
+		currentCost = INFINITY;
+		for(int from = 0; from < MAX_SIZE; from++){
+			//printf("From: %d\n", from);
+			if(visited[from]){
+				for(int to = 0; to < MAX_SIZE; to++){
+				//printf("To: %d\n", to);
+					if(cMap[from][to] && visited[to] == false){
+						//printf("Done\n");
+						if(map[from][to] < currentCost){
+							currentCost = map[from][to];
+							lowestFrom = from;
+							lowestTo = to;
+						}
+					}
+				}
+			}
+		}
+		if(lowestFrom != -1 && lowestTo != -1){
+			cost = cost + currentCost;
+			visited[lowestTo] = true;
+			printf("Vertex From %d to %d Cost %d (Now Cost %d)\n", lowestFrom, lowestTo, currentCost, cost);
+		}
+		else{
+			break;
+		}
+	}
+	printf("%d\n", cost);
 }
 
 int main(){
 
+
+	/*
 	int map[MAX_SIZE][MAX_SIZE] = {
 	{0, 4, 0, 0, 0, 0, 0, 8, 0}, 
 	{4, 0, 8, 0, 0, 0, 0, 11, 0}, 
@@ -30,6 +65,21 @@ int main(){
 	{0, 0, 0, 0, 0, 1, 0, 1, 1}, 
 	{1, 1, 0, 0, 0, 0, 1, 0, 1}, 
 	{0, 0, 1, 0, 0, 0, 1, 1, 0}};
+	*/
+
+	int map[MAX_SIZE][MAX_SIZE] = {
+		{0, 2, 0, 6, 0}, 
+        {2, 0, 3, 8, 5}, 
+        {0, 3, 0, 0, 7}, 
+        {6, 8, 0, 0, 9}, 
+        {0, 5, 7, 9, 0}};
+
+	int cMap[MAX_SIZE][MAX_SIZE] = {
+		{0, 1, 0, 1, 0}, 
+        {1, 0, 1, 1, 1}, 
+        {0, 1, 0, 0, 1}, 
+        {1, 1, 0, 0, 1}, 
+        {0, 1, 1, 1, 0}};
 
 	prim(map, cMap, 0);
 }
