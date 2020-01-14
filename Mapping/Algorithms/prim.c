@@ -8,17 +8,14 @@ int prim(int map[MAX_SIZE][MAX_SIZE], int cMap[MAX_SIZE][MAX_SIZE], int start){
     int visited[MAX_SIZE] = {false};
     visited[start] = true;
 
-	for(int temp = 0; temp < MAX_SIZE-1; temp++){
+	for(int i = 0; i < MAX_SIZE-1; i++){
 		lowestFrom = -1;
 		lowestTo = -1;
 		currentCost = INFINITY;
 		for(int from = 0; from < MAX_SIZE; from++){
-			//printf("From: %d\n", from);
 			if(visited[from]){
 				for(int to = 0; to < MAX_SIZE; to++){
-				//printf("To: %d\n", to);
 					if(cMap[from][to] && visited[to] == false){
-						//printf("Done\n");
 						if(map[from][to] < currentCost){
 							currentCost = map[from][to];
 							lowestFrom = from;
