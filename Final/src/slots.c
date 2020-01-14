@@ -1,13 +1,19 @@
 #include "main.h"
+//#include "utils/csvhelper.c"
 
 // For Global Defines, Use Utils. For Local, Use Here.
 
 // basic defines
 #define HEIGHT  16
 #define WIDTH   5
-#define CNTSPIM 15 // Constant Spin (Minimum Spin Amount)
+#define CNTSPIM 4 // Constant Spin (Minimum Spin Amount)
 #define SPINDWN true // Spin Down (If False Spin Up)
-#define DEBUG   true
+#define DEBUG   false
+
+int analyseResults(char *values[WIDTH]);
+
+int total_spins = 0;
+int avg_spin;
 
 // some sleep thing i edited lol
 int msleep(long msec)
@@ -20,11 +26,11 @@ int msleep(long msec)
     return res;
 }
 
-int runSlots(int rotationtimes)
 //Since C Does Not Support Default Argument Values >:(
 // rotationflag > 0  -->  Use rotationtimes amount
 // rotationflag = 0  -->  Use Random Rotations
 // rotationflag < 0  -->  Infinate Rotations 
+int runSlots(int rotationtimes)
 {
     // seed the rand
     srand(time(NULL));
@@ -47,8 +53,26 @@ int runSlots(int rotationtimes)
     {
         infinate = false;
     }
-    
-    
+/*
+    if (!infinate)  // User must be signed in to play
+    {
+        char *user = getenv("SLOTS_USER");
+        
+        // Load user table into memory
+        CSV *csv;
+        csv = csv_create(0, 0);
+	    csv_open(csv, "users.csv");
+
+        if (user == NULL) // user not signed in
+        {
+            printf("User not signed in\n");
+            msleep(1 * 1000);
+        } else {
+            printf("User signed in as %s\n", user);
+            msleep(1 * 1000); 
+        }
+    }
+*/
     // Slot Characters And Colors
     char *slotCharacters[10] = {"$", "X", "#", "O", "?", "=", ">", "7", ".", "9"};
     char *slotColours[10] = {"\x001b[43m\x001b[30m", "\x1B[31m", "\x1B[34m", "\x1B[36m\x1B[35m", "\x001b[46m\x001b[30m", "\x001b[47m\x001b[37;1m\x001b[30m", "\x1B[35m", "\x1B[32m", "\x1B[33m", "\x1B[37m"};
@@ -123,7 +147,7 @@ int runSlots(int rotationtimes)
         system("clear");
         if(DEBUG)
         {
-            printf("~~DEBUG~~ \nNumber Index: %d\nTimes Updated:%d\nTotal Updates:%d\nConstant Spin Time:%d\nRotation Speed:%lf\n\n\n", j, k, rotationtimes, CNTSPIM, rotateSpeed);
+            printf("~~DEBUG~~ \nNumber Index: %d\nTimes Updated:%d\nTotal Updates:%d\nMinimum Spin Time:%d\nRotation Speed:%lf\n\n\n", j, k, rotationtimes, CNTSPIM, rotateSpeed);
         }
 
         // print full array starting at index j
@@ -183,7 +207,7 @@ int runSlots(int rotationtimes)
 
     j++;
 
-    for (int k = 0; k < 100; k++)
+    for (int k = 0; k < 10; k++)
     {
         msleep(100);
         system("clear");
@@ -241,12 +265,49 @@ int runSlots(int rotationtimes)
         }
     }
 
-
-    printf("\n");
-    system("./a"); // go back to menu
+    printf("\n\n");
+    char *rolledChars[WIDTH];
+    for (int q = 0; q < WIDTH; q++)
+    {
+        //printf("%s", slotCharacters[rolledValues[q]]);
+        rolledChars[q] = slotCharacters[rolledValues[q]];
+    }
+    int total = analyseResults(rolledChars);
+    printf("You won %d points\n", total);
+    msleep(5*1000);
+    runSlots(0);
     return 0;
 }
 
+int analyseResults(char *values[WIDTH])
+{
+    int total = 0;
+    for (int i = 0; i < WIDTH; i++)
+    {
+        char *search = values[i];
+        int adding = 1;
+        for (int j = i+1; j < WIDTH; j++)
+        {
+            if (strcmp(search, values[j]) == 0)
+            {
+                adding++;
+            }
+        }
+        if (adding > 1)
+        {
+            for (int k = 1; k < adding + 1; k++)
+            {
+                total = total + (k*15);
+            }
+        }
+    }
+    int all_sum = total_spins*avg_spin;
+    total_spins++;
+    all_sum = all_sum + total;
+    avg_spin = all_sum/total_spins;
+    printf("Average spin win after %d rolls: %d\n",total_spins, avg_spin);
+    return total;
+}
 
 // Because C Does Not Like Redefinitions of Main, This Checks If Its Being Run Directly Or Is It Being Run By A Function Call
 #ifndef _MANUALRUN

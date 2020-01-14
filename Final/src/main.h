@@ -34,6 +34,8 @@
 #include <unistd.h>
 #include <time.h>
 #include <string.h>
+#include <ctype.h>
+#include <errno.h>
 
 // Import Utils
 #include "utils/math.c"
@@ -41,6 +43,22 @@
 #include "utils/convert.c"
 #include "utils/queue.c"
 #include "utils/tree.c"
+#include "utils/helpers.c"
+
+/* Clear command
+ * Windows: cls
+ * Everything else: clear
+ */ 
+
+#ifdef _WIN32
+    #define CLEAR "cls"
+#else
+    #define CLEAR "clear"
+#endif
+
+
+
+
 
 // Import Graphics
 // TODO - Add when done
