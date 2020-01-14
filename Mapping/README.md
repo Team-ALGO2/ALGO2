@@ -8,8 +8,8 @@
   - Floyd-Warshall’s algorithm (TODO)
 
 - Advanced Minimum Spanning Tree Formulas
-  - Kruskal’s algorithm (Doing/Not Working)
-  - Prim’s algorithm (Doing/Not Working)
+  - Kruskal’s algorithm (Working-ish)
+  - Prim’s algorithm (Working-ish)
   
 - Ford-Faherson (TODO)
 
