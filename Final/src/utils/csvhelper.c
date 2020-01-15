@@ -1,4 +1,15 @@
-//To Group: We may not use this! Implement Own Dataformat Plz!
+
+//
+//
+//
+//
+//
+// To Group: We may not use this! Implement Own Dataformat Plz!
+//
+//
+//
+//
+//
 
 /* From: https://www.rosettacode.org/wiki/CSV_data_manipulation#C */
 

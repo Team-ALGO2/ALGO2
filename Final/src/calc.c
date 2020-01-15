@@ -1,6 +1,6 @@
 #include "main.h"
 
-//a function to split the inputed string into idividual arguments
+//a function to split the inputed string into individual arguments
 queue parseString(char* inputString)
 {
     // queue for operators(stored by their ID) and number(stored as ints)
