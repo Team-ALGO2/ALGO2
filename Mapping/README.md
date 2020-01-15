@@ -5,7 +5,7 @@
 - Advanced Pathfinding Formulas
   - Dijkstra’s algorithm (Default) (Working-ish)
   - Bellman-Ford’s algorithm (Working-ish)
-  - Floyd-Warshall’s algorithm (TODO)
+  - Floyd-Warshall’s algorithm (Working-ish)
 
 - Advanced Minimum Spanning Tree Formulas
   - Kruskal’s algorithm (Working-ish)
