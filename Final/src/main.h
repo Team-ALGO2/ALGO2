@@ -19,7 +19,7 @@
 #define WHT   "\x1B[37m"
 #define RESET "\x1B[0m"
 
-// Min/Max Dunctions
+// Min/Max Functions
 #define MAX(x, y) (((x) > (y)) ? (x) : (y))
 #define MIN(x, y) (((x) < (y)) ? (x) : (y))
 
