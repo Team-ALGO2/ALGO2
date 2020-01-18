@@ -1,5 +1,5 @@
 #include "../main.h"
-//a general helper file for all misc tools
+//A general helper file for all misc tools
 
 //FOR CALC:
 int oppNum = 18; //this is the same value as defined in the first box of oppC
