@@ -9,9 +9,9 @@ char oppC[18][7] = {"+", "-", "*", "/", "%", "d%", "^", "sqrt", "!", "sin", "cos
 int isNum(char analyze)
 {
     if (analyze > 47 && analyze < 58)
-       {
-           return true;
-       }
+    {
+        return true;
+    }
     else 
     {
         return false;
@@ -29,4 +29,5 @@ int mathID(char* analyze)
             return i;
         }
     }
+    return -1;
 }
