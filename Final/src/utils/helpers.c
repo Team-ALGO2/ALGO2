@@ -1,4 +1,7 @@
-#include "../main.h"
+#include "../main.h" 
+// WARNING: self referencing 
+
+
 //A general helper file for all misc tools
 
 //FOR CALC:
@@ -30,4 +33,22 @@ int mathID(char* analyze)
         }
     }
     return -1;
+}
+// Trims stuff
+char* trimOperator(char* input)
+{
+    int i = 0;
+    int lenght = strlen(input);
+    char * out[MAX_INPUT_LENGHT];
+    for (i = 0; i < lenght && isNum(input[i]); i++)
+    {
+        if(isNum(input[i]))
+        {
+            printf("Num\n");
+        }
+    }
+
+    strcat(out, &input[i]);
+    // printf("out: %s\n", out);
+    return out;
 }
