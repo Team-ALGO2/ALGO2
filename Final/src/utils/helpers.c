@@ -1,4 +1,7 @@
-#include "../main.h"
+#include "../main.h" 
+// WARNING: self referencing 
+
+
 //A general helper file for all misc tools
 
 //FOR CALC:
@@ -9,9 +12,9 @@ char oppC[18][7] = {"+", "-", "*", "/", "%", "d%", "^", "sqrt", "!", "sin", "cos
 int isNum(char analyze)
 {
     if (analyze > 47 && analyze < 58)
-       {
-           return true;
-       }
+    {
+        return true;
+    }
     else 
     {
         return false;
@@ -29,4 +32,42 @@ int mathID(char* analyze)
             return i;
         }
     }
+    return -1;
+}
+
+// Trims stuff
+char* trimOperator(char* input)
+{
+    int i = 0;
+    int lenght = strlen(input);
+    char * out[MAX_INPUT_LENGHT];
+    for (i = 0; i < lenght && isNum(input[i]); i++)
+    {
+        if(isNum(input[i]))
+        {
+            printf("Num\n");
+        }
+    }
+
+    out = trim(input, i);
+    // printf("out: %s\n", out);
+    return out;
+}
+
+//removes the first "i" characters from the "input" string and returns the new string
+char* trim(char* input, int i)
+{
+    char* out = "";
+    strcat(out, &input[i]);
+    // printf("out: %s\n", out);
+    return out;
+}
+
+//converts nubmers in int form to char* of the numbers
+//EX: int i = 21312321 -> char* i = "21312321"
+char* unAtoi(int input)
+{
+    char* out = "";
+    char str[500]; 
+    return sprintf(str,"%d", input);
 }
