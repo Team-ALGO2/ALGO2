@@ -5,6 +5,7 @@ int tests_successful = 0;
 int tests_failed = 0;
 
 void log_test(int success);
+void test_math();
 
 void ASSERT_TRUE(int expression, char* name)
 {
@@ -79,10 +80,7 @@ int main(void)
     clock_t begin = clock();
 
     /* Begin Tests */
-    ASSERT_TRUE(true, "Make sure 1 is true");
-    ASSERT_FALSE(false, "Make sure 0 is false");
-    ASSERT_EQUAL_INT(5, 5, "5 is equal to 5");
-    ASSERT_EQUAL_STR("Hello", "Hello", "hello is the same");
+	test_math();
     /* End Tests */
 
     clock_t end = clock();
@@ -93,4 +91,18 @@ int main(void)
     printf("Ran %d tests in %lfs\n", tests_ran, time_spent);
     printf("======================================\n\n");
 
+}
+
+void test_math()
+{
+	printf("---------- Math Tests ----------\n");
+	ASSERT_EQUAL_INT(add(3, 5), 8, "Add");
+	ASSERT_EQUAL_INT(subtract(5, 2), 3, "Substract");
+	ASSERT_EQUAL_INT(multiply(6, 5), 30, "Multiply");
+	ASSERT_EQUAL_INT(divide(10, 2), 5, "Divide");
+	ASSERT_EQUAL_INT(mod(5, 2), 1, "Mod");
+	ASSERT_EQUAL_INT(powr(5, 2), 25, "Exponent");
+	ASSERT_EQUAL_INT(squarert(81), 9, "Squareroot");
+	ASSERT_EQUAL_INT(factorial(4), 24, "Factorial");
+	printf("-------- End Math Tests --------");
 }
