@@ -34,6 +34,7 @@ int mathID(char* analyze)
     }
     return -1;
 }
+
 // Trims stuff
 char* trimOperator(char* input)
 {
@@ -48,7 +49,25 @@ char* trimOperator(char* input)
         }
     }
 
+    out = trim(input, i);
+    // printf("out: %s\n", out);
+    return out;
+}
+
+//removes the first "i" characters from the "input" string and returns the new string
+char* trim(char* input, int i)
+{
+    char* out = "";
     strcat(out, &input[i]);
     // printf("out: %s\n", out);
     return out;
+}
+
+//converts nubmers in int form to char* of the numbers
+//EX: int i = 21312321 -> char* i = "21312321"
+char* unAtoi(int input)
+{
+    char* out = "";
+    char str[500]; 
+    return sprintf(str,"%d", input);
 }

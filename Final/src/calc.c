@@ -1,46 +1,38 @@
 #include "main.h"
 
-//a function to split the inputed string into individual arguments
-queue parseString(char* inputString)
+//a function to split the inputed string into individual arguments in a stack(should be in infix notation)
+stack parseString(char* inputString)
 {
-    // queue for operators(stored by their ID) and number(stored as ints)
-    queue numberQ = {-1, -1, {0}};
-    queue oppQ = {-1, -1, {0}};
-    int len = strlen(inputString);
-    int isOpp = false;
-
-    char numberC[10][2] = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
-    char oppC[18][7] = {"+", "-", "*", "/", "%", "d%", "^", "sqrt", "!", "sin", "cos", "tan", "sineh", "cosineh", "aCb", "aPb", "(", ")"};
-    // iterate over the number of characters inputed to be parsed
-    for (int i = 0; i < len; i++)
+    stack out = {-1, {0}};
+    //itterate over the arguments of the input string
+    //length needs to be checked every time since we are changeing the size of the string during the loop
+    for(int i = 0; i < strlen(inputString); i++)
     {
-       if (isNum(inputString[i]))
-       {
-           if (isOpp)
-           {
-               isOpp = false;
-               printf("%s was detected as an opperand (ID = %d) \n", oppC, mathID(oppC));
-                queue_enqueue(&oppQ, mathID(oppC));
-           }
-           printf("%c was detected as an int\n", inputString[i]);
-           queue_enqueue(&numberQ, inputString[i]); //if i am correct we dont need atoi because inputing a char as an int will automaticaly convert
-       } else {
-           // go forward until next number to get full operator
-           //get the string of the opperator
-           if (!isOpp)
-           {
-               
-           }
-           char* opp = ")";
-           
-       }
+        if(isNum(inputString[i]))
+        {
+            printf("%s is a number\n", unAtoi(atoi(inputString)));
+            //push to the infix stack here
+            inputString = trimOperator(inputString);
+        }
+        else
+        {
+            printf("%c is an opperator", inputString[i]);
+            //push to the infix stack here
+        }
+        
     }
-    return numberQ;
+    printf("Done parsing\n");
+    return out;
+}
+
+//a funtion the will translate an infix stack of opperands and opperators into a stack in postfix order
+stack infixToPostfix(stack input)
+{
+    //TODO
 }
 /*
 int main(void)
 {
     char *str = "3+8*(sqrt8)";
     parseString(str);
-}
-*/
+} 
