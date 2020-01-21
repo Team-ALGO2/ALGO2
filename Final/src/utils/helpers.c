@@ -54,9 +54,20 @@ char* trimOperator(char* input)
     return out;
 }
 
+//removes the first "i" characters from the "input" string and returns the new string
 char* trim(char* input, int i)
 {
+    char* out = "";
     strcat(out, &input[i]);
     // printf("out: %s\n", out);
     return out;
+}
+
+//converts nubmers in int form to char* of the numbers
+//EX: int i = 21312321 -> char* i = "21312321"
+char* unAtoi(int input)
+{
+    char* out = "";
+    char str[500]; 
+    return sprintf(str,"%d", input);
 }
