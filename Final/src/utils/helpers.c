@@ -34,6 +34,7 @@ int mathID(char* analyze)
     }
     return -1;
 }
+
 // Trims stuff
 char* trimOperator(char* input)
 {
@@ -48,6 +49,13 @@ char* trimOperator(char* input)
         }
     }
 
+    out = trim(input, i);
+    // printf("out: %s\n", out);
+    return out;
+}
+
+char* trim(char* input, int i)
+{
     strcat(out, &input[i]);
     // printf("out: %s\n", out);
     return out;
