@@ -19,8 +19,8 @@ queue parseString(char* inputString)
            if (isOpp)
            {
                isOpp = false;
-               printf("%s was detected as an opperand (ID = %d) \n", opp, mathID(opp));
-                queue_enqueue(&oppQ, mathID(opp));
+               printf("%s was detected as an opperand (ID = %d) \n", oppC, mathID(oppC));
+                queue_enqueue(&oppQ, mathID(oppC));
            }
            printf("%c was detected as an int\n", inputString[i]);
            queue_enqueue(&numberQ, inputString[i]); //if i am correct we dont need atoi because inputing a char as an int will automaticaly convert
@@ -35,10 +35,12 @@ queue parseString(char* inputString)
            
        }
     }
+    return numberQ;
 }
-
+/*
 int main(void)
 {
     char *str = "3+8*(sqrt8)";
     parseString(str);
 }
+*/
