@@ -4,6 +4,9 @@ dir = Final/src
 out = bin
 testdir = Final/tests
 
+cc = cc # set compiler, change to cc = gcc if using gcc
+linkers = -lssl -lcrypto -lsqlite3 -lncurses # You can get rid of specific linkers if you dont have th elibray
+
 errors = -w  	# How to deal with errors: -fsyntax-only (check only syntax); -Werror (make warnings into errors); -w (ignore all warning)
 
 create_dir:
@@ -12,8 +15,7 @@ create_dir:
 	@mkdir bin
 
 compile:
-	@cc ${dir}/slots.c -o ${out}/slots ${errors}
-	@cc ${dir}/users.c -o ${out}/users -lssl -lcrypto -lsqlite3 ${errors}
-	@cc ${dir}/calclauncher.c -o ${out}/calclauncher -lncurses ${errors}
+	@${cc} ${dir}/slots.c -o ${out}/slots ${linkers} ${errors}
+	@${cc} ${dir}/calclauncher.c -o ${out}/calclauncher ${linkers} ${errors}
 
-	@cc ${testdir}/test.c -o ${out}/test ${errors}
+	@${cc} ${testdir}/test.c -o ${out}/test ${errors}
