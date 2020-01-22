@@ -1,0 +1,151 @@
+/* Compiple with: $cc users.c -o b -lssl -lcrypto -lncurses -lsqlite3 */
+#include <sqlite3.h>
+#include <stdio.h>
+#include <openssl/sha.h>
+#include "main.h"
+
+int callback(void *NotUsed, int argc, char **argv, 
+                    char **azColName);
+
+void create_user(sqlite3 *db, char * name, const unsigned char password[64]);
+void sign_in(sqlite3 *db, char * name, const unsigned char password[64]);
+int is_signed_in(sqlite3 *db, char * username);
+
+char * name;
+unsigned char password[64];
+
+int main(void) 
+{
+    sqlite3 *db;    // database object
+    sqlite3_stmt *res;  // SQL statement
+    
+    int rc = sqlite3_open("users.db", &db);
+    if (rc != SQLITE_OK) {
+        
+        fprintf(stderr, "Cannot open database: %s\n", sqlite3_errmsg(db));
+        sqlite3_close(db);
+        
+        return 1;
+    }
+    
+    rc = sqlite3_prepare_v2(db, "SELECT SQLITE_VERSION()", -1, &res, 0);    
+    
+    if (rc != SQLITE_OK) {
+        
+        fprintf(stderr, "Failed to fetch data: %s\n", sqlite3_errmsg(db));
+        sqlite3_close(db);
+        
+        return 1;
+    }    
+    
+    rc = sqlite3_step(res);
+    
+    if (rc == SQLITE_ROW) {
+        printf("SQLITE3 version: %s\n", sqlite3_column_text(res, 0));
+    }
+
+    create_user(db, "usrsads", "helo");
+
+    sign_in(db, "usr", "hello");
+
+    is_signed_in(db, "usr");
+    is_signed_in(db, "test_ur");
+
+    sqlite3_finalize(res);
+    sqlite3_close(db);
+    
+    return 0;
+}
+
+int callback(void *NotUsed, int argc, char **argv, 
+                    char **azColName) {
+    
+    NotUsed = 0;
+    
+    for (int i = 0; i < argc; i++) {
+
+        printf("%s = %s\n", azColName[i], argv[i]);
+    }
+    
+    printf("\n\n\n");
+    
+    return 0;
+}
+
+void create_user(sqlite3 *db, char * name, const unsigned char password[64])
+{
+    unsigned char *d = SHA256(password, strlen(password), 0);
+    int rc;
+    sqlite3_stmt *res;
+    int ret;
+    char * statement[256];
+    printf("Adding user: %s\nWith password: %s\n", name, d);
+    sprintf(statement, "INSERT INTO users (username, password_hash) VALUES (\"%s\", \"%s\");", name, d);
+    printf("Prepared statement: %s\n", statement);
+
+    rc = sqlite3_prepare_v2(db, statement, 256, &res, 0);
+    if (rc != SQLITE_OK) // SQLITE_DONE
+    {
+        printf(RED"Error preparing statement %d: \"%s\"\n"RESET, ret, sqlite3_errmsg(db));
+    } else {
+        printf(GRN"Successfuly prepared statement\n"RESET);
+    }
+
+    ret = sqlite3_step(res);
+    if (ret != SQLITE_DONE) // SQLITE_DONE
+    {
+        printf(RED"Error inserting user - error code %d: \"%s\"\n"RESET, ret, sqlite3_errmsg(db));
+    } else {
+        printf(GRN"Success adding user\n"RESET);
+    }
+}
+
+void sign_in(sqlite3 *db, char * username, const unsigned char Upassword[64])
+{
+    char * sql[256];
+    sprintf(sql, "UPDATE users SET signed_in=true WHERE (username = \"%s\");", username);
+    printf("%s\n", sql);
+    char * err_msg;
+    int rc = sqlite3_exec(db, sql, callback, 0, &err_msg);
+    printf("%d\n", rc);
+    printf("%s\n", err_msg);
+} 
+
+void sign_out(sqlite3 *db, char * username, const unsigned char Upassword[64])
+{
+    char * sql[256];
+    sprintf(sql, "UPDATE users SET signed_in=false WHERE (username = \"%s\");", username);
+    printf("%s\n", sql);
+    char * err_msg;
+    int rc = sqlite3_exec(db, sql, callback, 0, &err_msg);
+    printf("%d\n", rc);
+    printf("%s\n", err_msg);
+} 
+
+int is_signed_in(sqlite3 *db, char * username)
+{
+    sqlite3_stmt *res;
+    char * sql[256];
+    sprintf(sql, "SELECT \"signed_in\" FROM \"users\" WHERE (\"username\" = \"%s\");", username);
+    printf("%s\n", sql);
+
+    char * err_msg;
+    int rc = sqlite3_prepare_v2(db, sql, -1, &res, 0);
+
+    rc = sqlite3_step(res);
+    
+    char * result = sqlite3_column_text(res, 0);
+
+    if (rc == SQLITE_ROW) {
+        printf("Result: %s\n", result);
+    }
+
+    if (strcmp(result, "1") == 0)
+    {
+        return true;
+    } else {
+        return false;
+    }
+
+}
+ 
