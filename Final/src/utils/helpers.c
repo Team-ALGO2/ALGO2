@@ -1,7 +1,3 @@
-#include "../main.h" 
-// WARNING: self referencing 
-
-
 //A general helper file for all misc tools
 
 //FOR CALC:
