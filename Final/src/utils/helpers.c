@@ -40,7 +40,7 @@ char* trimOperator(char* input)
 {
     int i = 0;
     int lenght = strlen(input);
-    char * out[MAX_INPUT_LENGHT];
+    char* out = "";
     for (i = 0; i < lenght && isNum(input[i]); i++)
     {
         if(isNum(input[i]))
@@ -68,6 +68,6 @@ char* trim(char* input, int i)
 char* unAtoi(int input)
 {
     char* out = "";
-    char str[500]; 
+    char* str; 
     return sprintf(str,"%d", input);
 }

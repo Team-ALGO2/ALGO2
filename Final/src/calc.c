@@ -25,14 +25,26 @@ stack parseString(char* inputString)
     return out;
 }
 
+stack infixToPostfix(stack input)
+{
+    stack out = {-1, {0}};
+    //set length to the number of inputs in the stack
+    //int length = 
+    for(i = 0; i < length - 1; i++)
+    {
+
+    }
+}
+
 //a funtion the will translate an infix stack of opperands and opperators into a stack in postfix order
 stack infixToPostfix(stack input)
 {
     //TODO
 }
-
+/*
 int main(void)
 {
     char *str = "3+8*(sqrt8)";
     parseString(str);
 } 
+*/

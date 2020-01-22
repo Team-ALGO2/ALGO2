@@ -9,6 +9,8 @@
 # Unignore all dirs
 !*/
 
+!Makefile
+
 ### Above combination will ignore all files without extension ###
 
 #run File - its my (edward) compiler output
@@ -20,6 +22,7 @@ run
 
 #ignores vscode configs
 .vscode
+.vscode/
 
 #ignore personal python enviroment
 Python
@@ -28,4 +31,7 @@ Python
 __pycache__
 
 #Ignore Testing Map Files
-ignore.map
+ignore.map 
+
+
+.vscode/settings.json

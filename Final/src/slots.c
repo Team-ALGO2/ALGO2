@@ -275,7 +275,6 @@ int runSlots(int rotationtimes)
     int total = analyseResults(rolledChars);
     printf("You won %d points\n", total);
     msleep(5*1000);
-    runSlots(0);
     return 0;
 }
 
@@ -305,7 +304,6 @@ int analyseResults(char *values[WIDTH])
     total_spins++;
     all_sum = all_sum + total;
     avg_spin = all_sum/total_spins;
-    printf("Average spin win after %d rolls: %d\n",total_spins, avg_spin);
     return total;
 }
 
