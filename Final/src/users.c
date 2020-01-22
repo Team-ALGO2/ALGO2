@@ -9,7 +9,12 @@ int callback(void *NotUsed, int argc, char **argv,
 
 void create_user(sqlite3 *db, char * name, const unsigned char password[64]);
 void sign_in(sqlite3 *db, char * name, const unsigned char password[64]);
+void sign_out(sqlite3 *db, char * username, const unsigned char Upassword[64]);
 int is_signed_in(sqlite3 *db, char * username);
+int user_balance(sqlite3 *db, char * username);
+void set_user_balance(sqlite3 *db, char * username, int bal);
+int callback(void *NotUsed, int argc, char **argv, char **azColName);
+
 
 char * name;
 unsigned char password[64];
@@ -51,6 +56,12 @@ int main(void)
     is_signed_in(db, "usr");
     is_signed_in(db, "test_ur");
 
+    set_user_balance(db, "usr", 1000);
+    user_balance(db, "usr");
+    set_user_balance(db, "usr", 10);
+    user_balance(db, "usr");
+
+
     sqlite3_finalize(res);
     sqlite3_close(db);
     
@@ -64,7 +75,7 @@ int callback(void *NotUsed, int argc, char **argv,
     
     for (int i = 0; i < argc; i++) {
 
-        printf("%s = %s\n", azColName[i], argv[i]);
+        // printf("%s = %s\n", azColName[i], argv[i]);
     }
     
     printf("\n\n\n");
@@ -79,9 +90,9 @@ void create_user(sqlite3 *db, char * name, const unsigned char password[64])
     sqlite3_stmt *res;
     int ret;
     char * statement[256];
-    printf("Adding user: %s\nWith password: %s\n", name, d);
+ //   printf("Adding user: %s\nWith password: %s\n", name, d);
     sprintf(statement, "INSERT INTO users (username, password_hash) VALUES (\"%s\", \"%s\");", name, d);
-    printf("Prepared statement: %s\n", statement);
+    printf(BLU"%s\n"RESET, statement);
 
     rc = sqlite3_prepare_v2(db, statement, 256, &res, 0);
     if (rc != SQLITE_OK) // SQLITE_DONE
@@ -104,22 +115,22 @@ void sign_in(sqlite3 *db, char * username, const unsigned char Upassword[64])
 {
     char * sql[256];
     sprintf(sql, "UPDATE users SET signed_in=true WHERE (username = \"%s\");", username);
-    printf("%s\n", sql);
+    printf(BLU"%s\n"RESET, sql);
     char * err_msg;
     int rc = sqlite3_exec(db, sql, callback, 0, &err_msg);
-    printf("%d\n", rc);
-    printf("%s\n", err_msg);
+  //  printf("%d\n", rc);
+  //  printf("%s\n", err_msg);
 } 
 
 void sign_out(sqlite3 *db, char * username, const unsigned char Upassword[64])
 {
     char * sql[256];
     sprintf(sql, "UPDATE users SET signed_in=false WHERE (username = \"%s\");", username);
-    printf("%s\n", sql);
+    printf(BLU"%s\n"RESET, sql);
     char * err_msg;
     int rc = sqlite3_exec(db, sql, callback, 0, &err_msg);
-    printf("%d\n", rc);
-    printf("%s\n", err_msg);
+ //   printf("%d\n", rc);
+  //  printf("%s\n", err_msg);
 } 
 
 int is_signed_in(sqlite3 *db, char * username)
@@ -127,7 +138,7 @@ int is_signed_in(sqlite3 *db, char * username)
     sqlite3_stmt *res;
     char * sql[256];
     sprintf(sql, "SELECT \"signed_in\" FROM \"users\" WHERE (\"username\" = \"%s\");", username);
-    printf("%s\n", sql);
+    printf(BLU"%s\n"RESET, sql);
 
     char * err_msg;
     int rc = sqlite3_prepare_v2(db, sql, -1, &res, 0);
@@ -137,7 +148,7 @@ int is_signed_in(sqlite3 *db, char * username)
     char * result = sqlite3_column_text(res, 0);
 
     if (rc == SQLITE_ROW) {
-        printf("Result: %s\n", result);
+        printf("Signed in Result: %s\n", result);
     }
 
     if (strcmp(result, "1") == 0)
@@ -149,3 +160,36 @@ int is_signed_in(sqlite3 *db, char * username)
 
 }
  
+int user_balance(sqlite3 *db, char * username)
+{
+    sqlite3_stmt *res;
+    char * sql[256];
+    sprintf(sql, "SELECT \"user_balance\" FROM \"users\" WHERE (\"username\" = \"%s\");", username);
+    printf(BLU"%s\n"RESET, sql);
+
+    char * err_msg;
+    int rc = sqlite3_prepare_v2(db, sql, -1, &res, 0);
+
+    rc = sqlite3_step(res);
+    
+    char * result = sqlite3_column_text(res, 0);
+
+    if (rc == SQLITE_ROW) {
+        printf("bal Result: %s\n", result);
+    }
+
+    return result;
+
+}
+ 
+void set_user_balance(sqlite3 *db, char * username, int bal)
+{
+    char * sql[256];
+    sprintf(sql, "UPDATE users SET user_balance=%d WHERE (username = \"%s\");", bal, username);
+    printf(BLU"%s\n"RESET, sql);
+    char * err_msg;
+    int rc = sqlite3_exec(db, sql, callback, 0, &err_msg);
+  //  printf("%d\n", rc);
+  //  printf("%s\n", err_msg);
+
+}
