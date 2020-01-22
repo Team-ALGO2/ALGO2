@@ -9,6 +9,8 @@
 # Unignore all dirs
 !*/
 
+!Makefile
+
 ### Above combination will ignore all files without extension ###
 
 #run File - its my (edward) compiler output
