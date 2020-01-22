@@ -1,4 +1,4 @@
-#include "../src/main.h"
+#include "src/main.h"
 
 int tests_ran = 0;
 int tests_successful = 0;
