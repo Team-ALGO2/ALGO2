@@ -2,7 +2,7 @@ all: create_dir compile
 
 dir = Final/src
 out = bin
-testdir = Final/tests
+testdir = Final
 
 cc = cc # set compiler, change to cc = gcc if using gcc
 linkers = -lssl -lcrypto -lsqlite3 -lncurses # You can get rid of specific linkers if you dont have th elibray
@@ -18,4 +18,4 @@ compile:
 	@${cc} ${dir}/slots.c -o ${out}/slots ${linkers} ${errors}
 	@${cc} ${dir}/calclauncher.c -o ${out}/calclauncher ${linkers} ${errors}
 
-	@${cc} ${testdir}/test.c -o ${out}/test ${errors}
+	@${cc} ${testdir}/unittest.c -o ${out}/test ${errors}
