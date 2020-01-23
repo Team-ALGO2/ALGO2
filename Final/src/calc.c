@@ -25,6 +25,7 @@ stack parseString(char* inputString)
     return out;
 }
 
+//to convert from an inputed string to postfix notation (output is a stack of all the opperands and opperators)
 stack infixToPostfix(char* input)
 {
     char* expression = input;
@@ -47,17 +48,10 @@ stack infixToPostfix(char* input)
             {
                 /* code */
             }
-            
         }
-        
     }
 }
 
-//a funtion the will translate an infix stack of opperands and opperators into a stack in postfix order
-stack infixToPostfix(stack input)
-{
-    //TODO
-}
 /*
 int main(void)
 {
