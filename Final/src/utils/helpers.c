@@ -7,7 +7,7 @@
 //FOR CALC:
 int oppNum = 5; //this is the same value as defined in the first box of oppC
 char numberC[10][2] = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
-char oppC[5][1] = {"+", "-", "*", "/", "%"};
+char oppC[5] = {"+-*/%"};
 
 int isNum(char analyze)
 {
@@ -22,12 +22,12 @@ int isNum(char analyze)
 }
 
 //FOR CALC:
-int mathID(char* analyze)
+int mathID(char analyze)
 {
     for (int i = 0; i < oppNum; i++)
     {
         
-        if (strcmp(analyze, oppC[i]) == 0)
+        if (analyze == oppC[i])
         {
             return i;
         }
@@ -39,8 +39,8 @@ int mathID(char* analyze)
 char* trim(char* input, int i)
 {
     char* out = "";
-    strcat(out, &input[i]);
-    // printf("out: %s\n", out);
+    strcat(out, input[i]);
+    printf("out: %s\n", out);
     return out;
 }
 
@@ -53,13 +53,7 @@ char* trimOperator(char* input)
     int lenght = strlen(input);
     char* out = "";
     for (i = 0; i < lenght && isNum(input[i]); i++)
-    {
-        if(isNum(input[i]))
-        {
-            printf("Num\n");
-        }
-    }
-
+    {}
     out = trim(input, i);
     // printf("out: %s\n", out);
     return out;
@@ -72,7 +66,8 @@ char* unAtoi(int input)
 {
     char* out = "";
     char* str; 
-    return sprintf(str,"%d", input);
+    sprintf(str,"%d", input);
+    return str;
 }
 
 //a function to see if which opperator has presedce
@@ -84,8 +79,8 @@ int oppPres(char left, char right)
     //idc about the spagehti you are about to read idk how to make it do a loop with 2 different inputs
     //https://tenor.com/view/fullhouse-ohboy-spagheti-michelle-gif-4870369
     
-    //for BEDMAS 
-    //B = 3
+    //for PEDMAS 
+    //P = 3
     //E = 2
     //D = 1
     //M = 1
