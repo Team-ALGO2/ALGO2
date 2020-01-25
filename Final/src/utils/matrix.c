@@ -1,6 +1,6 @@
 //this is a copy of the code from dijkstra_matrix and i just made this so we dont need to copy past the same matrix in code over and over again
-#include "../Algorithms/main.h"
 //i need to figure out how to imput the adress to the 2d array to that i can write to the absolute end point
+//Edward: Moved It To Main Utils
 int getMatrix(int *matrix[][])
 {
     int i,j,total_cost, n;

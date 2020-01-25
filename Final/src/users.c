@@ -1,4 +1,7 @@
 /* Compiple with: $cc users.c -o b -lssl -lcrypto -lncurses -lsqlite3 */
+
+//TODO: Rewrite Sqlite Open Code
+//(So its not plagiarized AHEM!)
 #include <sqlite3.h>
 #include <stdio.h>
 #include <openssl/sha.h>

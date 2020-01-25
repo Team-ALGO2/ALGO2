@@ -8,7 +8,6 @@
 #define WIDTH   5
 #define CNTSPIM 4 // Constant Spin (Minimum Spin Amount)
 #define SPINDWN true // Spin Down (If False Spin Up)
-#define DEBUG   false
 
 int analyseResults(char *values[WIDTH]);
 
@@ -151,10 +150,10 @@ int runSlots(int rotationtimes)
         // wait/clear
         msleep(rotateSpeed);
         system("clear");
-        if(DEBUG)
-        {
-            printf("~~DEBUG~~ \nNumber Index: %d\nTimes Updated:%d\nTotal Updates:%d\nMinimum Spin Time:%d\nRotation Speed:%lf\n\n\n", j, k, rotationtimes, CNTSPIM, rotateSpeed);
-        }
+        //Printing Debug Values
+        #ifdef DEBUG
+        printf("~~DEBUG~~ \nNumber Index: %d\nTimes Updated:%d\nTotal Updates:%d\nMinimum Spin Time:%d\nRotation Speed:%lf\n\n\n", j, k, rotationtimes, CNTSPIM, rotateSpeed);
+        #endif
 
         // print full array starting at index j
         for (int i = 0; i < HEIGHT; i++)
@@ -314,7 +313,7 @@ int analyseResults(char *values[WIDTH])
 }
 
 // Because C Does Not Like Redefinitions of Main, This Checks If Its Being Run Directly Or Is It Being Run By A Function Call
-#ifndef _MANUALRUN
+#ifndef _AUTORUN
 int main(int argc, char *argv[]){
     if (argc > 1)
     {
@@ -333,4 +332,4 @@ int main(int argc, char *argv[]){
     }
 }
 
-#endif // _MANUALRUN
+#endif // _AUTORUN
