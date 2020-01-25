@@ -212,7 +212,7 @@ class MatrixMap:
         print(self.description)
 
 #Convert From Matrix To Node Vertex
-def convertMatrixToNodeVertex(matrix, file=None):
+def convertMatrixToNodeVertex(matrix, file=None, nameScheme=None):
     #Create Node-Vertex Map Object
     NV = NVMap(file = file)
     #Save Start And End Nodes
@@ -235,7 +235,12 @@ def convertMatrixToNodeVertex(matrix, file=None):
                     vertexName = matrix.nameMap[fromNode][toNode]
                 else:
                     #Generate Name
-                    vertexName = "Vertex_" + str(vertexId)
+                    if(nameScheme == None):
+                        vertexName = "Vertex_" + str(vertexId)
+                    elif("#" in str(nameScheme)):
+                        vertexName = str(nameScheme).replace("#", str(vertexId))
+                    else:
+                        vertexName = str(nameScheme) + str(vertexId)
                 #Save Vertex
                 NV.setVertex(vertexId, vertexName, matrix.nodes[fromNode], matrix.nodes[toNode], matrix.weightMap[fromNode][toNode])
                 #Increment VertexId
