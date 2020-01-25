@@ -1,5 +1,5 @@
 #include "main.h"
-//#include "utils/csvhelper.c"
+#include "users.c"
 
 // For Global Defines, Use Utils. For Local, Use Here.
 
@@ -14,6 +14,8 @@ int analyseResults(char *values[WIDTH]);
 
 int total_spins = 0;
 int avg_spin;
+
+char * user = "";
 
 // some sleep thing i edited lol
 int msleep(long msec)
@@ -53,26 +55,30 @@ int runSlots(int rotationtimes)
     {
         infinate = false;
     }
-/*
-    if (!infinate)  // User must be signed in to play
-    {
-        char *user = getenv("SLOTS_USER");
-        
-        // Load user table into memory
-        CSV *csv;
-        csv = csv_create(0, 0);
-	    csv_open(csv, "users.csv");
 
-        if (user == NULL) // user not signed in
+    if (!infinate && (strcmp(user, "") == 0))  // User must be signed in to play
+    {
+        char * sel_user;
+        char * d_password;
+        sqlite3 * db = create_db();
+        printf("Sign in as: ");
+        scanf("%s", sel_user);
+        printf("Password: ");
+        scanf("%s", &d_password);
+        printf(".\n");
+        printf("Signing in %s with %s\n", sel_user, &d_password);
+
+        sign_in(db, sel_user, &d_password);
+
+        if (is_signed_in(db, sel_user))
         {
-            printf("User not signed in\n");
-            msleep(1 * 1000);
+            printf("Successful log in!\n");
         } else {
-            printf("User signed in as %s\n", user);
-            msleep(1 * 1000); 
+            printf("Wrong username or password. Please try again or sign up.\n");
         }
     }
-*/
+
+    msleep(10000);
     // Slot Characters And Colors
     char *slotCharacters[10] = {"$", "X", "#", "O", "?", "=", ">", "7", ".", "9"};
     char *slotColours[10] = {"\x001b[43m\x001b[30m", "\x1B[31m", "\x1B[34m", "\x1B[36m\x1B[35m", "\x001b[46m\x001b[30m", "\x001b[47m\x001b[37;1m\x001b[30m", "\x1B[35m", "\x1B[32m", "\x1B[33m", "\x1B[37m"};
