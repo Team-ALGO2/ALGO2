@@ -172,7 +172,7 @@ int runCalc(int mode)
 }
 
 // Because C Does Not Like Redefinitions of Main, This Checks If Its Being Run Directly Or Is It Being Run By A Function Call
-#ifndef _MANUALRUN
+#ifndef _AUTORUN
 int main(int argc, char *argv[]){
     //checks that the correct number of comand line arguments were parsed
     if (argc > 2)
@@ -213,4 +213,4 @@ int main(int argc, char *argv[]){
         }
 }
 
-#endif // _MANUALRUN
+#endif // _AUTORUN
