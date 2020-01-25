@@ -78,7 +78,7 @@ double squarert( double b){
 
         sqrt = ( b/temp + temp) / 2;
     }
-   return b;
+   return sqrt;
 }
 
 // ! id(8)
@@ -171,4 +171,3 @@ long aChooseB(long n, long k){
 long aPermB(long n, long r){
     return (factorial(n))/factorial(n-r);
 }
-

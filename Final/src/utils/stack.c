@@ -80,7 +80,11 @@ int stack_isFull(stack *s)
     {
         return false;
     }
-    
+}
+
+int stack_length(stack *s)
+{   
+    return s->counter;
 }
 
 int stack_top(stack *s)
