@@ -52,11 +52,15 @@
 #define STACK_EMPTY   0
 #define STACK_FULL    0
 
+//Custom Stack Structire
+//counter -> The "pointer" of the top of the graph
+//A -> The Array where the stack elements will be stored
 typedef struct{
     int counter;
     int A[STACK_MAX_LENGTH];
 } stack;
 
+//Check if the stack is empty by checking the counter
 int stack_isEmpty(stack *s)
 {
     if (s->counter < 0)
@@ -70,6 +74,7 @@ int stack_isEmpty(stack *s)
     
 }
 
+//Check if the stack is full by checking if the counter is one under the Max Length (STACK_MAX_LENGTH)
 int stack_isFull(stack *s)
 {   
     if (s->counter + 1 >= STACK_MAX_LENGTH)
@@ -82,11 +87,13 @@ int stack_isFull(stack *s)
     }
 }
 
+//Getting the current length of the stack
 int stack_length(stack *s)
 {   
     return s->counter;
 }
 
+//Getting the top element of stack
 int stack_top(stack *s)
 {
     if (!stack_isEmpty(s))
@@ -101,6 +108,7 @@ int stack_top(stack *s)
     
 }
 
+//Pushing element to the top of the stack
 int stack_push(stack *s, int x)
 {
     if (!stack_isFull(s))
@@ -117,6 +125,7 @@ int stack_push(stack *s, int x)
     
 }
 
+//Removing element from the top of the stack
 int stack_pop(stack *s)
 {
     if (!stack_isEmpty(s))
@@ -132,6 +141,7 @@ int stack_pop(stack *s)
     
 }
 
+//Debug printer for printing all elements of the stack
 void stack_printer(stack *s)
 {
     printf("\n");

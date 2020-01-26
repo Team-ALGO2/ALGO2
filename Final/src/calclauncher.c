@@ -12,14 +12,14 @@
 #define K_ENTER 10
 
 // Turn On The Manual Run Flag
-#define _MANUALRUN
+#define _AUTORUN
 
 // Import All The Programs
 #include "calc.c"
 #include "slots.c"
 
 int os;
-bool compatible;
+int compatible; //NOTE: I dont know why this was a bool.s
 
 int main(void) 
 {
