@@ -17,7 +17,7 @@ create_dir:
 install_deps:				# Linux only
 	@sudo apt-get install sqlite3
 	@sudo apt-get install openssl
-	@sudo apt-get install ncurses
+	@sudo apt-get install libncurses5-dev libncursesw5-dev
 
 compile:
 	@${cc} ${dir}/slots.c -o ${out}/slots ${linkers} ${errors}
