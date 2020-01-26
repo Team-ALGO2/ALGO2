@@ -1,3 +1,4 @@
+//Alex's Code
 
 #include "main.h"
  
@@ -22,7 +23,8 @@ void kruskal();
 int find(int bel[],int vertexnum);
 void un(int bel[],int c1,int c2);
 
- 
+// Because C Does Not Like Redefinitions of Main, This Checks If Its Being Run Directly Or Is It Being Run By A Function Call
+#ifndef _MANUALRUN
 void main(){
 	int i,j,total_cost;
 	
@@ -48,6 +50,7 @@ void main(){
  
 	printf("\n\nCost of the spanning tree=%d",cost);
 }
+#endif // _MANUALRUN
  
 void kruskal(){
 	int bel[max],i,j,d1,d2;

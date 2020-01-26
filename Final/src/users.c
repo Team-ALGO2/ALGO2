@@ -1,4 +1,7 @@
 /* Compiple with: $cc users.c -o b -lssl -lcrypto -lncurses -lsqlite3 */
+
+//TODO: Rewrite Sqlite Open Code
+//(So its not plagiarized AHEM!)
 #include <sqlite3.h>
 #include <stdio.h>
 #include <openssl/sha.h>
@@ -9,16 +12,16 @@ int callback(void *NotUsed, int argc, char **argv,
 
 void create_user(sqlite3 *db, char * name, const unsigned char password[64]);
 void sign_in(sqlite3 *db, char * name, const unsigned char password[64]);
-void sign_out(sqlite3 *db, char * username, const unsigned char Upassword[64]);
+void sign_out(sqlite3 *db, char * username);
 int is_signed_in(sqlite3 *db, char * username);
 int user_balance(sqlite3 *db, char * username);
 void set_user_balance(sqlite3 *db, char * username, int bal);
 int callback(void *NotUsed, int argc, char **argv, char **azColName);
+int user_exists(sqlite3 *db, char * u);
 
 
 char * name;
 unsigned char password[64];
-
 int main(void) 
 {
     sqlite3 *db;    // database object
@@ -33,16 +36,7 @@ int main(void)
         return 1;
     }
     
-    rc = sqlite3_prepare_v2(db, "SELECT SQLITE_VERSION()", -1, &res, 0);    
-    
-    if (rc != SQLITE_OK) {
-        
-        fprintf(stderr, "Failed to fetch data: %s\n", sqlite3_errmsg(db));
-        sqlite3_close(db);
-        
-        return 1;
-    }    
-    
+    rc = sqlite3_prepare_v2(db, "SELECT SQLITE_VERSION()", -1, &res, 0);        
     rc = sqlite3_step(res);
     
     if (rc == SQLITE_ROW) {
@@ -50,7 +44,7 @@ int main(void)
     }
 
     create_user(db, "usrsads", "helo");
-
+    sign_out(db, "usr");
     sign_in(db, "usr", "hello");
 
     is_signed_in(db, "usr");
@@ -66,7 +60,19 @@ int main(void)
     sqlite3_close(db);
     
     return 0;
+    
 }
+sqlite3* create_db()
+{
+    sqlite3 *db;    // database object
+    sqlite3_stmt *res;  // SQL statement
+    
+    int rc = sqlite3_open("users.db", &db);
+
+    return db;
+
+}
+
 
 int callback(void *NotUsed, int argc, char **argv, 
                     char **azColName) {
@@ -114,15 +120,15 @@ void create_user(sqlite3 *db, char * name, const unsigned char password[64])
 void sign_in(sqlite3 *db, char * username, const unsigned char Upassword[64])
 {
     char * sql[256];
-    sprintf(sql, "UPDATE users SET signed_in=true WHERE (username = \"%s\");", username);
-    printf(BLU"%s\n"RESET, sql);
+    unsigned char *d = SHA256(Upassword, strlen(Upassword), 0);
+
+    sprintf(sql, "UPDATE users SET signed_in=true WHERE (username = \"%s\") AND (password_hash = \"%s\");", username, d);
+    printf(BLU"%s"RESET"\n", sql);
     char * err_msg;
     int rc = sqlite3_exec(db, sql, callback, 0, &err_msg);
-  //  printf("%d\n", rc);
-  //  printf("%s\n", err_msg);
-} 
+}  
 
-void sign_out(sqlite3 *db, char * username, const unsigned char Upassword[64])
+void sign_out(sqlite3 *db, char * username)
 {
     char * sql[256];
     sprintf(sql, "UPDATE users SET signed_in=false WHERE (username = \"%s\");", username);
@@ -138,7 +144,7 @@ int is_signed_in(sqlite3 *db, char * username)
     sqlite3_stmt *res;
     char * sql[256];
     sprintf(sql, "SELECT \"signed_in\" FROM \"users\" WHERE (\"username\" = \"%s\");", username);
-    printf(BLU"%s\n"RESET, sql);
+    printf(BLU"%s"RESET"\n", sql);
 
     char * err_msg;
     int rc = sqlite3_prepare_v2(db, sql, -1, &res, 0);
@@ -178,7 +184,7 @@ int user_balance(sqlite3 *db, char * username)
         printf("bal Result: %s\n", result);
     }
 
-    return result;
+    return atoi(result);
 
 }
  
@@ -192,4 +198,28 @@ void set_user_balance(sqlite3 *db, char * username, int bal)
   //  printf("%d\n", rc);
   //  printf("%s\n", err_msg);
 
+}
+
+int user_exists(sqlite3 *db, char * u)
+{
+    sqlite3_stmt *res;
+    char * sql[256];
+    sprintf(sql, "SELECT username FROM user;");
+    printf(BLU"%s"RESET"\n", sql);
+
+    char * err_msg;
+    int rc = sqlite3_prepare_v2(db, sql, -1, &res, 0);
+
+    rc = sqlite3_step(res);
+    
+    char * result = sqlite3_column_text(res, 0);
+
+    printf("Exists: %s\n", result);
+
+    if (strcmp(result, "1") == 0)
+    {
+        return true;
+    } else {
+        return false;
+    }
 }

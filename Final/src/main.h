@@ -1,5 +1,12 @@
+//Defining _MAINGUARD
+//C Does Not Like When Headers Are Called Twice (Also Self Refrencing). 
+//Mainguard Checks If main.h Has Already Been Defined, 
+//And Prevents Redefinitions If It Occurs
 #ifndef _MAINGUARD
 #define _MAINGUARD
+
+// Define Debug (Comment Out To Disable Debug Mode)
+#define DEBUG //Checking Definitions Instead Of Variables Because ifdef Removes Debug Code In Compilation!
 
 // Define Booleans
 #define false 0
@@ -19,7 +26,7 @@
 #define WHT   "\x1B[37m"
 #define RESET "\x1B[0m"
 
-// Min/Max Dunctions
+// Min/Max Functions
 #define MAX(x, y) (((x) > (y)) ? (x) : (y))
 #define MIN(x, y) (((x) < (y)) ? (x) : (y))
 
