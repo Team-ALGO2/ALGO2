@@ -1,4 +1,4 @@
-all: create_dir compile
+all: create_dir install_deps compile
 
 dir = Final/src
 out = bin
@@ -13,6 +13,11 @@ create_dir:
 	@echo "Creating bin directory"
 	@rm -rf bin
 	@mkdir bin
+
+install_deps:				# Linux only
+	@sudo apt-get install sqlite3
+	@sudo apt-get install openssl
+	@sudo apt-get install ncurses
 
 compile:
 	@${cc} ${dir}/slots.c -o ${out}/slots ${linkers} ${errors}
