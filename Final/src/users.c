@@ -22,6 +22,7 @@ int user_exists(sqlite3 *db, char * u);
 
 char * name;
 unsigned char password[64];
+/*
 int main(void) 
 {
     sqlite3 *db;    // database object
@@ -62,6 +63,7 @@ int main(void)
     return 0;
     
 }
+*/
 sqlite3* create_db()
 {
     sqlite3 *db;    // database object
@@ -78,12 +80,12 @@ int callback(void *NotUsed, int argc, char **argv,
                     char **azColName) {
     
     NotUsed = 0;
-    
+    /*
     for (int i = 0; i < argc; i++) {
 
         // printf("%s = %s\n", azColName[i], argv[i]);
     }
-    
+    */
     printf("\n\n\n");
     
     return 0;
@@ -154,7 +156,7 @@ int is_signed_in(sqlite3 *db, char * username)
     char * result = sqlite3_column_text(res, 0);
 
     if (rc == SQLITE_ROW) {
-        printf("Signed in Result: %s\n", result);
+      //  printf("Signed in Result: %s\n", result);
     }
 
     if (strcmp(result, "1") == 0)
@@ -181,7 +183,7 @@ int user_balance(sqlite3 *db, char * username)
     char * result = sqlite3_column_text(res, 0);
 
     if (rc == SQLITE_ROW) {
-        printf("bal Result: %s\n", result);
+       // printf("bal Result: %s\n", result);
     }
 
     return atoi(result);
@@ -204,7 +206,7 @@ int user_exists(sqlite3 *db, char * u)
 {
     sqlite3_stmt *res;
     char * sql[256];
-    sprintf(sql, "SELECT username FROM user;");
+    sprintf(sql, "SELECT username FROM user WHERE (username = \"%s\");", u);
     printf(BLU"%s"RESET"\n", sql);
 
     char * err_msg;
