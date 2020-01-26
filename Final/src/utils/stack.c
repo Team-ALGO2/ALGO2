@@ -153,3 +153,13 @@ void stack_printer(stack *s)
     }
     printf("\n");
 }
+
+stack stack_reverse(stack *s)
+{
+    stack out = {-1, {0}};
+    for (int i = 0; i < stack_length(s); i++)
+    {
+        stack_push(&out, stack_pop(s));
+    }
+    return out;
+}

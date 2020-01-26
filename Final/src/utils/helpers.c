@@ -40,21 +40,37 @@ char* trim(char* input, int i)
     return out;
 }
 
-
-
 // Trims strings to the next non number character
 char* trimOperator(char* input)
 {
     int i = 0;
     int lenght = strlen(input);
     char* out = "";
-    for (i = 0; i < lenght && isNum(input[i]); i++)
+    for (i = 0; i < lenght && (isNum(input[i]) || input[i] == ' ');  i++)
     {}
     out = trim(input, i);
     // printf("out: %s\n", out);
     return out;
 }
 
+//a function that will remove all the spaces in a string
+//outputs the string without the spaces
+char* removeWhiteSpace(char* input)
+{
+    char* out = "";
+    int l = strlen(input);
+    int f = 0;//counts how many chars have been put into the out string
+    for(int i = 0; i < l; i++)
+    {
+        if(input[i] != ' ' && input[i] != 9)
+        {
+            out[f] = input[i];
+            f++;
+        }
+    }
+    out[f+1] = '\0';
+    return out;
+}
 
 //converts nubmers in int form to char* of the numbers
 //EX: int i = 21312321 -> char* i = "21312321"
