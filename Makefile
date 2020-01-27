@@ -1,4 +1,4 @@
-all: create_dir  compile
+all: create_dir install_deps compile
 
 dir = Final/src
 out = bin
