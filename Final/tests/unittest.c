@@ -135,7 +135,7 @@ void test_stack()
 
 void test_queue()
 {
-    queue test = {-1, {0}};
+    queue test = {-1, -1, {0}}; //f
 	printf("\n---------- Queue Tests ----------\n");
     queue_enqueue(&test, 5);
 	ASSERT_EQUAL_INT(queue_getFront(&test), 5, "Enqueue");
