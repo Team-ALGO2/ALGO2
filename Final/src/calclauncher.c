@@ -21,6 +21,9 @@
 int os;
 int compatible; //NOTE: I dont know why this was a bool.s
 
+// While RadioactiveHydras hads mainguard
+
+/*
 int main(void) 
 {
     system(CLEAR);
@@ -158,3 +161,4 @@ int main(void)
 
 
 }
+*/

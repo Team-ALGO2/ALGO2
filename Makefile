@@ -1,8 +1,8 @@
-all: create_dir install_deps compile
+all: create_dir  compile
 
 dir = Final/src
 out = bin
-testdir = Final
+testdir = Final/tests
 
 cc = cc # set compiler, change to cc = gcc if using gcc
 linkers = -lssl -lcrypto -lsqlite3 -lncurses # You can get rid of specific linkers if you dont have th elibray
