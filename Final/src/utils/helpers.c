@@ -9,11 +9,11 @@ int isNum(char analyze)
 {
     if (analyze > 47 && analyze < 58)
     {
-        return true;
+        return 1;
     }
     else 
     {
-        return false;
+        return 0;
     }
 }
 
