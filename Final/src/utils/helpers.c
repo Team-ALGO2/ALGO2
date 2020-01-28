@@ -40,7 +40,7 @@ char* trim(char* input, int i)
 	//itterate over the string to load it into a queue
 	for(int i = 0; i < length; i++)
 	{
-		queue_enqueue(&parseString, input[i]) 
+		queue_enqueue(&parseString, input[i]) ;
 	}
 }
 
