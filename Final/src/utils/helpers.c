@@ -34,10 +34,14 @@ int mathID(char analyze)
 //removes the first "i" characters from the "input" string and returns the new string
 char* trim(char* input, int i)
 {
-    char* out = "";
-    strcat(out, input[i]);
-    printf("out: %s\n", out);
-    return out;
+    int length = strlen(input);
+	queue parseString = {-1, -1, {0}};
+	
+	//itterate over the string to load it into a queue
+	for(int i = 0; i < length; i++)
+	{
+		queue_enqueue(&parseString, input[i]) 
+	}
 }
 
 // Trims strings to the next non number character
