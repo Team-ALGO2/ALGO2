@@ -21,7 +21,7 @@ int main(void)
 //a function to split the inputed string into individual arguments in a stack(should be in infix notation)
 int parseString(char* inputString, stack *dataOut, stack *binOut)
 {
-     printf("Begin parsing\n");
+    printf("Begin parsing\n");
     //itterate over the arguments of the input string
     //length needs to be checked every time since we are changeing the size of the string during the loop
     for(int i = 0; i < strlen(inputString); i++)
@@ -33,15 +33,21 @@ int parseString(char* inputString, stack *dataOut, stack *binOut)
             printf("%d is a number\n", atoi(inputString));
             stack_push(dataOut, atoi(inputString)); //pushes the data
             stack_push(binOut, 0); //shows that the data should be interpreted as an int
-            inputString = trimOperator(inputString);          
+            i = i + strlen(unAtoi(atoi(inputString))) - 1;
         }
-        else
+        else if(mathID(inputString[i]) != -1)
         {
             printf("%c is an opperator\n", inputString[i]);
             int push = inputString[i];
             stack_push(dataOut, push); //pushes the data
             stack_push(binOut, 1); //shows that the data should be interpreted as an char
         }
+        //if someting went very bad!
+        else
+        {
+            return 1;
+        }
+        
         
     }
     printf("Done parsing\n");
