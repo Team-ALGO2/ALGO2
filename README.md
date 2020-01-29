@@ -8,6 +8,9 @@ This is a git for all our work during the 2019 - 2020 ALGO2 class. The projects 
 - Mapping Program
 - More Coming Soon!
 
+Use "ci skip" to not trigger tests
+
+
 ## Work status
 
 - Slots:
