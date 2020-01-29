@@ -95,7 +95,7 @@ int main(void)
     printf("Test failed: "RED"%d"RESET"\n", tests_failed);
     printf("Ran %d tests in %lfs\n", tests_ran, time_spent);
     printf("======================================\n\n");
-
+    return tests_failed;
 }
 
 void test_math()
