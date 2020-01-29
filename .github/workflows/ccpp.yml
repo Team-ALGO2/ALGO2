@@ -13,11 +13,6 @@ jobs:
       run: make
     - name: run tests
       run: bin/test
-      if: failure()
-    - name: Create Pull Request
-      uses: peter-evans/create-pull-request@v2
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
 
       
 
