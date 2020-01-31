@@ -5,7 +5,9 @@
 #include <sqlite3.h>
 #include <stdio.h>
 #include <openssl/sha.h>
+#ifndef _MAINGUARD
 #include "main.h"
+#endif
 
 int callback(void *NotUsed, int argc, char **argv, 
                     char **azColName);

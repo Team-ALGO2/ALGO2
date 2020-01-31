@@ -1,6 +1,4 @@
 #include "main.h"
-#include "users.c"
-
 // For Global Defines, Use Utils. For Local, Use Here.
 
 // basic defines
@@ -8,6 +6,11 @@
 #define WIDTH   5
 #define CNTSPIM 4 // Constant Spin (Minimum Spin Amount)
 #define SPINDWN true // Spin Down (If False Spin Up)
+#define DBSAVE  true // Save To Database??
+
+#ifdef DBSAVE
+#include "users.c"
+#endif
 
 int analyseResults(char *values[WIDTH]);
 
@@ -57,6 +60,7 @@ int runSlots(int rotationtimes)
 
     if (!infinate && (strcmp(user, "") == 0))  // User must be signed in to play
     {
+        #ifdef DBSAVE
         char * sel_user;
         char * d_password;
         sqlite3 * db = create_db();
@@ -75,6 +79,12 @@ int runSlots(int rotationtimes)
         } else {
             printf("Wrong username or password. Please try again or sign up.\n");
         }
+        #endif
+
+        #ifndef DBSAVE
+        printf("Database Disabled! Skipping Login And Logging In As XXXXX");
+        //More Login Logic Here!
+        #endif
     }
 
     msleep(10000);
