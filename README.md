@@ -17,6 +17,8 @@ Use "ci skip" to not trigger tests
     - Simplistic slots - Works
     - User system - Implementing 
     - With calclauncher - TODO
+    - Web Abilities - TODO
+    - Improved Graphics - TODO
 - Calc Pipeline: 
     - Input - TODO
     - Remove whitespace - TODO
@@ -24,3 +26,30 @@ Use "ci skip" to not trigger tests
     - Create postfix - Implementing
     - Do operations - Implementing
     - Output - ?
+- Mapping
+    - Algorithms
+      - Dijkstra’s - Works
+      - Bellman-Ford’s - Works
+      - Floyd-Warshall’s - Works
+      - Prim’s - Works
+      - Kruskal’s algorithm - Works
+      - Kruskal’s alternative - TODO
+      - Ford-Fulkerson - TODO
+      - Dinic's - TODO
+    - Map Files - Works
+      - Matrix - Works
+      - Node-Vertex - Works
+    - C Map Processing
+      - Map Open - TODO
+      - Map Conversion - TODO
+      - Max Creation - TODO
+    - Python Map Processing
+      - Map Open - Works
+      - Map Conversion - Works
+      - Max Creation - Works
+    - GUI - TODO
+- Tetris
+    - TODO
+- Advanced Graphical System
+    - Ncurses - Working
+    - Advanced GUI Control - TODO
