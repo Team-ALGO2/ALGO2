@@ -1,5 +1,7 @@
 import sys
 
+currentVersion = "v3"
+
 #Node Class
 class Node:
     def __init__(self, nodeId, name):
@@ -20,10 +22,12 @@ class NVMap:
     #Initialization Function
     def __init__(self, file = None, importData = False):
         self.file = file
+        self.flags = []
         self.nodes = {}
         self.vertices = {}
         self.startNode = None
         self.endNode = None
+        self.recomendedAlgo = None
         self.description = None
         if (importData == True):
             self.resetInfo()
@@ -32,11 +36,19 @@ class NVMap:
     def resetInfo(self): 
         #Open File
         with open(self.file) as fp:
+            #Checking Version
+            version = fp.readline().replace("\n", "")
             #Checking Type
-            if fp.readline().replace("\n", "") != "NV":
-                raise Exception("Error Reading Map File. Incompatible Type (Not NV)!")
+            mapType = fp.readline().replace("\n", "")
+
+            if version != currentVersion:
+                raise Exception(f"Error Reading Map File. Incorrect Version ('{version}'). MabLib Version: '{currentVersion}'")
+            elif mapType != "NV":
+                raise Exception(f"Error Reading Map File. Incompatible Type ('{mapType}'). Expected 'NV'")
             else:
                 #Read Information
+                #Get Flags
+                self.flags = fp.readline().replace("\n", "").split(" ")
                 #Get Node Amount
                 nodeNum = int(fp.readline().replace("\n", ""))
                 #Get Vertex Amount
@@ -55,6 +67,8 @@ class NVMap:
                 self.startNode, self.endNode = fp.readline().replace("\n", "").split(" ")
                 self.startNode = self.startNode if self.startNode != 0 else None
                 self.endNode = self.endNode if self.endNode != 0 else None
+                #Get Recomended Algorithm
+                self.recomendedAlgo = fp.readline().replace("\n", "")
                 #Get Description
                 self.description = fp.readline().replace("\n", "")
 
@@ -82,7 +96,7 @@ class NVMap:
             #Open File
             with open(self.file, "w") as fp:
                 #Write Type, Node Amount And Vertex Amount
-                fp.write(f"NV\n{len(self.nodes)}\n{len(self.vertices)}\n")
+                fp.write(f"{currentVersion}\nNV\n{' '.join(self.flags)}\n{len(self.nodes)}\n{len(self.vertices)}\n")
                 #Write All Nodes
                 for node in list(self.nodes.values()):
                     fp.write(f"{node.name}\n")
@@ -91,6 +105,8 @@ class NVMap:
                     fp.write(f"{vertex.name} {vertex.fromNode} {vertex.toNode} {vertex.weight}\n")
                 #Write Start And End Node
                 fp.write(f"{self.startNode} {self.endNode}\n")
+                #Write Recomended Algorithm
+                fp.write(f"{self.recomendedAlgo}\n")
                 #Write Description
                 fp.write(f"{self.description}")
         else:
@@ -99,8 +115,10 @@ class NVMap:
     #Debug Printing
     def debugPrintInfo(self):
         print(self.file)
+        print(self.flags)
         print(self.nodes)
         print(self.vertices)
+        print(self.recomendedAlgo)
         print(self.description)
         for vert in list(self.vertices.values()):
             print(vars(vert))
@@ -112,6 +130,7 @@ class MatrixMap:
     #Initialization Function
     def __init__(self, file = None, importData = False):
         self.file = file
+        self.flags = []
         self.nodes = []
         self.vertices = 0
         self.enableName = False
@@ -120,6 +139,7 @@ class MatrixMap:
         self.nameMap = None
         self.startNode = None
         self.endNode = None
+        self.recomendedAlgo = None
         self.description = None
         if (importData == True):
             self.resetInfo()
@@ -135,10 +155,18 @@ class MatrixMap:
     def resetInfo(self): 
         #Open File
         with open(self.file) as fp:
-            #Check Type
-            if fp.readline().replace("\n", "") != "MATRIX":
-                raise Exception("Error Reading Map File. Incompatible Type (Not MATRIX)!")
+            #Checking Version
+            version = fp.readline().replace("\n", "")
+            #Checking Type
+            mapType = fp.readline().replace("\n", "")
+
+            if version != currentVersion:
+                raise Exception(f"Error Reading Map File. Incorrect Version ('{version}'). MabLib Version: '{currentVersion}'")
+            elif mapType != "MATRIX":
+                raise Exception(f"Error Reading Map File. Incompatible Type ('{mapType}'). Expected 'MATRIX'")
             else:
+                #Get Flags
+                self.flags = fp.readline().replace("\n", "").split(" ")
                 #Get Node Amount
                 nodeNum = int(fp.readline().replace("\n", ""))
                 #Get Vertex Amount
@@ -170,6 +198,8 @@ class MatrixMap:
                 self.startNode, self.endNode = fp.readline().replace("\n", "").split(" ")
                 self.startNode = self.startNode if self.startNode != 0 else None
                 self.endNode = self.endNode if self.endNode != 0 else None
+                #Get Recomended Algorithm
+                self.recomendedAlgo = fp.readline().replace("\n", "")
                 #Get Description
                 self.description = fp.readline().replace("\n", "")
 
@@ -178,7 +208,7 @@ class MatrixMap:
             #Open File
             with open(self.file, "w") as fp:
                 #Write Type, Node Amount and Vertex Amount
-                fp.write(f"MATRIX\n{len(self.nodes)}\n{self.vertices}\n{int(self.enableName)}\n")
+                fp.write(f"{currentVersion}\nMATRIX\n{' '.join(self.flags)}\n{len(self.nodes)}\n{self.vertices}\n{int(self.enableName)}\n")
                 #Write Node Names
                 for nodeId in range(len(self.nodes)):
                     fp.write(f"{self.nodes[nodeId]}\n")
@@ -195,6 +225,8 @@ class MatrixMap:
                         fp.write(f"{' '.join(self.nameMap[nodeId])}\n")
                 #Write Start And End Node
                 fp.write(f"{self.startNode} {self.endNode}\n")
+                #Write Recomended Algorithm
+                fp.write(f"{self.recomendedAlgo}\n")
                 #Write Description
                 fp.write(f"{self.description}")
         else:
@@ -203,12 +235,14 @@ class MatrixMap:
     #Print Debug Information
     def debugPrintInfo(self):
         print(self.file)
+        print(self.flags)
         print(self.nodes)
         print(self.weightMap)
         print(self.connectivityMap)
         print(self.nameMap)
         print(self.startNode)
         print(self.endNode)
+        print(self.recomendedAlgo)
         print(self.description)
 
 #Convert From Matrix To Node Vertex
@@ -218,7 +252,11 @@ def convertMatrixToNodeVertex(matrix, file=None, nameScheme=None):
     #Save Start And End Nodes
     NV.startNode = matrix.startNode
     NV.endNode = matrix.endNode
+    #Save Recomended Algorithm And Description
+    NV.recomendedAlgo = matrix.recomendedAlgo
     NV.description = matrix.description
+    #Save Flags
+    NV.flags = matrix.flags.copy()
 
     vertexId = 0
     #Loop Through All From Nodes
@@ -250,14 +288,16 @@ def convertMatrixToNodeVertex(matrix, file=None, nameScheme=None):
 
 #Convert From Matrix To Node Vertex
 def convertNodeVertexToMatrix(NV, file=None, enableName = True):
-    #Save Mahor Information
+    #Save Major Information
     matrix = MatrixMap(file = file)
     matrix.startNode = NV.startNode
     matrix.endNode = NV.endNode
+    matrix.recomendedAlgo = NV.recomendedAlgo
     matrix.description = NV.description
     matrix.enableName = enableName
     matrix.nodes = list(NV.nodes.keys())
     matrix.vertices = len(NV.vertices)
+    matrix.flags = NV.flags.copy()
 
     #Create Empty Matricies
     matrix.generateEmptyMaps(len(NV.nodes))
@@ -274,3 +314,6 @@ def convertNodeVertexToMatrix(NV, file=None, enableName = True):
             matrix.nameMap[fromNode][toNode] = vertex.name
 
     return matrix
+
+if __name__ == "__main__":
+    raise Exception(f"maplib.py Is Not To Be Run Directly!")
