@@ -1,3 +1,5 @@
+/* Compiple with: $cc slots.c -o b -lssl -lcrypto -lncurses -lsqlite3 */
+
 #include "main.h"
 #include "users.c"
 
@@ -6,7 +8,7 @@
 // basic defines
 #define HEIGHT  16
 #define WIDTH   5
-#define CNTSPIM 4 // Constant Spin (Minimum Spin Amount)
+#define CNTSPIM 10 // Constant Spin (Minimum Spin Amount)
 #define SPINDWN true // Spin Down (If False Spin Up)
 
 int analyseResults(char *values[WIDTH]);
@@ -14,7 +16,10 @@ int analyseResults(char *values[WIDTH]);
 int total_spins = 0;
 int avg_spin;
 
-char * user = "";
+char *user = "";
+
+int user_bal;
+int cost_per_spin = WIDTH * 7;
 
 // some sleep thing i edited lol
 int msleep(long msec)
@@ -33,6 +38,7 @@ int msleep(long msec)
 // rotationflag < 0  -->  Infinate Rotations 
 int runSlots(int rotationtimes)
 {
+    
     // seed the rand
     srand(time(NULL));
     
@@ -57,13 +63,16 @@ int runSlots(int rotationtimes)
 
     if (!infinate && (strcmp(user, "") == 0))  // User must be signed in to play
     {
-        char * sel_user;
-        char * d_password;
+        
+        char sel_user[16];
+        char d_password[16];
         sqlite3 * db = create_db();
+        
+
         printf("Sign in as: ");
         scanf("%s", sel_user);
         printf("Password: ");
-        scanf("%s", &d_password);
+        scanf("%s", d_password);
         printf(".\n");
         printf("Signing in %s with %s\n", sel_user, &d_password);
 
@@ -71,13 +80,24 @@ int runSlots(int rotationtimes)
 
         if (is_signed_in(db, sel_user))
         {
-            printf("Successful log in!\n");
+            printf("Y\n");
+            user = sel_user;
+            printf("Successful log in as %s!\n", user);
+            user_bal = user_balance(db, user);
+            printf("%s has %d\n", user, user_bal);
+            if (user_bal < cost_per_spin)
+            {
+                printf("You are bankrupt, you need at least %d to play.\n", cost_per_spin);
+            } else {
+                printf("Spending %d to spin.\n", cost_per_spin);
+            }
         } else {
             printf("Wrong username or password. Please try again or sign up.\n");
         }
+        int errcode = sqlite3_close_v2(db);
+        printf("%d\n", errcode);
     }
-
-    msleep(10000);
+    msleep(7 * 1000);
     // Slot Characters And Colors
     char *slotCharacters[10] = {"$", "X", "#", "O", "?", "=", ">", "7", ".", "9"};
     char *slotColours[10] = {"\x001b[43m\x001b[30m", "\x1B[31m", "\x1B[34m", "\x1B[36m\x1B[35m", "\x001b[46m\x001b[30m", "\x001b[47m\x001b[37;1m\x001b[30m", "\x1B[35m", "\x1B[32m", "\x1B[33m", "\x1B[37m"};
@@ -268,8 +288,7 @@ int runSlots(int rotationtimes)
             j++;
             j = j % HEIGHT;
         }
-    }
-
+    } 
     printf("\n\n");
     char *rolledChars[WIDTH];
     for (int q = 0; q < WIDTH; q++)
@@ -279,6 +298,9 @@ int runSlots(int rotationtimes)
     }
     int total = analyseResults(rolledChars);
     printf("You won %d points\n", total);
+
+    sqlite3 * db = create_db();
+    set_user_balance(db, user, user_bal - cost_per_spin + total);
     msleep(5*1000);
     return 0;
 }
