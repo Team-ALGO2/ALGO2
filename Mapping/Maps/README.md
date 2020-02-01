@@ -1,4 +1,5 @@
-# Proprietary .map Filetype Guide.
+# Proprietary .map Filetype Guide. 
+### (Version 3)
 
 ## NOTE: There Are Currently **Two** Types Of Maps
 ### [**-> Node-Vertex (NV)**](#anchorNV)
@@ -13,7 +14,9 @@
 
 ## Example File (example_nv.map)
 ```
+v3
 NV
+F
 4
 6
 A
@@ -27,6 +30,7 @@ four C B 10
 five B D 10
 six C D 10
 A D
+SP
 Simple Example Node-Vertex Map
 ```
 
@@ -35,11 +39,13 @@ Simple Example Node-Vertex Map
 ---
 
 ## File Information / Headers
-| Line Number  | Value   | Use             |
-| ------------ | ------- | --------------- |
-| 1            | string  | Map Type (NV)   |
-| 2            | integer | # of nodes      |
-| 3            | integer | # of verticies  |
+| Line Number  | Value   | Use               |
+| ------------ | ------- | ----------------- |
+| 1            | string  | Version           |
+| 2            | string  | Map Type (NV)     |
+| 3            | list    | Flags (See Below) |
+| 4            | integer | # of nodes        |
+| 5            | integer | # of verticies    |
 > ### IMPORTANT NOTE: This may be expanded as we go along, if we need more variables!
 
 This is usually used with metadata and struct casting, but thats dangerous and annoying to implement. Instead, we are going for a Competition-style input file.
@@ -58,7 +64,8 @@ This is usually used with metadata and struct casting, but thats dangerous and a
 | Line Number  | Data                          | Usage / Formatting         |
 | ------------ | ----------------------------- | -------------------------- |
 | 1            | Default First And Last Nodes* | \<FirstNode\> \<LastNode\> |
-| 2            | Map Description               | String(Max 1024 Chars)     |
+| 2            | Recommended Algorithm         | Flag (See Below)           |
+| 3            | Map Description               | String(Max 1024 Chars)     |
 
 * If No Default First / Last Node, Set Respective Value To 0.
 
@@ -68,8 +75,10 @@ This is usually used with metadata and struct casting, but thats dangerous and a
 
 ```
 --------------------------
+v3                        |
 NV                        |
-4                         | File Information / Headers
+F                         | File Information / Headers
+4                         | 
 6                         |
 --------------------------
 A                         |
@@ -83,7 +92,8 @@ four B D 10               |
 five B D 10               |
 six C D 10                |
 --------------------------
-A D                       | Extra Stored Data  
+A D                       |
+SP                        | Extra Stored Data  
 Simple Example Map        |  
 --------------------------
 ```
@@ -97,7 +107,9 @@ Simple Example Map        |
 
 ## Example File (example_matrix.map)
 ```
+v3
 MATRIX
+F
 4
 6
 1
@@ -118,6 +130,7 @@ D
 0 four 0 six
 0 0 0 0
 A D
+SP
 Simple Example Matrix Map
 ```
 
@@ -143,10 +156,12 @@ AKA: (NxN)
 ## File Information / Headers
 | Line Number  | Value   | Use                 |
 | ------------ | ------- | ------------------- |
-| 1            | string  | Map Type (MATRIX)   |
-| 2            | integer | # of nodes          |
-| 3            | integer | # of verticies      |
-| 4            | boolean | Enable Vert Name    |
+| 1            | string  | Version             |
+| 2            | string  | Map Type (MATRIX)   |
+| 3            | list    | Flags (See Below)   |
+| 4            | integer | # of nodes          |
+| 5            | integer | # of verticies      |
+| 6            | boolean | Enable Vert Name    |
 > ### IMPORTANT NOTE: This may be expanded as we go along, if we need more variables!
 
 This is usually used with metadata and struct casting, but thats dangerous and annoying to implement. Instead, we are going for a Competition-style input file.
@@ -167,7 +182,8 @@ This is usually used with metadata and struct casting, but thats dangerous and a
 | Line Number  | Data                          | Usage / Formatting         |
 | ------------ | ----------------------------- | -------------------------- |
 | 1            | Default First And Last Nodes* | \<FirstNode\> \<LastNode\> |
-| 2            | Map Description               | String(Max 1024 Chars)     |
+| 2            | Recommended Algorithm         | Flag (See Below)           |
+| 3            | Map Description               | String(Max 1024 Chars)     |
 
 > *If No Default First / Last Node, set 0.
 
@@ -177,8 +193,10 @@ This is usually used with metadata and struct casting, but thats dangerous and a
 
 ```
 --------------------------
+v3                        |
 MATRIX                    |
-4                         | File Information / Headers
+F                         | File Information / Headers
+4                         |
 6                         |
 1                         |
 --------------------------
@@ -199,7 +217,34 @@ D_________________________|
 0 four 0 six         Name |
 0 0 0 0                   |
 --------------------------
-A D                       | Extra Stored Data  
+A D                       |
+SP                        | Extra Stored Data  
 Simple Example Matrix Map |
 --------------------------
 ```
+
+---
+# <a name="anchorEXTRA"></a>Extra Information!
+
+## Map Flags
+A List Containing A Variety Of "Flags" That Can Help Describe The Limitations Of The Graph
+> **NOTE**: All Flags Are Single Lettered And Seperated By Spaces!
+
+| Flag Letter | Meaning                                                           |
+| ----------- | ----------------------------------------------------------------- |
+| F           | Mandatory Flag For All Map Files (Used To Help With Data Padding) |
+| N           | Contains Negative Cycles / Negative Weights                       |
+| S           | Contains Self-Loops (A Node That Has A Vertex To Itself)          |
+| W           | Does Not Contain Different Weight Values (All Values Same)        |
+| A           | Auto Generated                                                    |
+| X           | Large (Contains More Than 64 Nodes)                               |
+
+## Recommended Algorithm
+The Type Of Algorithm The Map Was Designed For.
+
+| Key  | Algorithm Type           |
+| ---- | ------------------------ |
+| SP   | Shortest Path            |
+| MST  | Minimum Spanning Tree    |
+| APSP | All Pairs Shortest Path  |
+| FLOW | Minimum Flow             |

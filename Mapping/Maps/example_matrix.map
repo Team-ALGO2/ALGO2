@@ -1,4 +1,6 @@
+v3
 MATRIX
+F
 4
 6
 1
@@ -19,4 +21,5 @@ D
 0 four 0 six
 0 0 0 0
 A D
+SP
 Simple Example Matrix Map
