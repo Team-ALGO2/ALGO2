@@ -8,14 +8,16 @@
 Starts a randomized slots with a customizable number of wheels and numbers and can output the final result as an array of characters. The characters are of various background color and font color
 
 ## Calc
-Very basic calculator with operations 
-New And Improved Coming Soon
+~~ Very basic calculator with operations ~~ (Outdated)
+NEW AND IMPROVED CALCULATOR
+Using Bleeding-Edge Calculator Technology! (Read More)
+TODO MORE MARKETING HERE
 
 ## Tetris
 TODO
 
 ## Maps
-TODO
+Advanced Mapping Algorithms With Over 7 Well-Documented Formulas
 
 ---
 

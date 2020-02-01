@@ -48,7 +48,6 @@
 #define STACK_MAX_LENGTH 128
 
 // Define Error Codes
-#define PRINT_ERROR   true
 #define STACK_EMPTY   0
 #define STACK_FULL    0
 
@@ -102,7 +101,11 @@ int stack_top(stack *s)
     }
     else
     {
-        if(PRINT_ERROR){printf("Error: Queue is empty, canot get the top value.\n Note: The value returned my be junk.\n");}
+        //Error Message
+        #ifdef DEBUG
+        printf("Error: Queue is empty, canot get the top value.\n Note: The value returned my be junk.\n");
+        #endif
+
         return STACK_EMPTY;
     }
     
@@ -119,7 +122,10 @@ int stack_push(stack *s, int x)
     }
     else
     {
-        if(PRINT_ERROR){printf("Error: Queue is full, canot push.\n");}
+        //Error Message
+        #ifdef DEBUG
+        printf("Error: Queue is full, canot push.\n");
+        #endif
         return STACK_FULL;
     }
     
@@ -135,7 +141,10 @@ int stack_pop(stack *s)
     }
     else
     {
-        if(PRINT_ERROR){printf("Error: Queue is empty, canot pop.\n");}
+        //Error Message
+        #ifdef DEBUG
+        printf("Error: Queue is empty, canot pop.\n");
+        #endif
         return STACK_EMPTY;
     }
     
