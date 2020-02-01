@@ -1,8 +1,6 @@
 /* Compiple with: $cc slots.c -o b -lssl -lcrypto -lncurses -lsqlite3 */
 
 #include "main.h"
-#include "users.c"
-
 // For Global Defines, Use Utils. For Local, Use Here.
 
 // basic defines
@@ -10,6 +8,11 @@
 #define WIDTH   5
 #define CNTSPIM 10 // Constant Spin (Minimum Spin Amount)
 #define SPINDWN true // Spin Down (If False Spin Up)
+#define DBSAVE  true // Save To Database??
+
+#ifdef DBSAVE
+#include "users.c"
+#endif
 
 int analyseResults(char *values[WIDTH]);
 
@@ -63,9 +66,9 @@ int runSlots(int rotationtimes)
 
     if (!infinate && (strcmp(user, "") == 0))  // User must be signed in to play
     {
-        
-        char sel_user[16];
-        char d_password[16];
+        #ifdef DBSAVE
+        char * sel_user;
+        char * d_password;
         sqlite3 * db = create_db();
         
 
@@ -94,8 +97,12 @@ int runSlots(int rotationtimes)
         } else {
             printf("Wrong username or password. Please try again or sign up.\n");
         }
-        int errcode = sqlite3_close_v2(db);
-        printf("%d\n", errcode);
+        #endif
+
+        #ifndef DBSAVE
+        printf("Database Disabled! Skipping Login And Logging In As XXXXX");
+        //More Login Logic Here!
+        #endif
     }
     msleep(7 * 1000);
     // Slot Characters And Colors
