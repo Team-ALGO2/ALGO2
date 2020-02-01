@@ -117,6 +117,7 @@ void create_user(sqlite3 *db, char * name, const unsigned char password[64])
     } else {
         printf(GRN"Success adding user\n"RESET);
     }
+    sqlite3_finalize(res);
 }
 
 void sign_in(sqlite3 *db, char * username, const unsigned char Upassword[64])
@@ -165,7 +166,7 @@ int is_signed_in(sqlite3 *db, char * username)
     } else {
         return false;
     }
-
+    sqlite3_finalize(res);
 }
  
 int user_balance(sqlite3 *db, char * username)
@@ -173,20 +174,21 @@ int user_balance(sqlite3 *db, char * username)
     sqlite3_stmt *res;
     char * sql[256];
     sprintf(sql, "SELECT \"user_balance\" FROM \"users\" WHERE (\"username\" = \"%s\");", username);
-    printf(BLU"%s\n"RESET, sql);
+    printf(BLU"%s"RESET"\n", sql);
 
-    char * err_msg;
     int rc = sqlite3_prepare_v2(db, sql, -1, &res, 0);
 
     rc = sqlite3_step(res);
-    
-    char * result = sqlite3_column_text(res, 0);
-
+    printf("Getting res\n");
+    char *result = sqlite3_column_text(res, 0);
+    printf("Got res\n");
     if (rc == SQLITE_ROW) {
-       // printf("bal Result: %s\n", result);
+       printf("bal Result: %s\n", result);
     }
-
-    return atoi(result);
+    sqlite3_finalize(res);
+    int out = atoi("1010");
+    printf("bal Result num: %d\n", out);
+    return out;
 
 }
  
@@ -194,10 +196,10 @@ void set_user_balance(sqlite3 *db, char * username, int bal)
 {
     char * sql[256];
     sprintf(sql, "UPDATE users SET user_balance=%d WHERE (username = \"%s\");", bal, username);
-    printf(BLU"%s\n"RESET, sql);
+    printf(BLU"%s"RESET"\n", sql);
     char * err_msg;
     int rc = sqlite3_exec(db, sql, callback, 0, &err_msg);
-  //  printf("%d\n", rc);
+    printf("%d\n", rc);
   //  printf("%s\n", err_msg);
 
 }
@@ -224,4 +226,5 @@ int user_exists(sqlite3 *db, char * u)
     } else {
         return false;
     }
+    sqlite3_finalize(res);
 }
