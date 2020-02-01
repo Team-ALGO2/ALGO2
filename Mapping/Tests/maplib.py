@@ -1,3 +1,4 @@
+#
 import sys
 
 currentVersion = "v3"
