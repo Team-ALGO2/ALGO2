@@ -16,7 +16,7 @@ create_dir:
 
 install_deps:				# Linux only
 	@sudo apt-get install sqlite3 libsqlite3-dev
-	@sudo apt-get install openssl
+	@sudo apt-get install openssl libssl-dev
 	@sudo apt-get install libncurses5-dev libncursesw5-dev
 
 compile:
