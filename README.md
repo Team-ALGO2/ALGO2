@@ -54,6 +54,4 @@ Use "ci skip" to not trigger tests
     - Advanced GUI Control - TODO
 
 ## License
-This project is licenced under the GNU public license
-But if you crazy enough to use this in your project, please notify us so we can give you better code!
-(And also we can feel better about ourselves)
+This project is licenced under the GNU public license. If you crazy enough to use this in your project, please notify us so we can give you better code! (And also we can feel better about ourselves)
