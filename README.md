@@ -41,11 +41,11 @@ Use "ci skip" to not trigger tests
       - Matrix - Works
       - Node-Vertex - Works
     - C Map Processing
-      - Map Open - TODO
+      - Map Read - TODO
       - Map Conversion - TODO
       - Max Creation - TODO
     - Python Map Processing
-      - Map Open - Works
+      - Map Read - Works
       - Map Conversion - Works
       - Max Creation - Works
     - GUI - TODO
@@ -56,7 +56,7 @@ Use "ci skip" to not trigger tests
     - Advanced GUI Control - TODO
 
 ## License
-This project is licenced under the GNU public license. If you crazy enough to use this in your project, please notify us so we can give you better code! (And also we can feel better about ourselves)
+This project is licenced under the GNU public license. If you are crazy enough to use this in your project, please notify us so we can give you better code! (And also we can feel better about ourselves)
 
 ## Security Warning!
-This project is in no way safe. All uses of this code is "AS IS" WITHOUT WARRANTY. This project was quickly hacked together as a final project. Even though we are aware there are many security issues with our software, feel free to message us about them. 
+This project is in no way safe. All uses of this code is provided "AS IS" WITHOUT WARRANTY. (See license for more detail) This project was quickly hacked together as a final project. Even though we are aware there are many security issues with our software, feel free to message us about them. 
