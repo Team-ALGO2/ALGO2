@@ -12,7 +12,9 @@ This is a git for all our work during the 2019 - 2020 Algorithms 2 class. The pr
 
 Use "ci skip" to not trigger tests
 
- https://team-algo2.github.io/ALGO2/
+## Important Links
+ https://team-algo2.github.io/ALGO2/ - Github Pages  
+ https://scan.coverity.com/projects/algo2 - Coverty
 
 ## Work status
 
