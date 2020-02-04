@@ -1,7 +1,8 @@
 # Algorithms II GitHub
-### NOTE: I'll make this public once we're done
 
-![C Unittests](https://github.com/RadioactiveHydra/ALGO2/workflows/C%20Unittests/badge.svg)   
+![C Unittests](https://github.com/RadioactiveHydra/ALGO2/workflows/C%20Unittests/badge.svg)
+![Line Count](https://tokei.rs/b1/github/RadioactiveHydra/ALGO2)
+![File Count](https://tokei.rs/b1/github/RadioactiveHydra/ALGO2?category=files)
 
 This is a git for all our work during the 2019 - 2020 ALGO2 class. The projects included here are:
 - EPIC CALCULATOR (Contains Slots, Tetris, Etc.)
@@ -40,11 +41,11 @@ Use "ci skip" to not trigger tests
       - Matrix - Works
       - Node-Vertex - Works
     - C Map Processing
-      - Map Open - TODO
+      - Map Read - TODO
       - Map Conversion - TODO
       - Max Creation - TODO
     - Python Map Processing
-      - Map Open - Works
+      - Map Read - Works
       - Map Conversion - Works
       - Max Creation - Works
     - GUI - TODO
@@ -53,3 +54,9 @@ Use "ci skip" to not trigger tests
 - Advanced Graphical System
     - Ncurses - Working
     - Advanced GUI Control - TODO
+
+## License
+This project is licenced under the GNU public license. If you are crazy enough to use this in your project, please notify us so we can give you better code! (And also we can feel better about ourselves)
+
+## Security Warning!
+This project is in no way safe. All uses of this code is provided "AS IS" WITHOUT WARRANTY. (See license for more detail) This project was quickly hacked together as a final project. Even though we are aware there are many security issues with our software, feel free to message us about them. 
