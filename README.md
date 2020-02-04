@@ -1,5 +1,4 @@
 # Algorithms II GitHub
-### NOTE: I'll make this public once we're done
 
 ![C Unittests](https://github.com/RadioactiveHydra/ALGO2/workflows/C%20Unittests/badge.svg)   
 
