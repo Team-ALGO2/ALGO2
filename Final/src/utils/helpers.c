@@ -1,9 +1,10 @@
 //A general helper file for all misc tools
 
+#define OPPNUM 5 //this is the same value as defined in the first box of oppC
+
 //FOR CALC:
-int oppNum = 5; //this is the same value as defined in the first box of oppC
 char numberC[10][2] = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
-char oppC[5] = {"+-*/%"};
+char oppC[OPPNUM] = {"+-*/%"};
 
 int isNum(char analyze)
 {
@@ -20,7 +21,7 @@ int isNum(char analyze)
 //FOR CALC:
 int mathID(char analyze)
 {
-    for (int i = 0; i < oppNum; i++)
+    for (int i = 0; i < OPPNUM; i++)
     {
         
         if (analyze == oppC[i])
