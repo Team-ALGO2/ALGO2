@@ -2,6 +2,7 @@
 
 ![C Unittests](https://github.com/RadioactiveHydra/ALGO2/workflows/C%20Unittests/badge.svg)
 ![Coverty Status](https://scan.coverity.com/projects/20314/badge.svg)
+[![Build Status](https://travis-ci.org/Team-ALGO2/ALGO2.svg?branch=master)](https://travis-ci.org/Team-ALGO2/ALGO2)  
 ![Line Count](https://tokei.rs/b1/github/RadioactiveHydra/ALGO2)
 ![File Count](https://tokei.rs/b1/github/RadioactiveHydra/ALGO2?category=files)
 
@@ -13,8 +14,9 @@ This is a git for all our work during the 2019 - 2020 Algorithms 2 class. The pr
 Use "ci skip" to not trigger tests
 
 ## Important Links
- https://team-algo2.github.io/ALGO2/ - Github Pages  
- https://scan.coverity.com/projects/algo2 - Coverty
+ https://team-algo2.github.io/ALGO2/ - Github Pages   
+ https://scan.coverity.com/projects/algo2 - Coverety  
+ https://travis-ci.org/Team-ALGO2/ALGO2 - Travis CI  
 
 ## Work status
 
