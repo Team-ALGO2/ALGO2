@@ -35,7 +35,7 @@
 #define NEG_INFINITY -2147483647
 
 // settings
-#define MAX_INPUT_LENGTH 256
+#define MAX_INPUT_LENGTH 1024
 
 // Import Important Libraries
 #include <stdio.h>

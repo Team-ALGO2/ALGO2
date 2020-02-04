@@ -60,8 +60,8 @@ char* trimOperator(char input[MAX_INPUT_LENGTH])
    //Code causing warning, commeting out
 }
 
-//a function that will remove all the spaces in a string
-//outputs the string without the spaces
+//a function that will remove all specified characters within a string
+//outputs the string without the character
 char* removeCharacter(char input[MAX_INPUT_LENGTH], char remv)
 {
     //We should remove these items during parsing, and not here to increase preformance 
