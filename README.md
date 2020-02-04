@@ -1,6 +1,8 @@
 # Algorithms II GitHub
 
-![C Unittests](https://github.com/RadioactiveHydra/ALGO2/workflows/C%20Unittests/badge.svg)   
+![C Unittests](https://github.com/RadioactiveHydra/ALGO2/workflows/C%20Unittests/badge.svg)
+![Line Count](https://tokei.rs/b1/github/RadioactiveHydra/ALGO2)
+![File Count](https://tokei.rs/b1/github/RadioactiveHydra/ALGO2?category=files)
 
 This is a git for all our work during the 2019 - 2020 ALGO2 class. The projects included here are:
 - EPIC CALCULATOR (Contains Slots, Tetris, Etc.)
