@@ -1,0 +1,9 @@
+jobs:
+  include:
+    - stage: test
+      name: C unittest
+      language: C
+      install: 
+        - make install_deps
+      script:
+        - make create_dir compile
