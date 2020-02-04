@@ -7,7 +7,7 @@ char oppC[5] = {"+-*/%"};
 
 int isNum(char analyze)
 {
-    if (analyze > 47 && analyze < 58)
+    if (analyze >= '0' && analyze <= '9')
     {
         return 1;
     }
