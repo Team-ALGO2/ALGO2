@@ -4,11 +4,12 @@ jobs:
       name: C Compiling
       language: C
       install: 
-        - make install_deps
+        - make install_deps compile
       script:
         - make create_dir compile
     - stage: test
       name: C Tests
       script:
+         - make
          - cd bin
          - ./unittest
