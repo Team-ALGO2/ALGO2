@@ -4,8 +4,9 @@
 
 int infixToPostfix(stack input, stack inputBits, stack * dataOut, stack * bitsOut);
 int parseString(char inputString[MAX_INPUT_LENGTH], stack *dataOut, stack *binOut);
+int postFixcalc(char* in);
 
-//int PostFixcalc
+//int postFixcalc
 
 
 
@@ -18,7 +19,7 @@ int main(void)
     char str[MAX_INPUT_LENGTH] = "3+8*98";
     parseString(str, &data, &bin);
     char in[100] = "whatever you want but change this to a stack";
-    printf ("postfix evaluation: %d", PostFixcalc(in));
+    printf ("postfix evaluation: %d", postFixcalc(in));
 } 
 
 //FUNCTIONS:
@@ -26,7 +27,7 @@ int main(void)
 //a function to split the inputed string into individual arguments in a stack(should be in infix notation)
 int parseString(char inputString[MAX_INPUT_LENGTH], stack *dataOut, stack *binOut)
 {
-     printf("Begin parsing\n");
+    printf("Begin parsing\n");
     //itterate over the arguments of the input string
     //length needs to be checked every time since we are changeing the size of the string during the loop
     for(int i = 0; i < strlen(inputString); i++)
@@ -62,6 +63,7 @@ int infixToPostfix(stack input, stack inputBits, stack * dataOut, stack * bitsOu
     stack working = {-1, {0}};
 
     //NEED TO FILP BOTH INPUT STACKS
+    //Lol what?
 
     // set length to the number of inputs in the stack
     int length = stack_length(&input);
@@ -99,7 +101,7 @@ int infixToPostfix(stack input, stack inputBits, stack * dataOut, stack * bitsOu
     printf("Done infix to postfix \n");
     return 0; //return 0 if done and not failed
 }
-int PostFixcalc(char* in){
+int postFixcalc(char inputString[MAX_INPUT_LENGTH]){
     
     
     stack stack = {-1, {0}}; 
@@ -107,12 +109,12 @@ int PostFixcalc(char* in){
   
   
     // Scan all characters 
-    for (i = 0; i<in[i]; ++i) 
+    for (i = 0; i<inputString[i]; ++i) 
     { 
       
         // If number push
-        if (isdigit(in[i])) 
-            stack_push(&stack, in[i] - '0'); 
+        if (isdigit(inputString[i])) 
+            stack_push(&stack, inputString[i] - '0'); 
   
         // If operator pop
         else
@@ -122,7 +124,7 @@ int PostFixcalc(char* in){
 
             int val2 = stack_top(&stack); stack_pop(&stack);
             
-            switch (in[i]) 
+            switch (inputString[i]) 
             { 
             case '+': stack_push(&stack, val2 + val1); break;
             case '-': stack_push(&stack, val2 - val1); break;
