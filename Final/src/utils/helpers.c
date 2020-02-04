@@ -32,59 +32,61 @@ int mathID(char analyze)
 }
 
 //removes the first "i" characters from the "input" string and returns the new string
-char* trim(char* input, int i)
+char* trim(char input[MAX_INPUT_LENGTH], int remv)
 {
-    int length = strlen(input);
-	queue parseString = {-1, -1, {0}};
-	
-	//itterate over the string to load it into a queue
-	for(int i = 0; i < length; i++)
-	{
-		queue_enqueue(&parseString, input[i]) ;
-	}
+    int i;
+    while(input[i])
+    {
+        input[i] = input[i+remv];
+        i++;
+    }
+    return input;
 }
 
 // Trims strings to the next non number character
-char* trimOperator(char* input)
+char* trimOperator(char input[MAX_INPUT_LENGTH])
 {
+    //No idea what this does; not fixing it
+    /*
     int i = 0;
     int lenght = strlen(input);
-    char* out = "";
+    char out[MAX_INPUT_LENGTH] = "";
     for (i = 0; i < lenght && (isNum(input[i]) || input[i] == ' ');  i++)
     {}
-    out = trim(input, i);
+    //out = trim(input, i);
     // printf("out: %s\n", out);
     return out;
+    */
+   //Code causing warning, commeting out
 }
 
 //a function that will remove all the spaces in a string
 //outputs the string without the spaces
-char* removeWhiteSpace(char* input)
+char* removeCharacter(char input[MAX_INPUT_LENGTH], char remv)
 {
-    char* out = "";
-    int l = strlen(input);
-    int f = 0;//counts how many chars have been put into the out string
-    for(int i = 0; i < l; i++)
+    //We should remove these items during parsing, and not here to increase preformance 
+    int i;
+    int removed = 0;
+    while(input[i])
     {
-        if(input[i] != ' ' && input[i] != 9)
-        {
-            out[f] = input[i];
-            f++;
+        if(input[i+removed] == remv){
+            removed++;
         }
+        input[i] = input[i+removed];
     }
-    out[f+1] = '\0';
-    return out;
+    return input;
 }
 
 //converts nubmers in int form to char* of the numbers
 //EX: int i = 21312321 -> char* i = "21312321"
-char* unAtoi(int input)
+char* itoa(int input)
 {
     char* out = "";
     char* str; 
     sprintf(str,"%d", input);
     return str;
 }
+//TODO REINPLEMENT
 
 //a function to see if which opperator has presedce
 //it will output -1 if the opperator on the left is heigher, 1 if the opperator on the right is heigher

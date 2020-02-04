@@ -3,7 +3,7 @@
 //PROTOTYPING:
 
 int infixToPostfix(stack input, stack inputBits, stack * dataOut, stack * bitsOut);
-int parseString(char* inputString, stack *dataOut, stack *binOut);
+int parseString(char inputString[MAX_INPUT_LENGTH], stack *dataOut, stack *binOut);
 
 
 //MAIN:
@@ -12,14 +12,14 @@ int main(void)
 {
     stack data = {-1, {0}}; //to store the data that is being manipulated
     stack bin = {-1, {0}};//to store the binairy info that describes if the data in "data" is a char or an int
-    char *str = "3+8*98";
+    char str[MAX_INPUT_LENGTH] = "3+8*98";
     parseString(str, &data, &bin);
 } 
 
 //FUNCTIONS:
 
 //a function to split the inputed string into individual arguments in a stack(should be in infix notation)
-int parseString(char* inputString, stack *dataOut, stack *binOut)
+int parseString(char inputString[MAX_INPUT_LENGTH], stack *dataOut, stack *binOut)
 {
     printf("Begin parsing\n");
     //itterate over the arguments of the input string
@@ -33,7 +33,7 @@ int parseString(char* inputString, stack *dataOut, stack *binOut)
             printf("%d is a number\n", atoi(inputString));
             stack_push(dataOut, atoi(inputString)); //pushes the data
             stack_push(binOut, 0); //shows that the data should be interpreted as an int
-            i = i + strlen(unAtoi(atoi(inputString))) - 1;
+            i = i + strlen(itoa(atoi(inputString))) - 1;
         }
         else if(mathID(inputString[i]) != -1)
         {
