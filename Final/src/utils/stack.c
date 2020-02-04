@@ -163,6 +163,8 @@ void stack_printer(stack *s)
     printf("\n");
 }
 
+//We dont need this >:(
+/*
 stack stack_reverse(stack *s)
 {
     stack out = {-1, {0}};
@@ -172,3 +174,4 @@ stack stack_reverse(stack *s)
     }
     return out;
 }
+*/
