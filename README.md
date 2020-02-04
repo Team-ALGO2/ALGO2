@@ -1,6 +1,7 @@
 # Algorithms II GitHub
 
 ![C Unittests](https://github.com/RadioactiveHydra/ALGO2/workflows/C%20Unittests/badge.svg)
+![Coverty Status](https://scan.coverity.com/projects/20314/badge.svg)
 ![Line Count](https://tokei.rs/b1/github/RadioactiveHydra/ALGO2)
 ![File Count](https://tokei.rs/b1/github/RadioactiveHydra/ALGO2?category=files)
 
