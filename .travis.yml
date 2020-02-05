@@ -1,14 +1,14 @@
 jobs:
   include:
-    - stage: make
+    - stage: tests
       name: C Compiling
-      language: C
+      language: C 
       install: 
-        - make install_deps compile
+        - make install_deps
       script:
-        - make create_dir compile
-    - stage: test
-      name: C Tests
+        - make compile
+    - stage: tests
+      name: C unittest
       script:
          - make
          - cd bin
