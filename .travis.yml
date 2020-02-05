@@ -6,10 +6,11 @@ jobs:
       install: 
         - make install_deps
       script:
+        - make clean
         - make compile
     - stage: tests
       name: C unittest
       script:
          - make
          - cd bin
-         - ./unittest
+         - ./test
