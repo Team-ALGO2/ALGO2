@@ -103,7 +103,7 @@ int stack_top(stack *s)
     {
         //Error Message
         #ifdef DEBUG
-        printf("Error: Queue is empty, canot get the top value.\n Note: The value returned my be junk.\n");
+        printf("Error: Stack is empty, canot get the top value.\n Note: The value returned my be junk.\n");
         #endif
 
         return STACK_EMPTY;
@@ -124,7 +124,7 @@ int stack_push(stack *s, int x)
     {
         //Error Message
         #ifdef DEBUG
-        printf("Error: Queue is full, canot push.\n");
+        printf("Error: Stack is full, canot push.\n");
         #endif
         return STACK_FULL;
     }
@@ -143,7 +143,7 @@ int stack_pop(stack *s)
     {
         //Error Message
         #ifdef DEBUG
-        printf("Error: Queue is empty, canot pop.\n");
+        printf("Error: Stack is empty, canot pop.\n");
         #endif
         return STACK_EMPTY;
     }
