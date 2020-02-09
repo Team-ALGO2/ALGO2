@@ -24,6 +24,9 @@ run
 .vscode
 .vscode/
 
+# Coverty dirs
+.cov-int/
+
 #ignore personal python enviroment
 Python
 
@@ -34,4 +37,5 @@ __pycache__
 ignore.map 
 
 
-.vscode/settings.json
+# Ignore coverty output
+cov-int/

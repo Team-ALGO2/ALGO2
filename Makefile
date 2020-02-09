@@ -1,4 +1,4 @@
-all: create_dir install_deps compile
+all: clean install_deps compile
 
 dir = Final/src
 out = bin
@@ -9,7 +9,7 @@ linkers = -lssl -lcrypto -lsqlite3 -lncurses # You can get rid of specific linke
 
 errors = -w  	# How to deal with errors: -fsyntax-only (check only syntax); -Werror (make warnings into errors); -w (ignore all warning)
 
-create_dir:
+clean:
 	@echo "Creating bin directory"
 	@rm -rf bin
 	@mkdir bin
