@@ -12,7 +12,7 @@
 //cMap -> 2d matrix of Connectivity Booleans
 //start -> Starting Node
 int kruskals_alt(int map[KS_ALT_MAX_SIZE][KS_ALT_MAX_SIZE], int cMap[KS_ALT_MAX_SIZE][KS_ALT_MAX_SIZE], int start){
-
+    //TODO
 }
 
 // Because C Does Not Like Redefinitions of Main, This Checks If Its Being Run Directly Or Is It Being Run By A Function Call

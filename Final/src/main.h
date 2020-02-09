@@ -50,10 +50,10 @@
 // Import Utils
 #include "utils/math.c"
 #include "utils/stack.c"
-#include "utils/convert.c"
 #include "utils/queue.c"
 #include "utils/tree.c"
 #include "utils/helpers.c"
+#include "utils/convert.c"
 
 /* Clear command
  * Windows: cls
