@@ -164,7 +164,18 @@ double cosineh(double a){
 
 // aCb id(14)
 long aChooseB(long n, long k){
+    #ifdef FASTCHOOSEPERM
+    #endif
+    int top = 1;
+    int bottom = 1;
+    for (int x = 0; x < (n-k); x++){
+        top = top * (n-x);
+        bottom = bottom * (x+1);
+    }
+    return top/bottom;
+    #ifndef FASTCHOOSEPERM
     return (factorial(n))/(factorial(k)*factorial(n-k));
+    #endif
 }
 
 // aPb id(15)
