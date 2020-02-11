@@ -108,4 +108,4 @@ int main(){
 
 	prim(map, cMap, 0);
 }
-#endif // _MANUALRUNv
+#endif // _MANUALRUN
