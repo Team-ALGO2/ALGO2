@@ -6,16 +6,37 @@
 char numberC[10][2] = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
 char oppC[OPPNUM] = {"+-*/%"};
 
+//Checking Different Ascii Character Types
 int isNum(char analyze)
 {
-    if (analyze >= '0' && analyze <= '9')
-    {
-        return 1;
-    }
-    else 
-    {
-        return 0;
-    }
+    if (analyze >= '0' && analyze <= '9'){return True;}
+    else {return False;}
+}
+
+int isAlpha(char analyze)
+{
+    if (analyze >= 'a' && analyze <= 'z'){return True;}
+    else {return False;}
+}
+
+int isCapAlpha(char analyze)
+{
+    if (analyze >= 'A' && analyze <= 'Z'){return True;}
+    else {return False;}
+}
+
+int isHex(char analyze)
+{
+    if (analyze >= 'A' && analyze <= 'F'){return True;}
+    else {return False;}
+}
+
+int isAlphanumerical(char analyze)
+{
+    if (analyze >= '0' && analyze <= '9'){return True;}
+    else if (analyze >= 'a' && analyze <= 'z'){return True;}
+    else if (analyze >= 'A' && analyze <= 'Z'){return True;}
+    else {return False;}
 }
 
 //FOR CALC:
