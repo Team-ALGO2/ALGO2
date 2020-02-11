@@ -109,6 +109,8 @@ void test_math()
 	ASSERT_EQUAL_INT(powr(5, 2), 25, "Exponent");
 	ASSERT_EQUAL_INT((int)squarert(81), 9, "Squareroot");
 	ASSERT_EQUAL_INT(factorial(4), 24, "Factorial");
+	ASSERT_EQUAL_INT(aChooseB(8, 5), 56, "Combinatronics");
+	ASSERT_EQUAL_INT(aPermB(8, 5), 6720, "Permutations");
 	printf("-------- End Math Tests --------\n");
 }
 
