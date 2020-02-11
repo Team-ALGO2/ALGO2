@@ -9,8 +9,8 @@
 #define DEBUG //Checking Definitions Instead Of Variables Because ifdef Removes Debug Code In Compilation!
 
 // Define Calculator Configuration Flags
-#define RECURSIVECONVERT
-#define FASTCHOOSE
+#define RECURSIVECONVERT //Uses recursive techneques to convert bases
+#define FASTCHOOSEPERM //Uses optimitation techneques to create faster and more accurate combinatronics and permutations calculations
 
 // Define Booleans
 #define false 0
