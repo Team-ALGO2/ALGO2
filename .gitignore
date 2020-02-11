@@ -28,14 +28,13 @@ run
 .cov-int/
 
 #ignore python enviroment
-env
+python-venv
 
 #Ignore Temporary Python Files
 __pycache__
 
 #Ignore Testing Map Files
 ignore.map 
-
 
 # Ignore coverty output
 cov-int/
