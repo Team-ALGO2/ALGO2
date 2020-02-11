@@ -3,7 +3,7 @@
 #define OPPNUM 5 //this is the same value as defined in the first box of oppC
 
 #ifndef _MAINGUARD
-#include "main.h"
+#include "../main.h"
 #endif
 
 //FOR CALC:
