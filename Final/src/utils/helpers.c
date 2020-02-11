@@ -2,6 +2,10 @@
 
 #define OPPNUM 5 //this is the same value as defined in the first box of oppC
 
+#ifndef _MAINGUARD
+#include "main.h"
+#endif
+
 //FOR CALC:
 char numberC[10][2] = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
 char oppC[OPPNUM] = {"+-*/%"};
