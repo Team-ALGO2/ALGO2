@@ -1,47 +1,39 @@
 env:
   global:
-   - secure: "HqP1/ncqPtGQWay2Wq2LipqwgsDNW/Fo3OkR9OwM/fCPmsJT+fgMcDEcY8bVSC8mlvzOeJJKQJ9W4v4+Z+wuQfitgk+ZNjKcKn8xzeBvH+fdGQtsCIHMa9hbnsfij2e80tWLzl8XTrUZ6vvKpbv5vZn7I9LNBL9keFDkL2fwnNE="
-
+  - secure: XW4hpQP4cDQ4jx+CARxSoS9Wo+Le+EsL2AShmaBPGLhMbdjZodovmrFJUorPMlIy+tGxlOxk26DGjxDv4KZdQJrIANV0j9LEf76hGxmPI9lsx/ReIsJV/SJ4TIf0A3x1PWVtvKVpZRtPYWdg1nbWCadTkmETpymrd87odsdbBU6tEk2jFV7AfyhQQFer8ZjwmD7/AATUIITHYxT7KJYh8TXsJ3NxyFZ+TaLXlgeVwVMihSgj64cCKlXqevjpC61SQfy9dpZcdgdj9ngnQpl+YhgSG6Pd6lncaS9Fe0E7NeC3raM7kFFyL9Yv4G4uWLc602fGF6O3vv7kC4+ttm7Ab0NRg9ZLPHyozB3dSmTx66P3vmJhPX8dBhZ4DrwrkPO9S10nkGnB1vWbGlTqMtowpuxZYSahZQS+tcFL52A4VmIEeUu6m/QDk1vofUogZgzJoLNgUk53RS9dVPSzFEmsCcXHGKadsnpka/pYu5ltXyO1Eu9JmzK096BMi/erQ8VotM87I5LX86qe/Wzz3JoIqQCmBlWll6BIV6rPW7TwEkvDEjs38glvWmAbN5PznaNn9YsMeN/W52PaI9ifFUGvl7nXCiqtm6zmqqnpCm/uh+ErEheeBGQHYn/+gkZlHVGSv/Dn76+DhsoCIAsf2QjE7zBxUcODBj72y7272fNDYl8=
 before_install:
-  - echo -n | openssl s_client -connect https://scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
-
+- echo -n | openssl s_client -connect https://scan.coverity.com:443 | sed -ne '/-BEGIN
+  CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
 addons:
   coverity_scan:
     project:
-      name: "Team-ALGO2/ALGO2"
-      description: "C-calculator"
+      name: Team-ALGO2/ALGO2
+      description: C-calculator
     notification_email: tommcn@mcnamer.ca
-    build_command_prepend: "make clean"
-    build_command: "make"
+    build_command_prepend: make clean
+    build_command: make
     branch_pattern: coverity_scan
-            
-
 jobs:
   include:
-    - stage: tests
-      name: C Compiling
-      language: C 
-      install: 
-        - make install_deps
-      script:
-        - make clean
-        - make compile
-    - stage: tests
-      name: C unittest
-      script:
-         - make
-         - cd bin
-         - ./test
-      
-      after_success:
-        - wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/master/send.sh
-        - chmod +x send.sh
-        - ./send.sh success $WEBHOOK_URL
-      after_failure:
-        - wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/master/send.sh
-        - chmod +x send.sh
-        - ./send.sh failure $WEBHOOK_URL
-      
-        
-
-    
+  - stage: tests
+    name: C Compiling
+    language: C
+    install:
+    - make install_deps
+    script:
+    - make clean
+    - make compile
+  - stage: tests
+    name: C unittest
+    script:
+    - make
+    - cd bin
+    - "./test"
+    after_success:
+    - wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/master/send.sh
+    - chmod +x send.sh
+    - "./send.sh success $WEBHOOK_URL"
+    after_failure:
+    - wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/master/send.sh
+    - chmod +x send.sh
+    - "./send.sh failure $WEBHOOK_URL"
