@@ -178,7 +178,7 @@ long aPermB(long n, long r){
     return result;
     #endif
 
-    #ifdef FASTCHOOSEPERM
+    #ifndef FASTCHOOSEPERM
     return (factorial(n))/factorial(n-r);
     #endif
 }
