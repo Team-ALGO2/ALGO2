@@ -1,4 +1,4 @@
-all: server
+all: clean server
 
 clean:
 	@rm -rf *.o
