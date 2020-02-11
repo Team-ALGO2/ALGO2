@@ -27,8 +27,8 @@ run
 # Coverty dirs
 .cov-int/
 
-#ignore personal python enviroment
-Python
+#ignore python enviroment
+env
 
 #Ignore Temporary Python Files
 __pycache__
