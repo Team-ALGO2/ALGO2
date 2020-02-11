@@ -8,6 +8,10 @@
 // Define Debug (Comment Out To Disable Debug Mode)
 #define DEBUG //Checking Definitions Instead Of Variables Because ifdef Removes Debug Code In Compilation!
 
+// Define Calculator Configuration Flags
+#define RECURSIVECONVERT
+#define FASTCHOOSE
+
 // Define Booleans
 #define false 0
 #define true 1
@@ -35,7 +39,7 @@
 #define NEG_INFINITY -2147483647
 
 // settings
-#define MAX_INPUT_LENGTH 1024
+#define MAX_INPUT_LENGTH 4096
 
 // Import Important Libraries
 #include <stdio.h>
