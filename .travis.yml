@@ -23,4 +23,23 @@ jobs:
         - wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/master/send.sh
         - chmod +x send.sh
         - ./send.sh failure $WEBHOOK_URL
+      
+      - stage: coverity
+        env:
+          global:
+           - secure: "HqP1/ncqPtGQWay2Wq2LipqwgsDNW/Fo3OkR9OwM/fCPmsJT+fgMcDEcY8bVSC8mlvzOeJJKQJ9W4v4+Z+wuQfitgk+ZNjKcKn8xzeBvH+fdGQtsCIHMa9hbnsfij2e80tWLzl8XTrUZ6vvKpbv5vZn7I9LNBL9keFDkL2fwnNE="
+        
+        before_install:
+          - echo -n | openssl s_client -connect https://scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
+        
+        addons:
+          coverity_scan:
+            project:
+              name: "Team-ALGO2/ALGO2"
+              description: "C-calculator"
+            notification_email: tommcn@mcnamer.ca
+            build_command_prepend: "make clean"
+            build_command: "make"
+            branch_pattern: coverity_scan
+        
     
