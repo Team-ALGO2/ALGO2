@@ -14,31 +14,31 @@
 */
 
 // + id(0)
-double add(double a, double b)
+long double add(long double a, long double b)
 {
     return a+b;
 }
 
 // - id(1)
-double subtract(double a, double b)
+long double subtract(long double a, long double b)
 {
     return a-b;
 }
 
 // * id(2)
-double multiply(double a, double b)
+long double multiply(long double a, long double b)
 {
     return a*b;
 }
 
 // / id(3)
-double divide(double a, double b)
+long double divide(long double a, long double b)
 {
     return a/b;
 }
 
 // % id(4)
-long mod(long a, long b)
+long long mod(long long a, long long b)
 {
     return a%b;
 }
@@ -50,13 +50,13 @@ long mod(long a, long b)
 */
 
 // d% id(5)
-double dmod(double x, double y) {
-    return x - (int)(x/y) * y;
+long double dmod(long double x, long double y) {
+    return x - (long long)(x/y) * y;
 } //This is because normal mod "%" does not supoort doubles >:(
 
 // ^ id(6)
-double powr(double a, double b){
-  double result = 1;
+long double powr(long double a, long double b){
+  long double result = 1;
   for(int i = 1; i <= b; i ++)
   {
    result = a*result;
@@ -68,8 +68,8 @@ double powr(double a, double b){
 }
 
 // sqrt id(7)
-double squarert( double b){
-    float temp, sqrt;
+long double squarert(long double b){
+    long double temp, sqrt;
     sqrt = b / 2;
     temp = 0;
     while(sqrt != temp){
@@ -82,8 +82,8 @@ double squarert( double b){
 }
 
 // ! id(8)
-long long factorial(int b){ // lmao l o n g l o n g
-    long long result = 1;
+long double factorial(long double b){ // lmao l o n g l o n g <- its changed now, but im keeping the joke
+    long double result = 1;
     for(int i = 0; i < b; i++){
         result = result * (b - i);
     }
@@ -97,11 +97,11 @@ long long factorial(int b){ // lmao l o n g l o n g
 */
 
 // sin id(9)
-double sine(double a){
+long double sine(long double a){
     a = dmod(a, PI); //Number Overflows If Too Big
-    double total = a;
+    long double total = a;
     for(int i = 0; i < TRIGACCURACY; i++){
-        double powNum = i*2 + 3;
+        long double powNum = i*2 + 3;
         if(i%2 == 0){
             total = total - (powr(a, powNum)/factorial(powNum));
         }
@@ -113,11 +113,11 @@ double sine(double a){
 }
 
 // cos id(10)
-double cosine(double a){
+long double cosine(long double a){
     a = dmod(a, PI); //Number Overflows If Too Big
-    double total = 1;
+    long double total = 1;
     for(int i = 0; i < TRIGACCURACY; i++){
-        double powNum = i*2 + 2;
+        long double powNum = i*2 + 2;
         if(i%2 == 0){
             total = total - (powr(a, powNum)/factorial(powNum));
         }
@@ -129,27 +129,27 @@ double cosine(double a){
 }
 
 // tan id(11)
-double tangent(double a){
+long double tangent(long double a){
     return sine(a) / cosine(a);
 }
 
 // sineh id(12)
-double sineh(double a){
+long double sineh(long double a){
     a = dmod(a, PI); //Number Overflows If Too Big
-    double total = a;
+    long double total = a;
     for(int i = 0; i < TRIGACCURACY; i++){
-        double powNum = i*2 + 3;
+        long double powNum = i*2 + 3;
         total = total + (powr(a, powNum)/factorial(powNum));
     }
     return total;
 }
 
 // cosineh id(13)
-double cosineh(double a){
+long double cosineh(long double a){
     a = dmod(a, PI); //Number Overflows If Too Big
-    double total = 1;
+    long double total = 1;
     for(int i = 0; i < TRIGACCURACY; i++){
-        double powNum = i*2 + 2;
+        long double powNum = i*2 + 2;
         total = total + (powr(a, powNum)/factorial(powNum));
     }
     return total;
@@ -163,11 +163,11 @@ double cosineh(double a){
 */
 
 // aCb id(14)
-long aChooseB(long n, long k){
+long double aChooseB(long double n, long double k){
     #ifdef FASTCHOOSEPERM
     #endif
-    int top = 1;
-    int bottom = 1;
+    long double top = 1;
+    long double bottom = 1;
     for (int x = 0; x < (n-k); x++){
         top = top * (n-x);
         bottom = bottom * (x+1);
@@ -179,10 +179,10 @@ long aChooseB(long n, long k){
 }
 
 // aPb id(15)
-long aPermB(long n, long r){
+long double aPermB(long double n, long double r){
 
     #ifdef FASTCHOOSEPERM
-    int result = 1;
+    long double result = 1;
     for (int x = 0; x < r; x++){
         result = result * (n-x);
     }
