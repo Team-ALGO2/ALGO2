@@ -3,56 +3,75 @@
 //PROTOTYPING:
 
 int infixToPostfix(stack input, stack inputBits, stack * dataOut, stack * bitsOut);
-int parseString(char inputString[MAX_INPUT_LENGTH], stack *dataOut, stack *binOut);
 int postFixcalc(char* in);
 
 //int postFixcalc
-
+int ParseString(char exp[MAX_INPUT_LENGTH])
+{
+    int i = 0;
+    int j = 0;
+    int counter = 0;
+    long number;
+    char val[MAX_INPUT_LENGTH];
+    while (exp[i] != '\0')
+    {
+        switch (exp[i])
+        {
+            case '0':
+            case '1':
+            case '2':
+            case '3':
+            case '4':
+            case '5':
+            case '6':
+            case '7':
+            case '8':
+            case '9':
+                    val[j] = exp[i];
+                    j++;
+                    break;
+            case '+':
+                    if (j>0) {
+                        number = strtol(val, (char **)NULL, 10);
+                        j = 0;
+                    }
+        }
+        
+    }
+}
 
 
 //MAIN:
 
 int main(void)
 {
+    /*
     stack data = {-1, {0}}; //to store the data that is being manipulated
-    stack bin = {-1, {0}};//to store the binairy info that describes if the data in "data" is a char or an int
+    stack bin = {-1, {0}}; //to store the binairy info that describes if the data in "data" is a char or an int
     char str[MAX_INPUT_LENGTH] = "3+8*98";
     parseString(str, &data, &bin);
     char in[100] = "whatever you want but change this to a stack";
     printf ("postfix evaluation: %d", postFixcalc(in));
+    */
+   stack input = {-1, {0}};
+   stack inputBits = {-1, {0}};
+   stack *dataOut = {-1, {0}};
+   stack *bitsOut = {-1, {0}};
+
+   stack_push(&input, 5);
+   stack_push(&inputBits, 0);
+   stack_push(&input, 43);
+   stack_push(&inputBits, 1);
+   stack_push(&input, 7);
+   stack_push(&inputBits, 0);
+
+   infixToPostfix(input, inputBits, &dataOut, &bitsOut);
+   stack_printer(&dataOut);
+   stack_printer(&bitsOut);
+
 } 
 
 //FUNCTIONS:
-
-//a function to split the inputed string into individual arguments in a stack(should be in infix notation)
-int parseString(char inputString[MAX_INPUT_LENGTH], stack *dataOut, stack *binOut)
-{
-    printf("Begin parsing\n");
-    //itterate over the arguments of the input string
-    //length needs to be checked every time since we are changeing the size of the string during the loop
-    for(int i = 0; i < strlen(inputString); i++)
-    {
-        
-        
-        if(isNum(inputString[i]))
-        {
-            printf("%d is a number\n", atoi(inputString));
-            stack_push(dataOut, atoi(inputString)); //pushes the data
-            stack_push(binOut, 0); //shows that the data should be interpreted as an int
-            inputString = trimOperator(inputString);          
-        }
-        else
-        {
-            printf("%c is an opperator\n", inputString[i]);
-            int push = inputString[i];
-            stack_push(dataOut, push); //pushes the data
-            stack_push(binOut, 1); //shows that the data should be interpreted as an char
-        }
-        
-    }
-    printf("Done parsing\n");
-    return 0;
-}
 
 // to convert from an inputed string to postfix notation 
 //results are outputed to the dataOut and bitsOut stacks
@@ -72,6 +91,7 @@ int infixToPostfix(stack input, stack inputBits, stack * dataOut, stack * bitsOu
         // if it is an opperand then push to the output
         if(stack_top(&inputBits) == 0)
         {
+            printf("Pushing number: %d\n", stack_top(&working));
             stack_push(dataOut ,(stack_top(&input)));
             stack_pop(&input); //get rid of the data at the top of the stack
             stack_push(bitsOut, 0); // used to identify if a number or char (0 is number)
@@ -80,6 +100,7 @@ int infixToPostfix(stack input, stack inputBits, stack * dataOut, stack * bitsOu
         // if it is a opperator then figure out if to push or directly to output
         else if (stack_top(&inputBits) == 1)
         {
+            printf("Pushing operator: %d\n", stack_top(&working));
             while (!stack_isEmpty(&working) && oppPres(stack_top(&working), stack_top(&input)) == -1)
             {
                 stack_push(dataOut, stack_top(&working)); //push the data
@@ -98,10 +119,14 @@ int infixToPostfix(stack input, stack inputBits, stack * dataOut, stack * bitsOu
         stack_push(bitsOut, 1); //push 1 because it is a char
         stack_pop(&working);
     }
+    stack_printer(&dataOut);
     printf("Done infix to postfix \n");
     return 0; //return 0 if done and not failed
 }
-int postFixcalc(char inputString[MAX_INPUT_LENGTH]){
+
+
+int postFixcalc(char inputString[MAX_INPUT_LENGTH])
+{
     
     
     stack stack = {-1, {0}}; 
