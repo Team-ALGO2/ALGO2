@@ -2,10 +2,24 @@
 <html>
   <head>
     <title>ALGO2</title>
-  </head>
-  <body>
-      <h3>Welcome to the C-Calculator Project</h3>
-      <h6>Comming Soon to a computer near you</h6>
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js"></script>
+    <link rel="icon" type="image/png" href="favicon.ico">
+</head>
+<body id="main">
+      <div id="sidenav" class="sidenav">
+        <p class="closebtn" onclick="closeNav()">&times;</p>
+        <p onclick="window.location.href='index.html'">Home</p>   
+        <p onclick="window.location.href='about.html'">About</p>        
+      </div>
+      <span class="open" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+      <h1>Welcome to the C-Calculator Project</h1>
+
+      <button onclick="getVideoIntoView();" id="scroll">&#8681;</button>
+      
+      <iframe src="https://drive.google.com/file/d/1iF8SuV8d-E-pDskT2MafCKCg_32YKLgH/preview" id="video"></iframe>
+      
+
   </body>
 </html>
 

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ALGO2</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js"></script>
+    <link rel="icon" type="image/png" href="favicon.ico">
+</head>
+<body id="main">
+      <div id="sidenav" class="sidenav">
+        <p class="closebtn" onclick="closeNav()">&times;</p>
+        <p onclick="window.location.href='index.html'">Home</p>   
+        <p onclick="window.location.href='about.html'">About</p>   
+      </div>
+      <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Menu</span>
+      <h1>About</h1>
+
+      <h2>Content</h2>
+      <ul id="programs">
+        <li><a href='https://github.com/Team-ALGO2/ALGO2/blob/master/Final/src/calc.c' target="_blank">A calculator</a></li>
+        <li><a href='https://github.com/Team-ALGO2/ALGO2/blob/master/Final/src/slots.c' target="_blank">A slot machine</a></li>
+        <li><a href='https://github.com/Team-ALGO2/ALGO2/blob/master/Final/src/utils/math.c' target="_blank">16 Math Functions</a></li>
+        <li>2 Abstract Data Types
+            <ul>
+                <li><a href='https://github.com/Team-ALGO2/ALGO2/blob/master/Final/src/utils/stack.c' target="_blank">Stack</a></li>
+                <li><a href='https://github.com/Team-ALGO2/ALGO2/blob/master/Final/src/utils/queue.c' target="_blank">Queue</a></li>
+            </ul>
+        </li>
+        <li>5 Graph Theory Algorithms
+            <ul>
+                <li><a href='https://github.com/Team-ALGO2/ALGO2/blob/master/Mapping/Algorithms/dijkstra_matrix.c' target="_blank">Dijkstra's</a></li>
+                <li><a href='https://github.com/Team-ALGO2/ALGO2/blob/master/Mapping/Algorithms/bellman-ford.c' target="_blank">Bellman-Ford’s</a></li>
+                <li><a href='https://github.com/Team-ALGO2/ALGO2/blob/master/Mapping/Algorithms/floyd-warshall.c' target="_blank">Floyd-Warshall’s</a></li>
+                <li><a href='https://github.com/Team-ALGO2/ALGO2/blob/master/Mapping/Algorithms/prim.c' target="_blank">Prim’s</li>
+                <li><a href='https://github.com/Team-ALGO2/ALGO2/blob/master/Mapping/Algorithms/kruskal.c' target="_blank">Kruskal’s</a></li>
+            </ul>
+        </li>
+    
+    
+    </ul>
+
+    <p class="info">All of these are implemented using only C.<br></p>
+    <h2>Testing</h2>
+    <p>The project is tested against the <a href='https://github.com/Team-ALGO2/ALGO2/blob/master/Final/tests/unittest.c' target="_blank">unittest.c</a> file. The file tests the math and ADTs files, and more tests may be added later. It should also check compiling of the entire project on a linux machine.</p>
+    <ul>
+        <li><a href='https://travis-ci.org/Team-ALGO2/ALGO2' target="_blank">On Travis CI</a></li>
+        <li><a href='https://scan.coverity.com/projects/algo2' target="_blank">On Coverity</a></li>
+    </ul>
+    <p class="info">The programs are tested on Linux machines and a script is included to install the dependencies</p> 
+    <p class="warning">The code will work on MAC OSX but you will need to manually install the dependencies</p>
+    <p class="warning">Parts of the project will not compile on Windows since some libraries do not support Windows (NCURSES...). A Makefile for Windows will be added to compile all the code compatible with Windows</p>
+  </body>
+</html>
+
