@@ -46,7 +46,7 @@ void ASSERT_EQUAL_INT(int expr1, int expr2, char* name)
         printf("    -   %s  "GRN"\xE2\x9C\x93\n"RESET, name);
     } else {
         success = 0;
-        printf("    -   %s  "RED"x\n"RESET, name);
+        printf("    -   %s  "RED"x EXPECTED:%d GOT:%d\n"RESET, name, expr2, expr1);
     }
     log_test(success);
 }

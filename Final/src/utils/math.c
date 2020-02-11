@@ -169,5 +169,16 @@ long aChooseB(long n, long k){
 
 // aPb id(15)
 long aPermB(long n, long r){
+
+    #ifdef FASTCHOOSEPERM
+    int result = 1;
+    for (int x = 0; x < r; x++){
+        result = result * (n-x);
+    }
+    return result;
+    #endif
+
+    #ifdef FASTCHOOSEPERM
     return (factorial(n))/factorial(n-r);
+    #endif
 }
