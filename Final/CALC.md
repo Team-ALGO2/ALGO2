@@ -4,5 +4,4 @@
 
 ## Flowchart Of Pipeline:
 
-![Pipeline](./Pipeline.svg)
 <img src="./Pipeline.svg">
