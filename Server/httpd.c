@@ -12,7 +12,7 @@
 #include <fcntl.h>
 #include <signal.h>
 
-#define CONNMAX 1000
+#define CONNMAX 100
 
 static int listenfd, clients[CONNMAX];
 static void error(char *);
