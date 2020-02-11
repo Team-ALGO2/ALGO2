@@ -3,6 +3,9 @@
 This is the documentation for the C-Calculator Project as well as for the Slots project.
 To find the exact documentation you are looking for you can either look at the file structure, use the commands indexed below or read the comments in the source code.
 
+## Advanced Mathmatical Parsing And Processing Pipeline
+[Check It Out Here!](CALC.md)
+
 ## Table of contents:
 
 ### Calculator:
