@@ -56,7 +56,6 @@
 #include "utils/math.c"
 #include "utils/stack.c"
 #include "utils/queue.c"
-#include "utils/tree.c"
 #include "utils/helpers.c"
 #include "utils/convert.c"
 
