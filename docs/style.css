@@ -69,6 +69,12 @@ a {
     background-color: gray;
     font-weight: bold;
 }
+
+.presentation {
+    font-size: xx-large;
+    text-align: center;
+    color: white;
+}
   
 
 .open {
@@ -76,7 +82,25 @@ a {
     position: fixed;
     top: 0;
     z-index: 1;
+    opacity: 1;
+    transition: 0.5s;
 }
+
+#git_cont {
+    text-align: center;
+}
+
+#git_url {
+    color: white;
+    font-size: x-large;
+    text-align: center;
+    background-color: gray;
+    border-radius: 25px;
+    padding: 20px;  
+    display: inline-block;
+}
+
+
  
 #scroll {
     height: 40px; 
@@ -86,6 +110,7 @@ a {
     background-color: #454545;
     align-self: center;
     margin-left: 50%;
+    color: white;
 
 }
 .sidenav {

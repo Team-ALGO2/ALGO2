@@ -2,8 +2,31 @@ window.addEventListener('DOMContentLoaded', (event) => {
     console.log('DOM fully loaded and parsed');
 });
 
+
+
 window.addEventListener('scroll', (event) => {
-    console.log("scrolling");
+    var y = window.scrollY
+    if (y > 1000)
+    {
+        var e = document.getElementById("scroll")
+        if (e.style.opacity != 0)
+        {
+            var fadeEffect = setInterval(function () {
+                if (!e.style.opacity) {
+                    event.style.opacity = 1;
+                }
+                if (e.style.opacity > 0) {
+                    e.style.opacity -= 0.1;
+                } else {
+                    clearInterval(fadeEffect);
+                }
+            }, 200);
+        }
+    
+    } else {
+        document.getElementById("scroll").style.opacity = 1;
+    }
+    console.log(y);
 });
 
 
@@ -20,7 +43,5 @@ function closeNav() {
 
 function getVideoIntoView() {
     var element = document.getElementById("video");
-
     element.scrollIntoView({behavior: "smooth", block: "center", inline: "center"});
-
 }

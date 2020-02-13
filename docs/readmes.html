@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ALGO2</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js"></script>
+    <link rel="icon" type="image/png" href="favicon.ico">
+</head>
+<body id="main">
+      <div id="sidenav" class="sidenav">
+        <p class="closebtn" onclick="closeNav()">&times;</p>
+        <p onclick="window.location.href='index.html'">Home</p>   
+        <p onclick="window.location.href='about.html'">About</p>
+        <p onclick="window.location.href='readmes.html'">READMEs</p>   
+      </div>
+      <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Menu</span>
+      <h1>READMEs</h1>
+
+      <p>Here, you can find all of the READMEs from the repo.</p>
+
+
+
+
+
+
+      <script src="https://unpkg.com/showdown/dist/showdown.min.js"></script>
+      <script>
+            var converter = new showdown.Converter(),
+            text      = '# hello, markdown!',
+            html      = converter.makeHtml(text);
+
+            console.log(html)
+
+      </script>
+  </body>
+</html>
+
