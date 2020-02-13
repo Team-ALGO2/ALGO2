@@ -11,6 +11,7 @@
 // Define Calculator Configuration Flags
 #define RECURSIVECONVERT //Uses recursive techneques to convert bases
 #define FASTCHOOSEPERM //Uses optimitation techneques to create faster and more accurate combinatronics and permutations calculations
+#define SYSTEMMATH //(USed For Debugging) Uses System Functions Instead Of Self-Made Functions
 
 // Define Booleans
 #define false 0
