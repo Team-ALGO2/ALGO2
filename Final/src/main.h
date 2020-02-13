@@ -13,6 +13,10 @@
 #define FASTCHOOSEPERM //Uses optimitation techneques to create faster and more accurate combinatronics and permutations calculations
 #define SYSTEMMATH //(USed For Debugging) Uses System Functions Instead Of Self-Made Functions
 
+// cache.c
+#define MAX_VARIABLE_NUMBER 25 // Max number of variables user is allowed 
+#define MAX_VARIABLE_LENGTH 10 // Max number of variables user is allowed 
+
 // Define Booleans
 #define false 0
 #define true 1
@@ -58,6 +62,7 @@
 #include "utils/queue.c"
 #include "utils/helpers.c"
 #include "utils/convert.c"
+#include "utils/cache.c"
 
 /* Clear command
  * Windows: cls
