@@ -31,24 +31,23 @@ int cacheGET(char get[MAX_VARIABLE_LENGTH])
     {
         if (strcmp(list.caches[i].name, get) == 0)      // If found
         {
-            printf("HIT - %s: %d\n", list.caches[i].name, list.caches[i].value);
             return list.caches[i].value;
         } 
         
     }
-    return INFINITY; // Chance are user didn't cache INFINITY so it is error code
+    return NEG_INFINITY; // Chance are user didn't cache NEG_INFINITY so it is error code
 }
 
 int cacheSET(char get[MAX_VARIABLE_LENGTH], int value)
 {
     for (int i = 0; i < MAX_VARIABLE_NUMBER; i++)
     {
-        if (strcmp(list.caches[i].name, get) == 0)
+        if (strcmp(list.caches[i].name, get) == 0)   // Replacing
         {
             strcpy(list.caches[i].name, get);
             list.caches[i].value = value;
             return 0;
-        } else if (strcmp(list.caches[i].name, "\0") == 0) {
+        } else if (strcmp(list.caches[i].name, "\0") == 0) {  // Creating
             strcpy(list.caches[i].name, get);
             list.caches[i].value = value;
             return 0;
