@@ -5,9 +5,11 @@ int tests_successful = 0;
 int tests_failed = 0;
 
 void log_test(int success);
+
 void test_math();
 void test_stack();
 void test_queue();
+void test_helpers();
 
 void ASSERT_TRUE(int expression, char* name)
 {
@@ -85,6 +87,7 @@ int main(void)
 	test_math();
     test_stack();
     test_queue();
+    test_helpers();
 
     /* End Tests */
 
@@ -154,4 +157,21 @@ void test_queue()
     queue_enqueue(&test, 3);
     ASSERT_EQUAL_INT(queue_getRear(&test), 3, "Get rear");
 	printf("-------- End Queue Tests --------\n");
+}
+
+void test_helpers()
+{
+	printf("\n---------- Helpers Tests ----------\n");
+	ASSERT_TRUE(isNum('6'), "Is number true");
+    ASSERT_FALSE(isNum('a'), "Is number false");
+    ASSERT_TRUE(isAlpha('a'), "Is alpha true");
+    ASSERT_FALSE(isAlpha('!'), "Is alpha false");
+    ASSERT_TRUE(isCapAlpha('A'), "Is cap alpha true");
+    ASSERT_FALSE(isCapAlpha('a'), "Is cap alpha false");
+    ASSERT_TRUE(isHex('A'), "Is hex true");
+    ASSERT_FALSE(isHex('a'), "Is hex false");
+    ASSERT_TRUE(isAlphanumerical('A'), "Is alphanumerical true (letter)");
+    ASSERT_TRUE(isAlphanumerical('2'), "Is alphanumerical true (number)");
+    ASSERT_FALSE(isAlphanumerical('['), "Is alphanumerical false");
+	printf("-------- End Helpers Tests --------\n");
 }
