@@ -12,7 +12,7 @@
 === BASIC MATH ===
 
 */
-
+    
 // + id(0)
 long double add(long double a, long double b)
 {
@@ -38,9 +38,9 @@ long double divide(long double a, long double b)
 }
 
 // % id(4)
-long long mod(long long a, long long b)
+long double mod(long double a, long double b)
 {
-    return a%b;
+    return (long double)((long long)a%(long long)b);
 }
 
 /*
@@ -56,7 +56,7 @@ long double dmod(long double x, long double y) {
 
 // ^ id(6)
 long double powr(long double a, long double b){
-  long double result = 1;
+  long long result = 1;
   for(int i = 1; i <= b; i ++)
   {
    result = a*result;
@@ -69,7 +69,7 @@ long double powr(long double a, long double b){
 
 // sqrt id(7)
 long double squarert(long double b){
-    long double temp, sqrt;
+    long long temp, sqrt;
     sqrt = b / 2;
     temp = 0;
     while(sqrt != temp){
@@ -83,11 +83,11 @@ long double squarert(long double b){
 
 // ! id(8)
 long double factorial(long double b){ // lmao l o n g l o n g <- its changed now, but im keeping the joke
-    long double result = 1;
+    long long result = 1;
     for(int i = 0; i < b; i++){
         result = result * (b - i);
     }
-    return result;
+    return (long double)result;
 }
 
 /*
@@ -166,13 +166,13 @@ long double cosineh(long double a){
 long double aChooseB(long double n, long double k){
     #ifdef FASTCHOOSEPERM
     #endif
-    long double top = 1;
-    long double bottom = 1;
+    long long top = 1;
+    long long bottom = 1;
     for (int x = 0; x < (n-k); x++){
         top = top * (n-x);
         bottom = bottom * (x+1);
     }
-    return top/bottom;
+    return (long double)top/(long double)bottom;
     #ifndef FASTCHOOSEPERM
     return (factorial(n))/(factorial(k)*factorial(n-k));
     #endif
@@ -182,11 +182,11 @@ long double aChooseB(long double n, long double k){
 long double aPermB(long double n, long double r){
 
     #ifdef FASTCHOOSEPERM
-    long double result = 1;
+    long long result = 1;
     for (int x = 0; x < r; x++){
         result = result * (n-x);
     }
-    return result;
+    return (long double)result;
     #endif
 
     #ifndef FASTCHOOSEPERM
