@@ -10,6 +10,7 @@ void test_math();
 void test_stack();
 void test_queue();
 void test_helpers();
+void test_cache();
 
 void ASSERT_TRUE(int expression, char* name)
 {
@@ -88,6 +89,7 @@ int main(void)
     test_stack();
     test_queue();
     test_helpers();
+    test_cache();
 
     /* End Tests */
 
@@ -175,3 +177,16 @@ void test_helpers()
     ASSERT_FALSE(isAlphanumerical('['), "Is alphanumerical false");
 	printf("-------- End Helpers Tests --------\n");
 }
+
+void test_cache()
+{
+	printf("\n---------- Cache Tests ----------\n");
+	ASSERT_EQUAL_INT(cacheGET("str"), NEG_INFINITY, "Empty cache");
+    ASSERT_EQUAL_INT(cacheSET("str", 1), 0, "Adding to cache");
+    ASSERT_EQUAL_INT(cacheSET("str2", 2), 0, "Adding to cache twice");
+    ASSERT_EQUAL_INT(cacheGET("str2"), 2, "Getting cache");
+    ASSERT_EQUAL_INT(cacheSET("str", 3), 0, "Overwrite cache");
+    ASSERT_EQUAL_INT(cacheGET("str"), 3, "Overwrite reading cache");
+	printf("-------- End Cache Tests --------\n");
+}
+

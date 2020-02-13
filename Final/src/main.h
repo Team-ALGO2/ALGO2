@@ -15,6 +15,10 @@
 #define FORCEHIGHBASE //Bypasses The 36 Digit Max
 #define FULLTEXTVARIABLES //Allows Experimental Multi-Letter Variables 
 
+// cache.c
+#define MAX_VARIABLE_NUMBER 25 // Max number of variables user is allowed 
+#define MAX_VARIABLE_LENGTH 10 // Max number of variables user is allowed 
+
 // Define Booleans
 #define false 0
 #define true 1
@@ -58,9 +62,9 @@
 #include "utils/math.c"
 #include "utils/stack.c"
 #include "utils/queue.c"
-#include "utils/tree.c"
 #include "utils/helpers.c"
 #include "utils/convert.c"
+#include "utils/cache.c"
 
 /* Clear command
  * Windows: cls
