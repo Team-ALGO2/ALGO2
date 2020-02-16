@@ -37,11 +37,4 @@ int postFixcalc(char inputString[MAX_INPUT_LENGTH])
         } 
     } 
     return stack_top(&stack); 
-} 
-
-// Because C Does Not Like Redefinitions of Main, This Checks If Its Being Run Directly Or Is It Being Run By A Function Call
-#ifndef _REDEFGUARD
-int main(){
-
 }
-#endif

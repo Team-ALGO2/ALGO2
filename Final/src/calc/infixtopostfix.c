@@ -49,10 +49,3 @@ int infixToPostfix(stack input, stack inputBits, stack * dataOut, stack * bitsOu
     printf("Done infix to postfix \n");
     return 0; //return 0 if done and not failed
 }
-
-// Because C Does Not Like Redefinitions of Main, This Checks If Its Being Run Directly Or Is It Being Run By A Function Call
-#ifndef _REDEFGUARD
-int main(){
-    
-}
-#endif

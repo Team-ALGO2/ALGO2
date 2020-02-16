@@ -1,7 +1,4 @@
 
-// Define _REDEFGUARD guard to disable all main other main functions
-#define _REDEFGUARD
-
 // Import Libraries + Modules
 #include "main.h"
 

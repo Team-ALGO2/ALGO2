@@ -43,10 +43,3 @@ int ParseString(char exp[MAX_INPUT_LENGTH])
         
     }
 }
-
-// Because C Does Not Like Redefinitions of Main, This Checks If Its Being Run Directly Or Is It Being Run By A Function Call
-#ifndef _REDEFGUARD
-int main(){
-    
-}
-#endif
