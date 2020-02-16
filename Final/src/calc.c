@@ -4,8 +4,20 @@
 
 int infixToPostfix(stack input, stack inputBits, stack * dataOut, stack * bitsOut);
 int postFixcalc(char* in);
+int ParseString(char exp[MAX_INPUT_LENGTH]);
+int populateDummy(stack data, stack bin);
 
-//int postFixcalc
+stack dummyData = {-1, {0}};  
+stack dummyBin = {-1, {0}};
+
+int main (void)
+{
+    populateDummy(dummyData, dummyBin);
+    stack_printer(&dummyData);
+    stack_printer(&dummyBin);
+}
+
+//compute the postfix string
 int ParseString(char exp[MAX_INPUT_LENGTH])
 {
     int i = 0;
@@ -93,9 +105,6 @@ int infixToPostfix(stack input, stack inputBits, stack * dataOut, stack * bitsOu
     //working is only a stack of chars in int form so we do not need to give it a bin stack
     stack working = {-1, {0}};
 
-    //NEED TO FILP BOTH INPUT STACKS
-    //Lol what?
-
     // set length to the number of inputs in the stack
     int length = stack_length(&input);
     for(int i = 0; i < length - 1; i++)
@@ -139,8 +148,6 @@ int infixToPostfix(stack input, stack inputBits, stack * dataOut, stack * bitsOu
 
 int postFixcalc(char inputString[MAX_INPUT_LENGTH])
 {
-    
-    
     stack stack = {-1, {0}}; 
     int i; 
   
@@ -175,4 +182,28 @@ int postFixcalc(char inputString[MAX_INPUT_LENGTH])
     } 
     return stack_top(&stack); 
 } 
- 
+
+int populateDummy(stack data, stack bin) 
+{
+    //populate the data
+    stack_push(&data, 5);
+    stack_push(&data, 1);
+    stack_push(&data, 53);
+    stack_push(&data, 2);
+    stack_push(&data, 2);
+    stack_push(&data, 1);
+    stack_push(&data, 34);
+    stack_push(&data, 2);
+    stack_push(&data, 19);
+
+    //populate the bin
+    stack_push(&bin, 0);
+    stack_push(&bin, 1);
+    stack_push(&bin, 0);
+    stack_push(&bin, 1);
+    stack_push(&bin, 0);
+    stack_push(&bin, 1);
+    stack_push(&bin, 0);
+    stack_push(&bin, 1);
+    stack_push(&bin, 0);
+}
