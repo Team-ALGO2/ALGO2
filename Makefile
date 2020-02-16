@@ -1,4 +1,4 @@
-all: clean compile
+all: clean install_deps compile
 
 dir = Final/src
 serverdir = Server
