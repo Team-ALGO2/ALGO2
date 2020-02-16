@@ -140,7 +140,7 @@ int infixToPostfix(stack input, stack inputBits, stack * dataOut, stack * bitsOu
         stack_push(bitsOut, 1); //push 1 because it is a char
         stack_pop(&working);
     }
-    stack_printer(&dataOut);
+    stack_printer(dataOut);
     printf("Done infix to postfix \n");
     return 0; //return 0 if done and not failed
 }
