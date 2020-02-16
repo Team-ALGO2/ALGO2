@@ -38,3 +38,12 @@ int postFixcalc(char inputString[MAX_INPUT_LENGTH])
     } 
     return stack_top(&stack); 
 }
+
+//Main Function For Testing! Uncomment When needed
+
+/*
+int main(void)
+{
+
+} 
+*/
