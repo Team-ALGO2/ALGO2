@@ -17,7 +17,7 @@
 
 // cache.c
 #define MAX_VARIABLE_NUMBER 25 // Max number of variables user is allowed 
-#define MAX_VARIABLE_LENGTH 10 // Max number of variables user is allowed 
+#define MAX_VARIABLE_LENGTH 10 // Max length of var name
 
 // Define Booleans
 #define false 0
