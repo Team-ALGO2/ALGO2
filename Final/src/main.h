@@ -64,6 +64,9 @@
 #include "utils/convert.c"
 #include "utils/cache.c"
 
+// Import calc
+#include "calc.c"
+
 /* Clear command
  * Windows: cls
  * Everything else: clear

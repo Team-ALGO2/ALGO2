@@ -13,6 +13,13 @@ int ParseString(char exp[MAX_INPUT_LENGTH])
     int counter = 0;
     long number;
     char val[MAX_INPUT_LENGTH];
+    if (isCapAlpha(exp[1]))     // Special command: STORE, BASECHANGE
+    {
+        if (strncmp(exp, "STORE", 6) == 0)
+        {
+            printf("store comamnd\n");
+        }
+    }
     while (exp[i] != '\0')
     {
         switch (exp[i])
@@ -42,7 +49,7 @@ int ParseString(char exp[MAX_INPUT_LENGTH])
 
 
 //MAIN:
-
+/*
 int main(void)
 {
     /*
@@ -52,7 +59,11 @@ int main(void)
     parseString(str, &data, &bin);
     char in[100] = "whatever you want but change this to a stack";
     printf ("postfix evaluation: %d", postFixcalc(in));
-    */
+
+   ///
+
+
+
    stack input = {-1, {0}};
    stack inputBits = {-1, {0}};
    stack *dataOut = {-1, {0}};
@@ -70,6 +81,7 @@ int main(void)
    stack_printer(&bitsOut);
 
 } 
+*/
 
 //FUNCTIONS:
 
