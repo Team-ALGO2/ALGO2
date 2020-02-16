@@ -105,13 +105,14 @@ char* removeCharacter(char input[MAX_INPUT_LENGTH], char remv)
 
 //converts nubmers in int form to char* of the numbers
 //EX: int i = 21312321 -> char* i = "21312321"
-char* itoa(int input)
+/*char* itoa(int input)
 {
     char* out = "";
     char* str; 
     sprintf(str,"%d", input);
     return str;
 }
+*/
 //TODO REINPLEMENT
 
 //a function to see if which opperator has presedce
