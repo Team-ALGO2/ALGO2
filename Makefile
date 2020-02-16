@@ -1,6 +1,7 @@
 all: clean install_deps compile
 
 dir = Final/src
+serverdir = Server
 out = bin
 testdir = Final/tests
 
@@ -20,7 +21,7 @@ install_deps:				# Linux only
 	@sudo apt-get install libncurses5-dev libncursesw5-dev
 
 compile:
-	@${cc} ${dir}/slots.c -o ${out}/slots ${linkers} ${errors}
-	@${cc} ${dir}/calclauncher.c -o ${out}/calclauncher ${linkers} ${errors}
+	${cc} ${dir}/slots.c -o ${out}/slots ${linkers} ${errors}
+#	${cc} ${serverdir}/calclauncher.c -o ${out}/calclauncher ${linkers} ${errors}
 
-	@${cc} ${testdir}/unittest.c -o ${out}/test ${errors}
+	${cc} ${testdir}/unittest.c -o ${out}/test ${errors}

@@ -1,4 +1,5 @@
 #include "httpd.h"
+#include "../Final/src/calc.c"
 
 int main(int c, char** v)
 {
@@ -39,9 +40,26 @@ void route()
     {
         
         char decoded[strlen(qs) + 1];
+    
         decode(qs, decoded);
-        fprintf(stderr, "Payload received as: %s\n", qs);
+        fprintf(stderr, BLU"Payload received as: %s\n", qs);
         fprintf(stderr, "Payload decoded: %s\n", decoded);
+        int len = strlen(decoded);
+        fprintf(stderr, "Payload size: %d\n", len);
+        
+        char exp[MAX_INPUT_LENGTH];
+        
+        for (int i = 4; i < len + 1; i++)
+        {
+            exp[i-4] = decoded[i]; 
+        }
+        exp[len] = '\0';
+        fprintf(stderr, "Extracted exp: %s\n"RESET, exp);
+
+        // Do string parsing here with exp
+
+        
+
 
         printf("HTTP/1.1 200 OK\r\n\r\n");
         printf("<!DOCTYPE html>"
@@ -49,9 +67,10 @@ void route()
                 "   <body>"
                 "       <h1>Welcome to the C-Calculator</h1>"
                 "       <li>Your input was received as: <strong>%s</strong> </li>"
+                "       <li>Input was decoded as: <strong>%s</strong> </li>"
+                "       <li>Expression is: <strong>%s</strong> </li>"
                 "   </body>"
-                "</html>", decoded);
-
+                "</html>", qs, decoded, exp);
     }
 
     ROUTE_END()

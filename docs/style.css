@@ -92,12 +92,19 @@ a {
 
 #git_url {
     color: white;
+    background-color: gray;
     font-size: x-large;
     text-align: center;
-    background-color: gray;
     border-radius: 25px;
     padding: 20px;  
+}
+
+#start li code {
+    color: white;
+    background-color: gray;
     display: inline-block;
+    border-radius: 15px;
+    padding: 10px;  
 }
 
 
@@ -134,8 +141,22 @@ a {
     display: block;
     transition: 0.3s;
 }
+
+.sidenav a{
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
   
 .sidenav p:hover {
+    color: #f1f1f1;
+    cursor: pointer;
+}
+
+.sidenav a:hover {
     color: #f1f1f1;
     cursor: pointer;
 }
