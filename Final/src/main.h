@@ -66,6 +66,13 @@
 #include "utils/convert.c"
 #include "utils/cache.c"
 
+// Import Calculator Modules
+#ifndef _DISABLECALC // Checks For Special Flag To Disable Calculator Import If Not Needed
+#include "calc/input.c"
+#include "calc/infixtopostfix.c"
+#include "calc/calculate.c"
+#endif
+
 /* Clear command
  * Windows: cls
  * Everything else: clear
