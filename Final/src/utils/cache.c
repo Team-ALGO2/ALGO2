@@ -56,9 +56,7 @@ int cacheSET(char get[MAX_VARIABLE_LENGTH], int value)
     }
     return 1; // Cache full
 }
-
-// Because C Does Not Like Redefinitions of Main, This Checks If Its Being Run Directly Or Is It Being Run By A Function Call
-#ifndef _REDEFGUARD
+/*
 int main(void)
 {
     cacheSET("hello", -1);
@@ -67,4 +65,4 @@ int main(void)
     cacheGET("hi");
     return 0;
 }
-#endif // _REDEFGUARD
+*/

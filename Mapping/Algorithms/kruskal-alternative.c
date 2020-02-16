@@ -16,7 +16,7 @@ int kruskals_alt(int map[KS_ALT_MAX_SIZE][KS_ALT_MAX_SIZE], int cMap[KS_ALT_MAX_
 }
 
 // Because C Does Not Like Redefinitions of Main, This Checks If Its Being Run Directly Or Is It Being Run By A Function Call
-#ifndef _REDEFGUARD
+#ifndef _MANUALRUN
 int main(){
 	/*
 	int map[KS_ALT_MAX_SIZE][KS_ALT_MAX_SIZE] = {
@@ -60,4 +60,4 @@ int main(){
 
 	prim(map, cMap, 0);
 }
-#endif // _REDEFGUARD
+#endif // _MANUALRUN

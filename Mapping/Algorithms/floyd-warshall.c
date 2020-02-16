@@ -89,7 +89,7 @@ int floydWarshall(int map[FW_MAX_SIZE][FW_MAX_SIZE], int cMap[FW_MAX_SIZE][FW_MA
 }
 
 // Because C Does Not Like Redefinitions of Main, This Checks If Its Being Run Directly Or Is It Being Run By A Function Call
-#ifndef _REDEFGUARD
+#ifndef _MANUALRUN
 int main(){
 
     /*
@@ -150,4 +150,4 @@ int main(){
 	floydWarshall(map, cMap, 0);
 }
 
-#endif // _REDEFGUARD
+#endif // _MANUALRUN
