@@ -49,3 +49,12 @@ int infixToPostfix(stack input, stack inputBits, stack * dataOut, stack * bitsOu
     printf("Done infix to postfix \n");
     return 0; //return 0 if done and not failed
 }
+
+//Main Function For Testing! Uncomment When needed
+
+/*
+int main(void)
+{
+
+} 
+*/

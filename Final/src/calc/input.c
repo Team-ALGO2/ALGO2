@@ -43,3 +43,12 @@ int ParseString(char exp[MAX_INPUT_LENGTH])
         
     }
 }
+
+//Main Function For Testing! Uncomment When needed
+
+/*
+int main(void)
+{
+
+} 
+*/
