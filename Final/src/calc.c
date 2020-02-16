@@ -10,13 +10,14 @@ int populateDummy(stack data, stack bin);
 stack dummyData = {-1, {0}};  
 stack dummyBin = {-1, {0}};
 
+/*
 int main (void)
 {
     populateDummy(dummyData, dummyBin);
     stack_printer(&dummyData);
     stack_printer(&dummyBin);
 }
-
+*/
 //compute the postfix string
 int ParseString(char exp[MAX_INPUT_LENGTH])
 {

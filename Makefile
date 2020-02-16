@@ -22,6 +22,5 @@ install_deps:				# Linux only
 
 compile:
 	${cc} ${dir}/slots.c -o ${out}/slots ${linkers} ${errors}
-#	${cc} ${serverdir}/calclauncher.c -o ${out}/calclauncher ${linkers} ${errors}
 
 	${cc} ${testdir}/unittest.c -o ${out}/test ${errors}
