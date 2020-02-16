@@ -1,5 +1,5 @@
 #include "httpd.h"
-#include "../Final/src/calc.c"
+#include "../Final/src/main.h"
 
 int main(int c, char** v)
 {
