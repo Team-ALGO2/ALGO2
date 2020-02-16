@@ -64,7 +64,7 @@ int prim(int map[PRIM_MAX_SIZE][PRIM_MAX_SIZE], int cMap[PRIM_MAX_SIZE][PRIM_MAX
 }
 
 // Because C Does Not Like Redefinitions of Main, This Checks If Its Being Run Directly Or Is It Being Run By A Function Call
-#ifndef _MANUALRUN
+#ifndef _REDEFGUARD
 int main(){
 
 
@@ -108,4 +108,4 @@ int main(){
 
 	prim(map, cMap, 0);
 }
-#endif // _MANUALRUN
+#endif // _REDEFGUARD
