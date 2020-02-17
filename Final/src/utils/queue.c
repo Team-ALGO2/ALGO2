@@ -93,6 +93,17 @@ int queue_isFull(queue *q)
     
 }
 
+//Getting the current length of the queue
+int queue_length(queue *q)
+{   
+    if(!queue_isEmpty(q)){
+        return q->rear - q->front + 1;
+    }
+    else{
+        return 0;
+    }
+}
+
 //adds to the back of the queue the value inputed
 int queue_enqueue(queue *q, int input)
 {
