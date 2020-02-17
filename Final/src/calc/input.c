@@ -1,10 +1,20 @@
 #ifndef _MAINGUARD
+#define _DISABLECALC // Prevent Redefinitions
 #include "../main.h"
 #endif
 
 //compute the postfix string
-int ParseString(char exp[MAX_INPUT_LENGTH])
+int parseString(char exp[MAX_INPUT_LENGTH])
 {
+    int i = 0;
+    while (exp[i] != '\0')
+    {
+        char currentScan = exp[i];
+        printf("%c", currentScan);
+        i++;
+    }
+
+    /*
     int i = 0;
     int j = 0;
     int counter = 0;
@@ -42,6 +52,7 @@ int ParseString(char exp[MAX_INPUT_LENGTH])
         }
         
     }
+    */
 }
 
 //Main Function For Testing! Uncomment When needed
@@ -49,6 +60,6 @@ int ParseString(char exp[MAX_INPUT_LENGTH])
 /*
 int main(void)
 {
-
+    parseString("test");
 } 
 */

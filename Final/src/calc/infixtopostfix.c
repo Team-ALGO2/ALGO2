@@ -1,4 +1,5 @@
 #ifndef _MAINGUARD
+#define _DISABLECALC // Prevent Redefinitions
 #include "../main.h"
 #endif
 
