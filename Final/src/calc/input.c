@@ -13,6 +13,7 @@ int parseString(char exp[MAX_INPUT_LENGTH])
         printf("%c", currentScan);
         i++;
     }
+
     /*
     int i = 0;
     int j = 0;
@@ -56,8 +57,9 @@ int parseString(char exp[MAX_INPUT_LENGTH])
 
 //Main Function For Testing! Uncomment When needed
 
-
+/*
 int main(void)
 {
     parseString("test");
 } 
+*/
