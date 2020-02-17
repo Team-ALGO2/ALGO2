@@ -49,12 +49,6 @@
 //includes main utils
 #include "../main.h"
 
-//defines the max length of the queue
-#define QUEUE_MAX_LENGTH 128
-
-// Define Error Codes
-#define QUEUE_EMPTY   0
-#define QUEUE_FULL    0
 
 
 //Create structure containing the queue and the traking variables

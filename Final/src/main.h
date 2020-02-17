@@ -48,6 +48,25 @@
 // settings
 #define MAX_INPUT_LENGTH 4096
 
+
+// STACK
+//defines the max length of the stack
+#define STACK_MAX_LENGTH 128
+
+// Define Error Codes
+#define STACK_EMPTY   0
+#define STACK_FULL    0
+
+
+// QUEUE
+//defines the max length of the queue
+#define QUEUE_MAX_LENGTH 128
+
+// Define Error Codes
+#define QUEUE_EMPTY   0
+#define QUEUE_FULL    0
+
+
 // Import Important Libraries
 #include <stdio.h>
 #include <stdlib.h>

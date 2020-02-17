@@ -44,13 +44,6 @@
 //includes main utils
 #include "../main.h"
 
-//defines the max length of the stack
-#define STACK_MAX_LENGTH 128
-
-// Define Error Codes
-#define STACK_EMPTY   0
-#define STACK_FULL    0
-
 //Custom Stack Structire
 //counter -> The "pointer" of the top of the graph
 //A -> The Array where the stack elements will be stored
