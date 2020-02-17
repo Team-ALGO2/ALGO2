@@ -35,7 +35,7 @@
  * *Must Add `& Infront Of Stack Name`
  * 
  * Examples ->
- * | queue test = {-1, {0}};                 |
+ * | queue test = {-1, -1, 0};;                 |
  * | queue_enqueue(&test, 5)                 |
  * | queue_getFront(&test)                   |
  * | queue_dequeue(&test)                    |
