@@ -5,14 +5,14 @@
 int infixToPostfix(stack input, stack inputBits, stack * dataOut, stack * bitsOut);
 int postFixcalc(char* in);
 int ParseString(char exp[MAX_INPUT_LENGTH]);
-int populateDummy(stack data, stack bin);
+int populateDummy(stack *data, stack *bin);
 
 stack dummyData = {-1, {0}};  
 stack dummyBin = {-1, {0}};
 
 int main (void)
 {
-    populateDummy(dummyData, dummyBin);
+    populateDummy(&dummyData, &dummyBin);
     stack_printer(&dummyData);
     stack_printer(&dummyBin);
 }
@@ -183,27 +183,27 @@ int postFixcalc(char inputString[MAX_INPUT_LENGTH])
     return stack_top(&stack); 
 } 
 
-int populateDummy(stack data, stack bin) 
+int populateDummy(stack *data, stack *bin) 
 {
     //populate the data
-    stack_push(&data, 5);
-    stack_push(&data, 1);
-    stack_push(&data, 53);
-    stack_push(&data, 2);
-    stack_push(&data, 2);
-    stack_push(&data, 1);
-    stack_push(&data, 34);
-    stack_push(&data, 2);
-    stack_push(&data, 19);
+    stack_push(data, 5);
+    stack_push(data, 1);
+    stack_push(data, 53);
+    stack_push(data, 2);
+    stack_push(data, 2);
+    stack_push(data, 1);
+    stack_push(data, 34);
+    stack_push(data, 2);
+    stack_push(data, 19);
 
     //populate the bin
-    stack_push(&bin, 0);
-    stack_push(&bin, 1);
-    stack_push(&bin, 0);
-    stack_push(&bin, 1);
-    stack_push(&bin, 0);
-    stack_push(&bin, 1);
-    stack_push(&bin, 0);
-    stack_push(&bin, 1);
-    stack_push(&bin, 0);
+    stack_push(bin, 0);
+    stack_push(bin, 1);
+    stack_push(bin, 0);
+    stack_push(bin, 1);
+    stack_push(bin, 0);
+    stack_push(bin, 1);
+    stack_push(bin, 0);
+    stack_push(bin, 1);
+    stack_push(bin, 0);
 }
