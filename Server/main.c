@@ -17,8 +17,7 @@ void route()
         printf("<!DOCTYPE html>"
                 "<html>"
                 "   <body>"
-                "       <h1>This is heading 1</h1>"
-                "       <h2>This is heading 2</h2>"
+                "       <h1>Enter an expression</h1>"
                 "           <form action='/exp'>"
                 "               Expression:<br>"
                 "               <input type='text' name='exp'>"
@@ -57,20 +56,22 @@ void route()
         fprintf(stderr, "Extracted exp: %s\n"RESET, exp);
 
         // Do string parsing here with exp
+        
+        parseString(exp);
 
         
 
 
         printf("HTTP/1.1 200 OK\r\n\r\n");
-        printf("<!DOCTYPE html>"
-                "<html>"
-                "   <body>"
-                "       <h1>Welcome to the C-Calculator</h1>"
-                "       <li>Your input was received as: <strong>%s</strong> </li>"
-                "       <li>Input was decoded as: <strong>%s</strong> </li>"
-                "       <li>Expression is: <strong>%s</strong> </li>"
-                "   </body>"
-                "</html>", qs, decoded, exp);
+        printf("<!DOCTYPE html>");
+        printf("<html>");
+        printf("   <body>");
+        printf("       <h1>Welcome to the C-Calculator</h1>");
+        printf("       <li>Your input was received as: <strong>%s</strong> </li>", qs);  // Raw args
+        printf("       <li>Input was decoded as: <strong>%s</strong> </li>", decoded);   // urldecoded
+        printf("       <li>Expression is: <strong>%s</strong> </li>", exp);              // without the "exp="
+        printf("   </body>");
+        printf("</html>");
     }
 
     ROUTE_END()

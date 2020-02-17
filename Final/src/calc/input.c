@@ -7,14 +7,25 @@
 int parseString(char exp[MAX_INPUT_LENGTH])
 {
     int i = 0;
+
     while (exp[i] != '\0')
     {
         char currentScan = exp[i];
-        printf("%c", currentScan);
+
+        if (isCapAlpha(currentScan))    // Detected a special function (STORE; GET ...)
+        {
+            parseStringWithSpecialFunc(exp);
+            break;
+
+        }
+        
+
+        // printf("%c", currentScan);
         i++;
     }
+    return 0;
 
-    /*
+/*
     int i = 0;
     int j = 0;
     int counter = 0;
@@ -52,7 +63,80 @@ int parseString(char exp[MAX_INPUT_LENGTH])
         }
         
     }
-    */
+*/
+}
+
+int parseStringWithSpecialFunc(char exp[MAX_INPUT_LENGTH])
+{
+    int i = 0;
+    char function[MAX_INPUT_LENGTH] = "";
+    char varvalue[MAX_INPUT_LENGTH] = "";
+    int ivarvalue;
+
+    while (exp[i] != '\0' && isCapAlpha(exp[i]))  // Parse to get function
+    {
+        char currentScan = exp[i];
+        char appending[2];
+        appending[0] = currentScan;
+        appending[1] = '\0';
+        strcat(function, appending);
+        i++;
+    }
+
+    if (strcmp(function, "STORE") == 0)
+    {
+        fprintf(stderr, "STORE\n");
+
+        while (exp[i] != ' ' && exp[i] != '\0')  // Skip whitespace
+        {
+            i++;
+        }
+        i++;
+        char varname[MAX_INPUT_LENGTH] = "";
+        while (exp[i] != ' ' && exp[i] != '\0')  // get var name
+        {
+            char currentScan = exp[i];
+            char appending[2];
+            appending[0] = currentScan;
+            appending[1] = '\0';
+            strcat(varname, appending);
+            i++;
+
+        }
+        fprintf(stderr, "VARNAME: %s\n", varname);
+
+        while (exp[i] != ' ' && exp[i] != '\0')  // Skip whitespace
+        {
+            i++;
+        }
+        i++;
+
+        while (exp[i] != ' ' && exp[i] != '\0')  // get var value
+        {
+            char currentScan = exp[i];
+            char appending[2];
+            appending[0] = currentScan;
+            appending[1] = '\0';
+            strcat(varvalue, appending);
+            i++;
+
+        }
+        sscanf(varvalue, "%d", &ivarvalue);
+        fprintf(stderr, "VARVALUE as int: %d\n", ivarvalue);
+
+        cacheSET(varname, ivarvalue);
+
+        return 0; //success
+
+
+
+
+
+
+
+
+    } // Add more elif when more special functions are added
+    
 }
 
 //Main Function For Testing! Uncomment When needed
