@@ -33,7 +33,7 @@ int parseString(char * exp, int strMaxLen){
     int lookAheadResult = lookAheadString(exp, strMaxLen, i, &commandList);
 
     //TESTING
-    printf("%d", lookAheadString(exp, strMaxLen, i, &testList));
+    //printf("%d", lookAheadString(exp, strMaxLen, i, &testList));
 
     //printf("%d", lookAheadResult);
     //Check if lookAheadResult succeded
@@ -53,8 +53,11 @@ int parseString(char * exp, int strMaxLen){
             }
             */
             
-
-            // printf("%c", currentScan);
+            #ifdef DEBUG
+            #ifndef WEBMODE
+            printf("CURRENTLY SCANNING: %c\n", currentScan);
+            #endif
+            #endif
             i++;
         }
     }
@@ -273,4 +276,5 @@ int main(void)
     char * testString = "test12";
     parseString(testString, MAX_INPUT_LENGTH);
 } 
+
 
