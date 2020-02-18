@@ -227,7 +227,6 @@ int parseStringWithSpecialFunc(char * exp)
                 #endif
                 i++;
         }       
-        cacheBrowserGETALL(); 
 
     }
     else { /* No match */
