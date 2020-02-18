@@ -1,3 +1,5 @@
+#define BROWSERMODE
+
 #include "httpd.h"
 #include "../Final/src/main.h"
 

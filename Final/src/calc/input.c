@@ -160,7 +160,9 @@ int parseStringWithSpecialFunc(char * exp)
         i++;
     }
 
+    #ifdef BROWSERMODE
     printf("<li><strong>%s</strong> command detected</li>", function); // Send this to browser!
+    #endif
 
     if (strcmp(function, "STORE") == 0)     /* Store Command */
     {
@@ -209,7 +211,9 @@ int parseStringWithSpecialFunc(char * exp)
 
         cacheSET(varname, iargument);
 
+        #ifdef BROWSERMODE
         printf("<li>Successfully stored the variable <strong>%s</strong> as <strong>%d</strong>!</li>", varname, iargument); // Send this to browser!
+        #endif
         return 0; //success
 
     } else if (strcmp(function, "GETALL") == 0) 
@@ -218,14 +222,18 @@ int parseStringWithSpecialFunc(char * exp)
 
         while (i < MAX_VARIABLE_NUMBER)  // For every cache in list until \0 (end) is reached     strcmp(list.caches[i].name, "\0") != 0 && 
         {
+                #ifdef BROWSERMODE
                 printf("<li><strong>%s</strong> = <strong>%d</strong></li>", list.caches[i].name, list.caches[i].value);
+                #endif
                 i++;
         }       
         cacheBrowserGETALL(); 
 
     }
     else { /* No match */
+        #ifdef BROWSERMODE
         printf("<li>The function didn't match any known special function</li>"); // Send this to browser!
+        #endif
 
     }
 }
