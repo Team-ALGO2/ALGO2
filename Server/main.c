@@ -56,8 +56,8 @@ void route()
         fprintf(stderr, "Extracted exp: %s\n"RESET, exp);
 
         // Do string parsing here with exp
-        
-        parseString(exp);
+
+        parseString(exp, MAX_INPUT_LENGTH);
 
         
 

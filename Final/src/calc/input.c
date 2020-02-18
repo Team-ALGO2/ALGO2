@@ -3,9 +3,6 @@
 #include "../main.h"
 #endif
 
-#define MAXCOMMANDLEN 32
-#define MAXCOMMANDARGUMENTLEN 32
-
 //Create structure containing list pointer, list length, and max length of list value
 typedef struct{
     char ** list; //Pointer to list
@@ -50,12 +47,12 @@ int parseString(char * exp, int strMaxLen){
             */
             
 
-            printf("%c", currentScan);
+      //      printf("%c", currentScan);
             i++;
         }
     }
-    printf("\n");
-    printf("ok!\n");
+ //   printf("\n");
+//  printf("ok!\n");
     return 0;
 
 /*
