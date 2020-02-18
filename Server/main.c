@@ -1,4 +1,4 @@
-#define BROWSERMODE
+#define WEBMODE
 
 #include "httpd.h"
 #include "../Final/src/main.h"

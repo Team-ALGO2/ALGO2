@@ -160,7 +160,7 @@ int parseStringWithSpecialFunc(char * exp)
         i++;
     }
 
-    #ifdef BROWSERMODE
+    #ifdef WEBMODE
     printf("<li><strong>%s</strong> command detected</li>", function); // Send this to browser!
     #endif
 
@@ -211,7 +211,7 @@ int parseStringWithSpecialFunc(char * exp)
 
         cacheSET(varname, iargument);
 
-        #ifdef BROWSERMODE
+        #ifdef WEBMODE
         printf("<li>Successfully stored the variable <strong>%s</strong> as <strong>%d</strong>!</li>", varname, iargument); // Send this to browser!
         #endif
         return 0; //success
@@ -222,7 +222,7 @@ int parseStringWithSpecialFunc(char * exp)
 
         while (i < MAX_VARIABLE_NUMBER)  // For every cache in list until \0 (end) is reached     strcmp(list.caches[i].name, "\0") != 0 && 
         {
-                #ifdef BROWSERMODE
+                #ifdef WEBMODE
                 printf("<li><strong>%s</strong> = <strong>%d</strong></li>", list.caches[i].name, list.caches[i].value);
                 #endif
                 i++;
@@ -230,7 +230,7 @@ int parseStringWithSpecialFunc(char * exp)
 
     }
     else { /* No match */
-        #ifdef BROWSERMODE
+        #ifdef WEBMODE
         printf("<li>The function didn't match any known special function</li>"); // Send this to browser!
         #endif
 
