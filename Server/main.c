@@ -57,7 +57,7 @@ void route()
 
         // Do string parsing here with exp
 
-        parseString(exp, MAX_INPUT_LENGTH);
+        
 
         
 
@@ -70,6 +70,15 @@ void route()
         printf("       <li>Your input was received as: <strong>%s</strong> </li>", qs);  // Raw args
         printf("       <li>Input was decoded as: <strong>%s</strong> </li>", decoded);   // urldecoded
         printf("       <li>Expression is: <strong>%s</strong> </li>", exp);              // without the "exp="
+        printf("       <br>");                                                          // line break to differentiate parts of output
+
+        parseString(exp, MAX_INPUT_LENGTH);
+
+
+
+
+
+
         printf("   </body>");
         printf("</html>");
     }
