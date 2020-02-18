@@ -11,12 +11,12 @@ typedef struct{
 } keyWordList;
 
 //Create commandList Keyword
-char * commandListTemp[] = {"STR", "STORE", "TEST", "GETALL"};
-keyWordList commandList = {commandListTemp, 4, MAXCOMMANDLEN};
+char * commandListTemp[] = {"STORE", "TEST", "GETALL"};
+keyWordList commandList = {commandListTemp, 3, MAXCOMMANDLEN};
 
 //Create test list
-char * testListTemp[] = {"test", "test1", "wasd"};
-keyWordList testList = {testListTemp, 3, MAXCOMMANDLEN};
+char * testListTemp[] = {"wasd", "test1", "test", "test12"};
+keyWordList testList = {testListTemp, 4, MAXCOMMANDLEN};
 
 
 //Predefine Function
@@ -32,6 +32,7 @@ int parseString(char * exp, int strMaxLen){
     //Running Look Ahead For Commands
     int lookAheadResult = lookAheadString(exp, strMaxLen, i, &commandList);
 
+    //TESTING
     printf("%d", lookAheadString(exp, strMaxLen, i, &testList));
 
     //printf("%d", lookAheadResult);
@@ -110,13 +111,22 @@ int lookAheadString(char * exp, int strMaxLen, int currentOffset, keyWordList * 
     //Look Ahead Offset Index
     int i2 = 0;
     //If Completed
-    int finish = false;
+    int matched = false;
+    // Min/Max values (If Applicable)
+    #if LOOKAHEADMODE == 1
+    int minVal = INFINITY;
+    #endif
+    #if LOOKAHEADMODE == 2
+    int maxVal = 0;
+    #endif
     //Loop through all key words
     for(int keyWordIndex = 0; keyWordIndex < kwl->values; keyWordIndex++){
         int keyWordLen = strlen(kwl->list[keyWordIndex]);
-        if(finish){
+        #if LOOKAHEADMODE == 0
+        if(matched){
             break;
         }
+        #endif
         //Reset Look Ahead Offset Index
         i2 = 0;
         while (exp[i2 + currentOffset] != '\0' && (i2 + currentOffset) < strMaxLen && i2 < kwl->maxLen){
@@ -127,16 +137,32 @@ int lookAheadString(char * exp, int strMaxLen, int currentOffset, keyWordList * 
                 break;
             }
             if(i2 == keyWordLen-1){
-                finish = true;
+                matched = true;
                 i2++;
+                #if LOOKAHEADMODE == 1
+                if(i2 < minVal){
+                    minVal = i2;
+                }
+                #endif
+                #if LOOKAHEADMODE == 2
+                if(i2 > maxVal){
+                    maxVal = i2;
+                }
+                #endif
                 break;
             }
             //printf("%c", LAScan);
             i2++;
         }
     }
-    if(finish){
+    if(matched){
+        #if LOOKAHEADMODE == 0
         return i2;
+        #elif LOOKAHEADMODE == 1
+        return minVal;
+        #elif LOOKAHEADMODE == 2
+        return maxVal;
+        #endif
     }
     else{
         return 0;
@@ -240,11 +266,11 @@ int parseStringWithSpecialFunc(char * exp)
 
 
 
-/*
+
 int main(void)
 {
     //char * testString = "Hello World! This Is A Test!!!";
-    char * testString = "STORE XXX";
+    char * testString = "test12";
     parseString(testString, MAX_INPUT_LENGTH);
 } 
-*/
+

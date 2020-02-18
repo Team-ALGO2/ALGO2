@@ -9,11 +9,12 @@
 #define DEBUG //Checking Definitions Instead Of Variables Because ifdef Removes Debug Code In Compilation!
 
 // Define Calculator Configuration Flags
-#define RECURSIVECONVERT //Uses recursive techneques to convert bases
+#define RECURSIVECONVERT //Uses recursive techneques to convert bases *
 #define FASTCHOOSEPERM //Uses optimitation techneques to create faster and more accurate combinatronics and permutations calculations
-#define SYSTEMMATH //(Used For Debugging) Uses System Functions Instead Of Self-Made Functions
-#define FORCEHIGHBASE //Bypasses The 36 Digit Max
-#define FULLTEXTVARIABLES //Allows Experimental Multi-Letter Variables 
+#define SYSTEMMATH //(Used For Debugging) Uses System Functions Instead Of Self-Made Functions *
+#define FORCEHIGHBASE //Bypasses The 36 Digit Max *
+#define FULLTEXTVARIABLES //Allows Experimental Multi-Letter Variables *
+#define LOOKAHEADMODE 2 //(!do not comment out!) Sets Look Ahead Priority (0: First come first serve, chooses first word that matches definition | 1: Lowest length priority | 2: Highest length Priority)
 
 // cache.c
 #define MAX_VARIABLE_NUMBER 25 // Max number of variables user is allowed 
