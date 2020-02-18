@@ -19,6 +19,11 @@
 #define MAX_VARIABLE_NUMBER 25 // Max number of variables user is allowed 
 #define MAX_VARIABLE_LENGTH 10 // Max length of var name
 
+// input.c
+#define MAXCOMMANDLEN 32
+#define MAXCOMMANDARGUMENTLEN 32
+
+
 // Define Booleans
 #define false 0
 #define true 1
