@@ -14,6 +14,10 @@ typedef struct{
 char * commandListTemp[] = {"STR", "STORE", "TEST", "GETALL"};
 keyWordList commandList = {commandListTemp, 4, MAXCOMMANDLEN};
 
+//Create test list
+char * testListTemp[] = {"test", "test1", "wasd"};
+keyWordList testList = {testListTemp, 3, MAXCOMMANDLEN};
+
 
 //Predefine Function
 int lookAheadString(char * exp, int strMaxLen, int currentOffset, keyWordList * kwl);
@@ -27,6 +31,8 @@ int parseString(char * exp, int strMaxLen){
 
     //Running Look Ahead For Commands
     int lookAheadResult = lookAheadString(exp, strMaxLen, i, &commandList);
+
+    printf("%d", lookAheadString(exp, strMaxLen, i, &testList));
 
     //printf("%d", lookAheadResult);
     //Check if lookAheadResult succeded
@@ -234,7 +240,7 @@ int parseStringWithSpecialFunc(char * exp)
 int main(void)
 {
     //char * testString = "Hello World! This Is A Test!!!";
-    char * testString = "STORE";
+    char * testString = "STORE XXX";
     parseString(testString, MAX_INPUT_LENGTH);
 } 
 */
