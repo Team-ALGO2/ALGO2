@@ -215,10 +215,11 @@ int parseStringWithSpecialFunc(char * exp)
 
 //Main Function For Testing! Uncomment When needed
 
-
+/*
 int main(void)
 {
     //char * testString = "Hello World! This Is A Test!!!";
     char * testString = "STORE";
     parseString(testString, MAX_INPUT_LENGTH);
 } 
+*/
