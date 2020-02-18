@@ -240,11 +240,11 @@ int parseStringWithSpecialFunc(char * exp)
 
 
 
-
+/*
 int main(void)
 {
     //char * testString = "Hello World! This Is A Test!!!";
     char * testString = "STORE XXX";
     parseString(testString, MAX_INPUT_LENGTH);
 } 
-
+*/
