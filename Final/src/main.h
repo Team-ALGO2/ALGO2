@@ -41,6 +41,9 @@
 #define MAX(x, y) (((x) > (y)) ? (x) : (y))
 #define MIN(x, y) (((x) < (y)) ? (x) : (y))
 
+//Array Size Functions
+#define ARRAY_SIZE(x) (sizeof((x)) / sizeof((x)[0]))
+
 // Numbers
 #define INFINITY 2147483647
 #define NEG_INFINITY -2147483647

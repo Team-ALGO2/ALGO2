@@ -3,26 +3,59 @@
 #include "../main.h"
 #endif
 
-//compute the postfix string
-int parseString(char exp[MAX_INPUT_LENGTH])
-{
+#define MAXCOMMANDLEN 32
+#define MAXCOMMANDARGUMENTLEN 32
+
+//Create structure containing list pointer, list length, and max length of list value
+typedef struct{
+    char ** list; //Pointer to list
+    int values; //Number of values inside list
+    int maxLen; //Maximum length of values
+} keyWordList;
+
+//Create commandList Keyword
+char * commandListTemp[] = {"STR", "STORE", "TEST"};
+keyWordList commandList = {commandListTemp, 3, MAXCOMMANDLEN};
+
+
+//Predefine Function
+int lookAheadString(char * exp, int strMaxLen, int currentOffset, keyWordList * kwl);
+int parseStringWithSpecialFunc(char * exp);
+
+
+//Parse from string to Eval
+int parseString(char * exp, int strMaxLen){
+    // Set i (Current Scanning Letter)
     int i = 0;
 
-    while (exp[i] != '\0')
-    {
-        char currentScan = exp[i];
+    //Running Look Ahead For Commands
+    int lookAheadResult = lookAheadString(exp, strMaxLen, i, &commandList);
 
-        if (isCapAlpha(currentScan))    // Detected a special function (STORE; GET ...)
-        {
-            parseStringWithSpecialFunc(exp);
-            break;
-
-        }
-        
-
-        // printf("%c", currentScan);
-        i++;
+    //printf("%d", lookAheadResult);
+    //Check if lookAheadResult succeded
+    if(lookAheadResult){
+        parseStringWithSpecialFunc(exp);
     }
+    else{
+        while (exp[i] != '\0' && i < strMaxLen){
+            char currentScan = exp[i];
+
+            /*
+            if (isCapAlpha(currentScan))    // Detected a special function (STORE; GET ...)
+            {
+                parseStringWithSpecialFunc(exp);
+                break;
+
+            }
+            */
+            
+
+            printf("%c", currentScan);
+            i++;
+        }
+    }
+    printf("\n");
+    printf("ok!\n");
     return 0;
 
 /*
@@ -66,12 +99,53 @@ int parseString(char exp[MAX_INPUT_LENGTH])
 */
 }
 
-int parseStringWithSpecialFunc(char exp[MAX_INPUT_LENGTH])
+//Look Ahead Function
+//Used to check if a word is present from a list (keyWordList)
+//Scans letter by letter until hits word or hits nothing
+//Note: this is not that efficient, but it gets the job done
+int lookAheadString(char * exp, int strMaxLen, int currentOffset, keyWordList * kwl){
+    //Look Ahead Offset Index
+    int i2 = 0;
+    //If Completed
+    int finish = false;
+    //Loop through all key words
+    for(int keyWordIndex = 0; keyWordIndex < kwl->values; keyWordIndex++){
+        int keyWordLen = strlen(kwl->list[keyWordIndex]);
+        if(finish){
+            break;
+        }
+        //Reset Look Ahead Offset Index
+        i2 = 0;
+        while (exp[i2 + currentOffset] != '\0' && (i2 + currentOffset) < strMaxLen && i2 < kwl->maxLen){
+            char LAScanExp = exp[i2 + currentOffset];
+            char LAScanKwl = kwl->list[keyWordIndex][i2];
+            //printf("-%c|%c-", LAScanExp, LAScanKwl);
+            if(LAScanExp != LAScanKwl){
+                break;
+            }
+            if(i2 == keyWordLen-1){
+                finish = true;
+                i2++;
+                break;
+            }
+            //printf("%c", LAScan);
+            i2++;
+        }
+    }
+    if(finish){
+        return i2;
+    }
+    else{
+        return 0;
+    }
+}
+
+int parseStringWithSpecialFunc(char * exp)
 {
     int i = 0;
-    char function[MAX_INPUT_LENGTH] = "";
-    char varvalue[MAX_INPUT_LENGTH] = "";
-    int ivarvalue;
+    char function[MAXCOMMANDLEN] = "";
+    char argument[MAXCOMMANDARGUMENTLEN] = "";
+    int iargument;
 
     while (exp[i] != '\0' && isCapAlpha(exp[i]))  // Parse to get function
     {
@@ -117,14 +191,14 @@ int parseStringWithSpecialFunc(char exp[MAX_INPUT_LENGTH])
             char appending[2];
             appending[0] = currentScan;
             appending[1] = '\0';
-            strcat(varvalue, appending);
+            strcat(argument, appending);
             i++;
 
         }
-        sscanf(varvalue, "%d", &ivarvalue);
-        fprintf(stderr, "VARVALUE as int: %d\n", ivarvalue);
+        sscanf(argument, "%d", &iargument);
+        fprintf(stderr, "ARGUMENT as int: %d\n", iargument);
 
-        cacheSET(varname, ivarvalue);
+        cacheSET(varname, iargument);
 
         return 0; //success
 
@@ -141,9 +215,10 @@ int parseStringWithSpecialFunc(char exp[MAX_INPUT_LENGTH])
 
 //Main Function For Testing! Uncomment When needed
 
-/*
+
 int main(void)
 {
-    parseString("test");
+    //char * testString = "Hello World! This Is A Test!!!";
+    char * testString = "STORE";
+    parseString(testString, MAX_INPUT_LENGTH);
 } 
-*/
