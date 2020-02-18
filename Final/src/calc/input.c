@@ -11,8 +11,8 @@ typedef struct{
 } keyWordList;
 
 //Create commandList Keyword
-char * commandListTemp[] = {"STR", "STORE", "TEST"};
-keyWordList commandList = {commandListTemp, 3, MAXCOMMANDLEN};
+char * commandListTemp[] = {"STR", "STORE", "TEST", "GETALL"};
+keyWordList commandList = {commandListTemp, 4, MAXCOMMANDLEN};
 
 
 //Predefine Function
@@ -47,7 +47,7 @@ int parseString(char * exp, int strMaxLen){
             */
             
 
-      //      printf("%c", currentScan);
+            // printf("%c", currentScan);
             i++;
         }
     }
@@ -154,8 +154,14 @@ int parseStringWithSpecialFunc(char * exp)
         i++;
     }
 
-    if (strcmp(function, "STORE") == 0)
+    printf("<li><strong>%s</strong> command detected</li>", function); // Send this to browser!
+
+    if (strcmp(function, "STORE") == 0)     /* Store Command */
     {
+
+        
+
+
         fprintf(stderr, "STORE\n");
 
         while (exp[i] != ' ' && exp[i] != '\0')  // Skip whitespace
@@ -197,20 +203,32 @@ int parseStringWithSpecialFunc(char * exp)
 
         cacheSET(varname, iargument);
 
+        printf("<li>Successfully stored the variable <strong>%s</strong> as <strong>%d</strong>!</li>", varname, iargument); // Send this to browser!
         return 0; //success
 
+    } else if (strcmp(function, "GETALL") == 0) 
+    {
+        int i = 0;
 
+        while (i < MAX_VARIABLE_NUMBER)  // For every cache in list until \0 (end) is reached     strcmp(list.caches[i].name, "\0") != 0 && 
+        {
+                printf("<li><strong>%s</strong> = <strong>%d</strong></li>", list.caches[i].name, list.caches[i].value);
+                i++;
+        }       
+        cacheBrowserGETALL(); 
 
+    }
+    else { /* No match */
+        printf("<li>The function didn't match any known special function</li>"); // Send this to browser!
 
-
-
-
-
-    } // Add more elif when more special functions are added
-    
+    }
 }
 
 //Main Function For Testing! Uncomment When needed
+
+
+
+
 
 /*
 int main(void)
