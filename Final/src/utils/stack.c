@@ -156,6 +156,15 @@ void stack_printer(stack *s)
     printf("\n");
 }
 
+//stack_printer without trailing zeros
+void stack_printer_formatted(stack *s){
+    for (int i = 0; i <= s->counter; i++)
+    {
+        printf("%i ", s->A[i]);
+    }
+    printf("\n");
+}
+
 //We dont need this >:(
 /*
 stack stack_reverse(stack *s)

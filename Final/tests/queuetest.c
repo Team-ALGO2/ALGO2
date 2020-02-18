@@ -23,6 +23,7 @@ int main(void)
     //Testing Rear Incrementation
     printf("\n\nTest test\n");
     queue_raw_printer(&test);
+    queue_printer_formatted(&test);
     printf("front: %i\n", queue_getFront(&test));
     printf("dequeue\n");
     queue_dequeue(&test);

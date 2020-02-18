@@ -206,6 +206,17 @@ void queue_printer(queue *q)
     printf("\n");
 }
 
+//Removed extra zeros
+void queue_printer_formatted(queue *q)
+{
+    printf("\n");
+    for (int i = 0; i < queue_length(q); i++)
+    {
+        printf("%i ", q->A[(i + q->front) % QUEUE_MAX_LENGTH]);
+    }
+    printf("\n");
+}
+
 
 /*
  * 

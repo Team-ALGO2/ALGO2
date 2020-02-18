@@ -13,6 +13,7 @@ int main(void)
     stack_push(&test, 2);
     stack_push(&test, 3);
     stack_printer(&test);
+    stack_printer_formatted(&test);
 
     printf("Popping Values For test\n");
     printf("top: %i\n", stack_top(&test));
