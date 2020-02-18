@@ -221,7 +221,6 @@ int parseStringWithSpecialFunc(char * exp)
                 printf("<li><strong>%s</strong> = <strong>%d</strong></li>", list.caches[i].name, list.caches[i].value);
                 i++;
         }       
-        cacheBrowserGETALL(); 
 
     }
     else { /* No match */
