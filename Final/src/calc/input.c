@@ -147,8 +147,6 @@ int parseStringWithSpecialFunc(char * exp)
 {
     int i = 0;
     char function[MAXCOMMANDLEN] = "";
-    char argument[MAXCOMMANDARGUMENTLEN] = "";
-    int iargument;
 
     while (exp[i] != '\0' && isCapAlpha(exp[i]))  // Parse to get function
     {
@@ -166,9 +164,8 @@ int parseStringWithSpecialFunc(char * exp)
 
     if (strcmp(function, "STORE") == 0)     /* Store Command */
     {
-
-        
-
+        char argument[MAXCOMMANDARGUMENTLEN] = "";
+        int iargument;
 
         fprintf(stderr, "STORE\n");
 
@@ -243,11 +240,11 @@ int parseStringWithSpecialFunc(char * exp)
 
 
 
-/*
+
 int main(void)
 {
     //char * testString = "Hello World! This Is A Test!!!";
     char * testString = "STORE XXX";
     parseString(testString, MAX_INPUT_LENGTH);
 } 
-*/
+
