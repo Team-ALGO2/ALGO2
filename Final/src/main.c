@@ -37,15 +37,15 @@ int main (void)
     
     populateDummy(&dummyData, &dummyBin);
     
-    queue_printer(&dummyData);
-    queue_printer(&dummyBin);
+    queue_printer_formatted(&dummyData);
+    queue_printer_formatted(&dummyBin);
 
     queue goodData = {-1, -1, 0};
     queue goodBin = {-1, -1, 0};
 
     infixToPostfix(dummyData, dummyBin, &goodData, &goodBin);
 
-    queue_printer(&goodData);
-    queue_printer(&goodBin);
+    queue_printer_formatted(&goodData);
+    queue_printer_formatted(&goodBin);
 
 }

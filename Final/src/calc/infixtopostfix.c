@@ -63,7 +63,6 @@ int infixToPostfix(queue input, queue inputBits, queue * dataOut, queue * bitsOu
         queue_enqueue(bitsOut, 1); //push 1 because it is a char
         stack_pop(&working);
     }
-    queue_printer(dataOut);
     printf("Done infix to postfix \n");
     return 0; //return 0 if done and not failed
 }
