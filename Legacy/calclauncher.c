@@ -1,5 +1,7 @@
+//TODO: Adapt for new code
+
 #include <ncurses.h>
-#include "main.h"        
+#include "../Final/src/main.h"        
 
 #define LENGTH 35
 #define HEIGTH 15
@@ -23,7 +25,6 @@ int compatible; //NOTE: I dont know why this was a bool.s
 
 // While RadioactiveHydras hads mainguard
 
-/*
 int main(void) 
 {
     system(CLEAR);
@@ -161,4 +162,3 @@ int main(void)
 
 
 }
-*/
