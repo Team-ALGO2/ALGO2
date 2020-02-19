@@ -33,12 +33,12 @@ int parseString(char * exp, int strMaxLen, int base){
     int lookAheadResult = lookAheadString(exp, strMaxLen, i, &commandList);
 
     //TESTING
-    //printf("%d", lookAheadString(exp, strMaxLen, i, &testList));
+    printf("%d", lookAheadString(exp, strMaxLen, i, &testList));
 
     //printf("%d", lookAheadResult);
     //Check if lookAheadResult succeded
     if(lookAheadResult){ // Detected a special function (STORE; GET ...)
-        parseStringWithSpecialFunc(exp);
+        int commandResult = parseStringWithSpecialFunc(exp);
     }
     else{
         while (exp[i] != '\0' && i < strMaxLen){
@@ -52,10 +52,18 @@ int parseString(char * exp, int strMaxLen, int base){
 
             //Check if should run base10 pipeline or baseX pipeline
             if(base == 10){
-                //do stuff
+                //do stuff for base 10
+                if(isNum(currentScan)){
+                    //pass
+                }
             }
+            #ifdef FORCEHIGHBASE //Check High Base Flag - VERY EXPERIMENTAL!!!
+            else if(base > 36){
+                //do stuff for base over 36
+            }
+            #endif
             else{
-
+                //do stuff for any other base
             }
 
             i++;
@@ -245,7 +253,7 @@ int parseStringWithSpecialFunc(char * exp)
         #ifdef WEBMODE
         printf("<li>Successfully stored the variable <strong>%s</strong> as <strong>%d</strong>!</li>", varname, iargument); // Send this to browser!
         #endif
-        return 0; //success
+        return true; //Return success
 
     } else if (strcmp(function, "GETALL") == 0) 
     {
@@ -257,6 +265,7 @@ int parseStringWithSpecialFunc(char * exp)
                 printf("<li><strong>%s</strong> = <strong>%d</strong></li>", list.caches[i].name, list.caches[i].value);
                 #endif
                 i++;
+                return true; //Return success
         }       
 
     }
@@ -264,6 +273,8 @@ int parseStringWithSpecialFunc(char * exp)
         #ifdef WEBMODE
         printf("<li>The function didn't match any known special function</li>"); // Send this to browser!
         #endif
+
+        return false; //Return failure
 
     }
 }
@@ -278,9 +289,10 @@ int parseStringWithSpecialFunc(char * exp)
 int main(void)
 {
     //char * testString = "Hello World! This Is A Test!!!";
-    char * testString = "test12";
+    char * testString = "bruh";
     parseString(testString, MAX_INPUT_LENGTH, 10);
-} 
+}
 */
+
 
 
