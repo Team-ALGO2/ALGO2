@@ -56,14 +56,25 @@ long double dmod(long double x, long double y) {
 
 // ^ id(6)
 long double powr(long double a, long double b){
-  long long result = 1;
-  for(int i = 1; i <= b; i ++)
-  {
-   result = a*result;
-  }
-
-
-  return result;
+    if(b > 0){
+        long long result = 1;
+        for(int i = 1; i <= b; i ++)
+        {
+        result = a*result;
+        }
+        return result;
+    }
+    else if (b == 0){
+        return 1;
+    }
+    else if(b < 0){
+        //CAUTION: may cause infinate recursion if I coded this badly
+        return -1/powr(a, b*-1);    
+    }
+    else{
+        //Give error? this is not sposed to happen
+        return 0;
+    }
 
 }
 

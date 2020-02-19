@@ -112,6 +112,7 @@ void test_math()
 	ASSERT_EQUAL_INT(divide(10, 2), 5, "Divide");
 	ASSERT_EQUAL_INT(mod(5, 2), 1, "Mod");
 	ASSERT_EQUAL_INT(powr(5, 2), 25, "Exponent");
+	ASSERT_EQUAL_INT(powr(5, -2), 0.04, "Negative Exponent");
 	ASSERT_EQUAL_INT((int)squarert(81), 9, "Squareroot");
 	ASSERT_EQUAL_INT(factorial(4), 24, "Factorial");
 	ASSERT_EQUAL_INT(aChooseB(8, 5), 56, "Combinatronics");
