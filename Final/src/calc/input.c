@@ -55,13 +55,13 @@ int parseString(char * exp, int strMaxLen, int base){
                 //do stuff
             }
             else{
-                
+
             }
 
             i++;
         }
     }
- //   printf("\n");
+//  printf("\n");
 //  printf("ok!\n");
     return 0;
 
@@ -136,10 +136,13 @@ int lookAheadString(char * exp, int strMaxLen, int currentOffset, keyWordList * 
             char LAScanExp = exp[i2 + currentOffset];
             char LAScanKwl = kwl->list[keyWordIndex][i2];
             //printf("-%c|%c-", LAScanExp, LAScanKwl);
+            //Check if letter scanning does not match letter in key list
             if(LAScanExp != LAScanKwl){
+                //Fail for this case
                 break;
             }
             if(i2 == keyWordLen-1){
+                //Set matched and save (if applicable) value
                 matched = true;
                 i2++;
                 #if LOOKAHEADMODE == 1
@@ -159,6 +162,7 @@ int lookAheadString(char * exp, int strMaxLen, int currentOffset, keyWordList * 
         }
     }
     if(matched){
+        //Check modes
         #if LOOKAHEADMODE == 0
         return i2;
         #elif LOOKAHEADMODE == 1
@@ -168,6 +172,7 @@ int lookAheadString(char * exp, int strMaxLen, int currentOffset, keyWordList * 
         #endif
     }
     else{
+        //Always return zero if all cases fail
         return 0;
     }
 }
