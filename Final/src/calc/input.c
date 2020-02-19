@@ -25,7 +25,7 @@ int parseStringWithSpecialFunc(char * exp);
 
 
 //Parse from string to Eval
-int parseString(char * exp, int strMaxLen){
+int parseString(char * exp, int strMaxLen, int base){
     // Set i (Current Scanning Letter)
     int i = 0;
 
@@ -37,27 +37,27 @@ int parseString(char * exp, int strMaxLen){
 
     //printf("%d", lookAheadResult);
     //Check if lookAheadResult succeded
-    if(lookAheadResult){
+    if(lookAheadResult){ // Detected a special function (STORE; GET ...)
         parseStringWithSpecialFunc(exp);
     }
     else{
         while (exp[i] != '\0' && i < strMaxLen){
             char currentScan = exp[i];
-
-            /*
-            if (isCapAlpha(currentScan))    // Detected a special function (STORE; GET ...)
-            {
-                parseStringWithSpecialFunc(exp);
-                break;
-
-            }
-            */
             
             #ifdef DEBUG
             #ifndef WEBMODE
             printf("CURRENTLY SCANNING: %c\n", currentScan);
             #endif
             #endif
+
+            //Check if should run base10 pipeline or baseX pipeline
+            if(base == 10){
+                //do stuff
+            }
+            else{
+                
+            }
+
             i++;
         }
     }
@@ -274,7 +274,7 @@ int main(void)
 {
     //char * testString = "Hello World! This Is A Test!!!";
     char * testString = "test12";
-    parseString(testString, MAX_INPUT_LENGTH);
+    parseString(testString, MAX_INPUT_LENGTH, 10);
 } 
 */
 

@@ -74,7 +74,7 @@ void route()
         printf("       <li>Expression is: <strong>%s</strong> </li>", exp);              // without the "exp="
         printf("       <br>");                                                          // line break to differentiate parts of output
 
-        parseString(exp, MAX_INPUT_LENGTH);
+        parseString(exp, MAX_INPUT_LENGTH, 10);
 
 
 
