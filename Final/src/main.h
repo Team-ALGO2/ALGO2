@@ -101,7 +101,7 @@
 #include "calc/error.c"
 #include "calc/input.c"
 #include "calc/infixtopostfix.c"
-#include "calc/calculate.c"
+#include "calc/eval.c"
 
 #endif
 
