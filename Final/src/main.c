@@ -32,6 +32,9 @@ int populateDummy(queue *data, queue *bin)
 // Main Calculator Function
 int main (void)
 {
+    calcProfile * testProfile = initCalc(10);
+
+    /*
     queue dummyData = {-1, -1, 0};
     queue dummyBin = {-1, -1, 0};
     
@@ -47,5 +50,6 @@ int main (void)
 
     queue_printer_formatted(&goodData);
     queue_printer_formatted(&goodBin);
+    */
 
 }

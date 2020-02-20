@@ -96,9 +96,13 @@
 
 // Import Calculator Modules
 #ifndef _DISABLECALC // Checks For Special Flag To Disable Calculator Import If Not Needed
+
+#include "calc/init.c"
+#include "calc/error.c"
 #include "calc/input.c"
 #include "calc/infixtopostfix.c"
 #include "calc/calculate.c"
+
 #endif
 
 /* Clear command
