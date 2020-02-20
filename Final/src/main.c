@@ -6,7 +6,7 @@
 #ifdef _DEFMAIN
 int main (void)
 {
-    //calcProfile * testProfile = initCalc(10);
+    calcProfile * testProfile = initCalc(10);
 
 }
 #endif // _DEFMAIN
