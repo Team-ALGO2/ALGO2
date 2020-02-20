@@ -97,6 +97,7 @@ int populateDummy(queue *data, queue *bin)
 //Main Function For Testing! Uncomment When needed
 
 
+/*
 int main(void)
 {
     queue dummyData = {-1, -1, 0};
@@ -115,3 +116,4 @@ int main(void)
     queue_printer_formatted(&goodData);
     queue_printer_formatted(&goodBin);
 } 
+*/
