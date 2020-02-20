@@ -41,3 +41,13 @@ int baseConvert(int start, int origBase, int base)
         
     }
 }
+
+
+//Main Function For Testing! Uncomment When needed
+//Because C Does Not Like Redefinitions of Main, This Checks If Its Being Run Directly Or If Its Being Included
+#ifdef _MANUALRUN
+int main(void)
+{
+
+} 
+#endif // _MANUALRUN

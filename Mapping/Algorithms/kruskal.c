@@ -13,7 +13,7 @@ typedef struct edgelist{
 	int n;
 }edgelist;
  
-edgelist list;
+edgelist klist;
 edgelist slist;
 
  
@@ -23,8 +23,9 @@ void kruskal();
 int find(int bel[],int vertexnum);
 void un(int bel[],int c1,int c2);
 
-// Because C Does Not Like Redefinitions of Main, This Checks If Its Being Run Directly Or Is It Being Run By A Function Call
-#ifndef _MANUALRUN
+
+//Because C Does Not Like Redefinitions of Main, This Checks If Its Being Run Directly Or If Its Being Included
+#ifdef _MANUALRUN
 void main(){
 	int i,j,total_cost;
 	
@@ -54,15 +55,15 @@ void main(){
  
 void kruskal(){
 	int bel[max],i,j,d1,d2;
-	list.n=0;
+	klist.n=0;
  
 	for(i=1;i<n;i++){
 		for(j=0;j<i;j++){
 			if(K[i][j]!=0){
-				list.data[list.n].u=i;
-				list.data[list.n].v=j;
-				list.data[list.n].w=K[i][j];
-				list.n++;
+				klist.data[klist.n].u=i;
+				klist.data[klist.n].v=j;
+				klist.data[klist.n].w=K[i][j];
+				klist.n++;
 			}
 		}
  
@@ -70,13 +71,13 @@ void kruskal(){
 	}
 	edge temp;
 	
-	for(int i=1;i<list.n;i++){
-		for(int j=0;j<list.n-1;j++){
-			if(list.data[j].w>list.data[j+1].w)
+	for(int i=1;i<klist.n;i++){
+		for(int j=0;j<klist.n-1;j++){
+			if(klist.data[j].w>klist.data[j+1].w)
 			{
-				temp=list.data[j];
-				list.data[j]=list.data[j+1];
-				list.data[j+1]=temp;
+				temp=klist.data[j];
+				klist.data[j]=klist.data[j+1];
+				klist.data[j+1]=temp;
 			}
 		}
 	}
@@ -85,12 +86,12 @@ void kruskal(){
 	}
 	slist.n=0;
 	
-	for(i=0;i<list.n;i++){
-		d1=find(bel,list.data[i].u);
-		d2=find(bel,list.data[i].v);
+	for(i=0;i<klist.n;i++){
+		d1=find(bel,klist.data[i].u);
+		d2=find(bel,klist.data[i].v);
 		
 		if(d1!=d2){
-			slist.data[slist.n]=list.data[i];
+			slist.data[slist.n]=klist.data[i];
 			slist.n=slist.n+1;
 			un(bel,d1,d2);
 		}

@@ -1,7 +1,7 @@
 #ifndef _MAINGUARD
 #define _DISABLECALC // Prevent Redefinitions
 #include "../main.h"
-#endif
+#endif // _MAINGUARD
 
 //Create structure 
 typedef struct{
@@ -34,8 +34,8 @@ int closeCalc(calcProfile * profile){
 
 
 //Main Function For Testing! Uncomment When needed
-
-/*
+//Because C Does Not Like Redefinitions of Main, This Checks If Its Being Run Directly Or If Its Being Included
+#ifdef _MANUALRUN
 int main(void)
 {
     calcProfile * a = initCalc(10);
@@ -43,4 +43,4 @@ int main(void)
     printf("%s", a->error);
     closeCalc(a);
 } 
-*/
+#endif // _MANUALRUN

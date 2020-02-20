@@ -10,9 +10,11 @@
 #define SPINDWN true // Spin Down (If False Spin Up)
 #define DBSAVE  true // Save To Database??
 
-#ifdef DBSAVE
+#if DBSAVE
+#undef _MANUALRUN
 #include "users.c"
-#endif
+#define _MANUALRUN
+#endif // DBSAVE
 
 int analyseResults(char *values[WIDTH]);
 
@@ -66,7 +68,7 @@ int runSlots(int rotationtimes)
 
     if (!infinate && (strcmp(user, "") == 0))  // User must be signed in to play
     {
-        #ifdef DBSAVE
+        #if DBSAVE
         char * sel_user;
         char * d_password;
         sqlite3 * db = create_db();
@@ -97,12 +99,10 @@ int runSlots(int rotationtimes)
         } else {
             printf("Wrong username or password. Please try again or sign up.\n");
         }
-        #endif
-
-        #ifndef DBSAVE
+        #else
         printf("Database Disabled! Skipping Login And Logging In As XXXXX");
         //More Login Logic Here!
-        #endif
+        #endif // DBSAVE
     }
     msleep(7 * 1000);
     // Slot Characters And Colors
@@ -180,7 +180,7 @@ int runSlots(int rotationtimes)
         //Printing Debug Values
         #ifdef DEBUG
         printf("~~DEBUG~~ \nNumber Index: %d\nTimes Updated:%d\nTotal Updates:%d\nMinimum Spin Time:%d\nRotation Speed:%lf\n\n\n", j, k, rotationtimes, CNTSPIM, rotateSpeed);
-        #endif
+        #endif // DBSAVE
 
         // print full array starting at index j
         for (int i = 0; i < HEIGHT; i++)
@@ -341,8 +341,9 @@ int analyseResults(char *values[WIDTH])
     return total;
 }
 
-// Because C Does Not Like Redefinitions of Main, This Checks If Its Being Run Directly Or Is It Being Run By A Function Call
-#ifndef _AUTORUN
+
+//Because C Does Not Like Redefinitions of Main, This Checks If Its Being Run Directly Or If Its Being Included
+#ifdef _MANUALRUN
 int main(int argc, char *argv[]){
     if (argc > 1)
     {
@@ -361,4 +362,4 @@ int main(int argc, char *argv[]){
     }
 }
 
-#endif // _AUTORUN
+#endif // _MANUALRUN

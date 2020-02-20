@@ -1,7 +1,7 @@
 #ifndef _MAINGUARD
 #define _DISABLECALC // Prevent Redefinitions
 #include "../main.h"
-#endif
+#endif // _MAINGUARD
 
 //Create structure containing list pointer, list length, and max length of list value
 typedef struct{
@@ -47,8 +47,8 @@ int parseString(char * exp, int strMaxLen, int base){
             #ifdef DEBUG
             #ifndef WEBMODE
             printf("CURRENTLY SCANNING: %c\n", currentScan);
-            #endif
-            #endif
+            #endif // WEBMODE
+            #endif // DEBUG
 
             //Check if should run base10 pipeline or baseX pipeline
             if(base == 10){
@@ -61,7 +61,7 @@ int parseString(char * exp, int strMaxLen, int base){
             else if(base > 36){
                 //do stuff for base over 36
             }
-            #endif
+            #endif // FORCEHIGHBASE
             else{
                 //do stuff for any other base
             }
@@ -126,10 +126,10 @@ int lookAheadString(char * exp, int strMaxLen, int currentOffset, keyWordList * 
     // Min/Max values (If Applicable)
     #if LOOKAHEADMODE == 1
     int minVal = INFINITY;
-    #endif
+    #endif // LOOKAHEADMODE
     #if LOOKAHEADMODE == 2
     int maxVal = 0;
-    #endif
+    #endif // LOOKAHEADMODE
     //Loop through all key words
     for(int keyWordIndex = 0; keyWordIndex < kwl->values; keyWordIndex++){
         int keyWordLen = strlen(kwl->list[keyWordIndex]);
@@ -137,7 +137,7 @@ int lookAheadString(char * exp, int strMaxLen, int currentOffset, keyWordList * 
         if(matched){
             break;
         }
-        #endif
+        #endif // LOOKAHEADMODE
         //Reset Look Ahead Offset Index
         i2 = 0;
         while (exp[i2 + currentOffset] != '\0' && (i2 + currentOffset) < strMaxLen && i2 < kwl->maxLen){
@@ -157,12 +157,12 @@ int lookAheadString(char * exp, int strMaxLen, int currentOffset, keyWordList * 
                 if(i2 < minVal){
                     minVal = i2;
                 }
-                #endif
+                #endif // LOOKAHEADMODE
                 #if LOOKAHEADMODE == 2
                 if(i2 > maxVal){
                     maxVal = i2;
                 }
-                #endif
+                #endif // LOOKAHEADMODE
                 break;
             }
             //printf("%c", LAScan);
@@ -177,7 +177,7 @@ int lookAheadString(char * exp, int strMaxLen, int currentOffset, keyWordList * 
         return minVal;
         #elif LOOKAHEADMODE == 2
         return maxVal;
-        #endif
+        #endif // LOOKAHEADMODE
     }
     else{
         //Always return zero if all cases fail
@@ -202,7 +202,7 @@ int parseStringWithSpecialFunc(char * exp)
 
     #ifdef WEBMODE
     printf("<li><strong>%s</strong> command detected</li>", function); // Send this to browser!
-    #endif
+    #endif // WEBMODE
 
     if (strcmp(function, "STORE") == 0)     /* Store Command */
     {
@@ -252,7 +252,7 @@ int parseStringWithSpecialFunc(char * exp)
 
         #ifdef WEBMODE
         printf("<li>Successfully stored the variable <strong>%s</strong> as <strong>%d</strong>!</li>", varname, iargument); // Send this to browser!
-        #endif
+        #endif // WEBMODE
         return true; //Return success
 
     } else if (strcmp(function, "GETALL") == 0) 
@@ -263,7 +263,7 @@ int parseStringWithSpecialFunc(char * exp)
         {
                 #ifdef WEBMODE
                 printf("<li><strong>%s</strong> = <strong>%d</strong></li>", list.caches[i].name, list.caches[i].value);
-                #endif
+                #endif // WEBMODE
                 i++;
                 return true; //Return success
         }       
@@ -272,27 +272,24 @@ int parseStringWithSpecialFunc(char * exp)
     else { /* No match */
         #ifdef WEBMODE
         printf("<li>The function didn't match any known special function</li>"); // Send this to browser!
-        #endif
+        #endif // WEBMODE
 
         return false; //Return failure
 
     }
 }
 
+
 //Main Function For Testing! Uncomment When needed
-
-
-
-
-
-/*
+//Because C Does Not Like Redefinitions of Main, This Checks If Its Being Run Directly Or If Its Being Included
+#ifdef _MANUALRUN
 int main(void)
 {
     //char * testString = "Hello World! This Is A Test!!!";
     char * testString = "bruh";
     parseString(testString, MAX_INPUT_LENGTH, 10);
 }
-*/
+#endif // _MANUALRUN
 
 
 

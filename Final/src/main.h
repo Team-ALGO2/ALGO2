@@ -116,7 +116,12 @@
     #define CLEAR "clear"
 #endif
 
-
+//Manual Run Check
+//Makes sure main() only gets defined once!
+//Defined AFTER all other modules gets included!
+//This way only the main file after main.h gets included gets compiled
+//(Aka no main files of modules gets compiled)
+#define _MANUALRUN 
 
 
 

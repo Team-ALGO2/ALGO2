@@ -3,11 +3,15 @@
 #include "httpd.h"
 #include "../Final/src/main.h"
 
+
+//Because C Does Not Like Redefinitions of Main, This Checks If Its Being Run Directly Or If Its Being Included
+#ifdef _MANUALRUN
 int main(int c, char** v)
 {
     serve_forever("12913");
     return 0;
 }
+#endif // _MANUALRUN
 
 void route()
 {

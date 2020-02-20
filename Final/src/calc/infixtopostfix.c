@@ -1,7 +1,7 @@
 #ifndef _MAINGUARD
 #define _DISABLECALC // Prevent Redefinitions
 #include "../main.h"
-#endif
+#endif // _MAINGUARD
 
 // to convert from an inputed string to postfix notation 
 //the input is 2 queues of data and binairy to discribe how to interpret the data
@@ -94,10 +94,10 @@ int populateDummy(queue *data, queue *bin)
     queue_enqueue(bin, 0);
 }
 
+
 //Main Function For Testing! Uncomment When needed
-
-
-/*
+//Because C Does Not Like Redefinitions of Main, This Checks If Its Being Run Directly Or If Its Being Included
+#ifdef _MANUALRUN
 int main(void)
 {
     queue dummyData = {-1, -1, 0};
@@ -116,4 +116,4 @@ int main(void)
     queue_printer_formatted(&goodData);
     queue_printer_formatted(&goodBin);
 } 
-*/
+#endif // _MANUALRUN

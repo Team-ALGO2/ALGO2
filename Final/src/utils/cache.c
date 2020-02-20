@@ -22,16 +22,16 @@ struct cacheList
     struct cache caches[MAX_VARIABLE_NUMBER];
 };
 
-struct cacheList list;
+struct cacheList clist;
 
 
 int cacheGET(char get[MAX_VARIABLE_LENGTH])
 {
-    for (int i = 0; i < MAX_VARIABLE_NUMBER; i++)  // For every cache in list
+    for (int i = 0; i < MAX_VARIABLE_NUMBER; i++)  // For every cache in clist
     {
-        if (strcmp(list.caches[i].name, get) == 0)      // If found
+        if (strcmp(clist.caches[i].name, get) == 0)      // If found
         {
-            return list.caches[i].value;
+            return clist.caches[i].value;
         } 
         
     }
@@ -42,21 +42,25 @@ int cacheSET(char get[MAX_VARIABLE_LENGTH], int value)
 {
     for (int i = 0; i < MAX_VARIABLE_NUMBER; i++)
     {
-        if (strcmp(list.caches[i].name, get) == 0)   // Replacing
+        if (strcmp(clist.caches[i].name, get) == 0)   // Replacing
         {
-            strcpy(list.caches[i].name, get);
-            list.caches[i].value = value;
+            strcpy(clist.caches[i].name, get);
+            clist.caches[i].value = value;
             return 0;
-        } else if (strcmp(list.caches[i].name, "\0") == 0) {  // Creating
-            strcpy(list.caches[i].name, get);
-            list.caches[i].value = value;
+        } else if (strcmp(clist.caches[i].name, "\0") == 0) {  // Creating
+            strcpy(clist.caches[i].name, get);
+            clist.caches[i].value = value;
             return 0;
         }
         
     }
     return 1; // Cache full
 }
-/*
+
+
+//Main Function For Testing! Uncomment When needed
+//Because C Does Not Like Redefinitions of Main, This Checks If Its Being Run Directly Or If Its Being Included
+#ifdef _MANUALRUN
 int main(void)
 {
     cacheSET("hello", -1);
@@ -65,4 +69,4 @@ int main(void)
     cacheGET("hi");
     return 0;
 }
-*/
+#endif // _MANUALRUN
