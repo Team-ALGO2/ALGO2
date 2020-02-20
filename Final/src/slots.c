@@ -11,9 +11,9 @@
 #define DBSAVE  true // Save To Database??
 
 #if DBSAVE
-#undef _MANUALRUN
+#undef _DEFMAIN
 #include "users.c"
-#define _MANUALRUN
+#define _DEFMAIN
 #endif // DBSAVE
 
 int analyseResults(char *values[WIDTH]);
@@ -343,7 +343,7 @@ int analyseResults(char *values[WIDTH])
 
 
 //Because C Does Not Like Redefinitions of Main, This Checks If Its Being Run Directly Or If Its Being Included
-#ifdef _MANUALRUN
+#ifdef _DEFMAIN
 int main(int argc, char *argv[]){
     if (argc > 1)
     {
@@ -362,4 +362,4 @@ int main(int argc, char *argv[]){
     }
 }
 
-#endif // _MANUALRUN
+#endif // _DEFMAIN

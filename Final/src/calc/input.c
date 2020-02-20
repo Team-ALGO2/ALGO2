@@ -282,14 +282,14 @@ int parseStringWithSpecialFunc(char * exp)
 
 //Main Function For Testing! Uncomment When needed
 //Because C Does Not Like Redefinitions of Main, This Checks If Its Being Run Directly Or If Its Being Included
-#ifdef _MANUALRUN
+#ifdef _DEFMAIN
 int main(void)
 {
     //char * testString = "Hello World! This Is A Test!!!";
     char * testString = "bruh";
     parseString(testString, MAX_INPUT_LENGTH, 10);
 }
-#endif // _MANUALRUN
+#endif // _DEFMAIN
 
 
 

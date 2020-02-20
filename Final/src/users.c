@@ -27,7 +27,7 @@ unsigned char password[64];
 
 //Main Function For Testing! Uncomment When needed
 //Because C Does Not Like Redefinitions of Main, This Checks If Its Being Run Directly Or If Its Being Included
-#ifdef _MANUALRUN
+#ifdef _DEFMAIN
 int main(void) 
 {
     sqlite3 *db;    // database object
@@ -68,7 +68,7 @@ int main(void)
     return 0;
     
 }
-#endif // _MANUALRUN
+#endif // _DEFMAIN
 
 
 sqlite3* create_db()

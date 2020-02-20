@@ -162,7 +162,7 @@ int bellmanFord(int map[BF_MAX_SIZE][BF_MAX_SIZE], int cMap[BF_MAX_SIZE][BF_MAX_
 
 
 //Because C Does Not Like Redefinitions of Main, This Checks If Its Being Run Directly Or If Its Being Included
-#ifdef _MANUALRUN
+#ifdef _DEFMAIN
 int main(){
 
     //todo
@@ -200,4 +200,4 @@ int main(){
 	bellmanFord(map, cMap, 0);
 }
 
-#endif // _MANUALRUN
+#endif // _DEFMAIN

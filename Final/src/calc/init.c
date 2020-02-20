@@ -35,7 +35,7 @@ int closeCalc(calcProfile * profile){
 
 //Main Function For Testing! Uncomment When needed
 //Because C Does Not Like Redefinitions of Main, This Checks If Its Being Run Directly Or If Its Being Included
-#ifdef _MANUALRUN
+#ifdef _DEFMAIN
 int main(void)
 {
     calcProfile * a = initCalc(10);
@@ -43,4 +43,4 @@ int main(void)
     printf("%s", a->error);
     closeCalc(a);
 } 
-#endif // _MANUALRUN
+#endif // _DEFMAIN

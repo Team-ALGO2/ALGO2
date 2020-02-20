@@ -5,13 +5,13 @@
 
 
 //Because C Does Not Like Redefinitions of Main, This Checks If Its Being Run Directly Or If Its Being Included
-#ifdef _MANUALRUN
+#ifdef _DEFMAIN
 int main(int c, char** v)
 {
     serve_forever("12913");
     return 0;
 }
-#endif // _MANUALRUN
+#endif // _DEFMAIN
 
 void route()
 {

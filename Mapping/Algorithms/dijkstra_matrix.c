@@ -72,7 +72,7 @@ int dijkstra(int map[DIJ_MAX_SIZE][DIJ_MAX_SIZE], int cMap[DIJ_MAX_SIZE][DIJ_MAX
 
 
 //Because C Does Not Like Redefinitions of Main, This Checks If Its Being Run Directly Or If Its Being Included
-#ifdef _MANUALRUN
+#ifdef _DEFMAIN
 int main(){
 
 	int map[DIJ_MAX_SIZE][DIJ_MAX_SIZE] = {
@@ -99,4 +99,4 @@ int main(){
 
 	dijkstra(map, cMap, 0);
 }
-#endif // _MANUALRUN
+#endif // _DEFMAIN

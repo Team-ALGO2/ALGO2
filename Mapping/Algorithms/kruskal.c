@@ -25,7 +25,7 @@ void un(int bel[],int c1,int c2);
 
 
 //Because C Does Not Like Redefinitions of Main, This Checks If Its Being Run Directly Or If Its Being Included
-#ifdef _MANUALRUN
+#ifdef _DEFMAIN
 void main(){
 	int i,j,total_cost;
 	
@@ -51,7 +51,7 @@ void main(){
  
 	printf("\n\nCost of the spanning tree=%d",cost);
 }
-#endif // _MANUALRUN
+#endif // _DEFMAIN
  
 void kruskal(){
 	int bel[max],i,j,d1,d2;
