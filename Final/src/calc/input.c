@@ -61,12 +61,16 @@ int parseString(char * exp, int strMaxLen, calcProfile * profile){
                     //pass
                 }
             }
-            #ifdef FORCEHIGHBASE //Check High Base Flag - VERY EXPERIMENTAL!!!
             else if(profile->base > 36){
+                #ifdef FORCEHIGHBASE //Check High Base Flag - VERY EXPERIMENTAL!!!
                 printf("BASEOVER\n");
                 //do stuff for base over 36
+                #endif // FORCEHIGHBASE
+                #ifndef FORCEHIGHBASE
+                //GIVE ERROR
+                printf("ERROR\n");
+                #endif // FORCEHIGHBASE
             }
-            #endif // FORCEHIGHBASE
             else{
                 printf("BASE10+\n");
                 //do stuff for any other base

@@ -5,7 +5,7 @@
 
 //Create structure 
 typedef struct{
-    int base;
+    unsigned int base;
     char * error;
 } calcProfile;
 
