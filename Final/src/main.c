@@ -8,5 +8,9 @@ int main (void)
 {
     calcProfile * testProfile = initCalc(10);
 
+    //char * testString = "Hello World! This Is A Test!!!";
+    char * testString = "bruh";
+    parseString(testString, MAX_INPUT_LENGTH, testProfile);
+
 }
 #endif // _DEFMAIN

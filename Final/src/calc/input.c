@@ -1,6 +1,9 @@
 #ifndef _MAINGUARD
 #define _DISABLECALC // Prevent Redefinitions
 #include "../main.h"
+#undef _DEFMAIN
+#include "init.c" //For testing purposes
+#define _DEFMAIN
 #endif // _MAINGUARD
 
 //Create structure containing list pointer, list length, and max length of list value
@@ -20,25 +23,25 @@ keyWordList testList = {testListTemp, 4, MAXCOMMANDLEN};
 
 
 //Predefine Function
-int lookAheadString(char * exp, int strMaxLen, int currentOffset, keyWordList * kwl);
-int parseStringWithSpecialFunc(char * exp);
+int lookAheadString(char * exp, int strMaxLen, int currentOffset, keyWordList * kwl, calcProfile * profile);
+int parseStringWithSpecialFunc(char * exp, calcProfile * profile);
 
 
 //Parse from string to Eval
-int parseString(char * exp, int strMaxLen, int base){
+int parseString(char * exp, int strMaxLen, calcProfile * profile){
     // Set i (Current Scanning Letter)
     int i = 0;
 
     //Running Look Ahead For Commands
-    int lookAheadResult = lookAheadString(exp, strMaxLen, i, &commandList);
+    int lookAheadResult = lookAheadString(exp, strMaxLen, i, &commandList, profile);
 
     //TESTING
-    printf("%d", lookAheadString(exp, strMaxLen, i, &testList));
+    printf("%d", lookAheadString(exp, strMaxLen, i, &testList, profile));
 
     //printf("%d", lookAheadResult);
     //Check if lookAheadResult succeded
     if(lookAheadResult){ // Detected a special function (STORE; GET ...)
-        int commandResult = parseStringWithSpecialFunc(exp);
+        int commandResult = parseStringWithSpecialFunc(exp, profile);
     }
     else{
         while (exp[i] != '\0' && i < strMaxLen){
@@ -51,18 +54,21 @@ int parseString(char * exp, int strMaxLen, int base){
             #endif // DEBUG
 
             //Check if should run base10 pipeline or baseX pipeline
-            if(base == 10){
+            if(profile->base == 10){
+                printf("BASE10\n");
                 //do stuff for base 10
                 if(isNum(currentScan)){
                     //pass
                 }
             }
             #ifdef FORCEHIGHBASE //Check High Base Flag - VERY EXPERIMENTAL!!!
-            else if(base > 36){
+            else if(profile->base > 36){
+                printf("BASEOVER\n");
                 //do stuff for base over 36
             }
             #endif // FORCEHIGHBASE
             else{
+                printf("BASE10+\n");
                 //do stuff for any other base
             }
 
@@ -118,7 +124,7 @@ int parseString(char * exp, int strMaxLen, int base){
 //Used to check if a word is present from a list (keyWordList)
 //Scans letter by letter until hits word or hits nothing
 //Note: this is not that efficient, but it gets the job done
-int lookAheadString(char * exp, int strMaxLen, int currentOffset, keyWordList * kwl){
+int lookAheadString(char * exp, int strMaxLen, int currentOffset, keyWordList * kwl, calcProfile * profile){
     //Look Ahead Offset Index
     int i2 = 0;
     //If Completed
@@ -185,7 +191,7 @@ int lookAheadString(char * exp, int strMaxLen, int currentOffset, keyWordList * 
     }
 }
 
-int parseStringWithSpecialFunc(char * exp)
+int parseStringWithSpecialFunc(char * exp, calcProfile * profile)
 {
     int i = 0;
     char function[MAXCOMMANDLEN] = "";
@@ -285,9 +291,7 @@ int parseStringWithSpecialFunc(char * exp)
 #ifdef _DEFMAIN
 int main(void)
 {
-    //char * testString = "Hello World! This Is A Test!!!";
-    char * testString = "bruh";
-    parseString(testString, MAX_INPUT_LENGTH, 10);
+    
 }
 #endif // _DEFMAIN
 
