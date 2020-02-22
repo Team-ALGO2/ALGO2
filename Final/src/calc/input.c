@@ -272,7 +272,7 @@ int parseStringWithSpecialFunc(char * exp, calcProfile * profile)
         while (i < MAX_VARIABLE_NUMBER)  // For every cache in list until \0 (end) is reached     strcmp(list.caches[i].name, "\0") != 0 && 
         {
                 #ifdef WEBMODE
-                printf("<li><strong>%s</strong> = <strong>%d</strong></li>", list.caches[i].name, list.caches[i].value);
+                printf("<li><strong>%s</strong> = <strong>%d</strong></li>", clist.caches[i].name, clist.caches[i].value);
                 #endif // WEBMODE
                 i++;
                 return true; //Return success
