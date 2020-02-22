@@ -1,4 +1,4 @@
-all: clean install_deps compile
+all: clean compile 
 
 dir = Final/src
 serverdir = Server
@@ -15,12 +15,34 @@ clean:
 	@rm -rf bin
 	@mkdir bin
 
+	@rm -rf *.o
+
 install_deps:				# Linux only
-	@sudo apt-get install sqlite3 libsqlite3-dev
-	@sudo apt-get install openssl libssl-dev
-	@sudo apt-get install libncurses5-dev libncursesw5-dev
+	sudo apt-get install sqlite3 libsqlite3-dev
+	sudo apt-get install openssl libssl-dev
+	sudo apt-get install libncurses5-dev libncursesw5-dev
 
 compile:
 	${cc} ${dir}/slots.c -o ${out}/slots ${linkers} ${errors}
 
 	${cc} ${testdir}/unittest.c -o ${out}/test ${errors}
+
+test:
+	make
+	@${out}/test
+
+slots:
+	make
+	@${out}/slots
+
+slots_inf:
+	make
+	@${out}/slots -1
+
+help:
+	clear
+	@echo "Use one of the follow commands:"
+	@echo "make 			-- To build the executables"
+	@echo "make test		-- To test the code"
+	@echo "make slots		-- To run slots"
+	@echo "make slots_inf		-- To run slots forever"
