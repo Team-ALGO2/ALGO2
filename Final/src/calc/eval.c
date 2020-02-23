@@ -9,7 +9,7 @@ int postFixcalc(char inputString[MAX_INPUT_LENGTH])
 {
     stack stack = {-1, {0}}; 
     int i; 
-    scanf("%c", inputString);
+    
   
     // Scan all characters 
     for (i = 0; i<inputString[i]; ++i) 
@@ -33,14 +33,16 @@ int postFixcalc(char inputString[MAX_INPUT_LENGTH])
             case '-': stack_push(&stack, subtract(a,b)); break;
             case '*': stack_push(&stack, multiply(a,b)); break;
             case '/': stack_push(&stack, divide(a,b)); break; 
-            //case '^': stack_push(&stack, powr(val1,val2)); break;
-            //case 's': stack_push(&stack, sqrt(val1)); break;
+            case '^': stack_push(&stack, powr(a,b)); break;
+            case 's': stack_push(&stack, squarert(a)); break;
+            case '!': stack_push(&stack, factorial(a)); break;
+
 
             } 
         } 
     } 
     return stack_top(&stack); 
-    printf ("postfix evaluation: %d", inputString); 
+    
 }
 
 
@@ -49,7 +51,11 @@ int postFixcalc(char inputString[MAX_INPUT_LENGTH])
 #ifdef _DEFMAIN
 int main(void)
 {
-    
- 
+   
+    char inputString[10];
+    scanf("%s", inputString);
+  
+
+    printf ("postfix evaluation: %d", postFixcalc(inputString)); 
 } 
 #endif // _DEFMAIN
