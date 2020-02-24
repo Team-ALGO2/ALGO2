@@ -1,4 +1,4 @@
-#define WEBMODE
+#define WEBMODE //Turns on special features designed only for the webserver
 
 #include "httpd.h"
 #include "../Final/src/main.h"
