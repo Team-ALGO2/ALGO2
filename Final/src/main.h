@@ -24,10 +24,6 @@
 #define MAXCOMMANDLEN 32
 #define MAXCOMMANDARGUMENTLEN 32
 
-// Server/main.c
-#define WEBMODE // Is the user iterfave the browser
-
-
 
 // Define Booleans
 #define false 0
