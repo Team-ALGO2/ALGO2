@@ -23,13 +23,38 @@ void route()
         printf("<!DOCTYPE html>"
                 "<html>"
                 "   <body>"
-                "       <h1>Enter an expression</h1>"
+                "       <style>"    // style tag because why not
+                "           #exp {"
+                "                  outline: 0;"                                    
+                "                  border-width: 0 0 2px;" 
+                "                  width: 20%%;"
+                "                  border-color: blue;"
+                "                  transition: 0.5s;         "
+                "                  font-family: Optima, Serif;     "
+                "                  font-size: large;                                     "
+                "               } "
+                "           #exp:focus {"
+                "                  border-color: black;"
+                "               } "
+                "           #connect {"
+                "                  font-family: Times, Serif;     "
+                "               } "
+                "       </style>"
+
+
+                "       <h1>Welcome</h1>"
+                "       <h2>Please enter an expression below</h2>            "
                 "           <form action='/exp'>"
-                "               Expression:<br>"
-                "               <input type='text' name='exp'>"
-                "               <br><br>"
-                "               <input type='submit' value='Submit'>"
+                "               <input placeholder='Expression' id='exp' type='text' name='exp' autofocus required>"
+                "               <input type='submit' value='&rarr;'>"
+                "               <br><br><br>"
+                "               <h4>Special commands</h4>        "
+                "               <ul>"
+                "                   <li>STORE: Set a variable to the user cache</li>"
+                "                   <li>GETALL: See all of your variables that are stored in your cache</li>" 
+                "                </ul>                    "
                 "          </form> "
+                "          <p id='connect'>To use the calculator on any devices connected to the same network, type in your address bar the LAN ip address of this computer.</p>"
                 "   </body>"
                 "</html>");
     }
@@ -66,7 +91,7 @@ void route()
         printf("<!DOCTYPE html>");
         printf("<html>");
         printf("   <body>");
-        printf("       <h1>Welcome to the C-Calculator</h1>");
+        printf("       <h1>C-Calculator</h1>");
         printf("       <li>Your input was received as: <strong>%s</strong> </li>", qs);  // Raw args
         printf("       <li>Input was decoded as: <strong>%s</strong> </li>", decoded);   // urldecoded
         printf("       <li>Expression is: <strong>%s</strong> </li>", exp);              // without the "exp="
