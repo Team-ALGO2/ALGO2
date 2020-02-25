@@ -61,12 +61,6 @@ void route()
         exp[len] = '\0';
         fprintf(stderr, "Extracted exp: %s\n"RESET, exp);
 
-        // Do string parsing here with exp
-
-        
-
-        
-
 
         printf("HTTP/1.1 200 OK\r\n\r\n");
         printf("<!DOCTYPE html>");
@@ -82,10 +76,7 @@ void route()
         //parseString(exp, MAX_INPUT_LENGTH, 10);
 
 
-
-
-
-
+        printf("       <a href='/'>Back</a>");     
         printf("   </body>");
         printf("</html>");
     }
