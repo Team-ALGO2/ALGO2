@@ -7,6 +7,30 @@
 
 //NOTE: "(" and ")" are id's 16 and 17 respectivley
 
+
+/*
+
+=== IMPORTANT FUNCTIONS ===
+
+*/
+
+
+long double ldAbs(long double in){
+    if(in < 0){
+        return -1 * in;
+    }
+    else{
+        return in;
+    }
+}
+
+
+int compare(long double a, long double b)
+{
+  return ldAbs(a - b) < EPSILON;
+}
+
+
 /*
 
 === BASIC MATH ===
@@ -69,7 +93,7 @@ long double powr(long double a, long double b){
     }
     else if(b < 0){
         //CAUTION: may cause infinate recursion if I coded this badly
-        return -1/powr(a, b*-1);    
+        return 1/powr(a, b*-1);    
     }
     else{
         //Give error? this is not sposed to happen
@@ -80,7 +104,7 @@ long double powr(long double a, long double b){
 
 // sqrt id(7)
 long double squarert(long double b){
-    long long temp, sqrt;
+    long double temp, sqrt;
     sqrt = b / 2;
     temp = 0;
     while(sqrt != temp){

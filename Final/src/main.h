@@ -16,6 +16,9 @@
 #define FULLTEXTVARIABLES //Allows Experimental Multi-Letter Variables *
 #define LOOKAHEADMODE 2 //(!do not comment out!) Sets Look Ahead Priority (0: First come first serve, chooses first word that matches definition | 1: Lowest length priority | 2: Highest length Priority)
 
+//
+#define EPSILON 0.000001l
+
 // cache.c
 #define MAX_VARIABLE_NUMBER 25 // Max number of variables user is allowed 
 #define MAX_VARIABLE_LENGTH 10 // Max length of var name

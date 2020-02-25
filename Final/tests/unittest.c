@@ -12,7 +12,7 @@ void test_queue();
 void test_helpers();
 void test_cache();
 
-void ASSERT_TRUE(int expression, char* name)
+void ASSERT_TRUE(long double expression, char* name)
 {
     int success;
     if (expression)
@@ -26,7 +26,7 @@ void ASSERT_TRUE(int expression, char* name)
     log_test(success);
 }
 
-void ASSERT_FALSE(int expression, char* name)
+void ASSERT_FALSE(long double expression, char* name)
 {
     int success;
     if (!expression)
@@ -40,16 +40,16 @@ void ASSERT_FALSE(int expression, char* name)
     log_test(success);
 }
 
-void ASSERT_EQUAL_INT(int expr1, int expr2, char* name)
+void ASSERT_EQUAL_INT(long double expr1, long double expr2, char* name)
 {
     int success;
-    if (expr1 == expr2)
+    if (compare(expr1, expr2))
     {
         success = 1;
         printf("    -   %s  "GRN"\xE2\x9C\x93\n"RESET, name);
     } else {
         success = 0;
-        printf("    -   %s  "RED"x EXPECTED:%d GOT:%d\n"RESET, name, expr2, expr1);
+        printf("    -   %s  "RED"x EXPECTED:%Lf GOT:%Lf\n"RESET, name, expr2, expr1);
     }
     log_test(success);
 }
@@ -106,14 +106,20 @@ int main(void)
 void test_math()
 {
 	printf("\n---------- Math Tests ----------\n");
+	ASSERT_EQUAL_INT(compare(1, 2), false, "Compare False");
+	ASSERT_EQUAL_INT(compare(2, 2), true, "Compare True");
+	ASSERT_EQUAL_INT(compare(0.01, 0.02), false, "Compare Double False");
+	ASSERT_EQUAL_INT(compare(0.02, 0.02), true, "Compare Double True");
 	ASSERT_EQUAL_INT(add(3, 5), 8, "Add");
 	ASSERT_EQUAL_INT(subtract(5, 2), 3, "Substract");
 	ASSERT_EQUAL_INT(multiply(6, 5), 30, "Multiply");
 	ASSERT_EQUAL_INT(divide(10, 2), 5, "Divide");
 	ASSERT_EQUAL_INT(mod(5, 2), 1, "Mod");
+	ASSERT_EQUAL_INT(dmod(0.9, 0.4), 0.1, "Double Mod");
 	ASSERT_EQUAL_INT(powr(5, 2), 25, "Exponent");
 	ASSERT_EQUAL_INT(powr(5, -2), 0.04, "Negative Exponent");
-	ASSERT_EQUAL_INT((int)squarert(81), 9, "Squareroot");
+	ASSERT_EQUAL_INT(squarert(81), 9, "Squareroot");
+	ASSERT_EQUAL_INT(squarert(1.522756), 1.234, "Squareroot Decimal");
 	ASSERT_EQUAL_INT(factorial(4), 24, "Factorial");
 	ASSERT_EQUAL_INT(aChooseB(8, 5), 56, "Combinatronics");
 	ASSERT_EQUAL_INT(aPermB(8, 5), 6720, "Permutations");
