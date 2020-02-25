@@ -176,13 +176,13 @@ long double cosineh(long double a){
 // aCb id(14)
 long double aChooseB(long double n, long double k){
     #ifdef FASTCHOOSEPERM
-    #endif
     long long top = 1;
     long long bottom = 1;
     for (int x = 0; x < (n-k); x++){
         top = top * (n-x);
         bottom = bottom * (x+1);
     }
+    #endif
     return (long double)top/(long double)bottom;
     #ifndef FASTCHOOSEPERM
     return (factorial(n))/(factorial(k)*factorial(n-k));
