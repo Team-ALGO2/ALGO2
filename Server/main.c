@@ -20,50 +20,7 @@ void route()
     ROUTE_GET("/")
     {
         printf("HTTP/1.1 200 OK\r\n\r\n");
-        printf("<!DOCTYPE html>"
-                "<html>"
-                "   <body>"
-                "       <style>"    // style tag because why not
-                "           #exp {"
-                "                  outline: 0;"                                    
-                "                  border-width: 0 0 2px;" 
-                "                  width: 20%%;"
-                "                  border-color: blue;"
-                "                  transition: 0.5s;         "
-                "                  font-family: Optima, Serif;     "
-                "                  font-size: large;                                     "
-                "               } "
-                "           #exp:focus {"
-                "                  border-color: black;"
-                "               } "
-                "           #connect {"
-                "                  font-family: Times, Serif;     "
-                "               } "
-                "       </style>"
-
-
-                "       <h1>Welcome</h1>"
-                "       <h2>Please enter an expression below</h2>            "
-                "           <form action='/exp'>"
-                "               <input placeholder='Expression' id='exp' type='text' name='exp' autofocus required>"
-                "               <input type='submit' value='&rarr;'>"
-                "               <br><br><br>"
-                "               <h4>Special commands</h4>        "
-                "               <ul>"
-                "                   <li>STORE: Set a variable to the user cache</li>"
-                "                   <li>GETALL: See all of your variables that are stored in your cache</li>" 
-                "                </ul>                    "
-                "          </form> "
-                "          <p id='connect'>To use the calculator on any devices connected to the same network, type in your address bar the LAN ip address of this computer.</p>"
-                "   </body>"
-                "</html>");
-    }
-
-    ROUTE_POST("/")
-    {
-        printf("HTTP/1.1 200 OK\r\n\r\n");
-        printf("Wow, seems that you POSTed %d bytes. \r\n", payload_size);
-        printf("Fetch the data using `payload` variable.");
+        printHTMLFile("views/form.html");  
     }
 
     ROUTE_GET("/exp")
@@ -106,6 +63,13 @@ void route()
         printf("</html>");
     }
 
+    ROUTE_POST("/")
+    {
+        printf("HTTP/1.1 200 OK\r\n\r\n");
+        printf("Wow, seems that you POSTed %d bytes. \r\n", payload_size);
+        printf("Fetch the data using `payload` variable.");
+    }
+
     ROUTE_END()
 }
 
@@ -136,5 +100,35 @@ int decode(const char *s, char *dec)
 	}
  
 	return o - dec;
+}
+
+int printFile(char fname[MAX_FILE_NAME_LEN])
+{
+    const size_t MAX_LEN = MAX_FILE_LEN;
+    FILE * fp;
+    char f_array[MAX_LEN +1];
+    int c;
+    size_t i = -1;
+    f_array[MAX_LEN+1] = 0;
+
+    fp = fopen(fname,"r");
+
+    if ( NULL == fp )
+        perror("Error opening file");
+    else {
+        while (EOF != (c = fgetc( fp )) && ++i < MAX_LEN)
+            f_array[i] = c;
+        fclose (fp);
+    }
+    f_array[i] = 0;
+    printf("%s", f_array);
+    return 0;
+}
+
+int printHTMLFile(char fname[MAX_FILE_NAME_LEN])
+{
+    printFile("views/beg.html");
+    printFile(fname);
+    printFile("views/end.html");
 }
  

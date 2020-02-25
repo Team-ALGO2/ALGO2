@@ -76,6 +76,12 @@
 #define QUEUE_FULL    0
 
 
+// For Server/main.c    
+#define MAX_FILE_LEN 255000         // Max file len in chars
+#define MAX_FILE_NAME_LEN 100        // Max filename len
+
+
+
 // Import Important Libraries
 #include <stdio.h>
 #include <stdlib.h>
