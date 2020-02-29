@@ -8,7 +8,7 @@
 #define WIDTH   5
 #define CNTSPIM 10 // Constant Spin (Minimum Spin Amount)
 #define SPINDWN true // Spin Down (If False Spin Up)
-#define DBSAVE  true // Save To Database??
+#define DBSAVE  false // Save To Database??
 
 #if DBSAVE
 #undef _DEFMAIN
@@ -306,8 +306,10 @@ int runSlots(int rotationtimes)
     int total = analyseResults(rolledChars);
     printf("You won %d points\n", total);
 
+    #if DBSAVE
     sqlite3 * db = create_db();
     set_user_balance(db, user, user_bal - cost_per_spin + total);
+    #endif
     msleep(5*1000);
     return 0;
 }
