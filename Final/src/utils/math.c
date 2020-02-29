@@ -394,7 +394,6 @@ long double lnFunc(long double x){
             total = total + fastPower(-1, i+1)*(fastPower(x, i) / i);
         }
         #elif EXPMODE == 2
-        */
         for(int i = 1; i < MAXTAYLORACCURACY*2; i++){
             //printf("%Lf, ", total);
             //printf("%Lf, ", fastPower(x, i));
