@@ -362,9 +362,11 @@ long double expFunc(long double x){
 }
 
 long double lnFunc(long double x){
-    if(x > 2){
+    if(x > 2){ //lnFunc does not work for numbers over 2, so workaround required
         int extra = (int)x / 2;
         //printf("%d\n", extra);
+        //Workaround for calculating numbers over 2
+        //https://math.stackexchange.com/questions/3117459/natural-logarithm-approximation-of-numbers-greater-than-2-for-computers
         #ifdef CACHEDLNTWO
         return lnFunc(x / fastPower(2, extra)) + extra * LNTWO;
         #endif
@@ -373,7 +375,7 @@ long double lnFunc(long double x){
         return
         #endif
     }
-    else if (x > 0){
+    else if (x > 0){ //ln returns imaginary numbers ofr numbers less than 0
         long double total = 0;
         #ifdef SMARTLNAVG
         long double lastTotal = 0;
