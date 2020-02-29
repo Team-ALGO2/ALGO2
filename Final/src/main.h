@@ -8,16 +8,61 @@
 // Define Debug (Comment Out To Disable Debug Mode)
 #define DEBUG //Checking Definitions Instead Of Variables Because ifdef Removes Debug Code In Compilation!
 
+//
 // Define Calculator Configuration Flags
+//
+
 #define RECURSIVECONVERT //Uses recursive techneques to convert bases *
 #define FASTCHOOSEPERM //Uses optimitation techneques to create faster and more accurate combinatronics and permutations calculations
-#define SYSTEMMATH //(Used For Debugging) Uses System Functions Instead Of Self-Made Functions *
-#define FORCEHIGHBASE //Bypasses The 36 Digit Max *
-#define FULLTEXTVARIABLES //Allows Experimental Multi-Letter Variables *
-#define LOOKAHEADMODE 2 //(!do not comment out!) Sets Look Ahead Priority (0: First come first serve, chooses first word that matches definition | 1: Lowest length priority | 2: Highest length Priority)
+#define SMARTBABYLONIANGUESS //Uses interesting formulas to increate accuracy of initial initial square root guess
+//#define NUMLENNEG //Count the '-' symbol in numLen 
+//#define POINTFIVEROUNDOWN //In some odd cases while rounding floating point, 0.5 rounds down to 0 (instead of 1). Turn this on to enable that feature!
+#define MAXTAYLORACCURACY 8 //Defines Maximum Accuracy / Maximum Amount Of Cycles For Talor Series Calculations (Trig, Log, Exponent, Etc.) Set to prevent overflows
+#define EXPMODE 1 //(!do not comment out!) Sets formula used for exponential calculations. See Bottom For Options
+#define ADVANCEDMODULO //Adds extra check to implement Python-style modulo operations with negative numbers. Keep off for original c-like implementation
+#define LNFUNCALGO 2 //(!do not comment out!) Sets formula used for natural logarithm. See Bottom For Options
+#define SMARTLNAVG //Averages the last two natural logarithm estimation results to create a (semi) close guess. Not mathmatically sound, but it works.
+#define CACHEDLNTWO //Uses Pre-calculated LN2 instead of caluclating it live. Increases speed and "accuracy"
+//#define ADVANCEDTRIGFORMULA //Uses advanced Taylor/Maclaurin Series Formuals Instead of Shortcut *
+//#define SYSTEMMATH //(Used For Debugging) Uses System Functions Instead Of Self-Made Functions *
+//#define FORCEHIGHBASE //Bypasses The 36 Digit Max *
+//#define FULLTEXTVARIABLES //Allows Experimental Multi-Letter Variables *
+#define LOOKAHEADMODE 2 //(!do not comment out!) Sets Look Ahead Priority. See Bottom For Options
+
+//Different Modes For Different Configs
+/*
+== LOOKAHEADMODE ==
+0: First come first serve, chooses first word that matches KeyList.
+1: Lowest length priority, chooses word that has the least matching characters.
+2: Highest length Priority, chooses word that has the most matching characters. (Recommended)
+*/
+/*
+== EXPMODE ==
+0: Inaccurate And Old (But Fast) Power Calculation Meathod. Only Supports Integer Exponents. Still Used In fastPower 
+1: Recursive Meathod. Matmatically Less Accurate, But Good Complexity/Speed To Percision. (Recommended)
+2: Mathmatical Meathod. Uses Exponential Identities. Inaccurate Due To Implementation Limitations, But Most Mathmatically (Formula Wise) Accutate!
+*/
+/*
+== LNFUNCALGO ==
+0: Uses Formula Derived From (1-X)
+1: Uses Formula Derived From (1+X)
+2: Uses Adaptiton Formula Derived From X. (Recomended)
+*/
 
 //
-#define EPSILON 0.000001l
+//
+//
+
+//Sets Floating Point Epsilon (AKA decimal accuracy of numbers)
+//https://en.wikipedia.org/wiki/Machine_epsilon
+//Currently set to 1 * 10 ^ -12
+#define EPSILON 0.00000000001l
+//#define EPSILON 0.0001l
+
+//Math Numbers
+#define PI 3.141592653589l
+#define EULER 2.718281828459045l
+#define LNTWO 0.69314718056l
 
 // cache.c
 #define MAX_VARIABLE_NUMBER 25 // Max number of variables user is allowed 
