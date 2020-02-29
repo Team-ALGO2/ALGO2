@@ -364,7 +364,7 @@ long double expFunc(long double x){
 long double lnFunc(long double x){
     if(x > 2){
         int extra = (int)x / 2;
-        printf("%d\n", extra);
+        //printf("%d\n", extra);
         #ifdef CACHEDLNTWO
         return lnFunc(x / fastPower(2, extra)) + extra * LNTWO;
         #endif
