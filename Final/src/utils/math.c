@@ -31,7 +31,9 @@ long double recPowrHelper(long double a, long double b, long double precision);
 long double powr(long double a, long double b);
 long double babylonianGuess(long double num);
 long double squarert(long double b);
-long double logn(long double n, long double r);
+long double expFunc(long double x);
+long double lnFunc(long double x);
+//long double logn(long double n, long double r);
 //Trigonometry Math
 long double sine(long double a);
 long double cosine(long double a);
@@ -272,6 +274,7 @@ long double powr(long double a, long double b){
         #elif EXPMODE == 1
         return recPowrHelper(a, b, EPSILON/100);
         #elif EXPMODE == 2
+        return expFunc(b * lnFunc(a));
         #endif
 
     }
