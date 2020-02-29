@@ -20,25 +20,7 @@ void route()
     ROUTE_GET("/")
     {
         printf("HTTP/1.1 200 OK\r\n\r\n");
-        printf("<!DOCTYPE html>"
-                "<html>"
-                "   <body>"
-                "       <h1>Enter an expression</h1>"
-                "           <form action='/exp'>"
-                "               Expression:<br>"
-                "               <input type='text' name='exp'>"
-                "               <br><br>"
-                "               <input type='submit' value='Submit'>"
-                "          </form> "
-                "   </body>"
-                "</html>");
-    }
-
-    ROUTE_POST("/")
-    {
-        printf("HTTP/1.1 200 OK\r\n\r\n");
-        printf("Wow, seems that you POSTed %d bytes. \r\n", payload_size);
-        printf("Fetch the data using `payload` variable.");
+        printHTMLFile("views/form.html");  
     }
 
     ROUTE_GET("/exp")
@@ -66,7 +48,7 @@ void route()
         printf("<!DOCTYPE html>");
         printf("<html>");
         printf("   <body>");
-        printf("       <h1>Welcome to the C-Calculator</h1>");
+        printf("       <h1>C-Calculator</h1>");
         printf("       <li>Your input was received as: <strong>%s</strong> </li>", qs);  // Raw args
         printf("       <li>Input was decoded as: <strong>%s</strong> </li>", decoded);   // urldecoded
         printf("       <li>Expression is: <strong>%s</strong> </li>", exp);              // without the "exp="
@@ -79,6 +61,13 @@ void route()
         printf("       <a href='/'>Back</a>");     
         printf("   </body>");
         printf("</html>");
+    }
+
+    ROUTE_POST("/")
+    {
+        printf("HTTP/1.1 200 OK\r\n\r\n");
+        printf("Wow, seems that you POSTed %d bytes. \r\n", payload_size);
+        printf("Fetch the data using `payload` variable.");
     }
 
     ROUTE_END()
@@ -111,5 +100,35 @@ int decode(const char *s, char *dec)
 	}
  
 	return o - dec;
+}
+
+int printFile(char fname[MAX_FILE_NAME_LEN])
+{
+    const size_t MAX_LEN = MAX_FILE_LEN;
+    FILE * fp;
+    char f_array[MAX_LEN +1];
+    int c;
+    size_t i = -1;
+    f_array[MAX_LEN+1] = 0;
+
+    fp = fopen(fname,"r");
+
+    if ( NULL == fp )
+        perror("Error opening file");
+    else {
+        while (EOF != (c = fgetc( fp )) && ++i < MAX_LEN)
+            f_array[i] = c;
+        fclose (fp);
+    }
+    f_array[i] = 0;
+    printf("%s", f_array);
+    return 0;
+}
+
+int printHTMLFile(char fname[MAX_FILE_NAME_LEN])
+{
+    printFile("views/beg.html");
+    printFile(fname);
+    printFile("views/end.html");
 }
  
