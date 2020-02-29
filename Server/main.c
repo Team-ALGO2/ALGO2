@@ -13,6 +13,21 @@ int main(int c, char** v)
 }
 #endif // _DEFMAIN
 
+struct pair
+{
+    char key[MAX_VARIABLE_LENGTH];
+    char value[MAX_INPUT_LENGTH];
+};
+
+struct dict
+{
+    struct pair pairs[MAX_VARIABLE_NUMBER];
+};
+
+struct dict rememberedValue;
+
+
+
 void route()
 {
     ROUTE_START()
@@ -33,6 +48,8 @@ void route()
         fprintf(stderr, "Payload decoded: %s\n", decoded);
         int len = strlen(decoded);
         fprintf(stderr, "Payload size: %d\n", len);
+
+
         
         char exp[MAX_INPUT_LENGTH];
         
@@ -44,23 +61,13 @@ void route()
         fprintf(stderr, "Extracted exp: %s\n"RESET, exp);
 
 
+
+        remember("raw", qs);
+        remember("decoded", decoded);
+        remember("extracted", exp);
+
         printf("HTTP/1.1 200 OK\r\n\r\n");
-        printf("<!DOCTYPE html>");
-        printf("<html>");
-        printf("   <body>");
-        printf("       <h1>C-Calculator</h1>");
-        printf("       <li>Your input was received as: <strong>%s</strong> </li>", qs);  // Raw args
-        printf("       <li>Input was decoded as: <strong>%s</strong> </li>", decoded);   // urldecoded
-        printf("       <li>Expression is: <strong>%s</strong> </li>", exp);              // without the "exp="
-        printf("       <br>");                                                          // line break to differentiate parts of output
-
-        //Since we are editing our pipeline so much, this will be commented out until further notice!
-        //parseString(exp, MAX_INPUT_LENGTH, 10);
-
-
-        printf("       <a href='/'>Back</a>");     
-        printf("   </body>");
-        printf("</html>");
+        printHTMLFile("views/result.html");
     }
 
     ROUTE_POST("/")
@@ -121,7 +128,49 @@ int printFile(char fname[MAX_FILE_NAME_LEN])
         fclose (fp);
     }
     f_array[i] = 0;
-    printf("%s", f_array);
+   //  printf("%s", f_array);
+
+    int len = strlen(f_array);
+
+    for (int j = 0; j < len; j++)
+    {
+        if (((f_array[j] == '{') && (f_array[j+1] == '{'))) // special character
+        {
+            cacheSET("var", 10);
+            cacheSET("var2", 20);
+            j = j + 2; // skip {{
+            char varName[MAX_VARIABLE_LENGTH] = "";
+            while ((f_array[j] != '}') && (f_array[j-1] != '}'))    // while ending characters not found
+            {
+                if (f_array[j] != ' ')  
+                {
+                    char add[2];
+                    add[0] = f_array[j];
+                    add[1] = '\0';
+                    strcat(varName, add);
+                    j++;
+                } else {
+                    j++; // skip whitespace
+                }
+            }
+            fprintf(stderr, RED"Found varName: %s\n"RESET, varName);
+            for (int i = 0; i < MAX_VARIABLE_NUMBER; i++)  // For every cache in clist
+            {
+                if (strcmp(rememberedValue.pairs[i].key, varName) == 0)      // If found
+                {
+                    printf("%s", rememberedValue.pairs[i].value);
+                    break;
+                } 
+        
+            }
+
+            j++;  // skip closing }}
+
+        } else {        // else just print normally
+            printf("%c", f_array[j]);
+        }
+        
+    }
     return 0;
 }
 
@@ -131,4 +180,17 @@ int printHTMLFile(char fname[MAX_FILE_NAME_LEN])
     printFile(fname);
     printFile("views/end.html");
 }
- 
+
+int remember(char key[MAX_VARIABLE_LENGTH], char value[MAX_INPUT_LENGTH])
+{
+    for (int i = 0; i < MAX_VARIABLE_NUMBER; i++)
+    {
+        if (strcmp(rememberedValue.pairs[i].key, "\0") == 0) 
+        { 
+            strcpy(rememberedValue.pairs[i].key, key);
+            strcpy(rememberedValue.pairs[i].value, value);
+            return 0;
+        }
+    }
+    return 1; 
+}
