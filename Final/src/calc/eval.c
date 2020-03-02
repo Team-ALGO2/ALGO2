@@ -22,20 +22,47 @@ int postFixcalc(char inputString[MAX_INPUT_LENGTH])
         // If operator pop
         else
         { 
-          
-            int a = stack_top(&stack); stack_pop(&stack);
+            int a,b;
+            //int a = stack_top(&stack); stack_pop(&stack);
 
-            int b = stack_top(&stack); stack_pop(&stack);
+            //int b = stack_top(&stack); stack_pop(&stack);
             
             switch (inputString[i]) 
             { 
-            case '+': stack_push(&stack, add(a,b)); break;
-            case '-': stack_push(&stack, subtract(a,b)); break;
-            case '*': stack_push(&stack, multiply(a,b)); break;
-            case '/': stack_push(&stack, divide(a,b)); break; 
-            case '^': stack_push(&stack, powr(a,b)); break;
-            case 's': stack_push(&stack, squarert(a)); break;
-            case '!': stack_push(&stack, factorial(a)); break;
+            case '+': 
+            a = stack_top(&stack); stack_pop(&stack);
+            b = stack_top(&stack); stack_pop(&stack);
+            stack_push(&stack, add(a,b)); break;
+
+            case '-': 
+            a = stack_top(&stack); stack_pop(&stack);
+            b = stack_top(&stack); stack_pop(&stack);
+            stack_push(&stack, subtract(a,b)); break;
+
+            case '*': 
+            a = stack_top(&stack); stack_pop(&stack);
+            b = stack_top(&stack); stack_pop(&stack);
+            stack_push(&stack, multiply(a,b)); break;
+
+            case '/': 
+            a = stack_top(&stack); stack_pop(&stack);
+            b = stack_top(&stack); stack_pop(&stack);
+            stack_push(&stack, divide(a,b)); break; 
+
+            case '^': 
+            a = stack_top(&stack); stack_pop(&stack);
+            b = stack_top(&stack); stack_pop(&stack);
+            stack_push(&stack, powr(a,b)); break;
+
+            case 's': 
+            b = stack_top(&stack); stack_pop(&stack);
+            
+            stack_push(&stack, squarert(b)); break;
+            
+            case '!': 
+            b = stack_top(&stack); stack_pop(&stack);
+            stack_push(&stack, factorial(b)); break;
+            
 
 
             } 
