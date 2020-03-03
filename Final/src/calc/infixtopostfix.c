@@ -73,8 +73,37 @@ int infixToPostfix(queue input, queue inputBits, queue * dataOut, queue * bitsOu
 
 //FUNCTION:
 
-void populateDummy(queue *data, queue *bin) 
+void populateDummy(queue *data, queue *bin, char exp[MAX_INPUT_LENGTH]) 
 {
+
+    int len = strlen(exp);
+
+    for (int i = 0; i < len; i++)
+    {
+        char curNum[MAX_INPUT_LENGTH] = "";
+        if (isNum(exp[i]))
+        {
+            
+            while (isNum(exp[i]))
+            {   
+                char add[2];
+                add[0] = exp[i];
+                add[1] = '\0';
+                strcat(curNum, add);
+                i++;
+            }
+            i--;
+            int asInt = 0;
+            sscanf(curNum, "%d", &asInt);
+            queue_enqueue(data, asInt);
+            queue_enqueue(bin, 0);
+        } else {
+            queue_enqueue(data, exp[i]);
+            queue_enqueue(bin, 1);
+        }
+    }
+
+/*
     //populate the data
     queue_enqueue(data, 5);
     queue_enqueue(data, 43);
@@ -96,6 +125,7 @@ void populateDummy(queue *data, queue *bin)
     queue_enqueue(bin, 0);
     queue_enqueue(bin, 1);
     queue_enqueue(bin, 0);
+    */
 }
 
 
@@ -107,7 +137,7 @@ int main(void)
     queue dummyData = {-1, -1, 0};
     queue dummyBin = {-1, -1, 0};
     
-    populateDummy(&dummyData, &dummyBin);
+    populateDummy(&dummyData, &dummyBin,"5+53*2-34+19");
     
     queue_printer_formatted(&dummyData);
     queue_printer_formatted(&dummyBin);
