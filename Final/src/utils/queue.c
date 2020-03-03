@@ -105,7 +105,7 @@ int queue_enqueue(queue *q, int input)
     {   
         //Error Message
         #ifdef DEBUG
-        printf("Error: Queue is full, canot insert %d.\n", input);
+        printf(RED"Error: Queue is full, canot insert %d.\n"RESET, input);
         #endif
         return QUEUE_FULL;
     }
@@ -133,7 +133,7 @@ int queue_dequeue(queue *q)
     {
         //Error Message
         #ifdef DEBUG
-        printf("Error: Queue is empty, canot dequeue.\n");
+        printf(RED"Error: Queue is empty, canot dequeue.\n"RESET);
         #endif
         return QUEUE_EMPTY;
     }
@@ -158,7 +158,7 @@ int queue_getFront(queue *q)
     {
         //Error Message
         #ifdef DEBUG
-        printf("Error: Queue is empty, canot get the front value.\n Note: The value returned my be junk.\n");
+        printf(RED"Error: Queue is empty, canot get the front value.\n Note: The value returned my be junk.\n"RESET);
         #endif
         return QUEUE_EMPTY;
         
@@ -175,7 +175,7 @@ int queue_getRear(queue *q)
     {
         //Error Message
         #ifdef DEBUG
-        printf("Error: Queue is empty, canot get the rear value.\n Note: The value returned my be junk.\n");
+        printf(RED"Error: Queue is empty, canot get the rear value.\n Note: The value returned my be junk.\n"RESET);
         #endif
         return QUEUE_EMPTY;
     }
