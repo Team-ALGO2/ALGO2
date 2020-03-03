@@ -17,6 +17,19 @@ int isNum(char analyze)
     else {return False;}
 }
 
+int isStrNum(char analyse[MAX_INPUT_LENGTH])
+{
+    int len = strlen(analyse);
+    for (int i = 0; i < len; i++)
+    {
+        if (!isNum(analyse[i]) && (analyse[i] != '.') && (analyse[i] != '-'))
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
 int isAlpha(char analyze)
 {
     if (analyze >= 'a' && analyze <= 'z'){return True;}
