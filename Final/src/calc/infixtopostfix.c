@@ -73,7 +73,7 @@ int infixToPostfix(queue input, queue inputBits, queue * dataOut, queue * bitsOu
 
 //FUNCTION:
 
-void populateDummy(queue *data, queue *bin, char exp[MAX_INPUT_LENGTH]) 
+void populate(queue *data, queue *bin, char exp[MAX_INPUT_LENGTH]) 
 {
 
     int len = strlen(exp);
@@ -137,7 +137,7 @@ int main(void)
     queue dummyData = {-1, -1, 0};
     queue dummyBin = {-1, -1, 0};
     
-    populateDummy(&dummyData, &dummyBin,"5+53*2-34+19");
+    populate(&dummyData, &dummyBin,"(1+2)*3");
     
     queue_printer_formatted(&dummyData);
     queue_printer_formatted(&dummyBin);
@@ -149,9 +149,6 @@ int main(void)
 
     queue_printer_formatted(&goodData);
     queue_printer_formatted(&goodBin);
-
-
-
 
 
     /* Convert to char array */
