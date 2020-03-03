@@ -3,19 +3,60 @@
     <body>
         <style> 
             #exp {
-                    outline: 0;                                    
-                    border-width: 0 0 2px; 
-                    width: 20%;
-                    border-color: blue;
-                    transition: 0.5s;         
-                    font-family: Optima, Serif;     
-                    font-size: large;                                     
-                } 
+                width: 75%;
+                font-size: inherit;
+                font-family: inherit;
+                border: none;
+            }
             #exp:focus {
-                    border-color: black;
-                } 
+                outline: none;
+            }
+            
             #connect {
                     font-family: Times, Serif;     
                 } 
+            #webI {
+                text-align: center;
+            }
+            #connect {
+                color: rgb(153, 153, 153);
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                text-align: center;
+                width: 100%;
+            }
+
+            #submit {
+                color: #b6b6b6;
+                transition: 0.5s;
+                font-size: xx-large;
+                border-width: 0 0 2px; 
+                margin: 0;
+                border: none;
+            }
+            #submit:hover {
+                color: #313131;
+            }
+            #inputText {
+                outline: 0;      
+    
+         /*       border-width: 0 0 12px; 
+                border-color: blue;     */
+
+                border: 2px solid blue;
+                border-top: none;
+                border-right: none;
+                border-left: none;
+
+                transition: 0.5s;  
+
+                width: fit-content;       
+                font-family: Optima, Serif;     
+                font-size: x-large;     
+            }
+            #inputText:focus-within {
+                border-color: rgb(235, 34, 34);
+            }
         </style>
-        <h2>C-Calculator project web interface</h2>
+        <h2 id="webI">C-Calculator Project Web Interface</h2>
