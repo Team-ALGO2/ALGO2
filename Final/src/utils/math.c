@@ -264,16 +264,16 @@ long double powr(long double a, long double b){
     
     if(b > 0){
 
-        #if EXPMODE == 0
+        #if POWRMODE == 0
         long long result = 1;
         for(int i = 1; i <= b; i ++)
         {
         result = a*result;
         }
         return result;
-        #elif EXPMODE == 1
+        #elif POWRMODE == 1
         return recPowrHelper(a, b, EPSILON/100);
-        #elif EXPMODE == 2
+        #elif POWRMODE == 2
         return expFunc(b * lnFunc(a));
         #endif
 
@@ -380,7 +380,7 @@ long double lnFunc(long double x){
         #ifdef SMARTLNAVG
         long double lastTotal = 0;
         #endif
-        #if EXPMODE == 0
+        #if LNFUNCMODE == 0
         x = 1-x;
         for(int i = 1; i < MAXTAYLORACCURACY*2; i++){
             //printf("%Lf, ", total);
@@ -389,7 +389,7 @@ long double lnFunc(long double x){
             lastTotal = total;
             total = total - (fastPower(x, i) / i);
         }
-        #elif EXPMODE == 1
+        #elif LNFUNCMODE == 1
         x = x-1;
         for(int i = 1; i < MAXTAYLORACCURACY*2; i++){
             //printf("%Lf, ", total);
@@ -398,7 +398,7 @@ long double lnFunc(long double x){
             lastTotal = total;
             total = total + fastPower(-1, i+1)*(fastPower(x, i) / i);
         }
-        #elif EXPMODE == 2
+        #elif LNFUNCMODE == 2
         for(int i = 1; i < MAXTAYLORACCURACY*2; i++){
             //printf("%Lf, ", total);
             //printf("%Lf, ", fastPower(x, i));
