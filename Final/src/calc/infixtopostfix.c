@@ -30,7 +30,8 @@ int infixToPostfix(queue input, queue inputBits, queue * dataOut, queue * bitsOu
         {
             printf("Pushing operator: %d\n", queue_getFront(&input));
             printf("%d %d %d\n", stack_isEmpty(&working), oppPres(stack_top(&working), queue_getFront(&input)), stack_top(&working));
-            while ((!stack_isEmpty(&working)) && (oppPres(stack_top(&working), queue_getFront(&input)) != -1) && (oppPres(stack_top(&working), queue_getFront(&input)) != 2) && (stack_top(&working) != 40))
+            stack_printer_formatted(&working);
+            while ((!stack_isEmpty(&working)) && (oppPres(stack_top(&working), queue_getFront(&input)) != 1) && (oppPres(stack_top(&working), queue_getFront(&input)) != 2) && (stack_top(&working) != 40))
             {
                 printf("YAYs\n");
                 queue_enqueue(dataOut, stack_top(&working)); //push the data
@@ -79,9 +80,9 @@ void populateDummy(queue *data, queue *bin)
     queue_enqueue(data, 53);
     queue_enqueue(data, 42);
     queue_enqueue(data, 2);
-    queue_enqueue(data, 43);
-    queue_enqueue(data, 34);
     queue_enqueue(data, 45);
+    queue_enqueue(data, 34);
+    queue_enqueue(data, 43);
     queue_enqueue(data, 19);
 
     //populate the bin
