@@ -48,12 +48,15 @@ int mathID(char analyze)
 {
     for (int i = 0; i < OPPNUM; i++)
     {
+        printf("comparingk %d with %d   ", analyze, oppC[i]);
         
         if (analyze == oppC[i])
         {
+            printf("returning %d\n", i);
             return i;
         }
     }
+    printf("returning %d\n", -1);
     return -1;
 }
 
@@ -133,9 +136,13 @@ int oppPres(char left, char right)
     //S = 0
     
     int leftPres, rightPres;
+
+    #ifdef DEBUG
+     //   printf("%d, %d\n", left, right);
+    #endif
     
     //for the left opperator
-    switch (mathID(left))
+    switch (left)
     {
     case 0:
         leftPres = 0;
@@ -164,7 +171,7 @@ int oppPres(char left, char right)
     }
 
     // for the right opperator
-    switch (mathID(right))
+    switch (right)
     {
     case 0:
         rightPres = 0;

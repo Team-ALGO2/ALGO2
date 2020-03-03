@@ -14,7 +14,7 @@ int infixToPostfix(queue input, queue inputBits, queue * dataOut, queue * bitsOu
 
     // set length to the number of inputs in the queue
     int length = queue_length(&input);
-    for(int i = 0; i < length - 1; i++)
+    for(int i = 0; i < length; i++)
     {
         // if it is an opperand then push to the output
         if(queue_getFront(&inputBits) == 0)
@@ -26,28 +26,30 @@ int infixToPostfix(queue input, queue inputBits, queue * dataOut, queue * bitsOu
             queue_dequeue(&inputBits);//get rid of the bin just inputed
         }
         // if it is a opperator (but not a '(' or a ')') then figure out if to push or directly to output
-        else if (queue_getFront(&inputBits) == 1 && queue_getFront(&input) != 16 && queue_getFront(&input) != 17)
+        else if ((queue_getFront(&inputBits) == 1) && (queue_getFront(&input) != 40) && (queue_getFront(&input) != 41))
         {
             printf("Pushing operator: %d\n", queue_getFront(&input));
-            while (!stack_isEmpty(&working) && oppPres(stack_top(&working), queue_getFront(&input)) == -1 && stack_top(&working) != 16);
+            printf("%d %d %d\n", stack_isEmpty(&working), oppPres(stack_top(&working), queue_getFront(&input)), stack_top(&working));
+            while ((!stack_isEmpty(&working)) && (oppPres(stack_top(&working), queue_getFront(&input)) == -1) && (stack_top(&working) != 40))
             {
+                printf("YAYs\n");
                 queue_enqueue(dataOut, stack_top(&working)); //push the data
-                queue_enqueue(bitsOut, 1); //push 1 because it is a opperator
+                queue_enqueue(bitsOut, 1); //push 1 becaus it is a opperator
                 stack_pop(&working);
             }
             stack_push(&working, queue_getFront(&input));
             queue_dequeue(&input);
             queue_dequeue(&inputBits);
         }
-        else if (queue_getFront(&input) == 16)
+        else if (queue_getFront(&input) == 40)
         {
             stack_push(&working, queue_getFront(&input));
             queue_dequeue(&input);
             queue_dequeue(&inputBits);
         }
-        else if (queue_getFront(&input) == 17)
+        else if (queue_getFront(&input) == 41)
         {
-            while (!stack_isEmpty(&working) && stack_top(&working) != 16);
+            while (!stack_isEmpty(&working) && stack_top(&working) != 40)
             {
                 queue_enqueue(dataOut, stack_top(&working)); //push the data
                 queue_enqueue(bitsOut, 1); //push 1 because it is a opperator
@@ -69,17 +71,17 @@ int infixToPostfix(queue input, queue inputBits, queue * dataOut, queue * bitsOu
 
 //FUNCTION:
 
-int populateDummy(queue *data, queue *bin) 
+void populateDummy(queue *data, queue *bin) 
 {
     //populate the data
     queue_enqueue(data, 5);
-    queue_enqueue(data, 1);
+    queue_enqueue(data, 43);
     queue_enqueue(data, 53);
+    queue_enqueue(data, 45);
     queue_enqueue(data, 2);
-    queue_enqueue(data, 2);
-    queue_enqueue(data, 1);
+    queue_enqueue(data, 43);
     queue_enqueue(data, 34);
-    queue_enqueue(data, 2);
+    queue_enqueue(data, 45);
     queue_enqueue(data, 19);
 
     //populate the bin
