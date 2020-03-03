@@ -1,6 +1,7 @@
 #ifndef _MAINGUARD
 #define _DISABLECALC // Prevent Redefinitions
 #include "../main.h"
+#include "eval.c"
 #endif // _MAINGUARD
 
 // to convert from an inputed string to postfix notation 
@@ -118,5 +119,39 @@ int main(void)
 
     queue_printer_formatted(&goodData);
     queue_printer_formatted(&goodBin);
+
+
+
+
+
+    /* Convert to char array */
+    char strInfToPost[MAX_INPUT_LENGTH] = "";
+    int len = queue_length(&goodData);
+    for (int i = 0; i < len; i++)
+    {
+        int num = queue_getFront(&goodData);
+        int bin = queue_getFront(&goodBin);
+
+        queue_dequeue(&goodData);
+        queue_dequeue(&goodBin);
+
+
+        if (bin == 0) // number
+        {
+            char adding[30];
+            sprintf(adding, "%d", num);
+            strcat(strInfToPost, adding);
+            strcat(strInfToPost, " ");
+        } else {  // operator
+            char adding[2];
+            adding[0] = num;
+            adding[1] = '\0';
+            strcat(strInfToPost, adding);
+            strcat(strInfToPost, " ");
+        }
+    }
+    printf("%s\n", strInfToPost);
+    int res = postFixcalc(strInfToPost);
+    printf("res: %d\n", res);
 } 
 #endif // _DEFMAIN

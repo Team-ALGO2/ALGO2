@@ -67,6 +67,7 @@ int postFixcalc(char inputString[MAX_INPUT_LENGTH])
 
 //Main Function For Testing! Uncomment When needed
 //Because C Does Not Like Redefinitions of Main, This Checks If Its Being Run Directly Or If Its Being Included
+/*
 #ifdef _DEFMAIN
 int main(void)
 {
@@ -78,3 +79,4 @@ int main(void)
     printf ("postfix evaluation: %d", postFixcalc(inputString)); 
 } 
 #endif // _DEFMAIN
+*/
