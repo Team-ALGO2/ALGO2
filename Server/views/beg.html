@@ -56,7 +56,54 @@
                 font-size: x-large;     
             }
             #inputText:focus-within {
-                border-color: rgb(235, 34, 34);
+                border-color: #ff3434;
             }
+
+            #ops {
+                border-radius: 25px;
+                padding: 20px;
+                background-color: lawngreen;
+                width: 10%;
+            }
+
+
         </style>
         <h2 id="webI">C-Calculator Project Web Interface</h2>
+
+        <div id="ops">
+
+        </div>
+
+        <script>
+            function placeDiv(x_pos, y_pos) {
+                console.log(x_pos, y_pos);
+                var d = document.getElementById('ops');
+                d.style.position = "absolute";
+                d.style.left = (x_pos%89)+'%';
+                d.style.top = y_pos + '%';
+            }
+
+            var i = 6;
+            var j = 50;
+            var front = true;
+            window.setInterval(function(){
+                console.log("hi")
+                if (i > 85)
+                {
+                    front = false;
+                    j = j + 10;
+                } else if (i < 5) {
+                    front = true
+                    j = j - 10;
+                }
+
+                if (!front)
+                {
+                    i = i - 0.2;
+                } else if (front) {
+                    i = i + 0.2;
+                }
+                placeDiv(i, j);
+            }, 10);
+               
+        </script>

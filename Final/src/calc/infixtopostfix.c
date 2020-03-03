@@ -9,7 +9,7 @@
 //results are outputed to the dataOut and bitsOut queue
 int infixToPostfix(queue input, queue inputBits, queue * dataOut, queue * bitsOut)
 {
-    printf("Begin infix to postfix \n");
+ //   printf("Begin infix to postfix \n");
     //working is only a stack of chars in int form so we do not need the give it a bin stack
     stack working = {-1, {0}};
 
@@ -20,7 +20,7 @@ int infixToPostfix(queue input, queue inputBits, queue * dataOut, queue * bitsOu
         // if it is an opperand then push to the output
         if(queue_getFront(&inputBits) == 0)
         {
-            printf("Pushing number: %d\n", queue_getFront(&input));
+       //     printf("Pushing number: %d\n", queue_getFront(&input));
             queue_enqueue(dataOut ,(queue_getFront(&input)));
             queue_dequeue(&input); //get rid of the data at the top of the queue
             queue_enqueue(bitsOut, 0); // used to identify if a number or char (0 is number)
@@ -29,12 +29,12 @@ int infixToPostfix(queue input, queue inputBits, queue * dataOut, queue * bitsOu
         // if it is a opperator (but not a '(' or a ')') then figure out if to push or directly to output
         else if ((queue_getFront(&inputBits) == 1) && (queue_getFront(&input) != 40) && (queue_getFront(&input) != 41))
         {
-            printf("Pushing operator: %d\n", queue_getFront(&input));
-            printf("%d %d %d\n", stack_isEmpty(&working), oppPres(stack_top(&working), queue_getFront(&input)), stack_top(&working));
-            stack_printer_formatted(&working);
+      //      printf("Pushing operator: %d\n", queue_getFront(&input));
+      //      printf("%d %d %d\n", stack_isEmpty(&working), oppPres(stack_top(&working), queue_getFront(&input)), stack_top(&working));
+      //      stack_printer_formatted(&working);
             while ((!stack_isEmpty(&working)) && (oppPres(stack_top(&working), queue_getFront(&input)) != 1) && (oppPres(stack_top(&working), queue_getFront(&input)) != 2) && (stack_top(&working) != 40))
             {
-                printf("YAYs\n");
+          //      printf("YAYs\n");
                 queue_enqueue(dataOut, stack_top(&working)); //push the data
                 queue_enqueue(bitsOut, 1); //push 1 becaus it is a opperator
                 stack_pop(&working);
@@ -67,7 +67,7 @@ int infixToPostfix(queue input, queue inputBits, queue * dataOut, queue * bitsOu
         queue_enqueue(bitsOut, 1); //push 1 because it is a char
         stack_pop(&working);
     }
-    printf("Done infix to postfix \n");
+   // printf("Done infix to postfix \n");
     return 0; //return 0 if done and not failed
 }
 
@@ -128,7 +128,7 @@ void populate(queue *data, queue *bin, char exp[MAX_INPUT_LENGTH])
     */
 }
 
-
+/*
 //Main Function For Testing! Uncomment When needed
 //Because C Does Not Like Redefinitions of Main, This Checks If Its Being Run Directly Or If Its Being Included
 #ifdef _DEFMAIN
@@ -151,7 +151,7 @@ int main(void)
     queue_printer_formatted(&goodBin);
 
 
-    /* Convert to char array */
+    / Convert to char array /
     char strInfToPost[MAX_INPUT_LENGTH] = "";
     int len = queue_length(&goodData);
     for (int i = 0; i < len; i++)
@@ -182,3 +182,4 @@ int main(void)
     printf("res: %d\n", res);
 } 
 #endif // _DEFMAIN
+*/
