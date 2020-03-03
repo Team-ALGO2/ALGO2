@@ -9,7 +9,7 @@
 int infixToPostfix(queue input, queue inputBits, queue * dataOut, queue * bitsOut)
 {
     printf("Begin infix to postfix \n");
-    //working is only a stack of chars in int form so we do not need to give it a bin stack
+    //working is only a stack of chars in int form so we do not need the give it a bin stack
     stack working = {-1, {0}};
 
     // set length to the number of inputs in the queue
@@ -30,7 +30,7 @@ int infixToPostfix(queue input, queue inputBits, queue * dataOut, queue * bitsOu
         {
             printf("Pushing operator: %d\n", queue_getFront(&input));
             printf("%d %d %d\n", stack_isEmpty(&working), oppPres(stack_top(&working), queue_getFront(&input)), stack_top(&working));
-            while ((!stack_isEmpty(&working)) && (oppPres(stack_top(&working), queue_getFront(&input)) == -1) && (stack_top(&working) != 40))
+            while ((!stack_isEmpty(&working)) && (oppPres(stack_top(&working), queue_getFront(&input)) != -1) && (oppPres(stack_top(&working), queue_getFront(&input)) != 2) && (stack_top(&working) != 40))
             {
                 printf("YAYs\n");
                 queue_enqueue(dataOut, stack_top(&working)); //push the data
@@ -77,7 +77,7 @@ void populateDummy(queue *data, queue *bin)
     queue_enqueue(data, 5);
     queue_enqueue(data, 43);
     queue_enqueue(data, 53);
-    queue_enqueue(data, 45);
+    queue_enqueue(data, 42);
     queue_enqueue(data, 2);
     queue_enqueue(data, 43);
     queue_enqueue(data, 34);

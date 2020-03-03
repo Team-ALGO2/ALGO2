@@ -1,6 +1,6 @@
 //A general helper file for all misc tools
 
-#define OPPNUM 5 //this is the same value as defined in the first box of oppC
+#define OPPNUM 4 //this is the same value as defined in the first box of oppC
 
 #ifndef _MAINGUARD
 #include "../main.h"
@@ -8,7 +8,7 @@
 
 //FOR CALC:
 char numberC[10][2] = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
-char oppC[OPPNUM] = {"+-*/%"};
+char oppC[OPPNUM] = {"+-*/"};
 
 //Checking Different Ascii Character Types
 int isNum(char analyze)
@@ -144,59 +144,51 @@ int oppPres(char left, char right)
     //for the left opperator
     switch (left)
     {
-    case 0:
-        leftPres = 0;
-        break;
+        case 43:
+            leftPres = 0;
+            break;
 
-    case 1:
-        leftPres = 0;
-        break;
-    
-    case 2:
-        leftPres = 1;
-        break;
+        case 45:
+            leftPres = 0;
+            break;
+        
+        case 42:
+            leftPres = 1;
+            break;
 
-    case 3:
-        leftPres = 1;
-        break;
-
-    case 4:
-        leftPres = 2;
-        break;
-    
-    default:
-    //for a problem
-        return 2;
-        break;
+        case 47:
+            leftPres = 1;
+            break;
+        
+        default:
+        //for a problem
+            return 2;
+            break;
     }
 
     // for the right opperator
     switch (right)
     {
-    case 0:
-        rightPres = 0;
-        break;
+        case 43:
+            rightPres = 0;
+            break;
 
-    case 1:
-        rightPres = 0;
-        break;
-    
-    case 2:
-        rightPres = 1;
-        break;
+        case 45:
+            rightPres = 0;
+            break;
+        
+        case 42:
+            rightPres = 1;
+            break;
 
-    case 3:
-        rightPres = 1;
-        break;
-
-    case 4:
-        rightPres = 2;
-        break;
-    
-    default:
-    //for a problem
-        return 2;
-        break;
+        case 47:
+            rightPres = 1;
+            break;
+            
+        default:
+        //for a problem
+            return 2;
+            break;
     }
 
     //find which is bigger
@@ -214,9 +206,6 @@ int oppPres(char left, char right)
     }
     else
     {
-        return 2;
+        return 3;
     }
-    
-    
-    
 }
