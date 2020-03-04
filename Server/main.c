@@ -242,4 +242,9 @@ void queuesToStr(queue goodData, queue goodBin)
     }
     fprintf(stderr, BLU"Postfix notation: %s\n"RESET, strInfToPost);
     remember("postfix", strInfToPost);
+
+    int res = postFixcalc(strInfToPost);
+    char strRes[30] = "";
+    sprintf(strRes, "%d", res);
+    remember("result", strRes);
 }

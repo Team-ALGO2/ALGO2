@@ -128,7 +128,6 @@ void populate(queue *data, queue *bin, char exp[MAX_INPUT_LENGTH])
     */
 }
 
-/*
 //Main Function For Testing! Uncomment When needed
 //Because C Does Not Like Redefinitions of Main, This Checks If Its Being Run Directly Or If Its Being Included
 #ifdef _DEFMAIN
@@ -137,7 +136,7 @@ int main(void)
     queue dummyData = {-1, -1, 0};
     queue dummyBin = {-1, -1, 0};
     
-    populate(&dummyData, &dummyBin,"(1+2)*3");
+    populate(&dummyData, &dummyBin,"1+2*3");
     
     queue_printer_formatted(&dummyData);
     queue_printer_formatted(&dummyBin);
@@ -151,7 +150,7 @@ int main(void)
     queue_printer_formatted(&goodBin);
 
 
-    / Convert to char array /
+    /* Convert to char array */
     char strInfToPost[MAX_INPUT_LENGTH] = "";
     int len = queue_length(&goodData);
     for (int i = 0; i < len; i++)
@@ -182,4 +181,3 @@ int main(void)
     printf("res: %d\n", res);
 } 
 #endif // _DEFMAIN
-*/
