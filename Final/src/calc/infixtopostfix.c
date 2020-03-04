@@ -114,7 +114,7 @@ int main(void)
     queue dummyData = {-1, -1, 0};
     queue dummyBin = {-1, -1, 0};
     
-    populate(&dummyData, &dummyBin,"(1+3)-(2+6)");
+    populate(&dummyData, &dummyBin,"7%3+4");
     
     queue_printer_formatted(&dummyData);
     queue_printer_formatted(&dummyBin);
