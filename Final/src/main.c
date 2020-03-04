@@ -12,6 +12,12 @@ int main (void)
 
     //char * testString = "Hello World! This Is A Test!!!";
     printf("===========================\n");
+    char * testStringXX = "STORE";
+    parseString(testStringXX, MAX_INPUT_LENGTH, testProfile);
+    printf("===========================\n");
+    char * testStringXX2 = "TEST";
+    parseString(testStringXX2, MAX_INPUT_LENGTH, testProfile);
+    printf("===========================\n");
     char * testString = "1234";
     parseString(testString, MAX_INPUT_LENGTH, testProfile);
     printf("===========================\n");

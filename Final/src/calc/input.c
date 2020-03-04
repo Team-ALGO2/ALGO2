@@ -13,6 +13,12 @@ typedef struct{
     int maxLen; //Maximum length of values
 } keyWordList;
 
+//Create Custom Dataformat For lookAheadString
+typedef struct{
+    int length; //Length of Matched String
+    int index; //Index of element matched
+} lookAheadResult;
+
 //Create commandList Keyword
 char * commandListTemp[] = {"STORE", "TEST", "GETALL"};
 keyWordList commandList = {commandListTemp, 3, MAXCOMMANDLEN};
@@ -23,8 +29,8 @@ keyWordList testList = {testListTemp, 4, MAXCOMMANDLEN};
 
 
 //Predefine Function
-int lookAheadString(char * exp, int strMaxLen, int currentOffset, keyWordList * kwl, calcProfile * profile);
-int parseStringWithSpecialFunc(char * exp, calcProfile * profile);
+int lookAheadString(char * exp, int strMaxLen, int currentOffset, lookAheadResult * res, keyWordList * kwl, calcProfile * profile);
+int parseStringWithSpecialFunc(char * exp, lookAheadResult * res, calcProfile * profile);
 
 
 //Parse from string to Eval
@@ -33,15 +39,20 @@ int parseString(char * exp, int strMaxLen, calcProfile * profile){
     int i = 0;
 
     //Running Look Ahead For Commands
-    int lookAheadResult = lookAheadString(exp, strMaxLen, i, &commandList, profile);
+    lookAheadResult cmdLookResult;
+    lookAheadString(exp, strMaxLen, i, &cmdLookResult, &commandList, profile);
+    printf("%d - %d\n", cmdLookResult.length, cmdLookResult.index);
 
     //TESTING
-    printf("%d", lookAheadString(exp, strMaxLen, i, &testList, profile));
+    lookAheadResult testLookResult;
+    printf("%d - %d\n", testLookResult.length, testLookResult.index);
+    lookAheadString(exp, strMaxLen, i, &testLookResult, &testList, profile);
+    printf("%d - %d\n", testLookResult.length, testLookResult.index);
 
     //printf("%d", lookAheadResult);
     //Check if lookAheadResult succeded
-    if(lookAheadResult){ // Detected a special function (STORE; GET ...)
-        int commandResult = parseStringWithSpecialFunc(exp, profile);
+    if(cmdLookResult.length){ // Detected a special function (STORE; GET ...)
+        int commandResult = parseStringWithSpecialFunc(exp, &cmdLookResult, profile);
     }
     else{
         while (exp[i] != '\0' && i < strMaxLen){
@@ -61,9 +72,17 @@ int parseString(char * exp, int strMaxLen, calcProfile * profile){
                 //
 
                 //Do operations for brackets
+                if(currentScan == '('){
+                    printf("TEMP -- NUMBER DETECTED: (");
+                    i++; //Increment I
+                }
+                else if(currentScan == ')'){
+                    printf("TEMP -- NUMBER DETECTED: )");
+                    i++; //Increment I
+                }
 
                 //Do operations for numbers
-                if(isNum(currentScan) || currentScan == '-' || currentScan == '+' || currentScan == '.'){
+                else if(isNum(currentScan) || currentScan == '-' || currentScan == '+' || currentScan == '.'){
                     printf("NUMBER DETECTED!\n");
                     //Define Scan Variables
                     int numDigit = 0; //Current Number of Digits
@@ -129,18 +148,33 @@ int parseString(char * exp, int strMaxLen, calcProfile * profile){
                         currentNum = -1 * currentNum;
                     }
                     printf("TEMP -- NUMBER DETECTED: %Lf\n", currentNum);
-                    continue; //Skip All Other Checks On Main Loop (Bypasses i++ On Bottom)
+                    //continue; //Skip All Other Checks On Main Loop (Bypasses i++ On Bottom)
                 }
 
                 //Do operations for operators
+                else if(false){
+
+                }
 
                 //Do operations for full text operators
+                else if(false){
+                    
+                }
 
                 //Do operations for variables
+                else if(false){
+                    
+                }
 
                 //Do operations for whitespace
+                else if(false){
+                    
+                }
 
                 //All Conditions Fail (Error)
+                else{
+                    
+                }
 
             }
             else if(profile->base > 36){
@@ -158,7 +192,7 @@ int parseString(char * exp, int strMaxLen, calcProfile * profile){
                 //do stuff for any other base
             }
 
-            i++;
+            //i++;
         }
     }
 //  printf("\n");
@@ -210,16 +244,17 @@ int parseString(char * exp, int strMaxLen, calcProfile * profile){
 //Used to check if a word is present from a list (keyWordList)
 //Scans letter by letter until hits word or hits nothing
 //Note: this is not that efficient, but it gets the job done
-int lookAheadString(char * exp, int strMaxLen, int currentOffset, keyWordList * kwl, calcProfile * profile){
+int lookAheadString(char * exp, int strMaxLen, int currentOffset, lookAheadResult * res, keyWordList * kwl, calcProfile * profile){
     //Look Ahead Offset Index
     int i2 = 0;
+    //Element Matched (If Matched)
+    int matchedIndex = 0;
     //If Completed
     int matched = false;
     // Min/Max values (If Applicable)
     #if LOOKAHEADMODE == 1
     int minVal = INFINITY;
-    #endif // LOOKAHEADMODE
-    #if LOOKAHEADMODE == 2
+    #elif LOOKAHEADMODE == 2
     int maxVal = 0;
     #endif // LOOKAHEADMODE
     //Loop through all key words
@@ -245,14 +280,17 @@ int lookAheadString(char * exp, int strMaxLen, int currentOffset, keyWordList * 
                 //Set matched and save (if applicable) value
                 matched = true;
                 i2++;
-                #if LOOKAHEADMODE == 1
+                #if LOOKAHEADMODE == 0
+                matchedIndex = keyWordIndex;
+                #elif LOOKAHEADMODE == 1
                 if(i2 < minVal){
                     minVal = i2;
+                    matchedIndex = keyWordIndex;
                 }
-                #endif // LOOKAHEADMODE
-                #if LOOKAHEADMODE == 2
+                #elif LOOKAHEADMODE == 2
                 if(i2 > maxVal){
                     maxVal = i2;
+                    matchedIndex = keyWordIndex;
                 }
                 #endif // LOOKAHEADMODE
                 break;
@@ -264,21 +302,30 @@ int lookAheadString(char * exp, int strMaxLen, int currentOffset, keyWordList * 
     if(matched){
         //Check modes
         #if LOOKAHEADMODE == 0
-        return i2;
+        res->length = i2;
+        res->index = matchedIndex;
+        return 1;
         #elif LOOKAHEADMODE == 1
-        return minVal;
+        res->length = minVal;
+        res->index = matchedIndex;
+        return 1;
         #elif LOOKAHEADMODE == 2
-        return maxVal;
+        res->length = maxVal;
+        res->index = matchedIndex;
+        return 1;
         #endif // LOOKAHEADMODE
     }
     else{
         //Always return zero if all cases fail
+        res->length = 0;
+        res->index = matchedIndex;
         return 0;
     }
 }
 
-int parseStringWithSpecialFunc(char * exp, calcProfile * profile)
+int parseStringWithSpecialFunc(char * exp, lookAheadResult * res, calcProfile * profile)
 {
+    /*
     int i = 0;
     char function[MAXCOMMANDLEN] = "";
 
@@ -296,7 +343,7 @@ int parseStringWithSpecialFunc(char * exp, calcProfile * profile)
     printf("<li><strong>%s</strong> command detected</li>", function); // Send this to browser!
     #endif // WEBMODE
 
-    if (strcmp(function, "STORE") == 0)     /* Store Command */
+    if (strcmp(function, "STORE") == 0)     //Store Command
     {
         char argument[MAXCOMMANDARGUMENTLEN] = "";
         int iargument;
@@ -361,7 +408,7 @@ int parseStringWithSpecialFunc(char * exp, calcProfile * profile)
         }       
 
     }
-    else { /* No match */
+    else { //No match
         #ifdef WEBMODE
         printf("<li>The function didn't match any known special function</li>"); // Send this to browser!
         #endif // WEBMODE
@@ -369,6 +416,7 @@ int parseStringWithSpecialFunc(char * exp, calcProfile * profile)
         return false; //Return failure
 
     }
+    */
 }
 
 
