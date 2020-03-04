@@ -16,11 +16,11 @@ int infixToPostfix(queue input, queue inputBits, queue * dataOut, queue * bitsOu
     int length = queue_length(&input);
     for(int i = 0; i < length; i++)
     {
-        #ifdef DEBUG
-        queue_printer_formatted(dataOut);
-        queue_printer_formatted(bitsOut);
-        stack_printer_formatted(&working);
-        #endif
+    //    #ifdef DEBUG
+    //        queue_printer_formatted(dataOut);
+    //        queue_printer_formatted(bitsOut);
+    //        stack_printer_formatted(&working);
+    //    #endif
         // if it is an opperand then push to the output
         if(queue_getFront(&inputBits) == 0)
         {
