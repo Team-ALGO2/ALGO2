@@ -17,6 +17,11 @@ int isNum(char analyze)
     else {return False;}
 }
 
+int getNum(char analyze)
+{
+    return analyze - '0';
+}
+
 int isAlpha(char analyze)
 {
     if (analyze >= 'a' && analyze <= 'z'){return True;}

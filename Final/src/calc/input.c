@@ -56,10 +56,92 @@ int parseString(char * exp, int strMaxLen, calcProfile * profile){
             //Check if should run base10 pipeline or baseX pipeline
             if(profile->base == 10){
                 printf("BASE10\n");
+                //
                 //do stuff for base 10
-                if(isNum(currentScan)){
-                    //pass
+                //
+
+                //Do operations for brackets
+
+                //Do operations for numbers
+                if(isNum(currentScan) || currentScan == '-' || currentScan == '+' || currentScan == '.'){
+                    printf("NUMBER DETECTED!\n");
+                    //Define Scan Variables
+                    int numDigit = 0; //Current Number of Digits
+                    int numSign = 0; //Current Sign (neg or pos)
+                    int numDecimal = false; //Current Decimal (Above 0 or Under 0)
+                    long double currentNum = 0;
+                    while (exp[i] != '\0' && i < strMaxLen){
+                        char numCurrentCharacter = exp[i];
+                        printf("NUMBER SCANNING: %c -- CURRENT NUM: %Lf\n", numCurrentCharacter, currentNum);
+
+                        //Check if number is negative
+                        if(numSign == 0){
+                            if(numCurrentCharacter == '-'){
+                                printf("negative!\n");
+                                numSign = -1;
+                                i++; //Since '-' takes up a character, increment i
+                                continue;
+                            }
+                            else if(numCurrentCharacter == '+'){
+                                printf("positive!\n");
+                                numSign = 1;
+                                i++; //Since '+' takes up a character, increment i
+                                continue;
+                            }
+                            else{
+                                printf("positive!\n");
+                                numSign = 1;
+                                //Since there was no character, do not increment i
+                            }
+                        }
+
+                        //Check if a decimal appears
+                        if(numDecimal == false){
+                            if(numCurrentCharacter == '.'){
+                                printf("decimal!\n");
+                                numDecimal = true;
+                                numDigit = -1;
+                                i++; //Since '.' takes up a character, increment i
+                                continue;
+                            }
+                        }
+
+                        //Check if is digit
+                        if(isNum(numCurrentCharacter)){
+                            if(!numDecimal){ // Adds Digits For Non Decimal Numbers
+                                currentNum = currentNum * 10 + getNum(numCurrentCharacter);
+                                numDigit++;
+                                i++;
+                            }
+                            else{ // Adds Digits For Decimal Numbers
+                                currentNum = currentNum + getNum(numCurrentCharacter) * fastPower(10, numDigit);
+                                numDigit--;
+                                i++;
+                            }
+                        }
+
+                        //Fail All Checks, Not A Number Anymore
+                        else{
+                            break; //Break out of loop
+                        }
+                    }
+                    if(numSign == -1){
+                        currentNum = -1 * currentNum;
+                    }
+                    printf("TEMP -- NUMBER DETECTED: %Lf\n", currentNum);
+                    continue; //Skip All Other Checks On Main Loop (Bypasses i++ On Bottom)
                 }
+
+                //Do operations for operators
+
+                //Do operations for full text operators
+
+                //Do operations for variables
+
+                //Do operations for whitespace
+
+                //All Conditions Fail (Error)
+
             }
             else if(profile->base > 36){
                 #ifdef FORCEHIGHBASE //Check High Base Flag - VERY EXPERIMENTAL!!!
