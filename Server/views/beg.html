@@ -44,7 +44,7 @@
          /*       border-width: 0 0 12px; 
                 border-color: blue;     */
 
-                border: 2px solid blue;
+                border: 2px solid #2222ff;
                 border-top: none;
                 border-right: none;
                 border-left: none;
@@ -56,7 +56,147 @@
                 font-size: x-large;     
             }
             #inputText:focus-within {
-                border-color: rgb(235, 34, 34);
+                border-color: #ff3434;
             }
+            
+            .messages {
+                border-radius: 25px;
+                padding: 20px;
+                padding-top: 5px;
+                border: 3px solid #0000ac;
+                width: 10%;
+                background: linear-gradient(to bottom, #5656ff 0%, #5656ff 35%, #00000000 35%, #00000000 100%);
+                text-align: center;
+                vertical-align: text-top;
+
+                box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+            }
+
+            .messages:hover {
+                box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+            }
+            .messages a {
+                color: #5656ff;
+            }
+
+
+            .titles {
+                color: white;
+                margin-top: 0px;
+            }
+
+            strong {
+                color: #5656dd;
+            }
+
         </style>
         <h2 id="webI">C-Calculator Project Web Interface</h2>
+        <div id="all">
+            <div class="messages">
+                <h3 class="titles">Our code on Github:</h3>
+                <a href="https://github.com/Team-ALGO2/ALGO2" target="_blank">https://github.com/Team-ALGO2/ALGO2</a>
+            </div>
+            <div class="messages">
+                <h3 class="titles">Project webpage:</h3>
+                <a href="https://team-algo2.github.io/ALGO2/index.html" target="_blank">https://team-algo2.github.io/ALGO2/</a>
+            </div>
+            <div class="messages">
+                <h3 class="titles">Project on Travis CI:</h3>
+                <a href="https://travis-ci.org/Team-ALGO2/ALGO2" target="_blank">https://travis-ci.org/Team-ALGO2/ALGO2</a>
+            </div>
+            <div class="messages">
+                <h3 class="titles">Bug or error?</h3>
+                <p>Sumbit an <a href="https://github.com/Team-ALGO2/ALGO2/issues" target="_blank">issue</a></p>
+            </div>
+        </div>
+
+        <script>
+            function placeDiv(x_pos, y_pos, d) {
+                init = 1;
+                d.style.position = "absolute";
+                d.style.left = (x_pos)+'%';
+                d.style.top = y_pos + '%';
+            }
+
+            var i = 6;
+            var j = 50;
+            var front = true;
+
+            var elems = document.getElementsByClassName("messages");
+            var length = elems.length;
+            console.log(elems);
+
+
+            for (x = 0; x < length; x++)
+            {
+                elems[x].setAttribute("data-num", x);
+                elems[x].setAttribute("data-i", x * 15);
+                elems[x].setAttribute("data-j", 50);
+                elems[x].setAttribute("data-front", 1);
+            }
+
+
+            var int = window.setInterval(function(){
+            //     console.log(elems[0]);
+                var x = 0;
+                for (x = 0; x < length; x++)
+                {
+                    var left = elems[x].style.left.substring(0, 2);
+                    if (left > 85)
+                    {
+                        elems[x].setAttribute("data-front", 0);
+                        elems[x].setAttribute("data-j", 60);
+                    } else if (left < 5) {
+                        elems[x].setAttribute("data-front", 1);
+                        elems[x].setAttribute("data-j", 50);
+                    }
+
+                    if (parseInt(elems[x].getAttribute("data-front")) == 0)
+                    {
+                        elems[x].setAttribute("data-i", parseFloat(elems[x].getAttribute("data-i")) - 0.2);
+                    } else {
+                        elems[x].setAttribute("data-i", parseFloat(elems[x].getAttribute("data-i")) + 0.2);
+                    }
+                    placeDiv(elems[x].getAttribute("data-i"), elems[x].getAttribute("data-j"), elems[x]);
+                }
+            }, 30);
+
+            var el = document.getElementById("all");
+            var init = 0;
+            el.addEventListener("mouseover", function(){
+                if (init != 0)
+                {
+                    clearInterval(int);
+                }
+            })
+
+            el.addEventListener("mouseout", function(){
+                int = window.setInterval(function(){
+                    //     console.log(elems[0]);
+                        var x = 0;
+                        for (x = 0; x < length; x++)
+                        {
+                            var left = elems[x].style.left.substring(0, 2);
+                            if (left > 85)
+                            {
+                                elems[x].setAttribute("data-front", 0);
+                                elems[x].setAttribute("data-j", 60);
+                            } else if (left < 5) {
+                                elems[x].setAttribute("data-front", 1);
+                                elems[x].setAttribute("data-j", 50);
+                            }
+        
+                            if (parseInt(elems[x].getAttribute("data-front")) == 0)
+                            {
+                                elems[x].setAttribute("data-i", parseFloat(elems[x].getAttribute("data-i")) - 0.2);
+                            } else {
+                                elems[x].setAttribute("data-i", parseFloat(elems[x].getAttribute("data-i")) + 0.2);
+                            }
+                            placeDiv(elems[x].getAttribute("data-i"), elems[x].getAttribute("data-j"), elems[x]);
+                        }
+                    }, 30);
+            })
+
+                
+            
+        </script>

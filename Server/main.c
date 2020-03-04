@@ -3,6 +3,12 @@
 #include "httpd.h"
 #include "../Final/src/main.h"
 
+int ishex(int x);
+int decode(const char *s, char *dec);
+int printFile(char fname[MAX_FILE_NAME_LEN]);
+void printHTMLFile(char fname[MAX_FILE_NAME_LEN]);
+int remember(char key[MAX_VARIABLE_LENGTH], char value[MAX_INPUT_LENGTH]);
+void queuesToStr(queue goodData, queue goodBin);
 
 //Because C Does Not Like Redefinitions of Main, This Checks If Its Being Run Directly Or If Its Being Included
 #ifdef _DEFMAIN
@@ -66,6 +72,18 @@ void route()
         remember("decoded", decoded);
         remember("extracted", exp);
 
+        /* === MAIN C CALCULATOR LOGIC CODE === */
+        queue dummyData = {-1, -1, 0};
+        queue dummyBin = {-1, -1, 0};
+        populate(&dummyData, &dummyBin, exp);  // create queue for conversion
+
+        queue goodData = {-1, -1, 0};
+        queue goodBin = {-1, -1, 0};
+        infixToPostfix(dummyData, dummyBin, &goodData, &goodBin);   // do inftopost
+
+        queuesToStr(goodData, goodBin);    // convert to str
+
+
         printf("HTTP/1.1 200 OK\r\n\r\n");
         printHTMLFile("views/result.html");
     }
@@ -113,7 +131,7 @@ int printFile(char fname[MAX_FILE_NAME_LEN])
 {
     const size_t MAX_LEN = MAX_FILE_LEN;
     FILE * fp;
-    char f_array[MAX_LEN +1];
+    char f_array[MAX_LEN +2];
     int c;
     size_t i = -1;
     f_array[MAX_LEN+1] = 0;
@@ -174,7 +192,7 @@ int printFile(char fname[MAX_FILE_NAME_LEN])
     return 0;
 }
 
-int printHTMLFile(char fname[MAX_FILE_NAME_LEN])
+void printHTMLFile(char fname[MAX_FILE_NAME_LEN])
 {
     printFile("views/beg.html");
     printFile(fname);
@@ -193,4 +211,40 @@ int remember(char key[MAX_VARIABLE_LENGTH], char value[MAX_INPUT_LENGTH])
         }
     }
     return 1; 
+}
+
+void queuesToStr(queue goodData, queue goodBin)
+{
+    char strInfToPost[MAX_INPUT_LENGTH] = "";
+    int len = queue_length(&goodData);
+    for (int i = 0; i < len; i++)
+    {
+        int num = queue_getFront(&goodData);
+        int bin = queue_getFront(&goodBin);
+
+        queue_dequeue(&goodData);
+        queue_dequeue(&goodBin);
+
+
+        if (bin == 0) // number
+        {
+            char adding[30];
+            sprintf(adding, "%d", num);
+            strcat(strInfToPost, adding);
+            strcat(strInfToPost, " ");
+        } else {  // operator
+            char adding[2];
+            adding[0] = num;
+            adding[1] = '\0';
+            strcat(strInfToPost, adding);
+            strcat(strInfToPost, " ");
+        }
+    }
+    fprintf(stderr, BLU"Postfix notation: %s\n"RESET, strInfToPost);
+    remember("postfix", strInfToPost);
+
+    int res = postFixcalc(strInfToPost);
+    char strRes[30] = "";
+    sprintf(strRes, "%d", res);
+    remember("result", strRes);
 }
