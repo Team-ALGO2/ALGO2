@@ -43,12 +43,12 @@ int postFixcalc(char inputString[MAX_INPUT_LENGTH])
                 case '/': 
                     a = stack_top(&stack); stack_pop(&stack);
                     b = stack_top(&stack); stack_pop(&stack);
-                    stack_push(&stack, divide(a,b)); break; 
+                    stack_push(&stack, divide(b,a)); break; 
 
                 case '^': 
                     a = stack_top(&stack); stack_pop(&stack);
                     b = stack_top(&stack); stack_pop(&stack);
-                    stack_push(&stack, powr(a,b)); break;
+                    stack_push(&stack, powr(b,a)); break;
 
                 case 's': 
                     b = stack_top(&stack); stack_pop(&stack);
