@@ -71,7 +71,7 @@
 #define MAX_VARIABLE_NUMBER 25 // Max number of variables user is allowed 
 #define MAX_VARIABLE_LENGTH 10 // Max length of var name
 
-// input.c
+// parsing.c
 #define MAXCOMMANDLEN 32
 #define MAXCOMMANDARGUMENTLEN 32
 
@@ -156,7 +156,7 @@
 
 #include "calc/init.c"
 #include "calc/error.c"
-#include "calc/input.c"
+#include "calc/parsing.c"
 #include "calc/infixtopostfix.c"
 #include "calc/eval.c"
 
