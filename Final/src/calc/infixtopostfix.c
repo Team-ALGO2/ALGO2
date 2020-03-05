@@ -4,6 +4,8 @@
 #include "eval.c"
 #endif // _MAINGUARD
 
+char string[MAX_INPUT_LENGTH] = "";
+
 // to convert from an inputed string to postfix notation 
 //the input is 2 queues of data and binairy to discribe how to interpret the data
 //results are outputed to the dataOut and bitsOut queue
@@ -70,6 +72,7 @@ int infixToPostfix(queue input, queue inputBits, queue * dataOut, queue * bitsOu
         queue_enqueue(bitsOut, 1); //push 1 because it is a char
         stack_pop(&working);
     }
+    printf("Done Infix to postfix\n");
     return 0; //return 0 if done and not failed
 }
 
@@ -106,6 +109,35 @@ void populate(queue *data, queue *bin, char exp[MAX_INPUT_LENGTH])
     }
 }
 
+/* Convert to char array */
+int dataQueueToString(queue input, queue inputBits)
+{
+    int len = queue_length(&input);
+    for (int i = 0; i < len; i++)
+    {
+        int num = queue_getFront(&input);
+        int bin = queue_getFront(&inputBits);
+
+        queue_dequeue(&input);
+        queue_dequeue(&inputBits);
+
+        if (bin == 0) // number
+        {
+            char adding[30];
+            sprintf(adding, "%d", num);
+            strcat(string, adding);
+            strcat(string, " ");
+        } else {  // operator
+            char adding[2];
+            adding[0] = num;
+            adding[1] = '\0';
+            strcat(string, adding);
+            strcat(string, " ");
+        }
+    }
+    printf("holo");
+}
+
 //Main Function For Testing! Uncomment When needed
 //Because C Does Not Like Redefinitions of Main, This Checks If Its Being Run Directly Or If Its Being Included
 #ifdef _DEFMAIN
@@ -114,7 +146,7 @@ int main(void)
     queue dummyData = {-1, -1, 0};
     queue dummyBin = {-1, -1, 0};
     
-    populate(&dummyData, &dummyBin,"7%3+4");
+    populate(&dummyData, &dummyBin,"4*2^3");
     
     queue_printer_formatted(&dummyData);
     queue_printer_formatted(&dummyBin);
@@ -127,34 +159,10 @@ int main(void)
     queue_printer_formatted(&goodData);
     queue_printer_formatted(&goodBin);
 
-
-    /* Convert to char array */
-    char strInfToPost[MAX_INPUT_LENGTH] = "";
-    int len = queue_length(&goodData);
-    for (int i = 0; i < len; i++)
-    {
-        int num = queue_getFront(&goodData);
-        int bin = queue_getFront(&goodBin);
-
-        queue_dequeue(&goodData);
-        queue_dequeue(&goodBin);
-
-        if (bin == 0) // number
-        {
-            char adding[30];
-            sprintf(adding, "%d", num);
-            strcat(strInfToPost, adding);
-            strcat(strInfToPost, " ");
-        } else {  // operator
-            char adding[2];
-            adding[0] = num;
-            adding[1] = '\0';
-            strcat(strInfToPost, adding);
-            strcat(strInfToPost, " ");
-        }
-    }
-    printf("%s\n", strInfToPost);
-    int res = postFixcalc(strInfToPost);
+    char string[MAX_INPUT_LENGTH] = "";
+    //dataQueueToString(goodData, goodBin);
+    printf("%s\nEvaluating...\n", string);
+    int res = postfixCalc(goodData, goodBin);
     printf("res: %d\n", res);
 } 
 #endif // _DEFMAIN
