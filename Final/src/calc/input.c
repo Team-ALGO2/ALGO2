@@ -6,6 +6,10 @@
 #define _DEFMAIN
 #endif // _MAINGUARD
 
+//Enum Of Command Ids
+enum commands{Cmd_Store, Cmd_Test, Cmd_GetAll}; 
+//MAKE SURE THIS ORDER IS THE SAME AS commandListTemp
+
 //Create structure containing list pointer, list length, and max length of list value
 typedef struct{
     char ** list; //Pointer to list
@@ -16,7 +20,7 @@ typedef struct{
 //Create Custom Dataformat For lookAheadString
 typedef struct{
     int length; //Length of Matched String
-    int index; //Index of element matched
+    enum commands index; //Index of element matched
 } lookAheadResult;
 
 //Create commandList Keyword
@@ -29,24 +33,24 @@ keyWordList testList = {testListTemp, 4, MAXCOMMANDLEN};
 
 
 //Predefine Function
-int lookAheadString(char * exp, int strMaxLen, int currentOffset, lookAheadResult * res, keyWordList * kwl, calcProfile * profile);
+int lookAheadString(char * exp, int currentOffset, lookAheadResult * res, keyWordList * kwl, calcProfile * profile);
 int parseStringWithSpecialFunc(char * exp, lookAheadResult * res, calcProfile * profile);
 
 
 //Parse from string to Eval
-int parseString(char * exp, int strMaxLen, calcProfile * profile){
+int parseString(char * exp, calcProfile * profile){
     // Set i (Current Scanning Letter)
     int i = 0;
 
     //Running Look Ahead For Commands
     lookAheadResult cmdLookResult;
-    lookAheadString(exp, strMaxLen, i, &cmdLookResult, &commandList, profile);
+    lookAheadString(exp, i, &cmdLookResult, &commandList, profile);
     printf("%d - %d\n", cmdLookResult.length, cmdLookResult.index);
 
     //TESTING
     lookAheadResult testLookResult;
     printf("%d - %d\n", testLookResult.length, testLookResult.index);
-    lookAheadString(exp, strMaxLen, i, &testLookResult, &testList, profile);
+    lookAheadString(exp, i, &testLookResult, &testList, profile);
     printf("%d - %d\n", testLookResult.length, testLookResult.index);
 
     //printf("%d", lookAheadResult);
@@ -55,7 +59,7 @@ int parseString(char * exp, int strMaxLen, calcProfile * profile){
         int commandResult = parseStringWithSpecialFunc(exp, &cmdLookResult, profile);
     }
     else{
-        while (exp[i] != '\0' && i < strMaxLen){
+        while (exp[i] != '\0' && i < profile->strMaxLen){
             char currentScan = exp[i];
             
             #ifdef DEBUG
@@ -89,7 +93,7 @@ int parseString(char * exp, int strMaxLen, calcProfile * profile){
                     int numSign = 0; //Current Sign (neg or pos)
                     int numDecimal = false; //Current Decimal (Above 0 or Under 0)
                     long double currentNum = 0;
-                    while (exp[i] != '\0' && i < strMaxLen){
+                    while (exp[i] != '\0' && i < profile->strMaxLen){
                         char numCurrentCharacter = exp[i];
                         printf("NUMBER SCANNING: %c -- CURRENT NUM: %Lf\n", numCurrentCharacter, currentNum);
 
@@ -244,7 +248,7 @@ int parseString(char * exp, int strMaxLen, calcProfile * profile){
 //Used to check if a word is present from a list (keyWordList)
 //Scans letter by letter until hits word or hits nothing
 //Note: this is not that efficient, but it gets the job done
-int lookAheadString(char * exp, int strMaxLen, int currentOffset, lookAheadResult * res, keyWordList * kwl, calcProfile * profile){
+int lookAheadString(char * exp, int currentOffset, lookAheadResult * res, keyWordList * kwl, calcProfile * profile){
     //Look Ahead Offset Index
     int i2 = 0;
     //Element Matched (If Matched)
@@ -267,7 +271,7 @@ int lookAheadString(char * exp, int strMaxLen, int currentOffset, lookAheadResul
         #endif // LOOKAHEADMODE
         //Reset Look Ahead Offset Index
         i2 = 0;
-        while (exp[i2 + currentOffset] != '\0' && (i2 + currentOffset) < strMaxLen && i2 < kwl->maxLen){
+        while (exp[i2 + currentOffset] != '\0' && (i2 + currentOffset) < profile->strMaxLen && i2 < kwl->maxLen){
             char LAScanExp = exp[i2 + currentOffset];
             char LAScanKwl = kwl->list[keyWordIndex][i2];
             //printf("-%c|%c-", LAScanExp, LAScanKwl);
@@ -323,8 +327,96 @@ int lookAheadString(char * exp, int strMaxLen, int currentOffset, lookAheadResul
     }
 }
 
+//Cmd_Store, Cmd_Test, Cmd_GetAll
+
 int parseStringWithSpecialFunc(char * exp, lookAheadResult * res, calcProfile * profile)
 {
+    int i = res->length;
+
+    /*
+    if(i >= profile->strMaxLen){ // String Out Of Bounds
+        return false; //Return Error
+    }
+    */
+
+    if(res->index == Cmd_Store){
+        char argument[MAXCOMMANDARGUMENTLEN] = "";
+        int iargument;
+
+        fprintf(stderr, "STORE\n");
+
+        printf("??? %d\n", i);
+        while (exp[i] == ' ' && exp[i] != '\0' && i < profile->strMaxLen)  // Skip whitespace
+        {
+            i++;
+        }
+        printf("??? %d\n", i);
+
+        char varname[MAX_INPUT_LENGTH] = "";
+        while (exp[i] != ' ' && exp[i] != '\0' && i < profile->strMaxLen)  // get var name
+        {
+            char currentScan = exp[i];
+            char appending[2];
+            appending[0] = currentScan;
+            appending[1] = '\0';
+            strcat(varname, appending);
+            i++;
+
+        }
+        fprintf(stderr, "VARNAME: %s\n", varname);
+
+        printf("??? %d\n", i);
+        while (exp[i] == ' ' && exp[i] != '\0' && i < profile->strMaxLen)  // Skip whitespace
+        {
+            i++;
+        }
+        printf("??? %d\n", i);
+
+        while (exp[i] != ' ' && exp[i] != '\0' && i < profile->strMaxLen)  // get var value
+        {
+            char currentScan = exp[i];
+            char appending[2];
+            appending[0] = currentScan;
+            appending[1] = '\0';
+            strcat(argument, appending);
+            i++;
+
+        }
+        sscanf(argument, "%d", &iargument);
+        fprintf(stderr, "ARGUMENT as int: %d\n", iargument);
+
+        cacheSET(varname, iargument);
+
+        #ifdef WEBMODE
+        printf("<li>Successfully stored the variable <strong>%s</strong> as <strong>%d</strong>!</li>", varname, iargument); // Send this to browser!
+        #endif // WEBMODE
+        return true; //Return success
+    }
+    else if(res->index == Cmd_Test){
+        printf("=== TEST COMMAND RECEIVED ===\n");
+    }
+    else if(res->index == Cmd_GetAll){
+        int i = 0;
+
+        while (i < MAX_VARIABLE_NUMBER)  // For every cache in list until \0 (end) is reached     strcmp(list.caches[i].name, "\0") != 0 && 
+        {
+                #ifdef WEBMODE
+                printf("<li><strong>%s</strong> = <strong>%d</strong></li>", clist.caches[i].name, clist.caches[i].value);
+                #endif // WEBMODE
+                i++;
+                return true; //Return success
+        }
+    }
+
+    else{
+        #ifdef WEBMODE
+        printf("<li>The function didn't match any known special function</li>"); // Send this to browser!
+        #endif // WEBMODE
+
+        return false; //Return failure
+    }
+
+    //OLD CODD
     /*
     int i = 0;
     char function[MAXCOMMANDLEN] = "";

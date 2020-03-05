@@ -12,29 +12,29 @@ int main (void)
 
     //char * testString = "Hello World! This Is A Test!!!";
     printf("===========================\n");
-    char * testStringXX = "STORE";
-    parseString(testStringXX, MAX_INPUT_LENGTH, testProfile);
+    char * testStringXX = "STORE  A   10";
+    parseString(testStringXX, testProfile);
     printf("===========================\n");
     char * testStringXX2 = "TEST";
-    parseString(testStringXX2, MAX_INPUT_LENGTH, testProfile);
+    parseString(testStringXX2, testProfile);
     printf("===========================\n");
     char * testString = "1234";
-    parseString(testString, MAX_INPUT_LENGTH, testProfile);
+    parseString(testString, testProfile);
     printf("===========================\n");
     char * testString2 = "-1234";
-    parseString(testString2, MAX_INPUT_LENGTH, testProfile);
+    parseString(testString2, testProfile);
     printf("===========================\n");
     char * testString3 = "1234.4321";
-    parseString(testString3, MAX_INPUT_LENGTH, testProfile);
+    parseString(testString3, testProfile);
     printf("===========================\n");
     char * testString4 = "-1234.4321";
-    parseString(testString4, MAX_INPUT_LENGTH, testProfile);
+    parseString(testString4, testProfile);
     printf("===========================\n");
     char * testString5 = ".4321";
-    parseString(testString5, MAX_INPUT_LENGTH, testProfile);
+    parseString(testString5, testProfile);
     printf("===========================\n");
     char * testString6 = "-.4321";
-    parseString(testString6, MAX_INPUT_LENGTH, testProfile);
+    parseString(testString6, testProfile);
     printf("===========================\n");
 
 }

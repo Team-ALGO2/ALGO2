@@ -6,6 +6,7 @@
 //Create structure 
 typedef struct{
     unsigned int base;
+    unsigned int strMaxLen;
     char * error;
 } calcProfile;
 
@@ -15,6 +16,8 @@ calcProfile * initCalc(int base){
     calcProfile * profile = (calcProfile*) malloc(sizeof(calcProfile));
     //Set base
     profile->base = base;
+    //Set max string length
+    profile->strMaxLen = MAX_INPUT_LENGTH;
     //Set error
     profile->error = NULL;
     
@@ -40,6 +43,7 @@ int main(void)
 {
     calcProfile * a = initCalc(10);
     printf("%d", a->base);
+    printf("%d", a->strMaxLen);
     printf("%s", a->error);
     closeCalc(a);
 } 
