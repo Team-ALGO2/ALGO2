@@ -58,6 +58,15 @@
             #inputText:focus-within {
                 border-color: #ff3434;
             }
+
+            #result {
+                font-family: Courier New, Courier, monospace;
+                font-size: 44px;
+                text-align: center;
+                border: 2px solid #000000;
+                width: fit-content;
+                margin: auto;
+            }
             
             .messages {
                 border-radius: 25px;
@@ -72,11 +81,36 @@
                 box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
             }
 
-            .messages:hover {
-                box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+            .messages:hover, .messagesN:hover {
+                box-shadow: 0 16px 32px 0 rgba(0,0,0,0.2);
             }
-            .messages a {
+            .messages a, .messagesN a {
                 color: #5656ff;
+            }
+
+            .messagesN {
+                border-radius: 25px;
+                padding: 20px;
+                padding-top: 5px;
+                margin-top: 5px;
+                border: 3px solid #0000ac;
+                width: 10%;
+                background: linear-gradient(to bottom, #5656ff 0%, #5656ff 25%, #00000000 25%, #00000000 100%);
+                text-align: center;
+                vertical-align: text-top;
+
+                display: inline-block;
+
+                box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+                transition: 0.5s;
+            }
+
+            .dis {
+                background: linear-gradient(to bottom, #858585 0%, #858585 25%, #00000000 25%, #00000000 100%);
+            }
+
+            .noU {
+                background: linear-gradient(to bottom, #ff5656 0%, #ff5656 25%, #00000000 25%, #00000000 100%);
             }
 
 
@@ -109,6 +143,7 @@
                 <p>Sumbit an <a href="https://github.com/Team-ALGO2/ALGO2/issues" target="_blank">issue</a></p>
             </div>
         </div>
+
 
         <script>
             function placeDiv(x_pos, y_pos, d) {
@@ -148,7 +183,7 @@
                         elems[x].setAttribute("data-j", 60);
                     } else if (left < 5) {
                         elems[x].setAttribute("data-front", 1);
-                        elems[x].setAttribute("data-j", 50);
+                        elems[x].setAttribute("data-j", 70);
                     }
 
                     if (parseInt(elems[x].getAttribute("data-front")) == 0)
@@ -183,7 +218,7 @@
                                 elems[x].setAttribute("data-j", 60);
                             } else if (left < 5) {
                                 elems[x].setAttribute("data-front", 1);
-                                elems[x].setAttribute("data-j", 50);
+                                elems[x].setAttribute("data-j", 70);
                             }
         
                             if (parseInt(elems[x].getAttribute("data-front")) == 0)

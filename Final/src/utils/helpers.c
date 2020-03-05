@@ -165,20 +165,34 @@ int oppPres(char left, char right)
     //for the left opperator
     switch (left)
     {
+        //+
         case 43:
             leftPres = 0;
             break;
 
+        //-
         case 45:
             leftPres = 0;
             break;
         
+        //*
         case 42:
             leftPres = 1;
             break;
 
+        //</>
         case 47:
             leftPres = 1;
+            break;
+        
+        //%
+        case 37:
+            leftPres = 1;
+            break;
+        
+        //^
+        case 94:
+            leftPres = 2;
             break;
         
         default:
@@ -190,20 +204,35 @@ int oppPres(char left, char right)
     // for the right opperator
     switch (right)
     {
+        
+        //+
         case 43:
             rightPres = 0;
             break;
 
+        //-
         case 45:
             rightPres = 0;
             break;
         
+        //*
         case 42:
             rightPres = 1;
             break;
 
+        //</>
         case 47:
             rightPres = 1;
+            break;
+
+        //%
+        case 37:
+            rightPres = 1;
+            break;
+        
+        //^
+        case 94:
+            rightPres = 2;
             break;
             
         default:
