@@ -29,12 +29,12 @@ Use "ci skip" to not trigger tests
     - Web Abilities - TODO
     - Improved Graphics - TODO
 - Calc Pipeline: 
-    - Input - TODO
+    - Input - DONE
     - Remove whitespace - TODO
     - Check validity - TODO
-    - Create postfix - Implementing
-    - Do operations - Implementing
-    - Output - ?
+    - Create postfix - DONE
+    - Evaluate - Implementing
+    - Output - DONE
 - Mapping
     - Algorithms
       - Dijkstra’s - Works
