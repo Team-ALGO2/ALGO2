@@ -1,70 +1,56 @@
-#ifndef _MAINGUARD
-#define _DISABLECALC // Prevent Redefinitions
 #include "../main.h"
 
-#endif // _MAINGUARD
+int computeMath(int opp1, int opp2, char opp);
+int postFixcalc(queue input, queue inputBits);
 
-
-int postFixcalc(char inputString[MAX_INPUT_LENGTH])
+int postFixcalc(queue input, queue inputBits)
 {
-    stack stack = {-1, {0}}; 
-    int i; 
-    
-  
-    // Scan all characters 
-    for (i = 0; i<inputString[i]; ++i) 
-    { 
-      
-        // If number push
-        if (isdigit(inputString[i])) 
-            stack_push(&stack, inputString[i] - '0'); 
-  
-        // If operator pop
-        else
-        { 
-            int a, b;
-            switch (inputString[i]) 
-            { 
-                case '+': 
-                    a = stack_top(&stack); stack_pop(&stack);
-                    b = stack_top(&stack); stack_pop(&stack);
-                    stack_push(&stack, add(a,b)); break;
-
-                case '-': 
-                    a = stack_top(&stack); stack_pop(&stack);
-                    b = stack_top(&stack); stack_pop(&stack);
-                    stack_push(&stack, subtract(a,b)); break;
-
-                case '*': 
-                    a = stack_top(&stack); stack_pop(&stack);
-                    b = stack_top(&stack); stack_pop(&stack);
-                    stack_push(&stack, multiply(a,b)); break;
-
-                case '/': 
-                    a = stack_top(&stack); stack_pop(&stack);
-                    b = stack_top(&stack); stack_pop(&stack);
-                    stack_push(&stack, divide(b,a)); break; 
-
-                case '^': 
-                    a = stack_top(&stack); stack_pop(&stack);
-                    b = stack_top(&stack); stack_pop(&stack);
-                    stack_push(&stack, powr(b,a)); break;
-
-                case 's': 
-                    b = stack_top(&stack); stack_pop(&stack);
-                    stack_push(&stack, squarert(b)); break;
-                
-                case '!': 
-                    b = stack_top(&stack); stack_pop(&stack);
-                    stack_push(&stack, factorial(b)); break;
-            } 
-        } 
-    } 
-    return stack_top(&stack); 
-    
+    stack opperands = {-1, {0}};
+    int length = queue_length(&input);
+    for(int i = 0; i < length; i++)
+    {
+        if (queue_getFront(&inputBits) == 0)
+        {
+            stack_push(&opperands, queue_getFront(&input));
+            queue_dequeue(&input);
+            queue_dequeue(&inputBits);
+        }
+        else if (queue_getFront(&inputBits) == 1)
+        {
+            int opp2 = stack_pop(&opperands);
+            int opp1 = stack_pop(&opperands);
+            stack_push(&opperands, computeMath(opp1, opp2, queue_getFront(&input)));
+            queue_dequeue(&input);
+            queue_dequeue(&inputBits);
+        }
+    }
+    return stack_pop(&opperands);
 }
 
+//a function that will compute the operation given the 2 opperands under int form and the opperator under char form
+int computeMath(int opp1, int opp2, char opp)
+{
+    switch (opp) 
+        { 
+            case '+': 
+                return add(opp1,opp2);
 
+            case '-': 
+                return subtract(opp1,opp2);
+
+            case '*': 
+                return multiply(opp1,opp2);
+
+            case '/': 
+                return divide(opp1,opp2); 
+
+            case '%': 
+                return mod(opp1,opp2);
+                
+            case '^': 
+                return powr(opp1,opp2);
+        }
+}
 //Main Function For Testing! Uncomment When needed
 //Because C Does Not Like Redefinitions of Main, This Checks If Its Being Run Directly Or If Its Being Included
 /*
