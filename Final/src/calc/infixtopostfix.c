@@ -4,8 +4,6 @@
 #include "eval.c"
 #endif // _MAINGUARD
 
-char string[MAX_INPUT_LENGTH] = "";
-
 // to convert from an inputed string to postfix notation 
 //the input is 2 queues of data and binairy to discribe how to interpret the data
 //results are outputed to the dataOut and bitsOut queue
@@ -72,7 +70,7 @@ int infixToPostfix(queue input, queue inputBits, queue * dataOut, queue * bitsOu
         queue_enqueue(bitsOut, 1); //push 1 because it is a char
         stack_pop(&working);
     }
-    printf("Done Infix to postfix\n");
+    printf("Done Infix to postfix:\n");
     return 0; //return 0 if done and not failed
 }
 
@@ -112,6 +110,7 @@ void populate(queue *data, queue *bin, char exp[MAX_INPUT_LENGTH])
 /* Convert to char array */
 int dataQueueToString(queue input, queue inputBits)
 {
+    char string[MAX_INPUT_LENGTH] = "";
     int len = queue_length(&input);
     for (int i = 0; i < len; i++)
     {
@@ -135,7 +134,7 @@ int dataQueueToString(queue input, queue inputBits)
             strcat(string, " ");
         }
     }
-    printf("holo");
+    printf("%s\n", string);
 }
 
 //Main Function For Testing! Uncomment When needed
@@ -146,23 +145,29 @@ int main(void)
     queue dummyData = {-1, -1, 0};
     queue dummyBin = {-1, -1, 0};
     
-    populate(&dummyData, &dummyBin,"4*2^3");
+    populate(&dummyData, &dummyBin,"(8-1+3)*6-(3+7)*");
+
+    //this is just to add an artificial -2
+    queue_enqueue(&dummyData, -2);
+    queue_enqueue(&dummyBin, 0);
+
+    dataQueueToString(dummyData, dummyBin);
     
-    queue_printer_formatted(&dummyData);
-    queue_printer_formatted(&dummyBin);
+    
+    //queue_printer_formatted(&dummyData);
+    //queue_printer_formatted(&dummyBin);
 
     queue goodData = {-1, -1, 0};
     queue goodBin = {-1, -1, 0};
 
     infixToPostfix(dummyData, dummyBin, &goodData, &goodBin);
 
-    queue_printer_formatted(&goodData);
-    queue_printer_formatted(&goodBin);
+    //queue_printer_formatted(&goodData);
+    //queue_printer_formatted(&goodBin);
 
-    char string[MAX_INPUT_LENGTH] = "";
-    //dataQueueToString(goodData, goodBin);
-    printf("%s\nEvaluating...\n", string);
+    dataQueueToString(goodData, goodBin);
+    printf("Evaluating:\n");
     int res = postfixCalc(goodData, goodBin);
-    printf("res: %d\n", res);
+    printf("Result is: %d\n", res);
 } 
 #endif // _DEFMAIN
