@@ -33,7 +33,7 @@ Use "ci skip" to not trigger tests
     - Remove whitespace - TODO
     - Check validity - TODO
     - Create postfix - DONE
-    - Evaluate - Implementing
+    - Evaluate - DONE
     - Output - DONE
 - Mapping
     - Algorithms
