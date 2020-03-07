@@ -217,13 +217,18 @@ void queuesToStr(queue goodData, queue goodBin)
 {
     char strInfToPost[MAX_INPUT_LENGTH] = "";
     int len = queue_length(&goodData);
-  /*  for (int i = 0; i < len; i++)
-    {
-        int num = queue_getFront(&goodData);
-        int bin = queue_getFront(&goodBin);
 
-        queue_dequeue(&goodData);
-        queue_dequeue(&goodBin);
+    queue copyData = goodData;
+    queue copyBin = goodBin;
+
+
+    for (int i = 0; i < len; i++)
+    {
+        int num = queue_getFront(&copyData);
+        int bin = queue_getFront(&copyBin);
+
+        queue_dequeue(&copyData);
+        queue_dequeue(&copyBin);
 
 
         if (bin == 0) // number
@@ -239,11 +244,12 @@ void queuesToStr(queue goodData, queue goodBin)
             strcat(strInfToPost, adding);
             strcat(strInfToPost, " ");
         }
-    } */
+    } 
     fprintf(stderr, BLU"Postfix notation: %s\n"RESET, strInfToPost);
     remember("postfix", strInfToPost);
 
     long double res = postfixCalc(goodData, goodBin);
+    fprintf(stderr, BLU"Evaluated as: %Lf\n"RESET, res);
     char strRes[30] = "";
     sprintf(strRes, "%Lf", res);
     remember("result", strRes);

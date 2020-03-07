@@ -55,7 +55,7 @@
 typedef struct{
     int front;
     int rear;
-    int A[QUEUE_MAX_LENGTH];
+    long double A[QUEUE_MAX_LENGTH];
 } queue;
 
 //a function to check if the stack is empty which may result in undefined behaviour
@@ -99,7 +99,7 @@ int queue_length(queue *q)
 }
 
 //adds to the back of the queue the value inputed
-int queue_enqueue(queue *q, int input)
+int queue_enqueue(queue *q, long double input)
 {
     if(queue_isFull(q))
     {   
@@ -155,7 +155,7 @@ int queue_dequeue(queue *q)
 }
 
 //a function to get the front value of the stack
-int queue_getFront(queue *q)
+long double queue_getFront(queue *q)
 {
     //checks if the stack is empty and warns in that case
     if (queue_isEmpty(q))
@@ -174,7 +174,7 @@ int queue_getFront(queue *q)
 }
 
 //a function to get the rear value of the queue
-int queue_getRear(queue *q)
+long double queue_getRear(queue *q)
 {
     //checks if the stack is empty and warns in that case
     if (queue_isEmpty(q))
@@ -196,7 +196,7 @@ void queue_raw_printer(queue *q)
     for (int i = 0; i < QUEUE_MAX_LENGTH; i++)
     {
         if(i == q->front){printf("[");}
-        printf("%i ", q->A[i]);
+        printf("%Lf ", q->A[i]);
         if(i == q->rear){printf("]");}
     }
     printf("\n");
@@ -207,7 +207,7 @@ void queue_printer(queue *q)
     printf("\n");
     for (int i = 0; i < QUEUE_MAX_LENGTH; i++)
     {
-        printf("%i ", q->A[(i + q->front) % QUEUE_MAX_LENGTH]);
+        printf("%Lf ", q->A[(i + q->front) % QUEUE_MAX_LENGTH]);
     }
     printf("\n");
 }
@@ -218,7 +218,7 @@ void queue_printer_formatted(queue *q)
     printf("\n");
     for (int i = 0; i < queue_length(q); i++)
     {
-        printf("%i ", q->A[(i + q->front) % QUEUE_MAX_LENGTH]);
+        printf("%LF ", q->A[(i + q->front) % QUEUE_MAX_LENGTH]);
     }
     printf("\n");
 }

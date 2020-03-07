@@ -135,7 +135,7 @@ int dataQueueToString(queue input, queue inputBits)
             strcat(string, " ");
         }
     }
-    printf("%s\n", string);
+    fprintf(stderr, "%s\n", string);
     return 0;
 }
 

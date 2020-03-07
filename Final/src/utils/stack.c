@@ -49,7 +49,7 @@
 //A -> The Array where the stack elements will be stored
 typedef struct{
     int counter;
-    int A[STACK_MAX_LENGTH];
+    long double A[STACK_MAX_LENGTH];
 } stack;
 
 //Check if the stack is empty by checking the counter
@@ -86,7 +86,7 @@ int stack_length(stack *s)
 }
 
 //Getting the top element of stack
-int stack_top(stack *s)
+long double stack_top(stack *s)
 {
     if (!stack_isEmpty(s))
     {
@@ -107,7 +107,7 @@ int stack_top(stack *s)
 }
 
 //Pushing element to the top of the stack
-int stack_push(stack *s, int x)
+int stack_push(stack *s, long double x)
 {
     if (!stack_isFull(s))
     {
@@ -154,7 +154,7 @@ void stack_printer(stack *s)
     if(s->counter != -1){printf("[");}
     for (int i = 0; i < STACK_MAX_LENGTH; i++)
     {
-        printf("%i ", s->A[i]);
+        printf("%Lf ", s->A[i]);
         if(i == s->counter){printf("]");}
     }
     printf("\n");
@@ -164,7 +164,7 @@ void stack_printer(stack *s)
 void stack_printer_formatted(stack *s){
     for (int i = 0; i <= s->counter; i++)
     {
-        printf("%i ", s->A[i]);
+        printf("%Lf ", s->A[i]);
     }
     printf("\n");
 }

@@ -7,15 +7,15 @@
 #endif // _MAINGUARD
 
 
-int setError(char * error, calcProfile * profile){
+void setError(char * error, calcProfile * profile){
     //
 }
 
-int getError(calcProfile * profile){
+void getError(calcProfile * profile){
     //
 }
 
-int removeError(calcProfile * profile){
+void removeError(calcProfile * profile){
     //
 }
 

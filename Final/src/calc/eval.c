@@ -1,10 +1,10 @@
 #include "../main.h"
 
-int computeMath(int opp1, int opp2, char opp);
-int postfixCalc(queue input, queue inputBits);
+long double computeMath(long double opp1, long double opp2, char opp);
+long double postfixCalc(queue input, queue inputBits);
 
 //given 2 queues, will compute them when in postfix for, returns the result
-int postfixCalc(queue input, queue inputBits)
+long double postfixCalc(queue input, queue inputBits)
 {
     stack opperands = {-1, {0}};
     int length = queue_length(&inputBits);
@@ -18,53 +18,55 @@ int postfixCalc(queue input, queue inputBits)
         }
         else if (queue_getFront(&inputBits) == 1)
         {
-            int opp2 = stack_top(&opperands);
+            long double opp2 = stack_top(&opperands);
             stack_pop(&opperands);
-            int opp1 = stack_top(&opperands);
+            long double opp1 = stack_top(&opperands);
             stack_pop(&opperands);
             char opp = queue_getFront(&input);
-            fprintf(stderr, YEL"%d %c %d computed as: %d\n"RESET,opp1, opp, opp2, computeMath(opp1, opp2, opp));
+            fprintf(stderr, YEL"%Lf %c %Lf computed as: %Lf\n"RESET,opp1, opp, opp2, computeMath(opp1, opp2, opp));
             stack_push(&opperands, computeMath(opp1, opp2, opp));
             queue_dequeue(&input);
             queue_dequeue(&inputBits);
         }
     }
+    fprintf(stderr, BLU"Evaluated as in function: %Lf\n"RESET, stack_top(&opperands));
     return stack_top(&opperands);
 }
 
 //a function that will compute the operation given the 2 opperands under int form and the opperator under char form
-int computeMath(int opp1, int opp2, char opp)
+long double computeMath(long double opp1, long double opp2, char opp)
 {
     switch (opp) 
-        {
-            case '+': 
-                return opp1 + opp2;
-                break;
+    {
+        case '+': 
+            return add(opp1, opp2);
+            break;
 
-            case '-': 
-                return opp1 - opp2;
-                break;
+        case '-': 
+            return subtract(opp1, opp2);
+            break;
 
-            case '*': 
-                return opp1 * opp2;
-                break;
+        case '*': 
+            return multiply(opp1, opp2);
+            break;
 
-            case '/': 
-                return opp1 / opp2; 
-                break;
+        case '/': 
+            return divide(opp1, opp2); 
+            break;
 
-            case '%': 
-                return opp1 % opp2;
-                break;
-                
-            case '^': 
-                return powr(opp1,opp2);
-                break;
+        case '%': 
+            return mod(opp1, opp2);
+            break;
             
-            default:
-                printf("An error has occured in the computation of an equasion");
-                break;
-        }
+        case '^': 
+            return powr(opp1,opp2);
+            break;
+        
+        default:
+            fprintf(stderr, RED"An error has occured in the computation of an equasion\n"RESET);
+            break;
+    }
+    return 1;
 }
 //Main Function For Testing! Uncomment When needed
 //Because C Does Not Like Redefinitions of Main, This Checks If Its Being Run Directly Or If Its Being Included
