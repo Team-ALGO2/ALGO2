@@ -93,22 +93,6 @@ char* trim(char input[MAX_INPUT_LENGTH], int remv)
     return input;
 }
 
-// Trims strings to the next non number character
-char* trimOperator(char input[MAX_INPUT_LENGTH])
-{
-    //No idea what this does; not fixing it
-    /*
-    int i = 0;
-    int lenght = strlen(input);
-    char out[MAX_INPUT_LENGTH] = "";
-    for (i = 0; i < lenght && (isNum(input[i]) || input[i] == ' ');  i++)
-    {}
-    //out = trim(input, i);
-    // printf("out: %s\n", out);
-    return out;
-    */
-   //Code causing warning, commeting out
-}
 
 //a function that will remove all specified characters within a string
 //outputs the string without the character
@@ -126,18 +110,6 @@ char* removeCharacter(char input[MAX_INPUT_LENGTH], char remv)
     }
     return input;
 }
-
-//converts nubmers in int form to char* of the numbers
-//EX: int i = 21312321 -> char* i = "21312321"
-/*char* itoa(int input)
-{
-    char* out = "";
-    char* str; 
-    sprintf(str,"%d", input);
-    return str;
-}
-*/
-//TODO REINPLEMENT
 
 //a function to see if which opperator has presedce
 //it will output -1 if the opperator on the left is heigher, 1 if the opperator on the right is heigher

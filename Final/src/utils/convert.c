@@ -35,10 +35,10 @@ int baseConvert(int start, int origBase, int base)
         }
     }
     else if(origBase < base){
-
+        return 1;
     }
     else{
-        
+        return 2;
     }
 }
 

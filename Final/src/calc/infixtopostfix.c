@@ -78,7 +78,6 @@ int infixToPostfix(queue input, queue inputBits, queue * dataOut, queue * bitsOu
 
 void populate(queue *data, queue *bin, char exp[MAX_INPUT_LENGTH]) 
 {
-
     int len = strlen(exp);
 
     for (int i = 0; i < len; i++)
@@ -105,6 +104,7 @@ void populate(queue *data, queue *bin, char exp[MAX_INPUT_LENGTH])
             queue_enqueue(bin, 1);
         }
     }
+    return 0;
 }
 
 /* Convert to char array */
@@ -135,6 +135,7 @@ int dataQueueToString(queue input, queue inputBits)
         }
     }
     printf("%s\n", string);
+    return 0;
 }
 
 //Main Function For Testing! Uncomment When needed
@@ -145,11 +146,7 @@ int main(void)
     queue dummyData = {-1, -1, 0};
     queue dummyBin = {-1, -1, 0};
     
-    populate(&dummyData, &dummyBin,"(8-1+3)*6-(3+7)*");
-
-    //this is just to add an artificial -2
-    queue_enqueue(&dummyData, -2);
-    queue_enqueue(&dummyBin, 0);
+    populate(&dummyData, &dummyBin,"15/2");
 
     dataQueueToString(dummyData, dummyBin);
     
@@ -169,5 +166,6 @@ int main(void)
     printf("Evaluating:\n");
     int res = postfixCalc(goodData, goodBin);
     printf("Result is: %d\n", res);
+    return 0;
 } 
 #endif // _DEFMAIN

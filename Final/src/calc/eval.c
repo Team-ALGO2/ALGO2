@@ -3,6 +3,7 @@
 int computeMath(int opp1, int opp2, char opp);
 int postfixCalc(queue input, queue inputBits);
 
+//given 2 queues, will compute them when in postfix for, returns the result
 int postfixCalc(queue input, queue inputBits)
 {
     stack opperands = {-1, {0}};
