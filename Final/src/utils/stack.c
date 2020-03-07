@@ -44,7 +44,7 @@
 //includes main utils
 #include "../main.h"
 
-//Custom Stack Structire
+//Custom Stack Structure
 //counter -> The "pointer" of the top of the graph
 //A -> The Array where the stack elements will be stored
 typedef struct{
