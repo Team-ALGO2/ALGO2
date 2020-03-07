@@ -106,7 +106,6 @@ void populate(queue *data, queue *bin, char exp[MAX_INPUT_LENGTH])
             queue_enqueue(bin, 1);
         }
     }
-    return 0;
 }
 
 /* Convert to char array */
