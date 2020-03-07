@@ -22,7 +22,7 @@ int postfixCalc(queue input, queue inputBits)
             int opp1 = stack_top(&opperands);
             stack_pop(&opperands);
             char opp = queue_getFront(&input);
-            printf("%d %c %d computed as: %d\n",opp1, opp, opp2, computeMath(opp1, opp2, opp));
+            fprintf(stderr, YEL"%d %c %d computed as: %d\n"RESET,opp1, opp, opp2, computeMath(opp1, opp2, opp));
             stack_push(&opperands, computeMath(opp1, opp2, opp));
             queue_dequeue(&input);
             queue_dequeue(&inputBits);

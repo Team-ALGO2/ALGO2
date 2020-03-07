@@ -217,7 +217,7 @@ void queuesToStr(queue goodData, queue goodBin)
 {
     char strInfToPost[MAX_INPUT_LENGTH] = "";
     int len = queue_length(&goodData);
-    for (int i = 0; i < len; i++)
+  /*  for (int i = 0; i < len; i++)
     {
         int num = queue_getFront(&goodData);
         int bin = queue_getFront(&goodBin);
@@ -239,12 +239,12 @@ void queuesToStr(queue goodData, queue goodBin)
             strcat(strInfToPost, adding);
             strcat(strInfToPost, " ");
         }
-    }
+    } */
     fprintf(stderr, BLU"Postfix notation: %s\n"RESET, strInfToPost);
     remember("postfix", strInfToPost);
 
-    int res = postFixcalc(strInfToPost);
+    long double res = postfixCalc(goodData, goodBin);
     char strRes[30] = "";
-    sprintf(strRes, "%d", res);
+    sprintf(strRes, "%Lf", res);
     remember("result", strRes);
 }

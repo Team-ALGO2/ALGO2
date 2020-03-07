@@ -105,7 +105,9 @@ int queue_enqueue(queue *q, int input)
     {   
         //Error Message
         #ifdef DEBUG
+        #ifndef WEBMODE
         printf(RED"Error: Queue is full, canot insert %d.\n"RESET, input);
+        #endif
         #endif
         return QUEUE_FULL;
     }
@@ -133,7 +135,9 @@ int queue_dequeue(queue *q)
     {
         //Error Message
         #ifdef DEBUG
+        #ifndef WEBMODE
         printf(RED"Error: Queue is empty, canot dequeue.\n"RESET);
+        #endif
         #endif
         return QUEUE_EMPTY;
     }
@@ -158,7 +162,9 @@ int queue_getFront(queue *q)
     {
         //Error Message
         #ifdef DEBUG
+        #ifndef WEBMODE
         printf(RED"Error: Queue is empty, canot get the front value.\n Note: The value returned my be junk.\n"RESET);
+        #endif
         #endif
         return QUEUE_EMPTY;
         
