@@ -165,8 +165,8 @@ int main(void)
 
     dataQueueToString(goodData, goodBin);
     printf("Evaluating:\n");
-    int res = postfixCalc(goodData, goodBin);
-    printf("Result is: %d\n", res);
+    long double res = postfixCalc(goodData, goodBin);
+    printf("Result is: %Lf\n", res);
     return 0;
 } 
 #endif // _DEFMAIN
