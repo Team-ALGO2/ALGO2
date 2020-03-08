@@ -253,20 +253,56 @@ int addOperatorToHead(odsMain * controller, int value){
     return true; //Completed
 }
 
-int setOperandAtTail(){}
-int setOperatorAtTail(){}
-int setOperandAtHead(){}
-int setOperatorAtHead(){}
+int setOperandAtTail(){
+    //TODO
+    return 0;
+}
+int setOperatorAtTail(){
+    //TODO
+    return 0;
+}
+int setOperandAtHead(){
+    //TODO
+    return 0;
+}
+int setOperatorAtHead(){
+    //TODO
+    return 0;
+}
 
-int getOperandAtTail(){}
-int getOperatorAtTail(){}
-int getOperandAtHead(){}
-int getOperatorAtHead(){}
+int getOperandAtTail(){
+    //TODO
+    return 0;
+}
+int getOperatorAtTail(){
+    //TODO
+    return 0;
+}
+int getOperandAtHead(){
+    //TODO
+    return 0;
+}
+int getOperatorAtHead(){
+    //TODO
+    return 0;
+}
 
-int removeOperandFromTail(){}
-int removeOperatorFromTail(){}
-int removeOperandFromHead(){}
-int removeOperatorFromHead(){}
+int removeOperandFromTail(){
+    //TODO
+    return 0;
+}
+int removeOperatorFromTail(){
+    //TODO
+    return 0;
+}
+int removeOperandFromHead(){
+    //TODO
+    return 0;
+}
+int removeOperatorFromHead(){
+    //TODO
+    return 0;
+}
 
 /*
  * DEBUG CODE
