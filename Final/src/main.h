@@ -131,12 +131,13 @@
 #define QUEUE_EMPTY   0
 #define QUEUE_FULL    0
 
+// Operator Data System Flags
+#define ODS_OPERAND 0
+#define ODS_OPERATOR 1
 
 // For Server/main.c    
 #define MAX_FILE_LEN 255000         // Max file len in chars
 #define MAX_FILE_NAME_LEN 100        // Max filename len
-
-
 
 // Import Important Libraries
 #include <stdio.h>
@@ -155,6 +156,7 @@
 #include "utils/helpers.c"
 #include "utils/convert.c"
 #include "utils/cache.c"
+#include "utils/opDataSystem.c"
 
 // Import Calculator Modules
 #ifndef _DISABLECALC // Checks For Special Flag To Disable Calculator Import If Not Needed

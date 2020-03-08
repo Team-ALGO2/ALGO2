@@ -7,7 +7,7 @@
 //includes main utils
 #include "../main.h"
 
-//Custom Stack Structure
+//Custom Linked List Structure
 //data -> Data stored inside node
 //next -> Pointer to next node
 typedef struct{

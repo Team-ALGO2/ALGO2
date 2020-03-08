@@ -1,4 +1,4 @@
-//Linked List
+//Doubly Linked List
 
 /*
  * Documentation
@@ -7,7 +7,7 @@
 //includes main utils
 #include "../main.h"
 
-//Custom Stack Structure
+//Custom Doubly Linked List Structure
 //data -> Data stored inside node
 //next -> Pointer to next node
 //prev -> Pointer to previous node
