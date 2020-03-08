@@ -64,7 +64,7 @@
 //Sets Floating Point Epsilon (AKA decimal accuracy of numbers)
 //https://en.wikipedia.org/wiki/Machine_epsilon
 //Currently set to 1 * 10 ^ -12
-#define EPSILON 0.0000000000001l
+#define EPSILON 0.0000000001l
 //#define EPSILON 0.0001l
 
 //Math Numbers
