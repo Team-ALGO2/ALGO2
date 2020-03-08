@@ -1,5 +1,6 @@
 #include "../main.h"
 
+long double calculate(char str[MAX_INPUT_LENGTH]);
 //this is a funciton to run the calculator without the GUI
 #ifdef _DEFMAIN
 int main(void)
@@ -12,6 +13,7 @@ int main(void)
 } 
 #endif // _DEFMAIN
 
+#ifdef _DEFMAIN
 long double calculate(char str[MAX_INPUT_LENGTH])
 {
     printf("Expression inputed, computing:\n");
@@ -38,3 +40,4 @@ long double calculate(char str[MAX_INPUT_LENGTH])
     long double res = postfixCalc(goodData, goodBin);
     return res;
 }
+#endif
