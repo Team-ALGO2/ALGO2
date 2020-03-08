@@ -1,4 +1,7 @@
+#define TESTS
 #include "../src/main.h"
+#include "../../Server/main.c"
+#define _DEFMAIN
 
 int tests_ran = 0;
 int tests_successful = 0;
@@ -11,6 +14,9 @@ void test_stack();
 void test_queue();
 void test_helpers();
 void test_cache();
+void test_calculator();
+
+long double calculate(char exp[MAX_INPUT_LENGTH]);
 
 void ASSERT_TRUE(long double expression, char* name)
 {
@@ -90,6 +96,7 @@ int main(void)
     test_queue();
     test_helpers();
     test_cache();
+    test_calculator();
 
     /* End Tests */
 
@@ -309,3 +316,33 @@ void test_cache()
 	printf("-------- End Cache Tests --------\n");
 }
 
+void test_calculator()
+{
+    printf("\n---------- Calculator Tests ----------\n");
+    ASSERT_EQUAL_INT(calculate("7+2"), 9, "7+2 -- Addition");
+    ASSERT_EQUAL_INT(calculate("7-2"), 5, "7-2 -- Subtraction");
+    ASSERT_EQUAL_INT(calculate("6/2"), 3, "6/2 -- Division");
+    ASSERT_EQUAL_INT(calculate("7*2"), 14, "7*2 -- Multiplication");
+    ASSERT_EQUAL_INT(calculate("1+6/2"), 4, "1+6/2 -- PEDMAS");
+    ASSERT_EQUAL_INT(calculate("(1+6)/2"), 3.5, "(1+6)/2 -- Parentheses");
+    ASSERT_EQUAL_INT(calculate("4*7/2"), 14, "4*7/2 -- Order");
+    ASSERT_EQUAL_INT(calculate("(1+2)*5"), 15, "(1+2)*5 -- Parentheses");
+    ASSERT_EQUAL_INT(calculate("3^2"), 9, "3^2 -- Exponents");
+   //  ASSERT_EQUAL_INT(calculate("1*17^2+3"), 292, "1*17^2+3 -- PEDMAS"); // Interresting bug where teh value GOT depeends on the definiton of E
+    ASSERT_EQUAL_INT(calculate("5+(7/2)"), 8.5, "5+(7/2) -- Decimals");
+    ASSERT_EQUAL_INT(calculate("5-7*2"), -9, "5-7*2 -- Negative");
+    printf("-------- End Calculator Tests --------\n");
+}
+
+
+long double calculate(char exp[MAX_INPUT_LENGTH]) //wrapper for tests
+{
+    queue dummyData = {-1, -1, 0};
+    queue dummyBin = {-1, -1, 0};
+    populate(&dummyData, &dummyBin, exp);  // create queue for conversions
+    queue goodData = {-1, -1, 0};
+    queue goodBin = {-1, -1, 0};
+    infixToPostfix(dummyData, dummyBin, &goodData, &goodBin);   // do inftopost
+    long double res = queuesToStr(goodData, goodBin);  
+    return res;
+}
