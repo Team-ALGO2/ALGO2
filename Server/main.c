@@ -8,10 +8,10 @@ int decode(const char *s, char *dec);
 int printFile(char fname[MAX_FILE_NAME_LEN]);
 void printHTMLFile(char fname[MAX_FILE_NAME_LEN]);
 int remember(char key[MAX_VARIABLE_LENGTH], char value[MAX_INPUT_LENGTH]);
-void queuesToStr(queue goodData, queue goodBin);
+double long queuesToStr(queue goodData, queue goodBin);
 
 //Because C Does Not Like Redefinitions of Main, This Checks If Its Being Run Directly Or If Its Being Included
-#ifdef _DEFMAIN
+#ifndef _DEFMAIN
 int main(int c, char** v)
 {
     serve_forever("12913");
@@ -213,7 +213,7 @@ int remember(char key[MAX_VARIABLE_LENGTH], char value[MAX_INPUT_LENGTH])
     return 1; 
 }
 
-void queuesToStr(queue goodData, queue goodBin)
+double long queuesToStr(queue goodData, queue goodBin)
 {
     char strInfToPost[MAX_INPUT_LENGTH] = "";
     int len = queue_length(&goodData);
@@ -245,12 +245,17 @@ void queuesToStr(queue goodData, queue goodBin)
             strcat(strInfToPost, " ");
         }
     } 
-    fprintf(stderr, BLU"Postfix notation: %s\n"RESET, strInfToPost);
+    #ifdef DEBUG
+        fprintf(stderr, BLU"Postfix notation: %s\n"RESET, strInfToPost);
+    #endif
     remember("postfix", strInfToPost);
 
     long double res = postfixCalc(goodData, goodBin);
-    fprintf(stderr, BLU"Evaluated as: %Lf\n"RESET, res);
+    #ifdef DEBUG
+       fprintf(stderr, BLU"Evaluated as: %Lf\n"RESET, res);
+    #endif
     char strRes[30] = "";
     sprintf(strRes, "%Lf", res);
     remember("result", strRes);
+    return res;
 }
