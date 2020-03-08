@@ -71,7 +71,9 @@ int infixToPostfix(queue input, queue inputBits, queue * dataOut, queue * bitsOu
         stack_pop(&working);
     }
     #ifndef WEBMODE
+    #ifdef DEBUG
         printf("Done Infix to postfix:\n");
+    #endif
     #endif
     return 0; //return 0 if done and not failed
 }
@@ -135,19 +137,22 @@ int dataQueueToString(queue input, queue inputBits)
             strcat(string, " ");
         }
     }
-    fprintf(stderr, "%s\n", string);
+    #ifdef DEBUG
+        fprintf(stderr, "%s\n", string);
+    #endif
+    
     return 0;
 }
 
 //Main Function For Testing! Uncomment When needed
-//Because C Does Not Like Redefinitions of Main, This Checks If Its Being Run Directly Or If Its Being Included
+//Because C Does Not Like Redefinitions of Main, This checks If Its Being Run Directly Or If Its Being Included
 #ifdef _DEFMAIN
 int main(void)
 {
     queue dummyData = {-1, -1, 0};
     queue dummyBin = {-1, -1, 0};
     
-    populate(&dummyData, &dummyBin,"15/2");
+    populate(&dummyData, &dummyBin,"15+2");
 
     dataQueueToString(dummyData, dummyBin);
     

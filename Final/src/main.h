@@ -8,6 +8,11 @@
 // Define Debug (Comment Out To Disable Debug Mode)
 #define DEBUG //Checking Definitions Instead Of Variables Because ifdef Removes Debug Code In Compilation!
 
+#ifdef TESTS         // If this run by unittest, remove debug messages
+    #undef DEBUG
+#endif
+
+
 //
 // Define Mathmatics Configuration Flags
 //
@@ -59,7 +64,7 @@
 //Sets Floating Point Epsilon (AKA decimal accuracy of numbers)
 //https://en.wikipedia.org/wiki/Machine_epsilon
 //Currently set to 1 * 10 ^ -12
-#define EPSILON 0.00000000001l
+#define EPSILON 0.0000000000001l
 //#define EPSILON 0.0001l
 
 //Math Numbers

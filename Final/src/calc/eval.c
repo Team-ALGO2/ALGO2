@@ -23,13 +23,14 @@ long double postfixCalc(queue input, queue inputBits)
             long double opp1 = stack_top(&opperands);
             stack_pop(&opperands);
             char opp = queue_getFront(&input);
-            fprintf(stderr, YEL"%Lf %c %Lf computed as: %Lf\n"RESET,opp1, opp, opp2, computeMath(opp1, opp2, opp));
+            #ifdef DEBUG
+                fprintf(stderr, GRN"%Lf %c %Lf computed as: %Lf\n"RESET,opp1, opp, opp2, computeMath(opp1, opp2, opp));
+            #endif
             stack_push(&opperands, computeMath(opp1, opp2, opp));
             queue_dequeue(&input);
             queue_dequeue(&inputBits);
         }
     }
-    fprintf(stderr, BLU"Evaluated as in function: %Lf\n"RESET, stack_top(&opperands));
     return stack_top(&opperands);
 }
 
