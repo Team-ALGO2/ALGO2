@@ -106,7 +106,7 @@ int queue_enqueue(queue *q, long double input)
         //Error Message
         #ifdef DEBUG
         #ifndef WEBMODE
-        printf(RED"Error: Queue is full, canot insert %d.\n"RESET, input);
+        printf(RED"Error: Queue is full, canot insert %Lf.\n"RESET, input);
         #endif
         #endif
         return QUEUE_FULL;
