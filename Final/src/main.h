@@ -166,6 +166,7 @@
 #include "calc/parsing.c"
 #include "calc/infixtopostfix.c"
 #include "calc/eval.c"
+#include "calc/calc.c"
 
 #endif
 

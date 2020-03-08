@@ -333,16 +333,3 @@ void test_calculator()
     ASSERT_EQUAL_INT(calculate("5-7*2"), -9, "5-7*2 -- Negative");
     printf("-------- End Calculator Tests --------\n");
 }
-
-
-long double calculate(char exp[MAX_INPUT_LENGTH]) //wrapper for tests
-{
-    queue dummyData = {-1, -1, 0};
-    queue dummyBin = {-1, -1, 0};
-    populate(&dummyData, &dummyBin, exp);  // create queue for conversions
-    queue goodData = {-1, -1, 0};
-    queue goodBin = {-1, -1, 0};
-    infixToPostfix(dummyData, dummyBin, &goodData, &goodBin);   // do inftopost
-    long double res = queuesToStr(goodData, goodBin);  
-    return res;
-}
