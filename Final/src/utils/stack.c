@@ -140,7 +140,9 @@ int stack_pop(stack *s)
     {
         //Error Message
         #ifdef DEBUG
+        #ifndef WEBMODE
         printf("Error: Stack is empty, canot pop.\n");
+        #endif
         #endif
         return STACK_EMPTY;
     }
