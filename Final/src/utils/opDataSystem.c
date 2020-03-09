@@ -253,6 +253,7 @@ int addOperatorToHead(odsMain * controller, int value){
     return true; //Completed
 }
 
+/*
 int setOperandAtTail(){
     //TODO
     return 0;
@@ -269,6 +270,7 @@ int setOperatorAtHead(){
     //TODO
     return 0;
 }
+*/
 
 int getOperandAtTail(){
     //TODO
