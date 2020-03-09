@@ -11,7 +11,7 @@ int remember(char key[MAX_VARIABLE_LENGTH], char value[MAX_INPUT_LENGTH]);
 double long queuesToStr(queue goodData, queue goodBin);
 
 //Because C Does Not Like Redefinitions of Main, This Checks If Its Being Run Directly Or If Its Being Included
-#ifndef _DEFMAIN
+#ifdef _DEFMAIN
 int main(int c, char** v)
 {
     serve_forever("12913");
