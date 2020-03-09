@@ -16,7 +16,7 @@ clean:
 	@mkdir bin
 
 	@rm -rf *.o
-	@rm start
+	@rm -rf start
 
 
 install_deps:				# Linux only
