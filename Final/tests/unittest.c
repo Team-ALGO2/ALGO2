@@ -1,6 +1,5 @@
 #define TESTS
 #include "../src/main.h"
-#include "../../Server/main.c"
 
 int tests_ran = 0;
 int tests_successful = 0;

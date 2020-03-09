@@ -16,6 +16,8 @@ clean:
 	@mkdir bin
 
 	@rm -rf *.o
+	@rm start
+
 
 install_deps:				# Linux only
 	sudo apt-get install sqlite3 libsqlite3-dev
@@ -24,20 +26,16 @@ install_deps:				# Linux only
 
 compile:
 	${cc} ${dir}/slots.c -o ${out}/slots ${linkers} ${errors}
-
 	${cc} ${testdir}/unittest.c -o ${out}/test ${errors}
 
 test:
-	make
-	@${out}/test
+	${out}/test
 
 slots:
-	make
-	@${out}/slots
+	${out}/slots
 
 slots_inf:
-	make
-	@${out}/slots -1
+	${out}/slots -1
 
 help:
 	clear
@@ -46,3 +44,10 @@ help:
 	@echo "make test		-- To test the code"
 	@echo "make slots		-- To run slots"
 	@echo "make slots_inf		-- To run slots forever"
+
+web:
+	clear
+	@echo "To start the server, execute:"
+	@echo "cd Server"
+	@echo "make"
+	@echo "./server"
