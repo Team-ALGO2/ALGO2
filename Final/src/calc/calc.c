@@ -1,5 +1,7 @@
 #include "../main.h"
 
+//TODO: INFINATE STRING LENGTH
+
 long double calculate(char str[MAX_INPUT_LENGTH]);
 //this is a funciton to run the calculator without the GUI
 #ifdef _DEFMAIN
