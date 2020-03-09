@@ -1,7 +1,6 @@
 #define TESTS
 #include "../src/main.h"
 #include "../../Server/main.c"
-#define _DEFMAIN
 
 int tests_ran = 0;
 int tests_successful = 0;
@@ -318,6 +317,7 @@ void test_cache()
 
 void test_calculator()
 {
+    #ifdef DOCALCTEST
     printf("\n---------- Calculator Tests ----------\n");
     ASSERT_EQUAL_INT(calculate("7+2"), 9, "7+2 -- Addition");
     ASSERT_EQUAL_INT(calculate("7-2"), 5, "7-2 -- Subtraction");
@@ -332,4 +332,5 @@ void test_calculator()
     ASSERT_EQUAL_INT(calculate("5+(7/2)"), 8.5, "5+(7/2) -- Decimals");
     ASSERT_EQUAL_INT(calculate("5-7*2"), -9, "5-7*2 -- Negative");
     printf("-------- End Calculator Tests --------\n");
+    #endif
 }
