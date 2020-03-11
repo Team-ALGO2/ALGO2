@@ -7,8 +7,7 @@
 #endif // _MAINGUARD
 
 //Enum Of Command Ids
-enum commands{Cmd_Store, Cmd_Test, Cmd_GetAll}; 
-//MAKE SURE THIS ORDER IS THE SAME AS commandListTemp
+enum commands{cmd_store, cmd_test, cmd_getall}; 
 
 //Create structure containing list pointer, list length, and max length of list value
 typedef struct{
@@ -26,8 +25,10 @@ typedef struct{
 } lookAheadResult;
 
 //Create commandList Keyword
-char * commandListTemp[] = {"STORE", "TEST", "GETALL"};
-keyWordList commandList = {commandListTemp, NULL, 3, MAXCOMMANDLEN};
+char * commandListTemp[] = {"STORE", "STOR", "STO", "TEST", "WASD", "GETALL"};
+int commandIdListTemp[] = {cmd_store, cmd_store, cmd_store, cmd_test, cmd_test, cmd_getall};
+//As you can see, this is compatible with aliases by using commandIdListTemp
+keyWordList commandList = {commandListTemp, commandIdListTemp, 6, MAXCOMMANDLEN};
 
 //Create test list
 char * testListTemp[] = {"wasd", "test1", "test", "test12"};
@@ -340,7 +341,7 @@ int lookAheadString(char * exp, int currentOffset, lookAheadResult * res, keyWor
     }
 }
 
-//Cmd_Store, Cmd_Test, Cmd_GetAll
+//cmd_store, cmd_test, cmd_getall
 
 int parseStringWithSpecialFunc(char * exp, lookAheadResult * res, calcProfile * profile)
 {
@@ -352,7 +353,7 @@ int parseStringWithSpecialFunc(char * exp, lookAheadResult * res, calcProfile * 
     }
     */
 
-    if(res->index == Cmd_Store){
+    if(res->indexId == cmd_store){
         char argument[MAXCOMMANDARGUMENTLEN] = "";
         int iargument;
 
@@ -405,10 +406,10 @@ int parseStringWithSpecialFunc(char * exp, lookAheadResult * res, calcProfile * 
         #endif // WEBMODE
         return true; //Return success
     }
-    else if(res->index == Cmd_Test){
+    else if(res->indexId == cmd_test){
         printf("=== TEST COMMAND RECEIVED ===\n");
     }
-    else if(res->index == Cmd_GetAll){
+    else if(res->indexId == cmd_getall){
         int i = 0;
 
         while (i < MAX_VARIABLE_NUMBER)  // For every cache in list until \0 (end) is reached     strcmp(list.caches[i].name, "\0") != 0 && 

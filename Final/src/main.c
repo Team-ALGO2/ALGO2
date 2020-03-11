@@ -25,6 +25,9 @@ int main (void)
     char * testStringXX2 = "TEST";
     parseString(testStringXX2, testProfile);
     printf("===========================\n");
+    char * testStringXX2plus = "WASD";
+    parseString(testStringXX2plus, testProfile);
+    printf("===========================\n");
     char * testString = "1234";
     parseString(testString, testProfile);
     printf("===========================\n");
