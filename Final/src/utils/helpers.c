@@ -6,9 +6,42 @@
 #include "../main.h"
 #endif
 
-//FOR CALC:
-char numberC[10][2] = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
-char oppC[OPPNUM] = {"+-*/"};
+//Types of math functions
+enum math{
+    //Important 
+    math_abs,
+    math_floor,
+    math_ceil,
+    math_round,
+    //Basic Math
+    math_add,
+    math_subtract,
+    math_multiply,
+    math_divide,
+    //Advanced Math
+    math_mod,
+    math_factorial,
+    //Exponential Math
+    math_power,
+    math_squareroot,
+    math_nthroot,
+    math_log,
+    math_exp,
+    math_ln,
+    math_sine,
+    math_cosine,
+    math_tangent,
+    math_secant,
+    math_cosecant,
+    math_cotangent,
+    math_sineh,
+    math_cosineh,
+    math_tanh,
+    //Combinatronics Math
+    math_choose,
+    math_perm
+};
+
 
 //Checking Different Ascii Character Types
 int isNum(char analyze)
@@ -62,23 +95,6 @@ int isAlphanumerical(char analyze)
     else if (analyze >= 'a' && analyze <= 'z'){return True;}
     else if (analyze >= 'A' && analyze <= 'Z'){return True;}
     else {return False;}
-}
-
-//FOR CALC:
-int mathID(char analyze)
-{
-    for (int i = 0; i < OPPNUM; i++)
-    {
-        printf("comparingk %d with %d   ", analyze, oppC[i]);
-        
-        if (analyze == oppC[i])
-        {
-            printf("returning %d\n", i);
-            return i;
-        }
-    }
-    printf("returning %d\n", -1);
-    return -1;
 }
 
 //removes the first "i" characters from the "input" string and returns the new string

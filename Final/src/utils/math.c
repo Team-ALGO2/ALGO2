@@ -31,6 +31,8 @@ long double recPowrHelper(long double a, long double b, long double precision);
 long double powr(long double a, long double b);
 long double babylonianGuess(long double num);
 long double squarert(long double b);
+long double nthrt(long double b);                     // TODO (For future me, this is nth root)
+long double logarithm(long double a, long double b);  // TODO
 long double expFunc(long double x);
 long double lnFunc(long double x);
 //long double logn(long double n, long double r);
@@ -41,8 +43,9 @@ long double tangent(long double a);
 long double secant(long double a);
 long double cosecant(long double a);
 long double cotangent(long double a);
-long double sineh(long double a);
-long double cosineh(long double a);
+long double sineh(long double a);                     // TODO
+long double cosineh(long double a);                   // TODO
+long double tangenth(long double a);                  // TODO
 //Combinatronics Math
 long double aChooseB(long double n, long double k);
 long double aPermB(long double n, long double r);
