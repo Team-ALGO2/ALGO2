@@ -11,6 +11,13 @@ int main (void)
     calcProfile * testProfile = initCalc(10);
 
     //char * testString = "Hello World! This Is A Test!!!";
+    
+    //TESTING
+    char * exp = "test"; 
+    lookAheadResult testLookResult;
+    printf("%d - %d - %d\n", testLookResult.length, testLookResult.index, testLookResult.indexId);
+    lookAheadString(exp, 0, &testLookResult, &testList, testProfile);
+    printf("%d - %d - %d\n", testLookResult.length, testLookResult.index, testLookResult.indexId);
     printf("===========================\n");
     char * testStringXX = "STORE  A   10";
     parseString(testStringXX, testProfile);

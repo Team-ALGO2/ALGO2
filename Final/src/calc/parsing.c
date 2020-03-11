@@ -12,7 +12,8 @@ enum commands{Cmd_Store, Cmd_Test, Cmd_GetAll};
 
 //Create structure containing list pointer, list length, and max length of list value
 typedef struct{
-    char ** list; //Pointer to list
+    char ** list; //Pointer to list of values
+    int * ids; //Pointer to list of ids (Pairs ID up with value)
     int values; //Number of values inside list
     int maxLen; //Maximum length of values
 } keyWordList;
@@ -20,16 +21,18 @@ typedef struct{
 //Create Custom Dataformat For lookAheadString
 typedef struct{
     int length; //Length of Matched String
-    enum commands index; //Index of element matched
+    int index; //Index of element matched
+    int indexId; //ID of Index of element matched (NULL if keyWordList if pointer is NULL)
 } lookAheadResult;
 
 //Create commandList Keyword
 char * commandListTemp[] = {"STORE", "TEST", "GETALL"};
-keyWordList commandList = {commandListTemp, 3, MAXCOMMANDLEN};
+keyWordList commandList = {commandListTemp, NULL, 3, MAXCOMMANDLEN};
 
 //Create test list
 char * testListTemp[] = {"wasd", "test1", "test", "test12"};
-keyWordList testList = {testListTemp, 4, MAXCOMMANDLEN};
+int testIdListTemp[] = {1, 22, 333, 4444};
+keyWordList testList = {testListTemp, testIdListTemp, 4, MAXCOMMANDLEN};
 
 
 //Predefine Function
@@ -46,12 +49,6 @@ int parseString(char * exp, calcProfile * profile){
     lookAheadResult cmdLookResult;
     lookAheadString(exp, i, &cmdLookResult, &commandList, profile);
     printf("%d - %d\n", cmdLookResult.length, cmdLookResult.index);
-
-    //TESTING
-    lookAheadResult testLookResult;
-    printf("%d - %d\n", testLookResult.length, testLookResult.index);
-    lookAheadString(exp, i, &testLookResult, &testList, profile);
-    printf("%d - %d\n", testLookResult.length, testLookResult.index);
 
     //printf("%d", lookAheadResult);
     //Check if lookAheadResult succeded
@@ -249,10 +246,13 @@ int parseString(char * exp, calcProfile * profile){
 //Scans letter by letter until hits word or hits nothing
 //Note: this is not that efficient, but it gets the job done
 int lookAheadString(char * exp, int currentOffset, lookAheadResult * res, keyWordList * kwl, calcProfile * profile){
+    //printf("%d, %d, %d, %d\n", kwl->ids[0], kwl->ids[1], kwl->ids[2], kwl->ids[3]);
     //Look Ahead Offset Index
     int i2 = 0;
     //Element Matched (If Matched)
     int matchedIndex = 0;
+    //Id of Element Matched (If Matched)
+    int matchedIndexId = 0;
     //If Completed
     int matched = false;
     // Min/Max values (If Applicable)
@@ -286,15 +286,24 @@ int lookAheadString(char * exp, int currentOffset, lookAheadResult * res, keyWor
                 i2++;
                 #if LOOKAHEADMODE == 0
                 matchedIndex = keyWordIndex;
+                if(kwl->ids != NULL){
+                    matchedIndexId = kwl->ids[keyWordIndex];
+                }
                 #elif LOOKAHEADMODE == 1
                 if(i2 < minVal){
                     minVal = i2;
                     matchedIndex = keyWordIndex;
+                if(kwl->ids != NULL){
+                    matchedIndexId = kwl->ids[keyWordIndex];
+                }
                 }
                 #elif LOOKAHEADMODE == 2
                 if(i2 > maxVal){
                     maxVal = i2;
                     matchedIndex = keyWordIndex;
+                if(kwl->ids != NULL){
+                    matchedIndexId = kwl->ids[keyWordIndex];
+                }
                 }
                 #endif // LOOKAHEADMODE
                 break;
@@ -308,14 +317,17 @@ int lookAheadString(char * exp, int currentOffset, lookAheadResult * res, keyWor
         #if LOOKAHEADMODE == 0
         res->length = i2;
         res->index = matchedIndex;
+        res->indexId = matchedIndexId;
         return 1;
         #elif LOOKAHEADMODE == 1
         res->length = minVal;
         res->index = matchedIndex;
+        res->indexId = matchedIndexId;
         return 1;
         #elif LOOKAHEADMODE == 2
         res->length = maxVal;
         res->index = matchedIndex;
+        res->indexId = matchedIndexId;
         return 1;
         #endif // LOOKAHEADMODE
     }
@@ -323,6 +335,7 @@ int lookAheadString(char * exp, int currentOffset, lookAheadResult * res, keyWor
         //Always return zero if all cases fail
         res->length = 0;
         res->index = matchedIndex;
+        res->indexId = matchedIndexId;
         return 0;
     }
 }
