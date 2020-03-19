@@ -1,0 +1,60 @@
+#include <stdio.h>
+
+#include <string.h>
+#include <math.h>
+
+#define max 1000
+
+int main(void) {
+  
+  /*
+  Answer = a0 + (b0)
+                -----
+                a1 + (b1)
+                    ------
+                    a2 + (b2)
+                        ------
+                        etc.
+  
+  */
+  double sinVal = 3.1415/2; //pi over 2 just as a test because answer should be 1
+ 
+  double sinValSQ = pow(sinVal,2);
+  int i = 100;
+  // a values
+  double a0 = 0;
+  double a1 = 1;
+  double aN = (2*i) * (2*i+1) - sinValSQ;
+
+  // b values
+  double b0 = sinVal;
+  double b1 = sinValSQ;
+  double bN = (2*i) * (2*i+1) *b1;
+
+  double total;
+  
+
+  // last 
+  total = aN+ bN/aN;
+
+  //middle
+  for(; i> 0; i--){
+    bN = (2*i) * (2*i+1) *b1;
+    
+    aN = (2*i) * (2*i+1) - sinValSQ;
+
+    total = aN+bN/total;
+   
+  }
+  //second (special case for sin)
+  total = 1+sinValSQ/total;
+  //first
+  total = b0/total;
+ 
+  
+
+  printf("%.10lf", total);
+
+
+  return 0;
+}
