@@ -73,13 +73,19 @@ int parseString(char * exp, calcProfile * profile){
                 //do stuff for base 10
                 //
 
+                //Hacky way of checking if input should parse '-' as negative or subtraction and '+' as positive or addition
+                int parseLogicSymbol = False;
+
+                //Hacky way of checking if input should parse as multiplication or not (Turns "(5)(6)" into "(5)*(6)")
+                int parseMultiplication = False;
+
                 //Do operations for brackets
                 if(currentScan == '('){
-                    printf("TEMP -- NUMBER DETECTED: (");
+                    printf("========================== TEMP -- CHAR DETECTED: (");
                     i++; //Increment I
                 }
                 else if(currentScan == ')'){
-                    printf("TEMP -- NUMBER DETECTED: )");
+                    printf("========================== TEMP -- CHAR DETECTED: )");
                     i++; //Increment I
                 }
 
@@ -155,9 +161,8 @@ int parseString(char * exp, calcProfile * profile){
 
                 //Do operations for operators
                 else if(false){
-
+                    
                 }
-
                 //Do operations for full text operators
                 else if(false){
                     
