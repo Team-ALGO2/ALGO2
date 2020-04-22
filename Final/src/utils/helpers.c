@@ -8,6 +8,8 @@
 
 //Types of math functions
 enum math{
+    //Defult First Value! Plz Ignore
+    math_void,
     //Important 
     math_abs,
     math_floor,
@@ -42,6 +44,17 @@ enum math{
     math_perm
 };
 
+//List of SINGLE CHARACTER operators and its operation!
+const int opperatorInfo[][2] = {
+    {'+', math_add},
+    {'-', math_subtract},
+    {'*', math_multiply},
+    {'/', math_divide},
+    {'!', math_factorial},
+    {'^', math_power},
+    {'C', math_choose},
+    {'P', math_perm}
+};
 
 //Checking Different Ascii Character Types
 int isNum(char analyze)
@@ -95,6 +108,16 @@ int isAlphanumerical(char analyze)
     else if (analyze >= 'a' && analyze <= 'z'){return True;}
     else if (analyze >= 'A' && analyze <= 'Z'){return True;}
     else {return False;}
+}
+
+int checkOperator(char analyze){
+    int totalOperators = sizeof(opperatorInfo) / sizeof(opperatorInfo[0]);
+    for(int i = 0; i < totalOperators; i++){
+        if(analyze == opperatorInfo[i][0]){
+            return opperatorInfo[i][1];
+        }
+    }
+    return 0;
 }
 
 //removes the first "i" characters from the "input" string and returns the new string

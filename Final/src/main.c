@@ -6,12 +6,21 @@
 #ifdef _DEFMAIN
 int main (void)
 {
-
+    queue inputData = {-1, -1, 0};
+    queue inputBin = {-1, -1, 0};
+    
     printf("%d\n", getNum('5'));
+    printf("%d\n", checkOperator('^'));
+    printf("%d\n", checkOperator('5'));
     calcProfile * testProfile = initCalc(10);
 
+    /*
+    char * wasd = "123.456";
+    parseString(wasd, testProfile, &inputData, &inputBin);
     //char * testString = "Hello World! This Is A Test!!!";
+    */
     
+    //*
     //TESTING
     char * exp = "test"; 
     lookAheadResult testLookResult;
@@ -46,6 +55,7 @@ int main (void)
     char * testString6 = "-.4321";
     parseString(testString6, testProfile);
     printf("===========================\n");
+    //*/
 
 }
 #endif // _DEFMAIN

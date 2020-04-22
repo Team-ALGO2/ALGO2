@@ -24,15 +24,129 @@ typedef struct{
     int indexId; //ID of Index of element matched (NULL if keyWordList if pointer is NULL)
 } lookAheadResult;
 
-//Create commandList Keyword
-char * commandListTemp[] = {"STORE", "STOR", "STO", "TEST", "WASD", "GETALL"};
-int commandIdListTemp[] = {cmd_store, cmd_store, cmd_store, cmd_test, cmd_test, cmd_getall};
+//Create Command List
+char * commandListTemp[] = {
+    "STORE",
+    "STOR",
+    "STO",
+    "TEST",
+    "WASD",
+    "GETALL"
+};
+int commandIdListTemp[] = {
+    cmd_store,
+    cmd_store,
+    cmd_store,
+    cmd_test,
+    cmd_test,
+    cmd_getall
+    };
 //As you can see, this is compatible with aliases by using commandIdListTemp
 keyWordList commandList = {commandListTemp, commandIdListTemp, 6, MAXCOMMANDLEN};
 
+/*
+math_void,
+    //Important 
+    math_abs,
+    math_floor,
+    math_ceil,
+    math_round,
+    //Basic Math
+    math_add,
+    math_subtract,
+    math_multiply,
+    math_divide,
+    //Advanced Math
+    math_mod,
+    math_factorial,
+    //Exponential Math
+    math_power,
+    math_squareroot,
+    math_nthroot,
+    math_log,
+    math_exp,
+    math_ln,
+    math_sine,
+    math_cosine,
+    math_tangent,
+    math_secant,
+    math_cosecant,
+    math_cotangent,
+    math_sineh,
+    math_cosineh,
+    math_tanh,
+    //Combinatronics Math
+    math_choose,
+    math_perm
+*/
+
+//Create Full-Text Operator List
+char * operatorListTemp[] = {
+    "abs",
+    "floor",
+    "ceil",
+    "round",
+    "sqrt",
+    "nsqrt",
+    "log",
+    "exp",
+    "ln",
+    "sin",
+    "sine",
+    "cos",
+    "cosine",
+    "tan",
+    "tangent",
+    "sec",
+    "secant",
+    "csc",
+    "cosecant",
+    "cot",
+    "cotangent",
+    "sinh",
+    "sineh",
+    "cosh",
+    "cosineh",
+    "tanh",
+    "tangenth"
+};
+int opperatorIdListTemp[] = {
+    math_abs,
+    math_floor,
+    math_ceil,
+    math_round,
+    math_squareroot,
+    math_nthroot,
+    math_log,
+    math_exp,
+    math_ln,
+    math_sine,
+    math_sine,
+    math_cosine,
+    math_cosine,
+    math_tangent,
+    math_secant,
+    math_cosecant,
+    math_cotangent,
+    math_sineh,
+    math_cosineh,
+    math_tanh,
+};
+keyWordList stringOpperatorList = {operatorListTemp, opperatorIdListTemp, 27, MAXCOMMANDLEN};
+
 //Create test list
-char * testListTemp[] = {"wasd", "test1", "test", "test12"};
-int testIdListTemp[] = {1, 22, 333, 4444};
+char * testListTemp[] = {
+    "wasd",
+    "test1",
+    "test",
+    "test12"
+};
+int testIdListTemp[] = {
+    1,
+    22,
+    333,
+    4444
+};
 keyWordList testList = {testListTemp, testIdListTemp, 4, MAXCOMMANDLEN};
 
 
@@ -73,13 +187,25 @@ int parseString(char * exp, calcProfile * profile){
                 //do stuff for base 10
                 //
 
+                //Hacky way of checking if input should parse '-' as negative or subtraction and '+' as positive or addition
+                int parseLogicSymbol = False;
+
+                //Hacky way of checking if input should parse as multiplication or not (Turns "(5)(6)" into "(5)*(6)")
+                int parseMultiplication = False;
+
+                //Pre-Check Character Operators
+                int operatorCharCheck = checkOperator(currentScan);
+                //Pre-Check String Operators
+                lookAheadResult operatorStringCheck;
+                lookAheadString(exp, i, &operatorStringCheck, &stringOpperatorList, profile);
+
                 //Do operations for brackets
                 if(currentScan == '('){
-                    printf("TEMP -- NUMBER DETECTED: (");
+                    printf("========================== TEMP -- CHAR DETECTED: (");
                     i++; //Increment I
                 }
                 else if(currentScan == ')'){
-                    printf("TEMP -- NUMBER DETECTED: )");
+                    printf("========================== TEMP -- CHAR DETECTED: )");
                     i++; //Increment I
                 }
 
@@ -155,9 +281,8 @@ int parseString(char * exp, calcProfile * profile){
 
                 //Do operations for operators
                 else if(false){
-
+                    
                 }
-
                 //Do operations for full text operators
                 else if(false){
                     
