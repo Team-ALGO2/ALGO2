@@ -24,6 +24,7 @@ doxygenlog.txt
 
 latex/
 html/
+docs/html/
 
 #ignores vscode configs
 .vscode

@@ -26,6 +26,7 @@
  * returns true if sucessful and false if not
  * pop does NOT return the top value
  * 
+ * See queue.c for more details
  * 
  * **UPDATE WITH THE USE OF STRUCTURES**  
  * 
@@ -39,8 +40,8 @@
  *  Note the 2 -1 values
  * 
  * How To Use Functions ->
- * | function(&queueName, arguments)   |
- * *Must Add `& Infront Of Stack Name`
+ * `function(&queueName, arguments)`
+ * *Must Add `& Infront Of Stack Name`*
  * 
  * Examples ->
  *  \code
@@ -80,6 +81,8 @@ typedef struct{
  * because performing operations on an empty queue can lead to errors due
  * to garbage values being returned
  * @param q A pointer to the queue that we want to check
+ * 
+ * @returns boolean, true if queue is empty, false otherwise
  */
 int queue_isEmpty(queue *q) 
 {
@@ -102,7 +105,9 @@ int queue_isEmpty(queue *q)
  * and false (0) if the queue is noit full (either empty or populated). This function is important
  * because pushing to a full queue can lead to loss of data, or cause segfaults.
  *  Enqueuing to the queue performs the check automatically.
+ * 
  * @param q A pointer to the queue that we want to check
+ * @returns boolean, true if queue is full, false otherwise
  */
 int queue_isFull(queue *q)
 {
@@ -126,6 +131,7 @@ int queue_isFull(queue *q)
  * (the number of values push by the user - the number of values pulled by the user)
  * 
  * @param q A pointer to the queue that we want to check
+ * @returns int, the length of the queue
  */
 int queue_length(queue *q)
 {   
@@ -145,6 +151,8 @@ int queue_length(queue *q)
  * 
  * @param q A pointer to the queue that we want to add a value to 
  * @param input The number we want to add, long double for more flexibility
+ * 
+ * @returns int, true if enqueuing is successful 
  */
 int queue_enqueue(queue *q, long double input)
 {
@@ -175,7 +183,15 @@ int queue_enqueue(queue *q, long double input)
     
 }
 
-//deques the front value
+/**
+ * @brief Removes last value it the queue
+ * 
+ * The function removes the last value in the queue
+ * It **does not** return it, see queue_getFront()
+ * 
+ * @param q the pointer to the queue to dequeue from
+ * @return int, true if dequeuing is successful 
+ */
 int queue_dequeue(queue *q)
 {
     if (queue_isEmpty(q))
@@ -201,7 +217,15 @@ int queue_dequeue(queue *q)
     }
 }
 
-//a function to get the front value of the stack
+/**
+ * @brief Function to get the front of the queue
+ * 
+ * This function returns the front of the queue.
+ * it **does not** dequeue, see queue_dequeue()
+ * 
+ * @param q the pointer to the queue
+ * @return long double, the front value
+ */
 long double queue_getFront(queue *q)
 {
     //checks if the stack is empty and warns in that case
@@ -220,7 +244,14 @@ long double queue_getFront(queue *q)
     return(q->A[q->front]);
 }
 
-//a function to get the rear value of the queue
+/**
+ * @brief Function to get the rear of the queue
+ * 
+ * This function returns the rear of the queue.
+ * 
+ * @param q the pointer to the queue
+ * @return long double, the rear value
+ */
 long double queue_getRear(queue *q)
 {
     //checks if the stack is empty and warns in that case
@@ -236,7 +267,15 @@ long double queue_getRear(queue *q)
     return(q->A[q->rear]);
 }
 
-//prints out queue array WARN: THIS DOES NOT TAKE IN COUNT FRONT AND REAR. IT ONLY PRINTS OUT RAW ARRAY
+/**
+ * @brief prints the raw array in the queue
+ * 
+ * The functions prints the array in the queue without
+ * formatting or caring for front and rear. The function may
+ * print weird or junk characters
+ * 
+ * @param q the pointer to a queue to print
+ */
 void queue_raw_printer(queue *q)
 {
     printf("\n");
@@ -249,6 +288,13 @@ void queue_raw_printer(queue *q)
     printf("\n");
 }
 
+/**
+ * @brief Prints the queue nicely
+ * 
+ * The function prints the queue's array nicely and in order
+ * 
+ * @param q the pointer to a queue to print
+ */
 void queue_printer(queue *q)
 {
     printf("\n");
@@ -259,7 +305,13 @@ void queue_printer(queue *q)
     printf("\n");
 }
 
-//Removed extra zeros
+/**
+ * @brief Same as queue_printer()
+ * 
+ * Same as queue_printer() but not 0 padded
+ * 
+ * @param q the pointer to a queue to print
+ */
 void queue_printer_formatted(queue *q)
 {
     printf("\n");

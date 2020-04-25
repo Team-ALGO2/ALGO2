@@ -6,7 +6,6 @@
 ![Line Count](https://tokei.rs/b1/github/RadioactiveHydra/ALGO2)
 ![File Count](https://tokei.rs/b1/github/RadioactiveHydra/ALGO2?category=files)
 
-## NOTE: This Project Is Not Done!!!
 ## UPDATE: Class Cancelled Due To COVID-19
 
 This is a git for all our work during the 2019 - 2020 Algorithms 2 class. The projects included here are:
