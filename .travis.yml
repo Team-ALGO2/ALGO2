@@ -1,3 +1,9 @@
+addons:
+  apt:
+    packages:
+      - doxygen
+
+
 jobs:
   include:
   - stage: tests
@@ -8,6 +14,7 @@ jobs:
     script:
     - make clean
     - make compile
+
   - stage: tests
     name: C unittest
     script:
@@ -22,3 +29,14 @@ jobs:
     - wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/master/send.sh
     - chmod +x send.sh
     - "./send.sh failure $WEBHOOK_URL"
+
+  - stage: deploy
+      name: deploy to github pages
+      script: skip
+      before_deploy: doxygen doxygen.txt
+      deploy: &pages
+        provider: pages
+        skip_cleanup: true          
+        github_token: $GITHUB_TOKEN
+        local_dir: docs   
+

@@ -1,32 +1,40 @@
-// Queue is zero indexed
+/**
+ * @file queue.c
+ * @brief Implementation of a queue in C.
+ * 
+ * This file contains our implementation of a queue in C
+ * along with a few examples.
+ */
 
-/*
+/**
  * Queue only accepts numbers
  * Queue is initialized to -1 to help debugging
  * 
- * queue_getFront() returs the "top" (Last In Last Out)
+ * `queue_getFront()` returs the "top" (Last In Last Out)
  * it will NOT pop it
  * it will return false if queue is empty
  * 
- * queue_getRear() return the last value of queue. This value should stay the same until the queu is empty or until you add new values
+ * `queue_getRear()` return the last value of queue. This value should stay the same until the queu is empty or until you add new values
  * it will NOT pop it
  * it will return false if queue is empty
  * 
- * queue_enqueue() inserts an int into the queue, at the end
+ * `queue_enqueue()` inserts an int into the queue, at the end
  * returns false if queue is full
  * returns the value inserted if succesful
  * 
- * queue_dequeue() will remove the first value in the queue
+ * `queue_dequeue()` will remove the first value in the queue
  * returns true if sucessful and false if not
  * pop does NOT return the top value
  * 
  * 
- * == UPDATE WITH THE USE OF STRUCTURES ==
- * NOTE: QUEUE IS NOW A POINTER!!! 
+ * **UPDATE WITH THE USE OF STRUCTURES**  
+ * 
  * 
  * 
  * How To Create A Queue ->
- * | queue queueName = {-1, -1, {0}};  |
+ * | \code
+ *      queue queueName = {-1, -1, {0}};
+ *   \endcode
  *  Dont change the values unless you know what your doing
  *  Note the 2 -1 values
  * 
@@ -35,11 +43,13 @@
  * *Must Add `& Infront Of Stack Name`
  * 
  * Examples ->
- * | queue test = {-1, -1, 0};;                 |
- * | queue_enqueue(&test, 5)                 |
- * | queue_getFront(&test)                   |
- * | queue_dequeue(&test)                    |
- * | queue_printer(&test)                    |
+ *  \code
+ *  queue test = {-1, -1, 0};                 
+ *  queue_enqueue(&test, 5);               
+ *  queue_getFront(&test);                   
+ *  queue_dequeue(&test);                    
+ *  queue_printer(&test); 
+ *  \endcode                   
  * 
  * WARNING: We havent actually been taught (Pointers and Structs) yet, but oh well
  * ¯\_(ツ)_/¯
@@ -52,14 +62,26 @@
 
 
 //Create structure containing the queue and the traking variables
+/**
+ * @brief Implementation of queue in C
+ */
 typedef struct{
-    int front;
-    int rear;
-    long double A[QUEUE_MAX_LENGTH];
+    int front;      ///< The front of the queue (beggining)  
+    int rear;       ///< The rear of the queue (end marker)  
+    long double A[QUEUE_MAX_LENGTH]; ///< The actual data as an int list, works because circular queue  
 } queue;
 
-//a function to check if the stack is empty which may result in undefined behaviour
-int queue_isEmpty(queue *q)
+/**
+ * @brief Function to check if a queue is empty
+ * 
+ * The function will return a boolean based of a pointer to a queue
+ * It will return true (1) if the queue is empty 
+ * and false (0) if the queue is populated. This function is important
+ * because performing operations on an empty queue can lead to errors due
+ * to garbage values being returned
+ * @param q A pointer to the queue that we want to check
+ */
+int queue_isEmpty(queue *q) 
 {
     if (q->front == -1 && q->rear == -1)
     {
@@ -72,7 +94,16 @@ int queue_isEmpty(queue *q)
     
 }
 
-//a funtion to check if the stack is full
+/**
+ * @brief Function to check if a queue is full
+ * 
+ * The function will return a boolean based of a pointer to a queue
+ * It will return true (1) if the queue is full 
+ * and false (0) if the queue is noit full (either empty or populated). This function is important
+ * because pushing to a full queue can lead to loss of data, or cause segfaults.
+ *  Enqueuing to the queue performs the check automatically.
+ * @param q A pointer to the queue that we want to check
+ */
 int queue_isFull(queue *q)
 {
     //looks if the stack is at its maximum capacity
@@ -87,7 +118,15 @@ int queue_isFull(queue *q)
     
 }
 
-//Getting the current length of the queue
+/**
+ * @brief Function to get the length of a queue
+ * 
+ * The function will return an integer representing the length of a queue.
+ * By length, we mean the number of values between `q->rear` and `q->front`
+ * (the number of values push by the user - the number of values pulled by the user)
+ * 
+ * @param q A pointer to the queue that we want to check
+ */
 int queue_length(queue *q)
 {   
     if(!queue_isEmpty(q)){
@@ -98,7 +137,15 @@ int queue_length(queue *q)
     }
 }
 
-//adds to the back of the queue the value inputed
+/**
+ * @brief Add a value to the queue
+ * 
+ * This functions adds a number to the queue, after checking if the 
+ * queue is full. This includes an implementation of a circular queue
+ * 
+ * @param q A pointer to the queue that we want to add a value to 
+ * @param input The number we want to add, long double for more flexibility
+ */
 int queue_enqueue(queue *q, long double input)
 {
     if(queue_isFull(q))

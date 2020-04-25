@@ -1,40 +1,41 @@
-// Stack is zero indexed
+/// Implementation of a stack in C
 
-/*
+/**
  * Stack only accepts numbers
  * Stack is initialized to -1 to help debugging
  * 
- * stack_top() return the top value of stack
+ * `stack_top()` return the top value of stack
  * it will NOT pop it
  * it will return false if stack is empty
  * 
- * stack_push() inserts an int into the stack and increase counter
+ * `stack_push()` inserts an int into the stack and increase counter
  * returns false if stack is full
  * returns the value inserted if succesful
  * 
- * stack_pop() will decrese the counter by 1
+ * `stack_pop()` will decrese the counter by 1
  * returns true if sucessful and false if not
  * pop does NOT return the top value
  * 
  * 
- * == UPDATE WITH THE USE OF STRUCTURES ==
- * NOTE: STACK IS NOW A POINTER!!! 
+ * **UPDATE WITH THE USE OF STRUCTURES**  
  * 
  * 
  * How To Create A Stack ->
- * | stack stackName = {-1, {0}};      |
+ *  \code
+ *  stack stackName = {-1, {0}};      
+ * \endcode
  * *Dont change the values unless you know what your doing
  * 
- * How To Use Functions ->
- * | function(&stackName, arguments)   |
- * *Must Add `& Infront Of Stack Name`
+ * *Must Add `& Infront Of Stack Name`*
  * 
  * Examples ->
- * | stack test = {-1, {0}};                 | 
- * | stack_push(&test, 5)                    |
- * | stack_top(&test)                        |
- * | stack_pop(&test)                        |
- * | stack_printer(&test)                    |
+ * \code
+ *  stack test = {-1, {0}};                  
+ *  stack_push(&test, 5);                    
+ *  stack_top(&test);                        
+ *  stack_pop(&test);                        
+ *  stack_printer(&test);                    
+ * \endcode
  * 
  * WARNING: We havent actually been taught (Pointers and Structs) yet, but oh well
  * ¯\_(ツ)_/¯
@@ -48,8 +49,8 @@
 //counter -> The "pointer" of the top of the graph
 //A -> The Array where the stack elements will be stored
 typedef struct{
-    int counter;
-    long double A[STACK_MAX_LENGTH];
+    int counter;  ///< Marker for the top of the stack  
+    long double A[STACK_MAX_LENGTH];  ///< The actual stack data
 } stack;
 
 //Check if the stack is empty by checking the counter

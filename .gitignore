@@ -20,6 +20,11 @@ run
 *.out
 *.exe
 
+doxygenlog.txt
+
+latex/
+html/
+
 #ignores vscode configs
 .vscode
 .vscode/

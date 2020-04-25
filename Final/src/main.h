@@ -1,3 +1,12 @@
+/**
+ * @file main.h
+ * @brief Main header file for the project
+ * 
+ * This file contains all of the settings for the project
+ * including debugs, math implementations ... 
+ */
+
+
 //Defining _MAINGUARD
 //C Does Not Like When Headers Are Called Twice (Also Self Refrencing). 
 //Mainguard Checks If main.h Has Already Been Defined, 
@@ -13,29 +22,26 @@
 #endif
 
 
-//
-// Define Mathmatics Configuration Flags
-//
+/*
+ * Definition of math related macros
+ */
 //#define NUMLENNEG //Count the '-' symbol in numLen 
 //#define POINTFIVEROUNDOWN //In some odd cases while rounding floating point, 0.5 rounds down to 0 (instead of 1). Turn this on to enable that feature!
-#define MAXTAYLORACCURACY 8 //Defines Maximum Accuracy / Maximum Amount Of Cycles For Talor Series Calculations (Trig, Log, Exponent, Etc.) Set to prevent overflows
-#define POWRMODE 1 //(!do not comment out!) Sets formula used for exponential calculations. See Bottom For Options
-#define ADVANCEDMODULO //Adds extra check to implement Python-style modulo operations with negative numbers. Keep off for original c-like implementation
-#define LNFUNCMODE 2 //(!do not comment out!) Sets formula used for natural logarithm. See Bottom For Options
-#define SMARTLNAVG //Averages the last two natural logarithm estimation results to create a (semi) close guess. Not mathmatically sound, but it works.
-#define CACHEDLNTWO //Uses Pre-calculated LN2 instead of caluclating it live. Increases speed and "accuracy"
+#define MAXTAYLORACCURACY 8 ///< Defines Maximum Accuracy / Maximum Amount Of Cycles For Talor Series Calculations (Trig, Log, Exponent, Etc.) Set to prevent overflows
+#define POWRMODE 1 ///< Sets formula used for exponential calculations. See Bottom For Options
+#define ADVANCEDMODULO ///< Adds extra check to implement Python-style modulo operations with negative numbers. Keep off for original c-like implementation
+#define LNFUNCMODE 2 ///< Sets formula used for natural logarithm. See Bottom For Options
+#define SMARTLNAVG ///< Averages the last two natural logarithm estimation results to create a (semi) close guess. Not mathmatically sound, but it works.
+#define CACHEDLNTWO ///< Uses Pre-calculated LN2 instead of caluclating it live. Increases speed and "accuracy"
 //#define ADVANCEDTRIGFORMULA //Uses advanced Taylor/Maclaurin Series Formuals Instead of Shortcut *
 //#define SYSTEMMATH //(Used For Debugging) Uses System Functions Instead Of Self-Made Functions *
 
-//
-// Define Calculator Configuration Flags
-//
-#define RECURSIVECONVERT //Uses recursive techneques to convert bases *
-#define FASTCHOOSEPERM //Uses optimitation techneques to create faster and more accurate combinatronics and permutations calculations
-#define SMARTBABYLONIANGUESS //Uses interesting formulas to increate accuracy of initial initial square root guess
+#define RECURSIVECONVERT ///< Uses recursive techneques to convert bases *
+#define FASTCHOOSEPERM ///< Uses optimitation techneques to create faster and more accurate combinatronics and permutations calculations
+#define SMARTBABYLONIANGUESS ///< Uses interesting formulas to increate accuracy of initial initial square root guess
 //#define FORCEHIGHBASE //Bypasses The 36 Digit Max *
 //#define FULLTEXTVARIABLES //Allows Experimental Multi-Letter Variables *
-#define LOOKAHEADMODE 2 //(!do not comment out!) Sets Look Ahead Priority. See Bottom For Options
+#define LOOKAHEADMODE 2 ///< Sets Look Ahead Priority. See Bottom For Options
 
 //Different Modes For Different Configs
 /*
@@ -61,24 +67,25 @@
 //
 //
 
-//Sets Floating Point Epsilon (AKA decimal accuracy of numbers)
-//https://en.wikipedia.org/wiki/Machine_epsilon
-//Currently set to 1 * 10 ^ -12
-#define EPSILON 0.0000000001l
+/* Sets Floating Point Epsilon (AKA decimal accuracy of numbers)
+ * https://en.wikipedia.org/wiki/Machine_epsilon
+ *Currently set to 1 * 10 ^ -12
+ */
+#define EPSILON 0.0000000001l ///< Sets Floating Point Epsilon (AKA decimal accuracy of numbers). See https://en.wikipedia.org/wiki/Machine_epsilon
 //#define EPSILON 0.0001l
 
 //Math Numbers
-#define PI 3.141592653589l
+#define PI 3.141592653589l 
 #define EULER 2.718281828459045l
 #define LNTWO 0.69314718056l
 
 // cache.c
-#define MAX_VARIABLE_NUMBER 25 // Max number of variables user is allowed 
-#define MAX_VARIABLE_LENGTH 10 // Max length of var name
+#define MAX_VARIABLE_NUMBER 25 ///< Max number of variables user is allowed 
+#define MAX_VARIABLE_LENGTH 10 ///< Max length of var name
 
 // parsing.c
-#define MAXCOMMANDLEN 32
-#define MAXCOMMANDARGUMENTLEN 32
+#define MAXCOMMANDLEN 32  ///< Max length of a command
+#define MAXCOMMANDARGUMENTLEN 32 ///< Max len for an argument
 
 
 // Define Booleans
@@ -90,54 +97,54 @@
 #define TRUE 1
 
 // Set Colours
-#define RED   "\x1B[31m"
-#define GRN   "\x1B[32m"
-#define YEL   "\x1B[33m"
-#define BLU   "\x1B[34m"
-#define MAG   "\x1B[35m"
-#define CYN   "\x1B[36m"
-#define WHT   "\x1B[37m"
-#define RESET "\x1B[0m"
+#define RED   "\x1B[31m"  ///< ANSI code for red
+#define GRN   "\x1B[32m"  ///< ANSI code for green
+#define YEL   "\x1B[33m"  ///< ANSI code for yellow
+#define BLU   "\x1B[34m"  ///< ANSI code for blue
+#define MAG   "\x1B[35m"  ///< ANSI code for magenta
+#define CYN   "\x1B[36m"  ///< ANSI code for cyan
+#define WHT   "\x1B[37m"  ///< ANSI code for white
+#define RESET "\x1B[0m"  ///< ANSI code for resetting
 
 // Min/Max Functions
-#define MAX(x, y) (((x) > (y)) ? (x) : (y))
-#define MIN(x, y) (((x) < (y)) ? (x) : (y))
+#define MAX(x, y) (((x) > (y)) ? (x) : (y)) ///< returns max
+#define MIN(x, y) (((x) < (y)) ? (x) : (y)) ///< returns min
 
 //Array Size Functions
-#define ARRAY_SIZE(x) (sizeof((x)) / sizeof((x)[0]))
+#define ARRAY_SIZE(x) (sizeof((x)) / sizeof((x)[0])) ///< returns the size of an array
 
 // Numbers
 #define INFINITY 2147483647
 #define NEG_INFINITY -2147483647
 
 // settings
-#define MAX_INPUT_LENGTH 4096
+#define MAX_INPUT_LENGTH 4096   ///< Max length of an expression
 
 
 // STACK
 //defines the max length of the stack
-#define STACK_MAX_LENGTH 128
+#define STACK_MAX_LENGTH 128  ///< Max length of a stack
 
 // Define Error Codes
-#define STACK_EMPTY   0
-#define STACK_FULL    0
+#define STACK_EMPTY   0 ///< WIP
+#define STACK_FULL    0 ///< WIP
 
 
 // QUEUE
 //defines the max length of the queue
-#define QUEUE_MAX_LENGTH 128
+#define QUEUE_MAX_LENGTH 128 ///< Max length of a queue
 
 // Define Error Codes
-#define QUEUE_EMPTY   0
-#define QUEUE_FULL    0
+#define QUEUE_EMPTY   0 ///< WIP
+#define QUEUE_FULL    0 ///< WIP
 
 // Operator Data System Flags
-#define ODS_OPERAND 0
-#define ODS_OPERATOR 1
+#define ODS_OPERAND 0  ///< ??
+#define ODS_OPERATOR 1 ///< ??
 
 // For Server/main.c    
-#define MAX_FILE_LEN 255000         // Max file len in chars
-#define MAX_FILE_NAME_LEN 100        // Max filename len
+#define MAX_FILE_LEN 255000  ///< Max file length in chars
+#define MAX_FILE_NAME_LEN 100  ///<  Max filename length
 
 // Import Important Libraries
 #include <stdio.h>
@@ -159,7 +166,7 @@
 #include "utils/opDataSystem.c"
 
 // Import Calculator Modules
-#ifndef _DISABLECALC // Checks For Special Flag To Disable Calculator Import If Not Needed
+#ifndef _DISABLECALC ///< Checks For Special Flag To Disable Calculator Import If Not Needed
 
 #include "calc/init.c"
 #include "calc/error.c"
