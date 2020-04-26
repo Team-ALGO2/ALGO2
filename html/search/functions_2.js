@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['main',['main',['../slots_8c.html#a0ddf1224851353fc92bfbff6f499fa97',1,'slots.c']]],
-  ['msleep',['msleep',['../slots_8c.html#afd2fe3756543f698c07bcbf76e4b04e5',1,'slots.c']]]
+  ['compare',['compare',['../math_8c.html#a199d0c22d0077d03e7d3a37f3f286c90',1,'math.c']]]
 ];

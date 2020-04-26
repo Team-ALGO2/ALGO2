@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['queue_2ec',['queue.c',['../queue_8c.html',1,'']]]
+  ['dijkstra_5fmatrix_2ec',['dijkstra_matrix.c',['../dijkstra__matrix_8c.html',1,'']]]
 ];

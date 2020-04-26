@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['compare',['compare',['../math_8c.html#a199d0c22d0077d03e7d3a37f3f286c90',1,'math.c']]]
+  ['bellmanford',['bellmanFord',['../bellman-ford_8c.html#a9abb8131d2209346ba1b5b91dcd75f13',1,'bellman-ford.c']]]
 ];

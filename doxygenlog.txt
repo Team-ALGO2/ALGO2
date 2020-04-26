@@ -1,8 +1,6 @@
 /home/travis/build/Team-ALGO2/ALGO2/Server/main.c:23: warning: Compound pair is not documented.
 /home/travis/build/Team-ALGO2/ALGO2/Final/src/calc/parsing.c:21: warning: Compound lookAheadResult is not documented.
 /home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/doublylinkedlist.c:14: warning: Compound DLLNode is not documented.
-/home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/x-prim.c:5: warning: Compound edge is not documented.
-/home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/kruskal.c:7: warning: Compound edge is not documented.
 /home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/x-bellman-ford.c:6: warning: Compound Edge is not documented.
 /home/travis/build/Team-ALGO2/ALGO2/Server/main.c:29: warning: Compound dict is not documented.
 /home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/x-prim.c:14: warning: Compound node is not documented.
@@ -13,8 +11,6 @@
 /home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/opDataSystem.c:27: warning: Compound odsNode is not documented.
 /home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/x-prim.c:18: warning: Compound nodelist is not documented.
 /home/travis/build/Team-ALGO2/ALGO2/Final/src/calc/init.c:7: warning: Compound calcProfile is not documented.
-/home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/x-prim.c:9: warning: Compound edgelist is not documented.
-/home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/kruskal.c:11: warning: Compound edgelist is not documented.
 /home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/linkedlist.c:13: warning: Compound LLNode is not documented.
 /home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/opDataSystem.c:50: warning: Compound operatorNode is not documented.
 /home/travis/build/Team-ALGO2/ALGO2/Final/src/calc/parsing.c:13: warning: Compound keyWordList is not documented.
@@ -55,6 +51,14 @@
 /home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/math.c:96: warning: Member tangenth(long double a) (function) of file math.c is not documented.
 /home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/math.c:98: warning: Member aChooseB(long double n, long double k) (function) of file math.c is not documented.
 /home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/math.c:99: warning: Member aPermB(long double n, long double r) (function) of file math.c is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/floyd-warshall.c:16: warning: argument 'dist' of command @param is not found in the argument list of debugPrint(int distMap[FW_MAX_SIZE][FW_MAX_SIZE])
+/home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/floyd-warshall.c:20: warning: The following parameters of debugPrint(int distMap[FW_MAX_SIZE][FW_MAX_SIZE]) are not documented:
+  parameter 'distMap'
+/home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/kruskal-alternative.c:13: warning: Member KS_ALT_MAX_SIZE (macro definition) of file kruskal-alternative.c is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/kruskal.c:11: warning: Member max (macro definition) of file kruskal.c is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/kruskal.c:33: warning: Member K[max][max] (variable) of file kruskal.c is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/prim.c:18: warning: Member prim(int map[PRIM_MAX_SIZE][PRIM_MAX_SIZE], int cMap[PRIM_MAX_SIZE][PRIM_MAX_SIZE], int start) (function) of file prim.c is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/prim.c:74: warning: Member main() (function) of file prim.c is not documented.
 /home/travis/build/Team-ALGO2/ALGO2/Mapping/README.md:21: warning: Illegal command ref as part of a <h2> tag
 /home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/cache.c:16: warning: Member name[MAX_VARIABLE_LENGTH] (variable) of class cache is not documented.
 /home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/cache.c:17: warning: Member value (variable) of class cache is not documented.
@@ -70,11 +74,8 @@
 /home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/x-bellman-ford.c:8: warning: Member v (variable) of class Edge is not documented.
 /home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/x-bellman-ford.c:9: warning: Member w (variable) of class Edge is not documented.
 /home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/x-bellman-ford.c:11: warning: Member c (variable) of class Edge is not documented.
-/home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/kruskal.c:8: warning: Member u (variable) of class edge is not documented.
-/home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/kruskal.c:8: warning: Member v (variable) of class edge is not documented.
-/home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/kruskal.c:8: warning: Member w (variable) of class edge is not documented.
-/home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/kruskal.c:12: warning: Member data[max] (variable) of class edgelist is not documented.
-/home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/kruskal.c:13: warning: Member n (variable) of class edgelist is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/kruskal.c:17: warning: Member u (variable) of class edge is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/kruskal.c:17: warning: Member v (variable) of class edge is not documented.
 /home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/x-bellman-ford.c:15: warning: Member V (variable) of class Graph is not documented.
 /home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/x-bellman-ford.c:16: warning: Member E (variable) of class Graph is not documented.
 /home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/x-bellman-ford.c:17: warning: Member edge (variable) of class Graph is not documented.

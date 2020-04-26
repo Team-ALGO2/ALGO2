@@ -1,7 +1,8 @@
 var searchData=
 [
   ['mag',['MAG',['../_final_2src_2main_8h.html#af54a5a977c0c499323d656315f008ee0',1,'main.h']]],
-  ['main',['main',['../slots_8c.html#a0ddf1224851353fc92bfbff6f499fa97',1,'slots.c']]],
+  ['main',['main',['../slots_8c.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;slots.c'],['../bellman-ford_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;bellman-ford.c'],['../dijkstra__matrix_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;dijkstra_matrix.c'],['../floyd-warshall_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;floyd-warshall.c'],['../kruskal-alternative_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;kruskal-alternative.c'],['../kruskal_8c.html#acdef7a1fd863a6d3770c1268cb06add3',1,'main():&#160;kruskal.c']]],
+  ['main_2eh',['main.h',['../_mapping_2_algorithms_2main_8h.html',1,'']]],
   ['main_2eh',['main.h',['../_final_2src_2main_8h.html',1,'']]],
   ['math_2ec',['math.c',['../math_8c.html',1,'']]],
   ['max',['MAX',['../_final_2src_2main_8h.html#aacc3ee1a7f283f8ef65cea31f4436a95',1,'main.h']]],

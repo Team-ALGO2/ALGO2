@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['total_5fspins',['total_spins',['../slots_8c.html#acb39bde38d9a0c72dbb17627da1f58bd',1,'slots.c']]]
+  ['klist',['klist',['../kruskal_8c.html#ac4ef9a6063d2eaed28a49bde7786f0a1',1,'kruskal.c']]]
 ];

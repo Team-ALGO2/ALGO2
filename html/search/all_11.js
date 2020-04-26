@@ -1,5 +1,7 @@
 var searchData=
 [
+  ['shortestnode',['shortestNode',['../bellman-ford_8c.html#ac1ef0b17e4e64267a21019cb616742c3',1,'shortestNode(int dist[BF_MAX_SIZE], int checked[BF_MAX_SIZE]):&#160;bellman-ford.c'],['../dijkstra__matrix_8c.html#a88217a02bfba7b618eadbbe491ab9db6',1,'shortestNode(int dist[DIJ_MAX_SIZE], int checked[DIJ_MAX_SIZE]):&#160;dijkstra_matrix.c']]],
+  ['slist',['slist',['../kruskal_8c.html#a2acdf472c3a48acaf0c78e6e15e4776e',1,'kruskal.c']]],
   ['slots_2ec',['slots.c',['../slots_8c.html',1,'']]],
   ['smartbabylonianguess',['SMARTBABYLONIANGUESS',['../_final_2src_2main_8h.html#a188b299562b88646780be94b13be54f5',1,'main.h']]],
   ['smartlnavg',['SMARTLNAVG',['../_final_2src_2main_8h.html#aabc8767750ac78adb2404116cdda066f',1,'main.h']]],
