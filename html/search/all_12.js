@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['welcome_20to_20the_20server_20part_20of_20this_20project',['Welcome to the Server part of this project',['../md_Server_README.html',1,'']]],
-  ['wht',['WHT',['../_final_2src_2main_8h.html#aeaf3a04d5bf63b204689a714718ea930',1,'main.h']]]
+  ['total_5fspins',['total_spins',['../slots_8c.html#acb39bde38d9a0c72dbb17627da1f58bd',1,'slots.c']]],
+  ['true',['TRUE',['../_final_2src_2main_8h.html#aa8cecfc5c5c054d2875c03e77b7be15d',1,'TRUE():&#160;main.h'],['../_final_2src_2main_8h.html#add3ca9eefe3b5b754426f51d3043e579',1,'True():&#160;main.h'],['../_final_2src_2main_8h.html#a41f9c5fb8b08eb5dc3edce4dcb37fee7',1,'true():&#160;main.h']]]
 ];

@@ -22,19 +22,7 @@
 /home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/cache.c:15: warning: Compound cache is not documented.
 /home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/opDataSystem.c:38: warning: Compound operandNode is not documented.
 /home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/opDataSystem.c:16: warning: Compound odsMain is not documented.
-/home/travis/build/Team-ALGO2/ALGO2/Final/src/main.h:18: warning: Member DEBUG (macro definition) of file Final/src/main.h is not documented.
-/home/travis/build/Team-ALGO2/ALGO2/Final/src/main.h:78: warning: Member PI (macro definition) of file Final/src/main.h is not documented.
-/home/travis/build/Team-ALGO2/ALGO2/Final/src/main.h:79: warning: Member EULER (macro definition) of file Final/src/main.h is not documented.
-/home/travis/build/Team-ALGO2/ALGO2/Final/src/main.h:80: warning: Member LNTWO (macro definition) of file Final/src/main.h is not documented.
-/home/travis/build/Team-ALGO2/ALGO2/Final/src/main.h:92: warning: Member false (macro definition) of file Final/src/main.h is not documented.
-/home/travis/build/Team-ALGO2/ALGO2/Final/src/main.h:93: warning: Member true (macro definition) of file Final/src/main.h is not documented.
-/home/travis/build/Team-ALGO2/ALGO2/Final/src/main.h:94: warning: Member False (macro definition) of file Final/src/main.h is not documented.
-/home/travis/build/Team-ALGO2/ALGO2/Final/src/main.h:95: warning: Member True (macro definition) of file Final/src/main.h is not documented.
-/home/travis/build/Team-ALGO2/ALGO2/Final/src/main.h:96: warning: Member FALSE (macro definition) of file Final/src/main.h is not documented.
-/home/travis/build/Team-ALGO2/ALGO2/Final/src/main.h:97: warning: Member TRUE (macro definition) of file Final/src/main.h is not documented.
-/home/travis/build/Team-ALGO2/ALGO2/Final/src/main.h:117: warning: Member INFINITY (macro definition) of file Final/src/main.h is not documented.
-/home/travis/build/Team-ALGO2/ALGO2/Final/src/main.h:118: warning: Member NEG_INFINITY (macro definition) of file Final/src/main.h is not documented.
-/home/travis/build/Team-ALGO2/ALGO2/Final/src/main.h:196: warning: Member _DEFMAIN (macro definition) of file Final/src/main.h is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/main.h:201: warning: Member _DEFMAIN (macro definition) of file Final/src/main.h is not documented.
 /home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/math.c:62: warning: Member ldAbs(long double num) (function) of file math.c is not documented.
 /home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/math.c:63: warning: Member ldFloor(long double num) (function) of file math.c is not documented.
 /home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/math.c:64: warning: Member ldCeil(long double num) (function) of file math.c is not documented.

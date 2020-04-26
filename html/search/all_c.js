@@ -1,9 +1,6 @@
 var searchData=
 [
-  ['ods_5foperand',['ODS_OPERAND',['../_final_2src_2main_8h.html#a0e94c51ef56f70a73697abfff13465e9',1,'main.h']]],
-  ['ods_5foperator',['ODS_OPERATOR',['../_final_2src_2main_8h.html#a4171b38d38e2abd301b009c93e2daa65',1,'main.h']]],
-  ['odsmain',['odsMain',['../structods_main.html',1,'']]],
-  ['odsnode',['odsNode',['../structods_node.html',1,'']]],
-  ['operandnode',['operandNode',['../structoperand_node.html',1,'']]],
-  ['operatornode',['operatorNode',['../structoperator_node.html',1,'']]]
+  ['neg_5finfinity',['NEG_INFINITY',['../_final_2src_2main_8h.html#ad46b9ac873f731add0ac8b21bfc26285',1,'main.h']]],
+  ['node',['node',['../structnode.html',1,'']]],
+  ['nodelist',['nodelist',['../structnodelist.html',1,'']]]
 ];

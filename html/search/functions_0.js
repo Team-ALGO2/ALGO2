@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['compare',['compare',['../math_8c.html#a199d0c22d0077d03e7d3a37f3f286c90',1,'math.c']]]
+  ['analyseresults',['analyseResults',['../slots_8c.html#ae220b1adafbf3a2ee0dc7eba15e74d0f',1,'slots.c']]]
 ];

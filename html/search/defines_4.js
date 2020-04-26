@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['fastchooseperm',['FASTCHOOSEPERM',['../_final_2src_2main_8h.html#a5fb65c8d9b36c05d7d522d3ef464c6b7',1,'main.h']]]
+  ['epsilon',['EPSILON',['../_final_2src_2main_8h.html#a002b2f4894492820fe708b1b7e7c5e70',1,'main.h']]],
+  ['euler',['EULER',['../_final_2src_2main_8h.html#a7f4ee7567f891560bb62dfbda5f93088',1,'main.h']]]
 ];
