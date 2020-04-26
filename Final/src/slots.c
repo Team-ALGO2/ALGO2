@@ -1,15 +1,23 @@
+/**
+ * @file slots.c
+ * @brief A slot machine in C
+ * 
+ * Compiple with: $cc slots.c -o b -lssl -lcrypto -lncurses
+ * 
+ */
+
+
 /* Compiple with: $cc slots.c -o b -lssl -lcrypto -lncurses -lsqlite3 */
 
 #include "main.h"
 // For Global Defines, Use Utils. For Local, Use Here.
 
 // basic defines
-#define HEIGHT  16
-#define WIDTH   5
-#define CNTSPIM 10 // Constant Spin (Minimum Spin Amount)
-#define SPINDWN true // Spin Down (If False Spin Up)
-#define DBSAVE  false // Save To Database??
-
+#define HEIGHT  16  ///< Height of the machines, number of characters per wheel
+#define WIDTH   5   ///< Number of wheel
+#define CNTSPIM 10 ///< Constant Spin (Minimum Spin Amount)
+#define SPINDWN true ///< Spin Down (If False Spin Up)
+#define DBSAVE  false ///< Save score to db, WIP
 #if DBSAVE
 #undef _DEFMAIN
 #include "users.c"
@@ -18,15 +26,22 @@
 
 int analyseResults(char *values[WIDTH]);
 
-int total_spins = 0;
-int avg_spin;
+int total_spins = 0; ///< Used for statistical purposes
+int avg_spin; ///< Used for statistical purposes
 
-char *user = "";
+char *user = ""; ///< Used for statistical purposes
 
-int user_bal;
-int cost_per_spin = WIDTH * 7;
+int user_bal; ///< Used for statistical purposes
+int cost_per_spin = WIDTH * 7; ///< Used for statistical purposes
 
-// some sleep thing i edited lol
+/**
+ * @brief Sleep in miliseconds
+ * 
+ * This functions pauses the program for `msec` miliseconds
+ * 
+ * @param msec number of miliseconds to sleep
+ * @return int 
+ */
 int msleep(long msec)
 {
     struct timespec ts;
@@ -37,10 +52,17 @@ int msleep(long msec)
     return res;
 }
 
-//Since C Does Not Support Default Argument Values >:(
-// rotationflag > 0  -->  Use rotationtimes amount
-// rotationflag = 0  -->  Use Random Rotations
-// rotationflag < 0  -->  Infinate Rotations 
+/**
+ * @brief Main slot function
+ * 
+ *  Use `rotationtimes` to choose the number of rotations: \n
+ *  `rotationflag > 0`  -->  Use `rotationtimes` amount \n
+ *  `rotationflag = 0`  -->  Use Random Rotations \n
+ *  `rotationflag < 0`  -->  Infinate Rotations  
+ * 
+ * @param rotationtimes Number of times to rotate
+ * @return int, sucess
+ */
 int runSlots(int rotationtimes)
 {
     
@@ -314,6 +336,21 @@ int runSlots(int rotationtimes)
     return 0;
 }
 
+/**
+ * @brief Given a string of values rolled, give the result
+ * 
+ * The functions analizes the string and returns a score based on the input. \n
+ * The score is calculated like so: \n
+ * For every characters, if there is 2 or more of the same character, add to the score 15(number_of_occurences!) \n
+ * Example: \n
+ * `12345` -> 0 \n
+ * '11234' -> 45 \n
+ * '11223' -> 90 \n
+ * '11123' -> 90 \n
+ * 
+ * @param values a row from the slot machine
+ * @return int the result
+ */
 int analyseResults(char *values[WIDTH])
 {
     int total = 0;
@@ -344,7 +381,12 @@ int analyseResults(char *values[WIDTH])
 }
 
 
-//Because C Does Not Like Redefinitions of Main, This Checks If Its Being Run Directly Or If Its Being Included
+/**
+ * @brief Main fucntion, calls runSlots()
+ * 
+ * The function will parse command line arguments and run slots accordingly
+ * 
+ */
 #ifdef _DEFMAIN
 int main(int argc, char *argv[]){
     if (argc > 1)

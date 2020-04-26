@@ -15,8 +15,13 @@
 #define _MAINGUARD
 
 // Define Debug (Comment Out To Disable Debug Mode)
-#define DEBUG //Checking Definitions Instead Of Variables Because ifdef Removes Debug Code In Compilation!
+/**
+ * if debug is defined, functions will print more verbose output, including warnings and intermediary steps when processing.
+ * If debug is undefined, only essential dialog is printed
+ * 
+ */
 
+#define DEBUG ///< Run with debug on
 #ifdef TESTS         // If this run by unittest, remove debug messages
     #undef DEBUG
 #endif
@@ -71,13 +76,13 @@
  * https://en.wikipedia.org/wiki/Machine_epsilon
  *Currently set to 1 * 10 ^ -12
  */
-#define EPSILON 0.0000000001l ///< Sets Floating Point Epsilon (AKA decimal accuracy of numbers). See https://en.wikipedia.org/wiki/Machine_epsilon
+#define EPSILON 0.0000000001l ///< Sets Floating Point Epsilon (AKA decimal accuracy of numbers). See https://en.wikipedia.org/wiki/Machine_epsilon, See compare()
 //#define EPSILON 0.0001l
 
 //Math Numbers
-#define PI 3.141592653589l 
-#define EULER 2.718281828459045l
-#define LNTWO 0.69314718056l
+#define PI 3.141592653589l ///< PI accuracy for math.c
+#define EULER 2.718281828459045l ///< Euler number for math.c
+#define LNTWO 0.69314718056l  ///< ??
 
 // cache.c
 #define MAX_VARIABLE_NUMBER 25 ///< Max number of variables user is allowed 
@@ -89,12 +94,12 @@
 
 
 // Define Booleans
-#define false 0
-#define true 1
-#define False 0
-#define True 1
-#define FALSE 0
-#define TRUE 1
+#define false 0  ///< false for clarity when writing code
+#define true 1 ///< true for clarity when writing code
+#define False 0 ///< false for clarity when writing code
+#define True 1 ///< true for clarity when writing code
+#define FALSE 0 ///< false for clarity when writing code
+#define TRUE 1 ///< true for clarity when writing code
 
 // Set Colours
 #define RED   "\x1B[31m"  ///< ANSI code for red
@@ -114,8 +119,8 @@
 #define ARRAY_SIZE(x) (sizeof((x)) / sizeof((x)[0])) ///< returns the size of an array
 
 // Numbers
-#define INFINITY 2147483647
-#define NEG_INFINITY -2147483647
+#define INFINITY 2147483647   ///< Infinity for C, used in Mapping/
+#define NEG_INFINITY -2147483647   ///< -Infinity for C, used in Mapping/
 
 // settings
 #define MAX_INPUT_LENGTH 4096   ///< Max length of an expression
