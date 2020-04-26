@@ -1,3 +1,7 @@
-// This is because if we do further file movement, we can just change this
-// This also makes stuff cleaner
+/**
+ * @file /Mapping/Algorithms/main.h
+ * 
+ * @brief Links to src/main.h
+ *  
+ */
 #include "../../Final/src/main.h"

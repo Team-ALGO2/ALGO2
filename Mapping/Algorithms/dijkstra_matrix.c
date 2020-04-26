@@ -1,12 +1,21 @@
-//Edward's Code
-//Dijkstra's Pathfinding Algorithm (Matrix Edition)
+/**
+ * @file dijkstra_matrix.c
+ * 
+ * @brief Implementation of dijkstra algorithm in C
+ * 
+ *  Detailed walkthrought comming soon!
+ */
 
 #include "main.h"
 
-//Define Maximum Sizes
-#define DIJ_MAX_SIZE 9
+#define DIJ_MAX_SIZE 9 ///< Max sizes
 
-//Debug Printer for printing all values in distance array
+
+/**
+ * @brief Print all distances from an array
+ *  
+ * @param dist map
+ */
 void debugPrint(int dist[DIJ_MAX_SIZE]){
 	printf("Vertex tDistance from Source\n");
 	for(int node = 0; node < DIJ_MAX_SIZE; node++){
@@ -14,7 +23,13 @@ void debugPrint(int dist[DIJ_MAX_SIZE]){
 	}
 }
 
-//Function to get the shortest valid node
+/**
+ * @brief Returns the node with the smallest value
+ * 
+ * @param dist map of all the distances
+ * @param checked map of all checked
+ * @return int 
+ */
 int shortestNode(int dist[DIJ_MAX_SIZE], int checked[DIJ_MAX_SIZE]){
 	int min = INFINITY;
 	int minIndex;
@@ -29,11 +44,14 @@ int shortestNode(int dist[DIJ_MAX_SIZE], int checked[DIJ_MAX_SIZE]){
 	return minIndex;
 }
 
-//The meat of the the algorithm
-//Takes In:
-//map -> 2d matrix of distances between nodes
-//cMap -> 2d matrix of Connectivity Booleans
-//start -> Starting Node
+/**
+ * @brief The meat of the algo
+ * 
+ * @param map 2d matrix of distances between nodes
+ * @param cMap 2d matrix of Connectivity Booleans
+ * @param start Starting Node
+ * @return i, result
+ */
 int dijkstra(int map[DIJ_MAX_SIZE][DIJ_MAX_SIZE], int cMap[DIJ_MAX_SIZE][DIJ_MAX_SIZE], int start){
 	//Distance Array -> Contains Values Of Current Smallest Distances
 	int dist[DIJ_MAX_SIZE];
@@ -71,7 +89,11 @@ int dijkstra(int map[DIJ_MAX_SIZE][DIJ_MAX_SIZE], int cMap[DIJ_MAX_SIZE][DIJ_MAX
 }
 
 
-//Because C Does Not Like Redefinitions of Main, This Checks If Its Being Run Directly Or If Its Being Included
+
+/**
+ * @brief starts algo from map
+ * 
+ */
 #ifdef _DEFMAIN
 int main(){
 

@@ -1,22 +1,28 @@
-//Edward's Code
-//Kruskals Alternative Implementation
+/**
+ * @file kruskal-alternative.c
+ * 
+ * @brief Implementation of kruskal algorithm in C, TODO
+ * 
+ * Detailed walkthrought comming soon!
+ *  
+ */
 
 #include "main.h"
 
 //Define Maximum Sizes
 #define KS_ALT_MAX_SIZE 9
 
-//The meat of the the algorithm
-//Takes In:
-//map -> 2d matrix of distances between nodes
-//cMap -> 2d matrix of Connectivity Booleans
-//start -> Starting Node
+/**
+ * @brief TODO
+ */
 int kruskals_alt(int map[KS_ALT_MAX_SIZE][KS_ALT_MAX_SIZE], int cMap[KS_ALT_MAX_SIZE][KS_ALT_MAX_SIZE], int start){
     //TODO
 }
 
 
-//Because C Does Not Like Redefinitions of Main, This Checks If Its Being Run Directly Or If Its Being Included
+/**
+ * @brief TODO
+ */
 #ifdef _DEFMAIN
 int main(){
 	/*

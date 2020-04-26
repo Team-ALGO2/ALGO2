@@ -1,30 +1,46 @@
-//Alex's Code
-
+/**
+ * @file kruskal.c
+ * 
+ * @brief Implementation of kruskal algorithm in C
+ * 
+ * Detailed walkthrought comming soon!
+ *  
+ */
 #include "main.h"
  
 #define max 30
- 
+/**
+ * @brief An edge for the map -- kruskal.c
+ * 
+ */
 typedef struct edge{
-	int u,v,w;
+	int u,v,w;	///< Components of the edge
 }edge;
- 
+
+/**
+ * @brief List of edges -- kruskal.c
+ * 
+ */
 typedef struct edgelist{
-	edge data[max];
-	int n;
+	edge data[max];		///< Array of edges
+	int n;		///< N
 }edgelist;
  
-edgelist klist;
-edgelist slist;
+edgelist klist;		///< List k
+edgelist slist;		///< list s
 
  
-int K[max][max],n;
+int K[max][max],n;	///< Map
  
 void kruskal();
 int find(int bel[],int vertexnum);
 void un(int bel[],int c1,int c2);
 
 
-//Because C Does Not Like Redefinitions of Main, This Checks If Its Being Run Directly Or If Its Being Included
+/**
+ * @brief Loads the map and starts the program
+ * 
+ */
 #ifdef _DEFMAIN
 void main(){
 	int i,j,total_cost;
@@ -53,6 +69,11 @@ void main(){
 }
 #endif // _DEFMAIN
  
+
+/**
+ * @brief The main part of the algo
+ * 
+ */
 void kruskal(){
 	int bel[max],i,j,d1,d2;
 	klist.n=0;
@@ -97,11 +118,26 @@ void kruskal(){
 		}
 	}
 }
- 
+
+
+/**
+ * @brief Helper
+ * 
+ * @param bel  array
+ * @param vertexnum number
+ * @return int `bel[vertexnum]`
+ */
 int find(int bel[],int vertexnum){
 	return(bel[vertexnum]);
 }
- 
+
+/**
+ * @brief ???
+ * 
+ * @param bel ???
+ * @param c1  ???
+ * @param c2  ???
+ */
 void un(int bel[],int c1,int c2){
 	int i;
 	

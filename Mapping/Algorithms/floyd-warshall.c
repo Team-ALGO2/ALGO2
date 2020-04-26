@@ -1,12 +1,22 @@
-//Edward's Code
-//Floyd Warshall Pathfinding Algorithm
+/**
+ * @file floyd-warshall.c
+ * 
+ * @brief Implementation of floyd-warshall algorithm in C
+ * 
+ * Detailed walkthrought comming soon!
+ *  
+ */
+
 
 #include "main.h"
 
-//Define Maximum Sizes
-#define FW_MAX_SIZE 9
+#define FW_MAX_SIZE 9 ///< Max sizes
 
-//Debug Printer for printing all values in distance array
+/**
+ * @brief Print all distances from an array
+ *  
+ * @param dist map
+ */
 void debugPrint(int distMap[FW_MAX_SIZE][FW_MAX_SIZE]){
     printf("DBG PRINT\n");
     for(int x = 0; x < FW_MAX_SIZE; x++){
@@ -17,11 +27,14 @@ void debugPrint(int distMap[FW_MAX_SIZE][FW_MAX_SIZE]){
     }
 }
 
-//The meat of the the algorithm
-//Takes In:
-//map -> 2d matrix of distances between nodes
-//cMap -> 2d matrix of Connectivity Booleans
-//start -> Starting Node
+/**
+ * @brief The meat of the algo
+ * 
+ * @param map 2d matrix of distances between nodes
+ * @param cMap 2d matrix of Connectivity Booleans
+ * @param start Starting Node
+ * @return i, result
+ */
 int floydWarshall(int map[FW_MAX_SIZE][FW_MAX_SIZE], int cMap[FW_MAX_SIZE][FW_MAX_SIZE], int start){
     //2d Matrix Of All Distances in Map
     int distMap[FW_MAX_SIZE][FW_MAX_SIZE] = {false};
@@ -89,7 +102,10 @@ int floydWarshall(int map[FW_MAX_SIZE][FW_MAX_SIZE], int cMap[FW_MAX_SIZE][FW_MA
 }
 
 
-//Because C Does Not Like Redefinitions of Main, This Checks If Its Being Run Directly Or If Its Being Included
+/**
+ * @brief starts algo from map
+ * 
+ */
 #ifdef _DEFMAIN
 int main(){
 

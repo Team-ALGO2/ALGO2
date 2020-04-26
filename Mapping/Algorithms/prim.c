@@ -1,10 +1,14 @@
-//Edward's Code
-//Prim Minimum Spanning Tree
-
+/**
+ * @file prim.c
+ * 
+ * @brief Implementation of prim algorithm in C
+ * 
+ * Detailed walkthrought comming soon!
+ *  
+ */
 #include "main.h"
 
-//Define Maximum Sizes
-#define PRIM_MAX_SIZE 5
+#define PRIM_MAX_SIZE 5	///< Max size
 
 //The meat of the the algorithm
 //Takes In:

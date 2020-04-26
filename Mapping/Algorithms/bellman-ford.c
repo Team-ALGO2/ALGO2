@@ -1,12 +1,32 @@
-//Edward's Code
-//Bellman Ford Pathfinding Algorithm
-
+/**
+ * @file bellman-ford.c
+ * 
+ * @brief Implementation of bellman-ford algorithm in C
+ * 
+ * This file is an implementation of bellman-ford algorithm.
+ * It is used to find minimum spanning trees, which means that 
+ * given a graph, containing weighted vertices, it will find the shortest
+ * path passing by all the nodes. \n
+ * The algorithms has two parts: \n
+ * \b Part \b 1 \n
+ * The algorithm will start at a node, that will have a value of 0
+ * and all other nodes have a value of infinity. Starting at that node, ...
+ * Detailed walkthrought comming soon!
+ * 
+ * 
+ * 
+ * 
+ */
 #include "main.h"
 
 //Define Maximum Sizes
-#define BF_MAX_SIZE 10
+#define BF_MAX_SIZE 10  ///< Max size
 
-//Debug Printer for printing all values in distance array
+/**
+ * @brief Print all distances from an array
+ *  
+ * @param dist map
+ */
 void debugPrint(int dist[BF_MAX_SIZE]){
 	printf("Vertex tDistance from Source\n");
 	for(int node = 0; node < BF_MAX_SIZE; node++){
@@ -14,7 +34,13 @@ void debugPrint(int dist[BF_MAX_SIZE]){
 	}
 }
 
-//Function to get the shortest valid node (Similar To One Used In Dijkstras)
+/**
+ * @brief Returns the node with the smallest value
+ * 
+ * @param dist map of all the distances
+ * @param checked map of all checked
+ * @return int 
+ */
 int shortestNode(int dist[BF_MAX_SIZE], int checked[BF_MAX_SIZE]){
 	int min = INFINITY;
 	int minIndex;
@@ -28,12 +54,14 @@ int shortestNode(int dist[BF_MAX_SIZE], int checked[BF_MAX_SIZE]){
 	}
 	return minIndex;
 }
-
-//The meat of the the algorithm
-//Takes In:
-//map -> 2d matrix of distances between nodes
-//cMap -> 2d matrix of Connectivity Booleans
-//start -> Starting Node
+/**
+ * @brief The meat of the algo
+ * 
+ * @param map 2d matrix of distances between nodes
+ * @param cMap 2d matrix of Connectivity Booleans
+ * @param start Starting Node
+ * @return i, result
+ */
 int bellmanFord(int map[BF_MAX_SIZE][BF_MAX_SIZE], int cMap[BF_MAX_SIZE][BF_MAX_SIZE], int start){
     //Define Relax Order Cache
     //NOTE: This is really hacky but it does solve a few very nasty bugs and slightly improves Oavg
@@ -161,7 +189,10 @@ int bellmanFord(int map[BF_MAX_SIZE][BF_MAX_SIZE], int cMap[BF_MAX_SIZE][BF_MAX_
 }
 
 
-//Because C Does Not Like Redefinitions of Main, This Checks If Its Being Run Directly Or If Its Being Included
+/**
+ * @brief starts algo from map
+ * 
+ */
 #ifdef _DEFMAIN
 int main(){
 
