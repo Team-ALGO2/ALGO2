@@ -35,6 +35,7 @@ jobs:
     script: skip
     before_deploy: doxygen doxygen.txt
     deploy: &pages
+      keep_history: true
       provider: pages
       skip_cleanup: true          
       github_token: $GITHUB_TOKEN

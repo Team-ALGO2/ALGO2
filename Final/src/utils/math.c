@@ -1,4 +1,52 @@
-// Basic Configurations
+/**
+ * @file math.c
+ * @brief All of the math functions
+ * 
+ * This file contains alot of math functions, we include our own implementation of 
+ * functions from C's math standard library. Most functions deal with C's floating point accuracy errors and are compatible with long doubles
+ * Functions include: \n
+ * - Various functions:
+ *  - compare()
+ *  - ldAbs()
+ *  - ldFloor()
+ *  - ldCeil()
+ *  - ldRound()
+ *  - numLen()
+ * - Basic math:
+ *  - add()
+ *  - substract()
+ *  - multiply()
+ *  - divide()
+ *  - mod()
+ * - Advanced math:
+ *  - dmod()
+ *  - factorial()
+ * - Exponential math:
+ *  - fastPower()
+ *  - recPowrHelper()
+ *  - powr()
+ *  - babylonianGuess()
+ *  - squarert()
+ *  - nthrt()       TODO
+ *  - logarithm()   TODO
+ *  - expFunc()
+ *  - lnFunc()
+ * - Trig math
+ *  - sine()
+ *  - cosine()
+ *  - tangent()
+ *  - secant()
+ *  - cosecant()
+ *  - cotangent()
+ *  - sineh()       TODO
+ *  - cosineh()     TODO
+ *  - tangenth()    TODO
+ * - Combinatronics math:
+ *  - aChooseB()
+ *  - aPermB()
+ * 
+ * 
+ */
 
 
 //NOTE: "(" and ")" are id's 16 and 17 respectivley
@@ -56,6 +104,17 @@ long double aPermB(long double n, long double r);
 
 */
 
+/**
+ * @brief Comparing two numbers
+ * 
+ * This function compares two numbers, adjusting for
+ * C's floating point accuracy problems using the macro `EPSILON`
+ * defined in main.h
+ * 
+ * @param a The first number
+ * @param b The second number
+ * @return boolean, whether the first number os bigger that the other
+ */
 int compare(long double a, long double b)
 {
   return ldAbs(a - b) < EPSILON;

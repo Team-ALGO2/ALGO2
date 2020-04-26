@@ -1,5 +1,5 @@
 /**
- * @file main.h
+ * @file src/main.h
  * @brief Main header file for the project
  * 
  * This file contains all of the settings for the project
