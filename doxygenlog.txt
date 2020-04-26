@@ -1,0 +1,88 @@
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/main.h:2: warning: the name `main.h' supplied as the second argument in the \file statement matches the following input files:
+   /home/travis/build/Team-ALGO2/ALGO2/Final/src/main.h
+   /home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/main.h
+Please use a more specific name by including a (larger) part of the path!
+/home/travis/build/Team-ALGO2/ALGO2/Server/main.c:23: warning: Compound pair is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/calc/parsing.c:21: warning: Compound lookAheadResult is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/doublylinkedlist.c:14: warning: Compound DLLNode is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/x-prim.c:5: warning: Compound edge is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/kruskal.c:7: warning: Compound edge is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/x-bellman-ford.c:6: warning: Compound Edge is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Server/main.c:29: warning: Compound dict is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/x-prim.c:14: warning: Compound node is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/x-dijkstra_nv.c:4: warning: Compound node is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/cache.c:21: warning: Compound cacheList is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Server/httpd.c:22: warning: Compound header_t is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/x-dijkstra_nv.c:9: warning: Compound vertice is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/opDataSystem.c:27: warning: Compound odsNode is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/x-prim.c:18: warning: Compound nodelist is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/calc/init.c:7: warning: Compound calcProfile is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/x-prim.c:9: warning: Compound edgelist is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/kruskal.c:11: warning: Compound edgelist is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/linkedlist.c:13: warning: Compound LLNode is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/opDataSystem.c:50: warning: Compound operatorNode is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/calc/parsing.c:13: warning: Compound keyWordList is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/x-bellman-ford.c:14: warning: Compound Graph is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/cache.c:15: warning: Compound cache is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/opDataSystem.c:38: warning: Compound operandNode is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/opDataSystem.c:16: warning: Compound odsMain is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Mapping/README.md:21: warning: Illegal command ref as part of a <h2> tag
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/cache.c:16: warning: Member name[MAX_VARIABLE_LENGTH] (variable) of class cache is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/cache.c:17: warning: Member value (variable) of class cache is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/cache.c:17: warning: Member caches[MAX_VARIABLE_NUMBER] (variable) of class cacheList is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/calc/init.c:8: warning: Member base (variable) of class calcProfile is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/calc/init.c:9: warning: Member strMaxLen (variable) of class calcProfile is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/calc/init.c:10: warning: Member error (variable) of class calcProfile is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Server/main.c:25: warning: Member pairs[MAX_VARIABLE_NUMBER] (variable) of class dict is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/doublylinkedlist.c:15: warning: Member data (variable) of class DLLNode is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/doublylinkedlist.c:16: warning: Member next (variable) of class DLLNode is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/doublylinkedlist.c:17: warning: Member prev (variable) of class DLLNode is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/x-bellman-ford.c:7: warning: Member u (variable) of class Edge is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/x-bellman-ford.c:8: warning: Member v (variable) of class Edge is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/x-bellman-ford.c:9: warning: Member w (variable) of class Edge is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/x-bellman-ford.c:11: warning: Member c (variable) of class Edge is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/kruskal.c:8: warning: Member u (variable) of class edge is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/kruskal.c:8: warning: Member v (variable) of class edge is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/kruskal.c:8: warning: Member w (variable) of class edge is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/kruskal.c:12: warning: Member data[max] (variable) of class edgelist is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/kruskal.c:13: warning: Member n (variable) of class edgelist is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/x-bellman-ford.c:15: warning: Member V (variable) of class Graph is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/x-bellman-ford.c:16: warning: Member E (variable) of class Graph is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/x-bellman-ford.c:17: warning: Member edge (variable) of class Graph is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Server/httpd.c:22: warning: Member name (variable) of class header_t is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Server/httpd.c:22: warning: Member value (variable) of class header_t is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/calc/parsing.c:14: warning: Member list (variable) of class keyWordList is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/calc/parsing.c:15: warning: Member ids (variable) of class keyWordList is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/calc/parsing.c:16: warning: Member values (variable) of class keyWordList is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/calc/parsing.c:17: warning: Member maxLen (variable) of class keyWordList is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/linkedlist.c:14: warning: Member data (variable) of class LLNode is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/linkedlist.c:15: warning: Member next (variable) of class LLNode is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/calc/parsing.c:22: warning: Member length (variable) of class lookAheadResult is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/calc/parsing.c:23: warning: Member index (variable) of class lookAheadResult is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/calc/parsing.c:24: warning: Member indexId (variable) of class lookAheadResult is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/x-dijkstra_nv.c:5: warning: Member id (variable) of class node is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/x-dijkstra_nv.c:6: warning: Member distance_to (variable) of class node is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/x-prim.c:15: warning: Member visible (variable) of class node is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/x-prim.c:19: warning: Member data[max] (variable) of class nodelist is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/x-prim.c:20: warning: Member n (variable) of class nodelist is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/opDataSystem.c:17: warning: Member head (variable) of class odsMain is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/opDataSystem.c:18: warning: Member tail (variable) of class odsMain is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/opDataSystem.c:19: warning: Member nodes (variable) of class odsMain is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/opDataSystem.c:28: warning: Member type (variable) of class odsNode is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/opDataSystem.c:29: warning: Member next (variable) of class odsNode is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/opDataSystem.c:30: warning: Member prev (variable) of class odsNode is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/opDataSystem.c:39: warning: Member type (variable) of class operandNode is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/opDataSystem.c:40: warning: Member next (variable) of class operandNode is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/opDataSystem.c:41: warning: Member prev (variable) of class operandNode is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/opDataSystem.c:42: warning: Member data (variable) of class operandNode is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/opDataSystem.c:51: warning: Member type (variable) of class operatorNode is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/opDataSystem.c:52: warning: Member next (variable) of class operatorNode is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/opDataSystem.c:53: warning: Member prev (variable) of class operatorNode is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/opDataSystem.c:54: warning: Member data (variable) of class operatorNode is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Server/main.c:24: warning: Member key[MAX_VARIABLE_LENGTH] (variable) of class pair is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Server/main.c:25: warning: Member value[MAX_INPUT_LENGTH] (variable) of class pair is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/x-dijkstra_nv.c:10: warning: Member from (variable) of class vertice is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/x-dijkstra_nv.c:11: warning: Member to (variable) of class vertice is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/x-dijkstra_nv.c:12: warning: Member weigth (variable) of class vertice is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/README.md:5: warning: Unexpected html tag <img> found within <a href=...> context
+/home/travis/build/Team-ALGO2/ALGO2/README.md:5: warning: Unexpected html tag <img> found within <a href=...> context

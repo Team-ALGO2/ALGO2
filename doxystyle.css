@@ -1,0 +1,11 @@
+p {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.line {
+    background-color: #0000ff01;
+}
+
+.line:hover {
+    background-color: #0000ff15;
+}
