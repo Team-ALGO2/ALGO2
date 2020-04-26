@@ -1,7 +1,3 @@
-/home/travis/build/Team-ALGO2/ALGO2/Final/src/main.h:2: warning: the name `main.h' supplied as the second argument in the \file statement matches the following input files:
-   /home/travis/build/Team-ALGO2/ALGO2/Final/src/main.h
-   /home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/main.h
-Please use a more specific name by including a (larger) part of the path!
 /home/travis/build/Team-ALGO2/ALGO2/Server/main.c:23: warning: Compound pair is not documented.
 /home/travis/build/Team-ALGO2/ALGO2/Final/src/calc/parsing.c:21: warning: Compound lookAheadResult is not documented.
 /home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/doublylinkedlist.c:14: warning: Compound DLLNode is not documented.
@@ -26,6 +22,51 @@ Please use a more specific name by including a (larger) part of the path!
 /home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/cache.c:15: warning: Compound cache is not documented.
 /home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/opDataSystem.c:38: warning: Compound operandNode is not documented.
 /home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/opDataSystem.c:16: warning: Compound odsMain is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/main.h:18: warning: Member DEBUG (macro definition) of file Final/src/main.h is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/main.h:78: warning: Member PI (macro definition) of file Final/src/main.h is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/main.h:79: warning: Member EULER (macro definition) of file Final/src/main.h is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/main.h:80: warning: Member LNTWO (macro definition) of file Final/src/main.h is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/main.h:92: warning: Member false (macro definition) of file Final/src/main.h is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/main.h:93: warning: Member true (macro definition) of file Final/src/main.h is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/main.h:94: warning: Member False (macro definition) of file Final/src/main.h is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/main.h:95: warning: Member True (macro definition) of file Final/src/main.h is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/main.h:96: warning: Member FALSE (macro definition) of file Final/src/main.h is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/main.h:97: warning: Member TRUE (macro definition) of file Final/src/main.h is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/main.h:117: warning: Member INFINITY (macro definition) of file Final/src/main.h is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/main.h:118: warning: Member NEG_INFINITY (macro definition) of file Final/src/main.h is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/main.h:196: warning: Member _DEFMAIN (macro definition) of file Final/src/main.h is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/math.c:62: warning: Member ldAbs(long double num) (function) of file math.c is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/math.c:63: warning: Member ldFloor(long double num) (function) of file math.c is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/math.c:64: warning: Member ldCeil(long double num) (function) of file math.c is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/math.c:65: warning: Member ldRound(long double num) (function) of file math.c is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/math.c:66: warning: Member numLen(int num) (function) of file math.c is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/math.c:68: warning: Member add(long double a, long double b) (function) of file math.c is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/math.c:69: warning: Member subtract(long double a, long double b) (function) of file math.c is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/math.c:70: warning: Member multiply(long double a, long double b) (function) of file math.c is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/math.c:71: warning: Member divide(long double a, long double b) (function) of file math.c is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/math.c:72: warning: Member mod(long double a, long double b) (function) of file math.c is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/math.c:74: warning: Member dmod(long double x, long double y) (function) of file math.c is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/math.c:75: warning: Member factorial(long double b) (function) of file math.c is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/math.c:77: warning: Member fastPower(long double a, long double b) (function) of file math.c is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/math.c:78: warning: Member recPowrHelper(long double a, long double b, long double precision) (function) of file math.c is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/math.c:79: warning: Member powr(long double a, long double b) (function) of file math.c is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/math.c:80: warning: Member babylonianGuess(long double num) (function) of file math.c is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/math.c:81: warning: Member squarert(long double b) (function) of file math.c is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/math.c:82: warning: Member nthrt(long double b) (function) of file math.c is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/math.c:83: warning: Member logarithm(long double a, long double b) (function) of file math.c is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/math.c:84: warning: Member expFunc(long double x) (function) of file math.c is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/math.c:85: warning: Member lnFunc(long double x) (function) of file math.c is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/math.c:88: warning: Member sine(long double a) (function) of file math.c is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/math.c:89: warning: Member cosine(long double a) (function) of file math.c is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/math.c:90: warning: Member tangent(long double a) (function) of file math.c is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/math.c:91: warning: Member secant(long double a) (function) of file math.c is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/math.c:92: warning: Member cosecant(long double a) (function) of file math.c is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/math.c:93: warning: Member cotangent(long double a) (function) of file math.c is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/math.c:94: warning: Member sineh(long double a) (function) of file math.c is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/math.c:95: warning: Member cosineh(long double a) (function) of file math.c is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/math.c:96: warning: Member tangenth(long double a) (function) of file math.c is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/math.c:98: warning: Member aChooseB(long double n, long double k) (function) of file math.c is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/math.c:99: warning: Member aPermB(long double n, long double r) (function) of file math.c is not documented.
 /home/travis/build/Team-ALGO2/ALGO2/Mapping/README.md:21: warning: Illegal command ref as part of a <h2> tag
 /home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/cache.c:16: warning: Member name[MAX_VARIABLE_LENGTH] (variable) of class cache is not documented.
 /home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/cache.c:17: warning: Member value (variable) of class cache is not documented.

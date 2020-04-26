@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['edge',['Edge',['../struct_edge.html',1,'Edge'],['../structedge.html',1,'edge']]],
-  ['edgelist',['edgelist',['../structedgelist.html',1,'']]]
+  ['dict',['dict',['../structdict.html',1,'']]],
+  ['dllnode',['DLLNode',['../struct_d_l_l_node.html',1,'']]],
+  ['documentation_3a',['Documentation:',['../md_Final_DOCUMENTATION.html',1,'']]]
 ];

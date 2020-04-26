@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['front',['front',['../structqueue.html#a6c50c7c8bcd9c5962996ed8b1be8771c',1,'queue']]]
+  ['edge',['Edge',['../struct_edge.html',1,'Edge'],['../structedge.html',1,'edge']]],
+  ['edgelist',['edgelist',['../structedgelist.html',1,'']]],
+  ['epsilon',['EPSILON',['../_final_2src_2main_8h.html#a002b2f4894492820fe708b1b7e7c5e70',1,'main.h']]]
 ];
