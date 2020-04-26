@@ -1,4 +1,10 @@
-/// Implementation of a stack in C
+/**
+ * @file stack.c
+ * @brief Implementation of a stack in C
+ *  
+ * This file contains our implementation of a stack in C
+ * along with a few examples.
+ */
 
 /**
  * Stack only accepts numbers
@@ -45,15 +51,27 @@
 //includes main utils
 #include "../main.h"
 
-//Custom Stack Structure
-//counter -> The "pointer" of the top of the graph
-//A -> The Array where the stack elements will be stored
+/**
+ * @brief Stack data structure
+ * 
+ */
 typedef struct{
     int counter;  ///< Marker for the top of the stack  
     long double A[STACK_MAX_LENGTH];  ///< The actual stack data
 } stack;
 
-//Check if the stack is empty by checking the counter
+/**
+ * @brief Check if the stack is empty
+ * 
+ * The function will return a boolean based of a pointer to a stack
+ * It will return true (1) if the stack is empty 
+ * and false (0) if the stack is populated. This function is important
+ * because performing operations on an empty stack can lead to errors due
+ * to garbage values being returned
+ * 
+ * @param s the pointer to the stack we check
+ * @return boolean, true if stack is empty, false otherwise 
+ */
 int stack_isEmpty(stack *s)
 {
     if (s->counter < 0)
@@ -67,7 +85,18 @@ int stack_isEmpty(stack *s)
     
 }
 
-//Check if the stack is full by checking if the counter is one under the Max Length (STACK_MAX_LENGTH)
+/**
+ * @brief Check if stack is full
+ * 
+ * The function will return a boolean based of a pointer to a stack
+ * It will return true (1) if the stack is full 
+ * and false (0) if the stack is not full (either empty or populated). This function is important
+ * because pushing to a full stack can lead to loss of data, or cause segfaults.
+ *  pushing to the queue performs the check automatically.
+ * 
+ * @param s the pointer to the stack we check
+ * @return boolean, true if stack is full, false otherwise 
+ */
 int stack_isFull(stack *s)
 {   
     if (s->counter + 1 >= STACK_MAX_LENGTH)
@@ -80,13 +109,26 @@ int stack_isFull(stack *s)
     }
 }
 
-//Getting the current length of the stack
+/**
+ * @brief Get the length of the stack
+ * 
+ * The functions returns the length of the stack, using the 
+ * variable `counter`
+ * 
+ * @param s the pointer to the stack we want to get the length if
+ * @return int 
+ */
 int stack_length(stack *s)
 {   
     return s->counter;
 }
 
-//Getting the top element of stack
+/**
+ * @brief Returns the top of the stack
+ * 
+ * @param s the pointer to the stack we want
+ * @return long double 
+ */
 long double stack_top(stack *s)
 {
     if (!stack_isEmpty(s))
@@ -107,7 +149,16 @@ long double stack_top(stack *s)
     
 }
 
-//Pushing element to the top of the stack
+/**
+ * @brief Push a number to the queue
+ * 
+ * This function pushes a number x to the queue, it **does not**
+ * return the top value
+ * 
+ * @param s the pointer to the stack
+ * @param x the number we want to push, as a long double
+ * @return int 
+ */
 int stack_push(stack *s, long double x)
 {
     if (!stack_isFull(s))
@@ -129,7 +180,15 @@ int stack_push(stack *s, long double x)
     
 }
 
-//Removing element from the top of the stack
+/**
+ * @brief Removes the first item in the queue
+ * 
+ * The function removes the last value in the stack
+ * It **does not** return it, see stack_top()
+ * 
+ * @param s the pointer to a stack
+ * @return int 
+ */
 int stack_pop(stack *s)
 {
     if (!stack_isEmpty(s))
@@ -150,7 +209,17 @@ int stack_pop(stack *s)
     
 }
 
-//Debug printer for printing all elements of the stack
+
+/**
+ * @brief Print the stack
+ * 
+ * This function prints the stack and marks the where the counter is
+ * 
+ * @param s the pointer to the stack
+ * 
+ * @note For debug purposes only
+
+ */
 void stack_printer(stack *s)
 {
     printf("\n");
@@ -163,7 +232,17 @@ void stack_printer(stack *s)
     printf("\n");
 }
 
-//stack_printer without trailing zeros
+/**
+ * @brief Print the stack
+ * 
+ * This function prints the stack and marks the where the counter is, without
+ * all the 0s.
+ * 
+ * 
+ * @param s the pointer to the stack
+ * 
+ * @note For debug purposes only
+ */
 void stack_printer_formatted(stack *s){
     for (int i = 0; i <= s->counter; i++)
     {

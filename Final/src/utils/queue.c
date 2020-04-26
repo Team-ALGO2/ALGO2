@@ -64,7 +64,7 @@
 
 //Create structure containing the queue and the traking variables
 /**
- * @brief Implementation of queue in C
+ * @brief Queue data structure
  */
 typedef struct{
     int front;      ///< The front of the queue (beggining)  
