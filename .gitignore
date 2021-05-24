@@ -44,3 +44,6 @@ ignore.map
 
 # Ignore coverty output
 cov-int/
+
+# Ignore object files 
+*.o
