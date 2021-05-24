@@ -5,10 +5,14 @@ serverdir = Server
 out = bin
 testdir = Final/tests
 
-cc = cc # set compiler, change to cc = gcc if using gcc
-linkers = -lssl -lcrypto -lsqlite3 -lncurses # You can get rid of specific linkers if you dont have th elibray
+# set compiler, change to cc = gcc if using gcc
+cc = cc 
 
-errors = -w  	# How to deal with errors: -fsyntax-only (check only syntax); -Werror (make warnings into errors); -w (ignore all warning)
+# You can get rid of specific linkers if you dont have the libray
+linkers = 
+
+# How to deal with errors: -fsyntax-only (check only syntax); -Werror (make warnings into errors); -w (ignore all warning)
+errors = -w  	
 
 clean:
 	@echo "Creating bin directory"
@@ -19,7 +23,7 @@ clean:
 	@rm -rf start
 
 
-install_deps:				# Linux only
+install_deps:
 	sudo apt-get install sqlite3 libsqlite3-dev
 	sudo apt-get install openssl libssl-dev
 	sudo apt-get install libncurses5-dev libncursesw5-dev
