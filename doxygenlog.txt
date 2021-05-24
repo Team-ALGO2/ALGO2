@@ -6,7 +6,7 @@
 /home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/x-prim.c:14: warning: Compound node is not documented.
 /home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/x-dijkstra_nv.c:4: warning: Compound node is not documented.
 /home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/cache.c:21: warning: Compound cacheList is not documented.
-/home/travis/build/Team-ALGO2/ALGO2/Server/httpd.c:22: warning: Compound header_t is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Server/httpd.c:23: warning: Compound header_t is not documented.
 /home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/x-dijkstra_nv.c:9: warning: Compound vertice is not documented.
 /home/travis/build/Team-ALGO2/ALGO2/Final/src/utils/opDataSystem.c:27: warning: Compound odsNode is not documented.
 /home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/x-prim.c:18: warning: Compound nodelist is not documented.
@@ -79,8 +79,8 @@
 /home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/x-bellman-ford.c:15: warning: Member V (variable) of class Graph is not documented.
 /home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/x-bellman-ford.c:16: warning: Member E (variable) of class Graph is not documented.
 /home/travis/build/Team-ALGO2/ALGO2/Mapping/Algorithms/x-bellman-ford.c:17: warning: Member edge (variable) of class Graph is not documented.
-/home/travis/build/Team-ALGO2/ALGO2/Server/httpd.c:22: warning: Member name (variable) of class header_t is not documented.
-/home/travis/build/Team-ALGO2/ALGO2/Server/httpd.c:22: warning: Member value (variable) of class header_t is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Server/httpd.c:24: warning: Member name (variable) of class header_t is not documented.
+/home/travis/build/Team-ALGO2/ALGO2/Server/httpd.c:24: warning: Member value (variable) of class header_t is not documented.
 /home/travis/build/Team-ALGO2/ALGO2/Final/src/calc/parsing.c:14: warning: Member list (variable) of class keyWordList is not documented.
 /home/travis/build/Team-ALGO2/ALGO2/Final/src/calc/parsing.c:15: warning: Member ids (variable) of class keyWordList is not documented.
 /home/travis/build/Team-ALGO2/ALGO2/Final/src/calc/parsing.c:16: warning: Member values (variable) of class keyWordList is not documented.
